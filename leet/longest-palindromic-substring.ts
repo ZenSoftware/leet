@@ -6,10 +6,22 @@ export function longestPalindrome(s: string): string {
   let result = "";
   for (let i = 0; i < s.length - result.length; i++) {
     for (let j = i; j < s.length; j++) {
-      const evaluate = s.substring(i, j + 1);
-      if (isPalindrome(evaluate)) {
-        if (evaluate.length > result.length) {
-          result = evaluate;
+      let start = i;
+      let end = j;
+      let isPalindrome = true;
+
+      while (start < end) {
+        if (s[start] !== s[end]) {
+          isPalindrome = false;
+          break;
+        }
+        start++;
+        end--;
+      }
+
+      if (isPalindrome) {
+        if (j - i + 1 > result.length) {
+          result = s.substring(i, j + 1);
         }
       }
     }
