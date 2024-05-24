@@ -10,7 +10,7 @@ describe("Longest Palindromic Substring", () => {
     expect(longestPalindrome("a")).toEqual("a");
     expect(longestPalindrome("ac")).toEqual("a");
     expect(longestPalindrome("bb")).toEqual("bb");
-    expect(longestPalindrome("abggghggij")).toEqual("gghgg");
+    expect(longestPalindrome("abcccdccef")).toEqual("ccdcc");
   });
 
   it("evaluates isPalindrome correctly", () => {
