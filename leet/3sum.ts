@@ -3,6 +3,7 @@
  */
 export function threeSum(nums: number[]): number[][] {
   let results: number[][] = [];
+  nums.sort((a, b) => a - b);
 
   for (let i = 0; i < nums.length - 2; i++) {
     for (let j = i + 1; j < nums.length - 1; j++) {
