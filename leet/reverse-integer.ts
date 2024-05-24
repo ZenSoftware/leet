@@ -5,5 +5,21 @@
  */
 
 export function reverse(x: number): number {
-  return -1;
+  const s = x.toString();
+  let result = "";
+  if (s[0] === "-") {
+    result += "-";
+    for (let i = s.length - 1; i >= 1; i--) {
+      result += s[i];
+    }
+  } else {
+    for (let i = s.length - 1; i >= 0; i--) {
+      result += s[i];
+    }
+  }
+  const intResult = parseInt(result);
+  const MAX_INT = 2 ** 31;
+  if (intResult < -MAX_INT) return 0;
+  if (intResult > MAX_INT - 1) return 0;
+  return intResult;
 }
