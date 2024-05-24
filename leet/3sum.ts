@@ -2,5 +2,7 @@
  * https://leetcode.com/problems/3sum/description/
  */
 export function threeSum(nums: number[]): number[][] {
-  return null as any;
+  let result: number[][] = [];
+
+  return result;
 }
