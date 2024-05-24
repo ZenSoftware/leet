@@ -8,11 +8,6 @@ export function threeSum(nums: number[]): number[][] {
     for (let j = i + 1; j < nums.length - 1; j++) {
       for (let k = j + 1; k < nums.length; k++) {
         if (nums[i] + nums[j] + nums[k] === 0) {
-          const solution = [nums[i], nums[j], nums[k]];
-          solution.sort((a, b) => a - b);
-          if (!contains(results, solution)) {
-            results.push(solution);
-          }
         }
       }
     }
@@ -21,13 +16,17 @@ export function threeSum(nums: number[]): number[][] {
   return results;
 }
 
-function contains(result: number[][], solution: number[]): boolean {
-  for (let r of result) {
-    let contains = false;
-    for (let i = 0; i < 3; i++) {
-      if (r[i] !== solution[i]) break;
-      if (i === 2 && r[i] === solution[i]) return true;
-    }
+export function binarySearch(nums: number[], find: number) {
+  function bs(start: number, end: number) {
+    if (nums[start] === find) return start;
+    if (nums[end] === find) return end;
+    if (start >= end) return -1;
+
+    const mid = Math.floor((start + end) / 2);
+
+    if (find <= nums[mid]) return bs(start, mid);
+    else return bs(mid + 1, end);
   }
-  return false;
+
+  return bs(0, nums.length - 1);
 }
