@@ -6,5 +6,21 @@
  * Notice that you may not slant the container.
  */
 export function maxArea(height: number[]): number {
-  return -1;
+  let left = 0;
+  let right = height.length - 1;
+  let max = 0;
+
+  while (left < right) {
+    const lowest = Math.min(height[left], height[right]);
+    const area = lowest * (right - left);
+    if (area > max) max = area;
+
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return max;
 }
