@@ -5,5 +5,6 @@ describe("Longest Substring Without Repeating Characters", () => {
     expect(lengthOfLongestSubstring("abcabcbb")).toEqual(3);
     expect(lengthOfLongestSubstring("bbbbb")).toEqual(1);
     expect(lengthOfLongestSubstring("pwwkew")).toEqual(3);
+    expect(lengthOfLongestSubstring("p")).toEqual(1);
   });
 });
