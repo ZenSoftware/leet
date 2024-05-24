@@ -9,14 +9,15 @@ export function lengthOfLongestSubstring(s: string): number {
   let longest = 1;
 
   for (let start = 0; start < s.length - 1; start++) {
-    let current = s.charAt(start);
+    let cache: Record<string, boolean> = { [s.charAt(start)]: true };
 
     for (let end = start + 1; end < s.length; end++) {
       const char = s.charAt(end);
-      if (!current.includes(char)) {
-        current += char;
-        if (current.length > longest) {
-          longest = current.length;
+      if (!cache[char]) {
+        cache[char] = true;
+        const length = Object.keys(cache).length;
+        if (length > longest) {
+          longest = length;
         }
       } else {
         break;
