@@ -1,8 +1,8 @@
 export function binarySearch(list: number[], find: number) {
   function bs(start: number, end: number) {
-    if (start > end) return -1;
     if (list[start] === find) return start;
     if (list[end] === find) return end;
+    if (start >= end) return -1;
 
     const mid = Math.floor((start + end) / 2);
 
