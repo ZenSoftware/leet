@@ -4,7 +4,10 @@ import {
 } from "./longest-palindromic-substring";
 
 describe("Longest Palindromic Substring", () => {
-  it("evaluates correctly", () => {});
+  it("evaluates longestPalindrome correctly", () => {
+    expect(longestPalindrome("babad")).toEqual("bab");
+    expect(longestPalindrome("cbbd")).toEqual("bb");
+  });
 
   it("evaluates isPalindrome correctly", () => {
     expect(isPalindrome("abba")).toEqual(true);
