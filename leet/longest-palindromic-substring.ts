@@ -3,41 +3,41 @@
  * Given a string s, return the longest palindromic substring in s.
  */
 export function longestPalindrome(s: string): string {
-  let result = "";
-  for (let i = 0; i < s.length - result.length; i++) {
-    for (let j = i; j < s.length; j++) {
-      let start = i;
-      let end = j;
-      let isPalindrome = true;
+  let result = s[0];
 
-      while (start < end) {
-        if (s[start] !== s[end]) {
-          isPalindrome = false;
-          break;
-        }
-        start++;
-        end--;
-      }
+  for (let i = 0; i < s.length; i++) {
+    let start = i - 1;
+    let end = i + 1;
 
-      if (isPalindrome) {
-        if (j - i + 1 > result.length) {
-          result = s.substring(i, j + 1);
+    while (start >= 0 && end < s.length) {
+      if (s[start] !== s[end]) {
+        break;
+      } else {
+        if (end - start + 1 > result.length) {
+          result = s.substring(start, end + 1);
         }
       }
+
+      start--;
+      end++;
+    }
+
+    start = i;
+    end = i + 1;
+
+    while (start >= 0 && end < s.length) {
+      if (s[start] !== s[end]) {
+        break;
+      } else {
+        if (end - start + 1 > result.length) {
+          result = s.substring(start, end + 1);
+        }
+      }
+
+      start--;
+      end++;
     }
   }
+
   return result;
-}
-
-export function isPalindrome(s: string) {
-  let start = 0;
-  let end = s.length - 1;
-
-  while (start < end) {
-    if (s[start] !== s[end]) return false;
-    start++;
-    end--;
-  }
-
-  return true;
 }
