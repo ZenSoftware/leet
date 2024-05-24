@@ -9,5 +9,42 @@
  * string convert(string s, int numRows);
  */
 export function convert(s: string, numRows: number): string {
-  return "";
+  const table = new Array(numRows);
+  for (let i = 0; i < table.length; i++) {
+    table[i] = [];
+  }
+
+  let row = 0;
+  let col = 0;
+  let i = 0;
+
+  while (i < s.length) {
+    while (row < numRows && i < s.length) {
+      table[row][col] = s[i];
+      row++;
+      i++;
+    }
+
+    row -= 2;
+
+    while (row > 0 && i < s.length) {
+      col++;
+      table[row][col] = s[i];
+      row--;
+      i++;
+    }
+
+    row = 0;
+    col++;
+  }
+
+  let result = "";
+  for (let row = 0; row < numRows; row++) {
+    for (let col = 0; col < table[row].length; col++) {
+      const char = table[row][col];
+      if (char) result += char;
+    }
+  }
+
+  return result;
 }
