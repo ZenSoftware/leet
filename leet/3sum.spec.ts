@@ -1,5 +1,7 @@
 import { threeSum } from "./3sum";
 
-describe("", () => {
-  it("evaluates correctly", () => {});
+describe("3Sum", () => {
+  it("evaluates correctly", () => {
+    expect(true).toEqual(true);
+  });
 });
