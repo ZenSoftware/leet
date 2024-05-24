@@ -1,10 +1,7 @@
 /**
  * https://leetcode.com/problems/median-of-two-sorted-arrays/description/
  */
-export function findMedianSortedArrays(
-  nums1: number[],
-  nums2: number[]
-): number {
+export function findMedianSortedArrays(nums1: number[], nums2: number[]): number {
   const merged: number[] = Array(nums1.length + nums2.length);
   let mergedIndex = 0;
   let i = 0;

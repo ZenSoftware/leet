@@ -6,10 +6,7 @@
  * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
  */
 
-export function addTwoNumbers(
-  l1: ListNode | null,
-  l2: ListNode | null
-): ListNode | null {
+export function addTwoNumbers(l1: ListNode | null, l2: ListNode | null): ListNode | null {
   if (l1 === null) return l2;
   if (l2 === null) return l1;
 

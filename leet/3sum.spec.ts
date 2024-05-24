@@ -1,7 +1,7 @@
-import { threeSum, binarySearch } from "./3sum";
+import { threeSum, binarySearch } from './3sum';
 
-describe("3Sum", () => {
-  it("evaluates 3Sum correctly", () => {
+describe('3Sum', () => {
+  it('evaluates 3Sum correctly', () => {
     expect(threeSum([-1, 0, 1, 2, -1, -4])).toEqual([
       [-1, -1, 2],
       [-1, 0, 1],
@@ -10,7 +10,7 @@ describe("3Sum", () => {
     expect(threeSum([0, 0, 0])).toEqual([[0, 0, 0]]);
   });
 
-  it("evaluates binary search correctly", () => {
+  it('evaluates binary search correctly', () => {
     const sample = [0, 2, 4, 6, 8, 10];
     expect(binarySearch(sample, 0)).toEqual(0);
     expect(binarySearch(sample, 2)).toEqual(1);

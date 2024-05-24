@@ -38,7 +38,7 @@ export function convert(s: string, numRows: number): string {
     col++;
   }
 
-  let result = "";
+  let result = '';
   for (let row = 0; row < numRows; row++) {
     for (let col = 0; col < table[row].length; col++) {
       const char = table[row][col];

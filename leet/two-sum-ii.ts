@@ -12,5 +12,5 @@ export function twoSum(numbers: number[], target: number): number[] {
     else l++;
   }
 
-  throw Error("No solution exists");
+  throw Error('No solution exists');
 }

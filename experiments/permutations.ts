@@ -1,6 +1,6 @@
 function permutations(elements: any[]): any[][] {}
 
-console.log(permutations(["a", "b", "c"]));
+console.log(permutations(['a', 'b', 'c']));
 
 /**
  * Expect:

@@ -13,4 +13,4 @@ function combinations(elements: any[]): any[][] {
   return [...combsWithFirst, ...combsWithoutFirst];
 }
 
-console.log(combinations(["a", "b", "c"]));
+console.log(combinations(['a', 'b', 'c']));

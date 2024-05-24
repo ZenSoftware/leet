@@ -6,9 +6,9 @@
 
 export function reverse(x: number): number {
   const s = x.toString();
-  let result = "";
-  if (s[0] === "-") {
-    result += "-";
+  let result = '';
+  if (s[0] === '-') {
+    result += '-';
     for (let i = s.length - 1; i >= 1; i--) {
       result += s[i];
     }

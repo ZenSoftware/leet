@@ -3,11 +3,11 @@
  */
 
 export function intToRoman(num: number): string {
-  let result = "";
+  let result = '';
 
   while (num > 0) {
     const firstDigit = num.toString()[0];
-    if (firstDigit === "4" || firstDigit === "9") {
+    if (firstDigit === '4' || firstDigit === '9') {
       for (let [char, val] of SUBTRACTIVE) {
         if (num >= val) {
           result += char;
@@ -31,20 +31,20 @@ export function intToRoman(num: number): string {
 }
 
 const ROMAN: [string, number][] = [
-  ["M", 1000],
-  ["D", 500],
-  ["C", 100],
-  ["L", 50],
-  ["X", 10],
-  ["V", 5],
-  ["I", 1],
+  ['M', 1000],
+  ['D', 500],
+  ['C', 100],
+  ['L', 50],
+  ['X', 10],
+  ['V', 5],
+  ['I', 1],
 ];
 
 const SUBTRACTIVE: [string, number][] = [
-  ["CM", 900],
-  ["CD", 400],
-  ["XC", 90],
-  ["XL", 40],
-  ["IX", 9],
-  ["IV", 4],
+  ['CM', 900],
+  ['CD', 400],
+  ['XC', 90],
+  ['XL', 40],
+  ['IX', 9],
+  ['IV', 4],
 ];
