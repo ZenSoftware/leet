@@ -1,5 +1,7 @@
-import { intToRoman } from "./integer-to-roman.spec";
+/**
+ * https://leetcode.com/problems/integer-to-roman/description/
+ */
 
-describe("Integer to Roman", () => {
-  it("evaluates correctly", () => {});
-});
+export function intToRoman(num: number): string {
+  return "";
+}
