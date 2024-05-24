@@ -12,7 +12,7 @@ export function longestCommonPrefix(strs: string[]): string {
 
   let result = "";
   for (let i = 0; i < shortestLength; i++) {
-    for (let strsIndex = 0; strsIndex < strs.length; strsIndex++) {
+    for (let strsIndex = 1; strsIndex < strs.length; strsIndex++) {
       if (strs[0][i] !== strs[strsIndex][i]) {
         return result;
       }
