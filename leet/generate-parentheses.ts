@@ -10,8 +10,7 @@ export function generateParenthesis(n: number): string[] {
 
   function gen(open: number, close: number) {
     if (open === n && close === n) {
-      let concatenated = '';
-      stack.forEach(s => (concatenated += s));
+      let concatenated = stack.reduce((prev, curr) => prev + curr, '');
       result.push(concatenated);
       return;
     }
@@ -19,11 +18,13 @@ export function generateParenthesis(n: number): string[] {
     if (open < n) {
       stack.push('(');
       gen(open + 1, close);
+      stack.pop();
     }
 
     if (close < open) {
       stack.push(')');
       gen(open, close + 1);
+      stack.pop();
     }
   }
 
