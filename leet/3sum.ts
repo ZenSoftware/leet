@@ -15,7 +15,6 @@ export function threeSum(nums: number[]): number[][] {
       if (sum === 0) {
         results.push([nums[i], nums[left], nums[right]]);
         left++;
-        right--;
         while (nums[left] === nums[left + 1] && left < right) left++;
       } else if (sum < 0) {
         left++;
