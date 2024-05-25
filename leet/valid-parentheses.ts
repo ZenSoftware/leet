@@ -3,10 +3,9 @@
  */
 export function isValid(s: string): boolean {
   const history: string[] = [];
-  const openBrackets = ['(', '[', '{'];
 
   for (let char of s) {
-    if (openBrackets.includes(char)) {
+    if (char === '(' || char === '[' || char === '{') {
       history.push(char);
     } else {
       const last = history.pop();
