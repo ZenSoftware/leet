@@ -3,7 +3,28 @@
  */
 
 export function mergeKLists(lists: Array<ListNode | null>): ListNode | null {
-  return null;
+  if (lists.length === 0) return null;
+  if (lists.length === 1) return lists[0];
+
+  let result = lists[0];
+  for (let i = 1; i < lists.length; i++) {
+    result = mergeLists(result, lists[i]);
+  }
+
+  return result;
+}
+
+export function mergeLists(l1: ListNode | null, l2: ListNode | null): ListNode | null {
+  if (!l1) return l2;
+  if (!l2) return l1;
+
+  if (l1.val < l2.val) {
+    l1.next = mergeLists(l1.next, l2);
+    return l1;
+  } else {
+    l2.next = mergeLists(l1, l2.next);
+    return l2;
+  }
 }
 
 class ListNode {
