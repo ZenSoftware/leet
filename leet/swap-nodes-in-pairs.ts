@@ -2,7 +2,9 @@
  * https://leetcode.com/problems/swap-nodes-in-pairs/
  */
 export function swapPairs(head: ListNode | null): ListNode | null {
-  return null;
+  if (!head) return null;
+
+  return head;
 }
 
 class ListNode {
