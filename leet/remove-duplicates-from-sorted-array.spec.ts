@@ -28,4 +28,25 @@ describe('Remove Duplicates from Sorted Array', () => {
     expect(input[3]).toEqual(3);
     expect(input[4]).toEqual(4);
   });
+
+  it('evaluates correctly 5', () => {
+    const input = [1, 2];
+    expect(removeDuplicates(input)).toEqual(2);
+    expect(input[0]).toEqual(1);
+    expect(input[1]).toEqual(2);
+  });
+
+  it('evaluates correctly 6', () => {
+    const input = [1, 2, 2, 2, 2, 2];
+    expect(removeDuplicates(input)).toEqual(2);
+    expect(input[0]).toEqual(1);
+    expect(input[1]).toEqual(2);
+  });
+
+  it('evaluates correctly 7', () => {
+    const input = [1, 1, 1, 2];
+    expect(removeDuplicates(input)).toEqual(2);
+    expect(input[0]).toEqual(1);
+    expect(input[1]).toEqual(2);
+  });
 });
