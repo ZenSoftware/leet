@@ -8,7 +8,7 @@ export function swapPairs(head: ListNode | null): ListNode | null {
   const dummyHead = new ListNode(undefined, head);
   let p: any = dummyHead;
 
-  while (p?.next && p?.next?.next) {
+  while (p?.next?.next) {
     let p1 = p;
     let p2 = p.next;
     let p3 = p.next.next;
