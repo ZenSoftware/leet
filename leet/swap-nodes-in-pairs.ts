@@ -3,8 +3,25 @@
  */
 export function swapPairs(head: ListNode | null): ListNode | null {
   if (!head) return null;
+  if (!head.next) return head;
 
-  return head;
+  const dummyHead = new ListNode(undefined, head);
+  let p: any = dummyHead;
+
+  while (p?.next && p?.next?.next) {
+    let p1 = p;
+    let p2 = p.next;
+    let p3 = p.next.next;
+
+    const p4 = p3?.next ?? null;
+    p2.next = p4;
+    p3.next = p2;
+    p1.next = p3;
+
+    p = p.next?.next;
+  }
+
+  return dummyHead.next;
 }
 
 class ListNode {
