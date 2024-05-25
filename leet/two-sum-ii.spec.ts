@@ -1,4 +1,4 @@
-import { twoSum } from './two-sum-ii-b';
+import { twoSum } from './two-sum-ii';
 
 describe('Two Sum II', () => {
   it('evaluates two sum correctly', () => {
