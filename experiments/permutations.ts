@@ -1,3 +1,8 @@
+/**
+ * [Coderbyte - What are Permutations & how do they differ from Combinations?](https://www.youtube.com/watch?v=us0cYQXQpxg)
+ * Time: O(n!)
+ * Space: O(n^2)
+ */
 function permutations(elements: any[]): any[][] {
   if (elements.length === 0) return [[]];
 

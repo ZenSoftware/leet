@@ -1,3 +1,8 @@
+/**
+ * [Coderbyte - How to Code Combinations Using Recursion](https://www.youtube.com/watch?v=NA2Oj9xqaZQ)
+ * Time: O(2^n)
+ * Space: O(n^2)
+ */
 function combinations(elements: any[]): any[][] {
   if (elements.length === 0) return [[]];
 
