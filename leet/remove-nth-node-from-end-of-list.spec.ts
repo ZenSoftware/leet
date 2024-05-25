@@ -6,11 +6,13 @@ describe('Remove Nth Node From End of List', () => {
     const result = removeNthFromEnd(list, 2);
     expect(toArray(result)).toEqual([1, 2, 3, 5]);
   });
+
   it('evaluates correctly 2', () => {
     const list = toList([1]);
     const result = removeNthFromEnd(list, 1);
     expect(toArray(result)).toEqual([]);
   });
+
   it('evaluates correctly 3', () => {
     const list = toList([1, 2]);
     const result = removeNthFromEnd(list, 1);

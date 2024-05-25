@@ -3,7 +3,22 @@
  */
 
 export function removeNthFromEnd(head: ListNode | null, n: number): ListNode | null {
-  return null;
+  let dummyHead = new ListNode(0, head);
+  let right: any = dummyHead;
+  let left: any = dummyHead;
+
+  for (let i = 1; i <= n; i++) {
+    right = right.next;
+  }
+
+  while (right.next) {
+    left = left.next;
+    right = right.next;
+  }
+
+  left.next = left.next.next;
+
+  return dummyHead.next;
 }
 
 class ListNode {
