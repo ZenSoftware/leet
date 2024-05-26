@@ -1,5 +1,6 @@
 /**
- *https://leetcode.com/problems/longest-valid-parentheses/
+ * https://leetcode.com/problems/longest-valid-parentheses/
+ * Solution: https://www.youtube.com/watch?v=D5b_JWlkXxw
  */
 export function longestValidParentheses(s: string): number {
   let longest = 0;
