@@ -3,7 +3,20 @@
  */
 
 export function searchRange(nums: number[], target: number): number[] {
-  return [];
+  const foundIndex = binarySearch(nums, target);
+  if (foundIndex === -1) return [-1, -1];
+
+  let foundStart = foundIndex;
+  while (nums[foundStart] === nums[foundStart - 1]) {
+    foundStart--;
+  }
+
+  let foundEnd = foundIndex;
+  while (nums[foundEnd] === nums[foundEnd + 1]) {
+    foundEnd++;
+  }
+
+  return [foundStart, foundEnd];
 }
 
 export function binarySearch(nums: number[], find: number): number {
