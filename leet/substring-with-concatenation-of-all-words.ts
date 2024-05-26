@@ -2,13 +2,14 @@
  * https://leetcode.com/problems/substring-with-concatenation-of-all-words/description/
  */
 export function findSubstring(s: string, words: string[]): number[] {
-  // const dedupedWords = dedupeWords(words);
   const perms = permutations(words);
   const permsConcatenated: string[] = [];
 
   for (let perm of perms) {
     const concatenated = perm.reduce((prev, cur) => prev + cur);
-    permsConcatenated.push(concatenated);
+    if (!permsConcatenated.includes(concatenated)) {
+      permsConcatenated.push(concatenated);
+    }
   }
 
   const result: number[] = [];
@@ -25,16 +26,6 @@ export function findSubstring(s: string, words: string[]): number[] {
   }
 
   return result.sort((a, b) => a - b);
-}
-
-export function dedupeWords(words: string[]) {
-  const deduped: string[] = [];
-
-  for (let word of words) {
-    if (!deduped.includes(word)) deduped.push(word);
-  }
-
-  return deduped;
 }
 
 export function permutations(words: string[]): string[][] {
