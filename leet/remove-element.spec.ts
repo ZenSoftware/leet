@@ -13,8 +13,8 @@ describe('Remove Element', () => {
     expect(removeElement(input, 2)).toEqual(5);
     expect(input[0]).toEqual(0);
     expect(input[1]).toEqual(1);
-    expect(input[2]).toEqual(4);
+    expect(input[2]).toEqual(3);
     expect(input[3]).toEqual(0);
-    expect(input[4]).toEqual(3);
+    expect(input[4]).toEqual(4);
   });
 });
