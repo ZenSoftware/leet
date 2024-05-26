@@ -4,43 +4,43 @@
 export function longestValidParentheses(s: string): number {
   let longest = 0;
 
-  for (let i = 0; i < s.length - 1 - longest; i++) {
-    let openCount = 0;
-    let charCount = 0;
-    for (let j = i; j < s.length; j++) {
-      if (s[j] === '(') {
-        openCount++;
-      } else {
-        if (openCount === 0) {
-          if (charCount > longest) {
-            longest = charCount;
-          }
-          break;
-        }
-        openCount--;
-      }
-      charCount++;
-      if (openCount === 0) {
-        if (charCount > longest) {
-          longest = charCount;
-        }
-      }
+  let l = 0;
+  let r = 0;
+  let count = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    count++;
+
+    if (s[i] === '(') l++;
+    else r++;
+
+    if (l === r) {
+      if (count > longest) longest = count;
+    } else if (r > l) {
+      l = 0;
+      r = 0;
+      count = 0;
+    }
+  }
+
+  l = 0;
+  r = 0;
+  count = 0;
+
+  for (let i = s.length - 1; i >= 0; i--) {
+    count++;
+
+    if (s[i] === ')') r++;
+    else l++;
+
+    if (l === r) {
+      if (count > longest) longest = count;
+    } else if (l > r) {
+      l = 0;
+      r = 0;
+      count = 0;
     }
   }
 
   return longest;
-}
-
-export function validParentheses(s: string): boolean {
-  let openCount = 0;
-  for (let i = 0; i < s.length; i++) {
-    if (s[i] === '(') {
-      openCount++;
-    } else {
-      if (openCount === 0) return false;
-      openCount--;
-    }
-  }
-
-  return openCount === 0;
 }
