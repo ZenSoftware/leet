@@ -1,33 +1,35 @@
 /**
  * https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
  */
-export function removeDuplicates(nums: number[]): number {
+export function removeDuplicates(nums: (number | null)[]): number {
   if (nums.length === 0) return 0;
   if (nums.length === 1) return 1;
 
-  for (let i = 0; i < nums.length - 1; i++) {
-    let j = i;
-
-    while (nums[j] === nums[j + 1]) {
+  for (let i = 0; i < nums.length; i++) {
+    let x = nums[i];
+    let j = i + 1;
+    while (nums[j] === x) {
+      nums[j] = null;
       j++;
-
-      const temp = nums[j];
-
-      for (let k = j; k < nums.length - 1; k++) {
-        nums[k] = nums[k + 1];
-      }
-
-      nums[nums.length - 1] = temp;
+      i++;
     }
-
-    if (nums[i] > nums[i + 1]) break;
   }
 
-  let k = 1;
-  for (let i = 0; i < nums.length - 1; i++) {
-    if (nums[i] >= nums[i + 1]) break;
-    k++;
+  let i = 1;
+  while (i < nums.length) {
+    if (nums[i] === null) break;
+    i++;
   }
 
-  return k;
+  let j = i;
+  while (j < nums.length) {
+    if (nums[j] !== null) {
+      nums[i] = nums[j];
+      nums[j] = null;
+      i++;
+    }
+    j++;
+  }
+
+  return i;
 }
