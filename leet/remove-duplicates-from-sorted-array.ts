@@ -25,7 +25,6 @@ export function removeDuplicates(nums: (number | null)[]): number {
   while (j < nums.length) {
     if (nums[j] !== null) {
       nums[i] = nums[j];
-      nums[j] = null;
       i++;
     }
     j++;
