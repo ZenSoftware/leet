@@ -4,7 +4,7 @@
 export function longestValidParentheses(s: string): number {
   let longest = 0;
 
-  for (let i = 0; i < s.length - 1; i++) {
+  for (let i = 0; i < s.length - 1 - longest; i++) {
     let openCount = 0;
     let charCount = 0;
     for (let j = i; j < s.length; j++) {
