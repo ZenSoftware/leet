@@ -3,6 +3,7 @@
  */
 export function permuteUnique(nums: number[]): number[][] {
   let results: number[][] = [];
+
   let counter: Record<string, number> = {};
   for (let num of nums) {
     if (!(num in counter)) counter[num] = 0;
