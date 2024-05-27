@@ -2,23 +2,26 @@
  * https://leetcode.com/problems/permutations-ii/
  */
 export function permuteUnique(nums: number[]): number[][] {
-  function permute(elements: number[]) {
-    if (elements.length === 0) return [[]];
-
-    const first = elements[0];
-    const withoutFirst = elements.slice(1);
-    const permsWithoutFirst = permute(withoutFirst);
-    const result: number[][] = [];
-
-    for (let perm of permsWithoutFirst) {
-      for (let i = 0; i <= perm.length; i++) {
-        result.push([...perm.slice(0, i), first, ...perm.slice(i)]);
-      }
-    }
-
-    return result;
+  let results: number[][] = [];
+  let counter: { [key: number]: number } = {};
+  for (let num of nums) {
+    if (!(num in counter)) counter[num] = 0;
+    counter[num]++;
   }
-
-  nums.sort((a, b) => a - b);
-  return permute(nums);
+  const backtrack = (comb: number[]) => {
+    if (comb.length === nums.length) {
+      results.push([...comb]);
+      return;
+    }
+    for (let num in counter) {
+      if (counter[num] === 0) continue;
+      comb.push(parseInt(num));
+      counter[num]--;
+      backtrack(comb);
+      comb.pop();
+      counter[num]++;
+    }
+  };
+  backtrack([]);
+  return results;
 }
