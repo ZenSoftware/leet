@@ -3,9 +3,9 @@
  */
 export function solveSudoku(board: string[][]): void {
   const unused2D = getUnused2D(board);
-  const unusedArray: Cell[] = getUnusedArray(unused2D);
-  unusedArray.sort((a, b) => a.unused.size - b.unused.size);
-  console.log(unusedArray[0]);
+  const cells: Cell[] = getUnusedArray(unused2D);
+  cells.sort((a, b) => a.unused.size - b.unused.size);
+  console.log(cells[0]);
 }
 
 function getUnusedArray(unused2D: (Set<string> | null)[][]): Cell[] {
