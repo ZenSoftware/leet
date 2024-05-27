@@ -9,11 +9,11 @@ export function jump(nums: number[]): number {
     let candidateMax = 0;
     let candidateIndex = 0;
     for (let j = 0; j < steps; j++) {
-      const forwardIndex = i + steps - j;
-      const candidateMove = forwardIndex + nums[forwardIndex];
+      const nextIndex = i + steps - j;
+      const candidateMove = nextIndex + nums[nextIndex];
       if (candidateMove > candidateMax) {
         candidateMax = candidateMove;
-        candidateIndex = forwardIndex;
+        candidateIndex = nextIndex;
       }
       if (candidateIndex >= nums.length - 1) return count + 1;
     }
