@@ -3,30 +3,29 @@
  */
 export function permuteUnique(nums: number[]): number[][] {
   let results: number[][] = [];
-
-  let counter: { [key: number]: number } = {};
+  let counter: Record<string, number> = {};
   for (let num of nums) {
     if (!(num in counter)) counter[num] = 0;
     counter[num]++;
   }
 
-  const backtrack = (comb: number[]) => {
-    if (comb.length === nums.length) {
-      results.push([...comb]);
+  function perm(elements: number[]) {
+    if (elements.length === nums.length) {
+      results.push([...elements]);
       return;
     }
 
     for (let num in counter) {
       if (counter[num] === 0) continue;
 
-      comb.push(parseInt(num));
+      elements.push(parseInt(num));
       counter[num]--;
-      backtrack(comb);
-      comb.pop();
+      perm(elements);
+      elements.pop();
       counter[num]++;
     }
-  };
+  }
 
-  backtrack([]);
+  perm([]);
   return results;
 }
