@@ -2,8 +2,17 @@
  * https://leetcode.com/problems/sudoku-solver/description/
  */
 export function solveSudoku(board: string[][]): void {
-  const cells: Cell[] = getCells(board);
-  console.log(cells[0]);
+  let cells: Cell[];
+  do {
+    cells = getCells(board);
+    for (let cell of cells) {
+      if (cell.unused.size > 1) break;
+      const must = cell.unused.values().next();
+      board[cell.row][cell.col] = must.value;
+    }
+  } while (cells.length);
+
+  console.log(board);
 }
 
 function getCells(board: string[][]): Cell[] {
