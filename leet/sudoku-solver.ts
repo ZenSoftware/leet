@@ -10,6 +10,8 @@ export function solveSudoku(board: string[][]): void {
       const must = cell.unused.values().next();
       board[cell.row][cell.col] = must.value;
     }
+
+    if (cells.length > 0 && cells[0].unused.size > 1) break;
   } while (cells.length);
 
   console.log(board);
