@@ -2,26 +2,26 @@
  * https://leetcode.com/problems/sudoku-solver/description/
  */
 export function solveSudoku(board: string[][]): void {
-  const unused2D = getUnused2D(board);
-  const cells: Cell[] = getCells(unused2D);
-  cells.sort((a, b) => a.unused.size - b.unused.size);
+  const cells: Cell[] = getCells(board);
   console.log(cells[0]);
 }
 
-function getCells(unused2D: (Set<string> | null)[][]): Cell[] {
-  const unusedArray: Cell[] = [];
+function getCells(board: string[][]): Cell[] {
+  const unused2D = getUnused2D(board);
+  const cells: Cell[] = [];
 
   for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
       const unused = unused2D[row][col];
       if (unused !== null) {
         const cell: Cell = { row, col, unused };
-        unusedArray.push(cell);
+        cells.push(cell);
       }
     }
   }
 
-  return unusedArray;
+  cells.sort((a, b) => a.unused.size - b.unused.size);
+  return cells;
 }
 
 function getUnused2D(board: string[][]): (Set<string> | null)[][] {
