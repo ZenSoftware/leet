@@ -3,12 +3,12 @@
  */
 export function solveSudoku(board: string[][]): void {
   const unused2D = getUnused2D(board);
-  const cells: Cell[] = getUnusedArray(unused2D);
+  const cells: Cell[] = getCells(unused2D);
   cells.sort((a, b) => a.unused.size - b.unused.size);
   console.log(cells[0]);
 }
 
-function getUnusedArray(unused2D: (Set<string> | null)[][]): Cell[] {
+function getCells(unused2D: (Set<string> | null)[][]): Cell[] {
   const unusedArray: Cell[] = [];
 
   for (let row = 0; row < 9; row++) {
