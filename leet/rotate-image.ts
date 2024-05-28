@@ -10,12 +10,10 @@ export function rotate(matrix: number[][]): void {
 export function transpose(matrix: number[][]): void {
   const size = matrix.length;
   for (let i = 0; i < size; i++) {
-    for (let j = i; j < size; j++) {
-      if (i !== j) {
-        const temp = matrix[i][j];
-        matrix[i][j] = matrix[j][i];
-        matrix[j][i] = temp;
-      }
+    for (let j = i + 1; j < size; j++) {
+      const temp = matrix[i][j];
+      matrix[i][j] = matrix[j][i];
+      matrix[j][i] = temp;
     }
   }
 }
