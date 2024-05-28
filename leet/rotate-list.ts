@@ -40,15 +40,6 @@ function count(list: ListNode | null): number {
   return counter;
 }
 
-class ListNode {
-  val: number;
-  next: ListNode | null;
-  constructor(val?: number, next?: ListNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.next = next === undefined ? null : next;
-  }
-}
-
 export function toList(elements: number[]): ListNode | null {
   if (elements.length === 0) return null;
 
@@ -70,4 +61,13 @@ export function toArray(list: ListNode | null): number[] {
     list = list.next;
   }
   return result;
+}
+
+class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
 }
