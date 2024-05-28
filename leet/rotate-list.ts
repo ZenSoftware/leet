@@ -1,6 +1,8 @@
 /**
  * https://leetcode.com/problems/rotate-list/
  */
+export { toList, toArray, count, rotateOnce, rotateRight };
+
 function rotateRight(head: ListNode | null, k: number): ListNode | null {
   const length = count(head);
   k = k % length;
@@ -71,5 +73,3 @@ class ListNode {
     this.next = next === undefined ? null : next;
   }
 }
-
-export { toList, toArray, count, rotateOnce, rotateRight };
