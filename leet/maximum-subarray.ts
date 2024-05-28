@@ -4,11 +4,9 @@
 export function maxSubArray(nums: number[]): number {
   let largest = -Infinity;
   for (let i = 0; i < nums.length; i++) {
+    let sum = 0;
     for (let j = i; j < nums.length; j++) {
-      let sum = 0;
-      for (let k = i; k <= j; k++) {
-        sum += nums[k];
-      }
+      sum += nums[j];
       if (sum > largest) largest = sum;
     }
   }
