@@ -3,27 +3,11 @@
  */
 
 export function canJump(nums: number[]): boolean {
-  const memo = new Set<number>();
+  let goal = nums.length - 1;
 
-  function search(position: number): boolean {
-    if (memo.has(position)) return false;
-
-    if (position >= nums.length - 1) return true;
-
-    if (nums[position] === 0) {
-      memo.add(position);
-      return false;
-    }
-
-    const steps = nums[position];
-    for (let i = steps; i > 0; i--) {
-      const done = search(position + i);
-      if (done) return true;
-    }
-
-    memo.add(position);
-    return false;
+  for (let i = nums.length - 2; i >= 0; i--) {
+    if (nums[i] + i >= goal) goal = i;
   }
 
-  return search(0);
+  return goal === 0;
 }
