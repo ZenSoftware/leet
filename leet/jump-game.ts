@@ -7,7 +7,9 @@ export function canJump(nums: number[]): boolean {
 
   function search(position: number): boolean {
     if (memo.has(position)) return false;
+
     if (position >= nums.length - 1) return true;
+
     if (nums[position] === 0) {
       memo.add(position);
       return false;
