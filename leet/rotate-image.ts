@@ -3,13 +3,31 @@
  */
 
 export function rotate(matrix: number[][]): void {
-  // Transpose
-  [matrix[0][1], matrix[1][0]] = [matrix[1][0], matrix[0][1]];
-  [matrix[0][2], matrix[2][0]] = [matrix[2][0], matrix[0][2]];
-  [matrix[1][2], matrix[2][1]] = [matrix[2][1], matrix[1][2]];
+  transpose(matrix);
+  swap(matrix);
+}
 
-  // Swap columns
-  [matrix[0][0], matrix[0][2]] = [matrix[0][2], matrix[0][0]];
-  [matrix[1][0], matrix[1][2]] = [matrix[1][2], matrix[1][0]];
-  [matrix[2][0], matrix[2][2]] = [matrix[2][2], matrix[2][0]];
+export function transpose(matrix: number[][]): void {
+  const size = matrix.length;
+  for (let i = 0; i < size; i++) {
+    for (let j = i; j < size; j++) {
+      if (i !== j) {
+        const temp = matrix[i][j];
+        matrix[i][j] = matrix[j][i];
+        matrix[j][i] = temp;
+      }
+    }
+  }
+}
+
+export function swap(matrix: number[][]): void {
+  const size = matrix.length;
+  const half = Math.floor(size / 2);
+  for (let j = 0; j < half; j++) {
+    for (let i = 0; i < size; i++) {
+      const temp = matrix[i][j];
+      matrix[i][j] = matrix[i][size - j - 1];
+      matrix[i][size - j - 1] = temp;
+    }
+  }
 }
