@@ -8,7 +8,7 @@ export function canJump(nums: number[]): boolean {
     if (nums[position] === 0) return false;
 
     const steps = nums[position];
-    for (let i = 1; i <= steps; i++) {
+    for (let i = steps; i > 0; i--) {
       const done = search(position + i);
       if (done) return true;
     }
