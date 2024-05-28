@@ -18,9 +18,10 @@ export function rotateOnce(head: ListNode | null): ListNode | null {
 
   let pointer: ListNode | null = head!.next;
   let trailingPointer: ListNode | null = head;
+
   while (pointer!.next) {
     pointer = pointer!.next;
-    trailingPointer = trailingPointer!.next as ListNode;
+    trailingPointer = trailingPointer!.next;
   }
 
   trailingPointer!.next = null;
