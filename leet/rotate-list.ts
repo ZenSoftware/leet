@@ -2,8 +2,6 @@
  * https://leetcode.com/problems/rotate-list/
  */
 export function rotateRight(head: ListNode | null, k: number): ListNode | null {
-  if (!head) return null;
-
   const length = count(head);
   k = k % length;
 
@@ -18,8 +16,6 @@ export function rotateOnce(head: ListNode | null): ListNode | null {
   if (!head) return null;
   if (!head.next) return head;
 
-  const dummyHead = new ListNode(-Infinity, head);
-
   let pointer: ListNode | null = head!.next;
   let trailingPointer: ListNode | null = head;
   while (pointer!.next) {
@@ -28,10 +24,10 @@ export function rotateOnce(head: ListNode | null): ListNode | null {
   }
 
   trailingPointer!.next = null;
-  pointer!.next = dummyHead.next;
-  dummyHead.next = pointer;
+  pointer!.next = head;
+  head = pointer;
 
-  return dummyHead.next as ListNode;
+  return head;
 }
 
 function count(list: ListNode | null): number {
