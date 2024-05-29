@@ -28,4 +28,18 @@ describe('Set Matrix Zeroes', () => {
       [0, 3, 1, 0],
     ]);
   });
+
+  it('evaluates correctly 3', () => {
+    const input = [
+      [0, 1, 2, 0],
+      [3, 4, 5, 2],
+      [1, 3, 1, 5],
+    ];
+    setZeroes(input);
+    expect(input).toEqual([
+      [0, 0, 0, 0],
+      [0, 4, 5, 0],
+      [0, 3, 1, 0],
+    ]);
+  });
 });
