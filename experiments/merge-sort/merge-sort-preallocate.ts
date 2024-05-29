@@ -1,6 +1,4 @@
-export { mergeSort, merge };
-
-function mergeSort<T>(elements: T[]): T[] {
+export function mergeSort<T>(elements: T[]): T[] {
   if (elements.length <= 1) return elements;
   const mid = Math.floor(elements.length / 2);
   const left = mergeSort(elements.slice(0, mid));
@@ -8,11 +6,11 @@ function mergeSort<T>(elements: T[]): T[] {
   return merge(left, right);
 }
 
-function merge<T>(left: T[], right: T[]): T[] {
+export function merge<T>(left: T[], right: T[]): T[] {
+  const result = Array<T>(left.length + right.length);
   let l = 0;
   let r = 0;
   let i = 0;
-  let result = Array<T>(left.length + right.length);
 
   while (l < left.length && r < right.length) {
     if (left[l] < right[r]) {
