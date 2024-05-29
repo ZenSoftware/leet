@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/search-a-2d-matrix/description/
  */
-export { searchMatrix, binarySearch };
+export { searchMatrix, binarySearchRow };
 
 function searchMatrix(matrix: number[][], target: number): boolean {
   const rowLastIndex = matrix.length - 1;
@@ -10,7 +10,7 @@ function searchMatrix(matrix: number[][], target: number): boolean {
   return false;
 }
 
-function binarySearch(row: number[], target: number): boolean {
+function binarySearchRow(row: number[], target: number): boolean {
   function bs(start: number, end: number): boolean {
     if (row[start] === target) return true;
     if (row[end] === target) return true;
