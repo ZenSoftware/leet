@@ -12,11 +12,24 @@ function searchMatrix(matrix: number[][], target: number): boolean {
 function binarySearchCol(matrix: number[][], target: number): number {
   const rowLastIndex = matrix.length - 1;
 
-  for (let row = 0; row <= rowLastIndex - 1; row++) {
-    if (matrix[row][0] <= target && target < matrix[row + 1][0]) return row;
+  function bs(start: number, end: number): number {
+    if (matrix[start][0] === target) return start;
+    if (matrix[end][0] === target) return end;
+    if (start >= end) {
+      if (start === 0) return 0;
+      if (matrix[start - 1][0] <= target && target < matrix[start][0]) return start - 1;
+      if (start === rowLastIndex) return rowLastIndex;
+      if (matrix[start][0] <= target && target < matrix[start + 1][0]) return start;
+      return start + 1;
+    }
+
+    const mid = Math.floor((start + end) / 2);
+
+    if (target <= matrix[mid][0]) return bs(start, mid);
+    else return bs(mid + 1, end);
   }
 
-  return rowLastIndex;
+  return bs(0, rowLastIndex);
 }
 
 function binarySearchRow(row: number[], target: number): boolean {
