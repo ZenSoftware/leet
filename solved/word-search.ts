@@ -6,6 +6,7 @@ export { exist };
 function exist(board: string[][], word: string): boolean {
   const rowLength = board.length;
   const colLength = board[0].length;
+
   function backtrack(i: number, j: number, k: number): boolean {
     if (k === word.length) return true;
     if (0 > i || i >= rowLength) return false;
