@@ -4,56 +4,29 @@
 export { exist };
 
 function exist(board: string[][], word: string): boolean {
-  const lastXIndex = board.length - 1;
-  const lastYIndex = board[0].length - 1;
+  const rowLength = board.length;
+  const colLength = board[0].length;
+  function backtrack(i: number, j: number, k: number): boolean {
+    if (k === word.length) return true;
+    if (0 > i || i >= rowLength) return false;
+    if (0 > j || j >= colLength) return false;
+    if (board[i][j] !== word[k]) return false;
 
-  function dfs(x: number, y: number, remaining: string[], visited: Set<string>): boolean {
-    if (0 > x || x > lastXIndex) return false;
-    if (0 > y || y > lastYIndex) return false;
-    if (remaining[0] !== board[x][y]) return false;
-    if (remaining[0] === board[x][y] && remaining.length === 1) return true;
+    const temp = board[i][j];
+    board[i][j] = '';
 
-    const nextRemaining = remaining.slice(1);
+    if (backtrack(i + 1, j, k + 1)) return true;
+    if (backtrack(i - 1, j, k + 1)) return true;
+    if (backtrack(i, j + 1, k + 1)) return true;
+    if (backtrack(i, j - 1, k + 1)) return true;
 
-    const rightKey = `${x + 1},${y}`;
-    if (!visited.has(rightKey)) {
-      visited.add(rightKey);
-      if (dfs(x + 1, y, nextRemaining, visited)) return true;
-      visited.delete(rightKey);
-    }
-
-    const leftKey = `${x - 1},${y}`;
-    if (!visited.has(leftKey)) {
-      visited.add(leftKey);
-      if (dfs(x - 1, y, nextRemaining, visited)) return true;
-      visited.delete(leftKey);
-    }
-
-    const upKey = `${x},${y + 1}`;
-    if (!visited.has(upKey)) {
-      visited.add(upKey);
-      if (dfs(x, y + 1, nextRemaining, visited)) return true;
-      visited.delete(upKey);
-    }
-
-    const downKey = `${x},${y - 1}`;
-    if (!visited.has(downKey)) {
-      visited.add(downKey);
-      if (dfs(x, y - 1, nextRemaining, visited)) return true;
-      visited.delete(downKey);
-    }
-
+    board[i][j] = temp;
     return false;
   }
 
-  const boardSize = board.length * board[0].length;
-  if (word.length > boardSize) return false;
-
-  const characters = word.split('');
-
-  for (let i = 0; i <= lastXIndex; i++) {
-    for (let j = 0; j <= lastYIndex; j++) {
-      if (dfs(i, j, characters, new Set())) return true;
+  for (let i = 0; i < rowLength; i++) {
+    for (let j = 0; j < colLength; j++) {
+      if (backtrack(i, j, 0)) return true;
     }
   }
 
