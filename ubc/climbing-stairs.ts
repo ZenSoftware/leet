@@ -4,18 +4,20 @@
 export { climbStairs };
 
 function climbStairs(n: number): number {
-  let result = 0;
+  const memo: Record<string, number> = {};
 
   function dfs(current: number) {
-    if (current > n) return;
-    if (current === n) {
-      result++;
-      return;
-    }
-    dfs(current + 1);
-    dfs(current + 2);
+    if (current in memo) return memo[current];
+    if (current > n) return 0;
+    if (current === n) return 1;
+
+    let total = 0;
+    total += dfs(current + 1);
+    total += dfs(current + 2);
+
+    memo[current] = total;
+    return total;
   }
 
-  dfs(0);
-  return result;
+  return dfs(0);
 }
