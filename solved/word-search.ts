@@ -10,8 +10,8 @@ function exist(board: string[][], word: string): boolean {
   function dfs(x: number, y: number, remaining: string[], visited: Set<string>): boolean {
     if (0 > x || x > lastXIndex) return false;
     if (0 > y || y > lastYIndex) return false;
-    if (remaining.length === 1 && board[x][y] === remaining[0]) return true;
     if (remaining[0] !== board[x][y]) return false;
+    if (remaining[0] === board[x][y] && remaining.length === 1) return true;
 
     const nextRemaining = remaining.slice(1);
 
