@@ -39,4 +39,8 @@ describe('Word Search', () => {
       )
     ).toEqual(false);
   });
+
+  it('evaluates correctly 4', () => {
+    expect(exist([['a']], 'a')).toEqual(true);
+  });
 });
