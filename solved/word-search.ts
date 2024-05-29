@@ -50,6 +50,9 @@ function exist(board: string[][], word: string): boolean {
     return false;
   }
 
+  const boardSize = board.length * board[0].length;
+  if (word.length > boardSize) return false;
+
   const characters = word.split('');
 
   for (let i = 0; i <= lastXIndex; i++) {

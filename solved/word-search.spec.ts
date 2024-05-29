@@ -56,4 +56,20 @@ describe('Word Search', () => {
       )
     ).toEqual(true);
   });
+
+  it('evaluates correctly 6', () => {
+    expect(exist([['a', 'a']], 'aaa')).toEqual(false);
+  });
+
+  it('evaluates correctly 7', () => {
+    expect(
+      exist(
+        [
+          ['a', 'a'],
+          ['A', 'A'],
+        ],
+        'aaa'
+      )
+    ).toEqual(false);
+  });
 });
