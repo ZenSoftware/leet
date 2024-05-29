@@ -1,4 +1,4 @@
-import { fullJustify } from './text-justification';
+import { fullJustify, lineCharCount, spaces } from './text-justification';
 
 describe('Text Justification', () => {
   it('evaluates correctly 1', () => {
@@ -48,5 +48,16 @@ describe('Text Justification', () => {
       'everything  else  we',
       'do                  ',
     ]);
+  });
+
+  it('evaluates character count', () => {
+    expect(lineCharCount(['123', '45', '6789'])).toEqual(9);
+    expect(lineCharCount([])).toEqual(0);
+  });
+
+  it('evaluates get spaces', () => {
+    expect(spaces(0)).toEqual('');
+    expect(spaces(1)).toEqual(' ');
+    expect(spaces(2)).toEqual('  ');
   });
 });
