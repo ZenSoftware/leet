@@ -16,7 +16,10 @@ function binarySearchCol(matrix: number[][], target: number): number {
     if (matrix[start][0] === target) return start;
     if (matrix[end][0] === target) return end;
     if (start >= end) {
-      if (start === 0) return 0;
+      if (start === 0) {
+        if (target < matrix[start][0]) return -1;
+        else return 0;
+      }
       if (matrix[start - 1][0] <= target && target < matrix[start][0]) return start - 1;
       if (start === rowLastIndex) return rowLastIndex;
       if (matrix[start][0] <= target && target < matrix[start + 1][0]) return start;
