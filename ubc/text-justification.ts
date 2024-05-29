@@ -60,7 +60,7 @@ function fullJustify(words: string[], maxWidth: number): string[] {
     lastLine += spaces(remainingWidth);
     result.push(lastLine);
   } else {
-    // One word on the last line, buffer spaces on the end.
+    // One word on the last line
     let lastLine = line[0];
     const remainingWidth = maxWidth - lastLine.length;
     lastLine += spaces(remainingWidth);
