@@ -13,37 +13,33 @@ function exist(board: string[][], word: string): boolean {
     if (remaining.length === 1 && board[x][y] === remaining[0]) return true;
     if (remaining[0] !== board[x][y]) return false;
 
-    const next = remaining.slice(1);
+    const nextRemaining = remaining.slice(1);
 
     const rightKey = `${x + 1},${y}`;
     if (!visited.has(rightKey)) {
       visited.add(rightKey);
-      const rightResult = dfs(x + 1, y, next, visited);
-      if (rightResult) return true;
+      if (dfs(x + 1, y, nextRemaining, visited)) return true;
       visited.delete(rightKey);
     }
 
     const leftKey = `${x - 1},${y}`;
     if (!visited.has(leftKey)) {
       visited.add(leftKey);
-      const leftResult = dfs(x - 1, y, next, visited);
-      if (leftResult) return true;
+      if (dfs(x - 1, y, nextRemaining, visited)) return true;
       visited.delete(leftKey);
     }
 
     const upKey = `${x},${y + 1}`;
     if (!visited.has(upKey)) {
       visited.add(upKey);
-      const upResult = dfs(x, y + 1, next, visited);
-      if (upResult) return true;
+      if (dfs(x, y + 1, nextRemaining, visited)) return true;
       visited.delete(upKey);
     }
 
     const downKey = `${x},${y - 1}`;
     if (!visited.has(downKey)) {
       visited.add(downKey);
-      const downResult = dfs(x, y - 1, next, visited);
-      if (downResult) return true;
+      if (dfs(x, y - 1, nextRemaining, visited)) return true;
       visited.delete(downKey);
     }
 
