@@ -1,13 +1,22 @@
 /**
  * https://leetcode.com/problems/search-a-2d-matrix/description/
  */
-export { searchMatrix, binarySearchRow };
+export { searchMatrix, binarySearchRow, binarySearchCol };
 
 function searchMatrix(matrix: number[][], target: number): boolean {
-  const rowLastIndex = matrix.length - 1;
-  const colLastIndex = matrix[0].length - 1;
+  const rowIndex = binarySearchCol(matrix, target);
+  if (rowIndex === -1) return false;
+  return binarySearchRow(matrix[rowIndex], target);
+}
 
-  return false;
+function binarySearchCol(matrix: number[][], target: number): number {
+  const rowLastIndex = matrix.length - 1;
+
+  for (let row = 0; row <= rowLastIndex - 1; row++) {
+    if (matrix[row][0] <= target && target < matrix[row + 1][0]) return row;
+  }
+
+  return rowLastIndex;
 }
 
 function binarySearchRow(row: number[], target: number): boolean {
