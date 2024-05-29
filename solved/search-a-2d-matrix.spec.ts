@@ -44,7 +44,7 @@ describe('Search a 2D Matrix', () => {
     expect(binarySearchRow(input, 10)).toEqual(false);
   });
 
-  it('evaluates binary search first column with even input correctly', () => {
+  it('evaluates binary search first column with even input length correctly', () => {
     const input = [[2], [4], [6], [8]];
     expect(binarySearchCol(input, 1)).toEqual(-1);
     expect(binarySearchCol(input, 2)).toEqual(0);
@@ -57,7 +57,7 @@ describe('Search a 2D Matrix', () => {
     expect(binarySearchCol(input, 9)).toEqual(3);
   });
 
-  it('evaluates binary search first column with odd input correctly', () => {
+  it('evaluates binary search first column with odd input length correctly', () => {
     const input = [[2], [4], [6]];
     expect(binarySearchCol(input, 1)).toEqual(-1);
     expect(binarySearchCol(input, 2)).toEqual(0);
