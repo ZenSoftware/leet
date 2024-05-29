@@ -79,9 +79,5 @@ function lineCharCount(line: string[]): number {
 }
 
 function spaces(count: number): string {
-  let spaces = '';
-  for (let i = 1; i <= count; i++) {
-    spaces += ' ';
-  }
-  return spaces;
+  return ''.padEnd(count, ' ');
 }
