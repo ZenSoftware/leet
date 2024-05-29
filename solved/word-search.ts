@@ -10,7 +10,7 @@ function exist(board: string[][], word: string): boolean {
   function dfs(x: number, y: number, remaining: string[], visited: Set<string>): boolean {
     if (0 > x || x > lastXIndex) return false;
     if (0 > y || y > lastYIndex) return false;
-    if (remaining.length === 0) return true;
+    if (remaining.length === 1 && board[x][y] === remaining[0]) return true;
     if (remaining[0] !== board[x][y]) return false;
 
     const next = remaining.slice(1);
@@ -50,19 +50,11 @@ function exist(board: string[][], word: string): boolean {
     return false;
   }
 
-  if (word.length === 1) {
-    for (let i = 0; i <= lastXIndex; i++) {
-      for (let j = 0; j <= lastYIndex; j++) {
-        if (board[i][j] === word) return true;
-      }
-    }
-  } else {
-    const characters = word.split('');
+  const characters = word.split('');
 
-    for (let i = 0; i <= lastXIndex; i++) {
-      for (let j = 0; j <= lastYIndex; j++) {
-        if (dfs(i, j, characters, new Set())) return true;
-      }
+  for (let i = 0; i <= lastXIndex; i++) {
+    for (let j = 0; j <= lastYIndex; j++) {
+      if (dfs(i, j, characters, new Set())) return true;
     }
   }
 

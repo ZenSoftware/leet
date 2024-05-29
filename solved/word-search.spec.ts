@@ -43,4 +43,17 @@ describe('Word Search', () => {
   it('evaluates correctly 4', () => {
     expect(exist([['a']], 'a')).toEqual(true);
   });
+
+  it('evaluates correctly 5', () => {
+    expect(
+      exist(
+        [
+          ['a', 'b', 'c'],
+          ['a', 'e', 'd'],
+          ['a', 'f', 'g'],
+        ],
+        'abcdefg'
+      )
+    ).toEqual(true);
+  });
 });
