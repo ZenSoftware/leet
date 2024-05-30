@@ -4,5 +4,8 @@
 export { subsetsWithDup };
 
 function subsetsWithDup(nums: number[]): number[][] {
-  return [];
+  nums.sort((a, b) => a - b);
+  const result: number[][] = [];
+
+  return result;
 }
