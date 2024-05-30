@@ -33,7 +33,7 @@ function deleteDuplicates(head: ListNode | null): ListNode | null {
     }
 
     parent = parent!.next;
-    pointer = pointer!.next;
+    pointer = pointer?.next as any;
   }
 
   return dummyHead.next;
