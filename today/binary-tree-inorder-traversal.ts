@@ -4,7 +4,18 @@
 export { inorderTraversal, TreeNode };
 
 function inorderTraversal(root: TreeNode | null): number[] {
-  return [];
+  const result: number[] = [];
+
+  function dfs(node: TreeNode | null) {
+    if (!node) return;
+
+    if (node.left) dfs(node.left);
+    result.push(node.val);
+    if (node.right) dfs(node.right);
+  }
+
+  dfs(root);
+  return result;
 }
 
 class TreeNode {
