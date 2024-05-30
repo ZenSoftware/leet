@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/binary-tree-inorder-traversal/description/
  */
-export { inorderTraversal };
+export { inorderTraversal, TreeNode };
 
 function inorderTraversal(root: TreeNode | null): number[] {
   return [];
