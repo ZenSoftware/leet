@@ -4,5 +4,12 @@
 export { grayCode };
 
 function grayCode(n: number): number[] {
-  return [];
+  const lastIndex = 2 ** n - 1;
+  const result: number[] = [];
+
+  for (let i = 0; i <= lastIndex; i++) {
+    //
+  }
+
+  return result;
 }
