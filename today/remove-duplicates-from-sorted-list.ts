@@ -4,7 +4,26 @@
 export { deleteDuplicates, toList, toArray };
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-  return null;
+  if (!head?.next) return head;
+
+  let dummyHead: ListNode | null = new ListNode(-Infinity, head);
+
+  let parent: ListNode | null = dummyHead;
+  let pointer: ListNode | null = dummyHead.next;
+
+  while (pointer) {
+    if (parent!.val === pointer.val) {
+      while (pointer && parent!.val === pointer.val) {
+        pointer = pointer.next;
+      }
+      parent!.next = pointer;
+    }
+
+    parent = parent!.next;
+    pointer = pointer?.next as any;
+  }
+
+  return dummyHead.next;
 }
 
 function toList(elements: number[]): ListNode | null {

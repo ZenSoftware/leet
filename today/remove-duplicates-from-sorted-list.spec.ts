@@ -12,4 +12,10 @@ describe('Remove Duplicates from Sorted List', () => {
     const solution = deleteDuplicates(input);
     expect(toArray(solution)).toEqual([1, 2, 3]);
   });
+
+  it('evaluates correctly 3', () => {
+    const input = toList([1, 1]);
+    const solution = deleteDuplicates(input);
+    expect(toArray(solution)).toEqual([1]);
+  });
 });
