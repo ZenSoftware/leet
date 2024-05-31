@@ -126,7 +126,7 @@ class BinarySearchTree<T = number> {
    * Searches the tree for the value and returns the respective node.
    * Returns `undefined` if the value does not exist.
    *
-   * Use `has()` if you only want to return a boolean.
+   * Use `has()` if you only wish to return a boolean.
    **/
   find(value: T): Node<T> | undefined {
     if (!this.root) {
