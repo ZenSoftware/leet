@@ -7,16 +7,20 @@ function generateTrees(n: number): Array<TreeNode | null> {
   function dfs(start: number, end: number) {
     if (end < start) return [null];
     if (end === start) return [new TreeNode(end)];
+
     const trees: TreeNode[] = [];
+
     for (let i = start; i <= end; i++) {
       const leftTrees = dfs(start, i - 1);
       const rightTrees = dfs(i + 1, end);
+
       for (const left of leftTrees) {
         for (const right of rightTrees) {
           trees.push(new TreeNode(i, left, right));
         }
       }
     }
+
     return trees;
   }
 
