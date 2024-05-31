@@ -26,6 +26,7 @@ class BinarySearchTree<T = number> {
     }
   }
 
+  /** Construct a new copy of a BST */
   private constructCopy(bst: BinarySearchTree<T>) {
     if (!bst.root) return;
 
