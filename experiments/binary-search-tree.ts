@@ -4,14 +4,28 @@
 export { BinarySearchTree };
 
 class BinarySearchTree<T = number> {
-  constructor(public root?: Node<T>) {}
+  root?: Node<T>;
+
+  constructor(root?: Node<T>);
+  constructor(values?: T[]);
+  constructor(firstParam?: any) {
+    if (firstParam) {
+      if (Array.isArray(firstParam)) {
+        for (let x of firstParam) {
+          this.insert(x);
+        }
+      } else {
+        this.root = firstParam;
+      }
+    }
+  }
 
   insert(value: T) {
     if (!this.root) this.root = { value };
     else this.insertHelper(this.root, value);
   }
 
-  insertHelper(root: Node<T>, value: T) {
+  private insertHelper(root: Node<T>, value: T) {
     if (value < root.value) {
       if (root.left) this.insertHelper(root.left, value);
       else root.left = { value };
