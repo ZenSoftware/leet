@@ -6,6 +6,8 @@ export { BinarySearchTree };
 class BinarySearchTree<T = number> {
   root?: Node<T>;
 
+  /** Construct a BST with a root of undefined */
+  constructor();
   /** Utilize an existing root node */
   constructor(root?: Node<T>);
   /** Constructs a balanced BST from an array of values */
