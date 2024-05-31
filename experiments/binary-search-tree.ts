@@ -77,6 +77,16 @@ class BinarySearchTree<T = number> {
     else this.insertHelper(this.root, value);
   }
 
+  private insertHelper(root: Node<T>, value: T) {
+    if (value < root.value) {
+      if (root.left) this.insertHelper(root.left, value);
+      else root.left = { value };
+    } else {
+      if (root.right) this.insertHelper(root.right, value);
+      else root.right = { value };
+    }
+  }
+
   /** Searches the tree to determine if the tree has the provided value */
   has(value: T): boolean {
     if (!this.root) {
@@ -111,16 +121,6 @@ class BinarySearchTree<T = number> {
       }
 
       return dfs(this.root);
-    }
-  }
-
-  private insertHelper(root: Node<T>, value: T) {
-    if (value < root.value) {
-      if (root.left) this.insertHelper(root.left, value);
-      else root.left = { value };
-    } else {
-      if (root.right) this.insertHelper(root.right, value);
-      else root.right = { value };
     }
   }
 
