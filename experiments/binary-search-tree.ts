@@ -29,7 +29,7 @@ class BinarySearchTree<T = number> {
 
   /** Constructs a balanced BST from an array of values */
   private constructBalanced(values: T[]) {
-    values.sort((a, b) => <number>a - <number>b);
+    values.slice().sort((a, b) => <number>a - <number>b);
     const nodes: Node<T>[] = Array(values.length);
     for (let i = 0; i < values.length; i++) {
       nodes[i] = { value: values[i] };
