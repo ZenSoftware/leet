@@ -27,7 +27,7 @@ describe('Binary Search Tree', () => {
     expect(root!.right!.right!.right!.value).toEqual(8);
   });
 
-  it('coppies a BST correctly', () => {
+  it('copies a BST correctly', () => {
     const bst1 = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     const bst2 = new BinarySearchTree(bst1);
 
