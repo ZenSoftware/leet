@@ -30,29 +30,14 @@ describe('Binary Search Tree', () => {
   it('copies a BST correctly', () => {
     const bst1 = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     const bst2 = new BinarySearchTree(bst1);
-
-    expect(bst2.root!.value).toEqual(4);
+    expect(bst1).toEqual(bst2);
     expect(bst2.root).not.toBe(bst1.root);
-
-    expect(bst2.root!.left!.value).toEqual(2);
     expect(bst2.root!.left).not.toBe(bst1.root!.left);
-
-    expect(bst2.root!.right!.value).toEqual(6);
     expect(bst2.root!.right).not.toBe(bst1.root!.right);
-
-    expect(bst2.root!.left!.left!.value).toEqual(1);
     expect(bst2.root!.left!.left).not.toBe(bst1.root!.left!.left);
-
-    expect(bst2.root!.left!.right!.value).toEqual(3);
     expect(bst2.root!.left!.right).not.toBe(bst1.root!.left!.right);
-
-    expect(bst2.root!.right!.left!.value).toEqual(5);
     expect(bst2.root!.right!.left).not.toBe(bst1.root!.right!.left);
-
-    expect(bst2.root!.right!.right!.value).toEqual(7);
     expect(bst2.root!.right!.right).not.toBe(bst1.root!.right!.right);
-
-    expect(bst2.root!.right!.right!.right!.value).toEqual(8);
     expect(bst2.root!.right!.right!.right).not.toBe(bst1.root!.right!.right!.right);
   });
 
