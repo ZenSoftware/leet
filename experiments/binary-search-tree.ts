@@ -37,9 +37,10 @@ class BinarySearchTree<T = number> {
     this.balanceWith(nodes);
   }
 
-  private balanceWith(nodes: Node<T>[]): Node<T> | undefined {
+  /** Balances the tree given a list of sorted nodes */
+  private balanceWith(sortedNodes: Node<T>[]): Node<T> | undefined {
     // Reset all left and right nodes to undefined
-    for (let node of nodes) {
+    for (let node of sortedNodes) {
       node.left = undefined;
       node.right = undefined;
     }
@@ -49,7 +50,7 @@ class BinarySearchTree<T = number> {
       if (start > end) return undefined;
 
       const mid = Math.floor((start + end) / 2);
-      let node = nodes[mid];
+      let node = sortedNodes[mid];
       node.left = buildTree(start, mid - 1);
       node.right = buildTree(mid + 1, end);
 
@@ -57,7 +58,7 @@ class BinarySearchTree<T = number> {
     }
 
     // set the new root
-    this.root = buildTree(0, nodes.length - 1);
+    this.root = buildTree(0, sortedNodes.length - 1);
 
     return this.root;
   }
