@@ -6,7 +6,7 @@ export { BinarySearchTree };
 class BinarySearchTree<T = number> {
   root?: Node<T>;
 
-  /** Constructs a tree utilizing an existing root node */
+  /** Utilize an existing root node */
   constructor(root?: Node<T>);
   /** Constructs a tree from an array of values */
   constructor(values?: T[]);
