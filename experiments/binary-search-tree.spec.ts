@@ -27,6 +27,20 @@ describe('Binary Search Tree', () => {
     expect(root!.right!.right!.right!.value).toEqual(8);
   });
 
+  it('searches correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(bst.has(1)).toEqual(true);
+    expect(bst.has(2)).toEqual(true);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(true);
+    expect(bst.has(5)).toEqual(true);
+    expect(bst.has(6)).toEqual(true);
+    expect(bst.has(7)).toEqual(true);
+    expect(bst.has(8)).toEqual(true);
+    expect(bst.has(9)).toEqual(false);
+    expect(bst.has(-1)).toEqual(false);
+  });
+
   it('rebalances correctly', () => {
     const bst = new BinarySearchTree();
     bst.insert(1);

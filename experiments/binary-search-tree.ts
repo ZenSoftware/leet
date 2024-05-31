@@ -77,6 +77,21 @@ class BinarySearchTree<T = number> {
     else this.insertHelper(this.root, value);
   }
 
+  has(value: T): boolean {
+    if (!this.root) return false;
+    else {
+      function dfs(root: Node<T> | undefined): boolean {
+        if (!root) return false;
+        if (root.value === value) return true;
+
+        if (value < root.value) return dfs(root.left);
+        else return dfs(root.right);
+      }
+
+      return dfs(this.root);
+    }
+  }
+
   private insertHelper(root: Node<T>, value: T) {
     if (value < root.value) {
       if (root.left) this.insertHelper(root.left, value);
