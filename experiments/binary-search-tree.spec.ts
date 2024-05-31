@@ -27,7 +27,7 @@ describe('Binary Search Tree', () => {
     expect(root!.right!.right!.right!.value).toEqual(8);
   });
 
-  it('searches correctly', () => {
+  it('searches with has correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     expect(bst.has(1)).toEqual(true);
     expect(bst.has(2)).toEqual(true);
@@ -39,6 +39,30 @@ describe('Binary Search Tree', () => {
     expect(bst.has(8)).toEqual(true);
     expect(bst.has(9)).toEqual(false);
     expect(bst.has(-1)).toEqual(false);
+  });
+
+  it('searches with find correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    const n1 = bst.find(1);
+    expect(n1!.value).toEqual(1);
+    const n2 = bst.find(2);
+    expect(n2!.value).toEqual(2);
+    const n3 = bst.find(3);
+    expect(n3!.value).toEqual(3);
+    const n4 = bst.find(4);
+    expect(n4!.value).toEqual(4);
+    const n5 = bst.find(5);
+    expect(n5!.value).toEqual(5);
+    const n6 = bst.find(6);
+    expect(n6!.value).toEqual(6);
+    const n7 = bst.find(7);
+    expect(n7!.value).toEqual(7);
+    const n8 = bst.find(8);
+    expect(n8!.value).toEqual(8);
+    const n9 = bst.find(9);
+    expect(n9).toEqual(undefined);
+    const n10 = bst.find(-1);
+    expect(n10).toEqual(undefined);
   });
 
   it('rebalances correctly', () => {

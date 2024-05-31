@@ -79,11 +79,32 @@ class BinarySearchTree<T = number> {
 
   /** Searches the tree to determine if the tree has the provided value */
   has(value: T): boolean {
-    if (!this.root) return false;
-    else {
+    if (!this.root) {
+      return false;
+    } else {
       function dfs(root: Node<T> | undefined): boolean {
         if (!root) return false;
         if (root.value === value) return true;
+
+        if (value < root.value) return dfs(root.left);
+        else return dfs(root.right);
+      }
+
+      return dfs(this.root);
+    }
+  }
+
+  /**
+   * Searches the tree for the value and returns the respective node.
+   * Returns `undefined` if the value does not exist.
+   **/
+  find(value: T): Node<T> | undefined {
+    if (!this.root) {
+      return undefined;
+    } else {
+      function dfs(root: Node<T> | undefined): Node<T> | undefined {
+        if (!root) return undefined;
+        if (root.value === value) return root;
 
         if (value < root.value) return dfs(root.left);
         else return dfs(root.right);
