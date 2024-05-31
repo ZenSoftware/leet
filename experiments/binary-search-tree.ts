@@ -74,16 +74,17 @@ class BinarySearchTree<T = number> {
   /** Inserts a value into the BST */
   insert(value: T) {
     if (!this.root) this.root = { value };
-    else this.insertHelper(this.root, value);
-  }
-
-  private insertHelper(root: Node<T>, value: T) {
-    if (value < root.value) {
-      if (root.left) this.insertHelper(root.left, value);
-      else root.left = { value };
-    } else {
-      if (root.right) this.insertHelper(root.right, value);
-      else root.right = { value };
+    else {
+      function insertHelper(root: Node<T>, value: T) {
+        if (value < root.value) {
+          if (root.left) insertHelper(root.left, value);
+          else root.left = { value };
+        } else {
+          if (root.right) insertHelper(root.right, value);
+          else root.right = { value };
+        }
+      }
+      insertHelper(this.root, value);
     }
   }
 
