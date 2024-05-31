@@ -17,14 +17,31 @@ class BinarySearchTree<T = number> {
       if (Array.isArray(firstParam)) {
         this.constructBalanced(firstParam);
       } else if (firstParam instanceof BinarySearchTree) {
-        const values = firstParam.getPreOrderValues();
-        for (let value of values) {
-          this.insert(value);
-        }
+        this.constructCopy(firstParam);
       } else {
         this.root = firstParam;
       }
     }
+  }
+
+  private constructCopy(bst: BinarySearchTree<T>) {
+    if (!bst.root) return;
+
+    function dfs(root: Node<T>, parent: Node<T>) {
+      if (root.left) {
+        parent.left = { value: root.left.value };
+        dfs(root.left, parent.left);
+      }
+
+      if (root.right) {
+        parent.right = { value: root.right.value };
+        dfs(root.right, parent.right);
+      }
+    }
+
+    const newRoot: Node<T> = { value: bst.root.value };
+    dfs(bst.root, newRoot);
+    this.root = newRoot;
   }
 
   /** Constructs a balanced BST from an array of values */
