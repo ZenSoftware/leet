@@ -1,11 +1,6 @@
 import { BinarySearchTree } from './binary-search-tree';
 
 describe('Binary Search Tree', () => {
-  it('constructs BST from array correctly', () => {
-    const bst = new BinarySearchTree([5, 4, 2, 1, 6, 8, 7, 3]);
-    expect(bst.getInOrderValues()).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-  });
-
   it('inserts correctly', () => {
     const bst = new BinarySearchTree();
     bst.insert(6);
@@ -19,7 +14,20 @@ describe('Binary Search Tree', () => {
     expect(bst.getInOrderValues()).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 
-  it('balances correctly', () => {
+  it('constructs a balanced BST from array correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    const root = bst.root;
+    expect(root!.value).toEqual(4);
+    expect(root!.left!.value).toEqual(2);
+    expect(root!.right!.value).toEqual(6);
+    expect(root!.left!.left!.value).toEqual(1);
+    expect(root!.left!.right!.value).toEqual(3);
+    expect(root!.right!.left!.value).toEqual(5);
+    expect(root!.right!.right!.value).toEqual(7);
+    expect(root!.right!.right!.right!.value).toEqual(8);
+  });
+
+  it('rebalances correctly', () => {
     const bst = new BinarySearchTree();
     bst.insert(1);
     bst.insert(2);
@@ -38,7 +46,7 @@ describe('Binary Search Tree', () => {
     }
     expect(allRightValues).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
 
-    const balancedRoot = bst.balance();
+    const balancedRoot = bst.rebalance();
     expect(balancedRoot!.value).toEqual(4);
     expect(balancedRoot!.left!.value).toEqual(2);
     expect(balancedRoot!.right!.value).toEqual(6);

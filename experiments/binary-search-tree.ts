@@ -8,16 +8,14 @@ class BinarySearchTree<T = number> {
 
   /** Utilize an existing root node */
   constructor(root?: Node<T>);
-  /** Constructs a tree from an array of values */
+  /** Constructs a balanced BST from an array of values */
   constructor(values?: T[]);
   /** Constructs a new copy of a binary search tree */
   constructor(tree?: BinarySearchTree<T>);
   constructor(firstParam?: any) {
     if (firstParam) {
       if (Array.isArray(firstParam)) {
-        for (let value of firstParam) {
-          this.insert(value);
-        }
+        this.constructBalanced(firstParam);
       } else if (firstParam instanceof BinarySearchTree) {
         const values = firstParam.getPreOrderValues();
         for (let value of values) {
@@ -29,13 +27,17 @@ class BinarySearchTree<T = number> {
     }
   }
 
-  /**
-   * Balances the tree in O(n) time
-   * @returns the new root
-   */
-  balance() {
-    const nodes = this.getInOrderNodes();
+  /** Constructs a balanced BST from an array of values */
+  private constructBalanced(values: T[]) {
+    values.sort((a, b) => <number>a - <number>b);
+    const nodes: Node<T>[] = Array(values.length);
+    for (let i = 0; i < values.length; i++) {
+      nodes[i] = { value: values[i] };
+    }
+    this.balanceWith(nodes);
+  }
 
+  private balanceWith(nodes: Node<T>[]): Node<T> | undefined {
     // Reset all left and right nodes to undefined
     for (let node of nodes) {
       node.left = undefined;
@@ -60,6 +62,16 @@ class BinarySearchTree<T = number> {
     return this.root;
   }
 
+  /**
+   * Balances the tree in O(n) time
+   * @returns the new root
+   */
+  rebalance(): Node<T> | undefined {
+    const nodes = this.getInOrderNodes();
+    return this.balanceWith(nodes);
+  }
+
+  /** Inserts a value into the BST */
   insert(value: T) {
     if (!this.root) this.root = { value };
     else this.insertHelper(this.root, value);
@@ -81,6 +93,20 @@ class BinarySearchTree<T = number> {
       const result: T[] = [];
       function dfs(root: Node<T>) {
         result.push(root.value);
+        if (root.left) dfs(root.left);
+        if (root.right) dfs(root.right);
+      }
+      dfs(this.root);
+      return result;
+    }
+  }
+
+  getPreOrderNodes() {
+    if (!this.root) return [];
+    else {
+      const result: Node<T>[] = [];
+      function dfs(root: Node<T>) {
+        result.push(root);
         if (root.left) dfs(root.left);
         if (root.right) dfs(root.right);
       }
@@ -111,6 +137,34 @@ class BinarySearchTree<T = number> {
         if (root.left) dfs(root.left);
         result.push(root);
         if (root.right) dfs(root.right);
+      }
+      dfs(this.root);
+      return result;
+    }
+  }
+
+  getPostOrderValues() {
+    if (!this.root) return [];
+    else {
+      const result: T[] = [];
+      function dfs(root: Node<T>) {
+        if (root.left) dfs(root.left);
+        if (root.right) dfs(root.right);
+        result.push(root.value);
+      }
+      dfs(this.root);
+      return result;
+    }
+  }
+
+  getPostOrderNodes() {
+    if (!this.root) return [];
+    else {
+      const result: Node<T>[] = [];
+      function dfs(root: Node<T>) {
+        if (root.left) dfs(root.left);
+        if (root.right) dfs(root.right);
+        result.push(root);
       }
       dfs(this.root);
       return result;
