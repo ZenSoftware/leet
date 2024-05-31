@@ -77,6 +77,7 @@ class BinarySearchTree<T = number> {
     else this.insertHelper(this.root, value);
   }
 
+  /** Searches the tree to determine if the tree has the provided value */
   has(value: T): boolean {
     if (!this.root) return false;
     else {
