@@ -64,8 +64,7 @@ class BinarySearchTree<T = number> {
   }
 
   /**
-   * Balances the tree in O(n) time
-   * @returns the new root
+   * Balances the tree in O(n) time and returns the new root
    */
   rebalance(): Node<T> | undefined {
     const nodes = this.getInOrderNodes();
