@@ -9,13 +9,13 @@ function isSymmetric(root: TreeNode | null): boolean {
 
   function dfs(p: TreeNode | null, q: TreeNode | null): boolean {
     if (!p && !q) return true;
-    if ((!p && q) || (p && !q)) return false;
+    if (!p || !q) return false;
     if (p!.val !== q!.val) return false;
 
     return dfs(p!.left, q!.right) && dfs(p!.right, q!.left);
   }
 
-  if (root.left && root.right && root.left.val === root.right.val) {
+  if (root.left && root.right) {
     return dfs(root.left, root.right);
   }
 
