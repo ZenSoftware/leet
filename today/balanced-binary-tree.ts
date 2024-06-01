@@ -8,14 +8,10 @@ function isBalanced(root: TreeNode | null): boolean {
 
   function dfs(node: TreeNode): Info {
     let leftInfo: Info = { balanced: true, height: 1 };
-    if (node.left) {
-      leftInfo = dfs(node.left);
-    }
+    if (node.left) leftInfo = dfs(node.left);
 
     let rightInfo: Info = { balanced: true, height: 1 };
-    if (node.right) {
-      rightInfo = dfs(node.right);
-    }
+    if (node.right) rightInfo = dfs(node.right);
 
     const isBalanced = Math.abs(leftInfo.height - rightInfo.height) <= 1;
 
