@@ -4,7 +4,21 @@
 export { hasPathSum, TreeNode };
 
 function hasPathSum(root: TreeNode | null, targetSum: number): boolean {
-  return false;
+  if (!root) return false;
+
+  let result = false;
+  function dfs(node: TreeNode, sum: number) {
+    sum += node.val;
+    if (!node.left && !node.right && sum === targetSum) {
+      result = true;
+      return;
+    }
+    if (node.left) dfs(node.left, sum);
+    if (node.right) dfs(node.right, sum);
+  }
+
+  dfs(root, 0);
+  return result;
 }
 
 class TreeNode {
