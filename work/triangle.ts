@@ -4,17 +4,19 @@
 export { minimumTotal };
 
 function minimumTotal(triangle: number[][]): number {
-  let min = Infinity;
+  const memo: Record<string, number> = {};
 
-  function dfs(row: number, col: number, sum: number) {
-    if (row === triangle.length && sum < min) min = sum;
-    if (row >= triangle.length || col >= triangle[row].length) return;
+  function dfs(row: number, col: number): number {
+    let key = `${row},${col}`;
+    if (key in memo) return memo[key];
+    if (row === triangle.length - 1) return triangle[row][col];
 
-    dfs(row + 1, col, sum + triangle[row][col]);
-    dfs(row + 1, col + 1, sum + triangle[row][col]);
+    const result1 = triangle[row][col] + dfs(row + 1, col);
+    const result2 = triangle[row][col] + dfs(row + 1, col + 1);
+
+    memo[key] = Math.min(result1, result2);
+    return memo[key];
   }
 
-  dfs(0, 0, 0);
-
-  return min;
+  return dfs(0, 0);
 }
