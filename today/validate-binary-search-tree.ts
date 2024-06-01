@@ -3,20 +3,8 @@
  */
 export { isValidBST, TreeNode };
 
-function isValidBST(root: TreeNode) {
-  if (root.left) {
-    if (root.left.val >= root.val || !isValidBST(root.left)) {
-      return false;
-    }
-  }
-
-  if (root.right) {
-    if (root.right.val <= root.val || !isValidBST(root.right)) {
-      return false;
-    }
-  }
-
-  return true;
+function isValidBST(root: TreeNode | null): boolean {
+  return false;
 }
 
 class TreeNode {
