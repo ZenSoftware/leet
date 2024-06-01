@@ -32,7 +32,21 @@ describe('Validate Binary Search Tree', () => {
     n5.right = n6;
     n6.left = n3;
     n7.right = n7;
-
     expect(isValidBST(n5)).toEqual(false);
+  });
+
+  it('evaluates correctly 4', () => {
+    const n32 = new TreeNode(32);
+    const n26 = new TreeNode(26);
+    const n47 = new TreeNode(47);
+    const n19 = new TreeNode(19);
+    const n56 = new TreeNode(56);
+    const n27 = new TreeNode(27);
+    n32.left = n26;
+    n26.left = n19;
+    n19.right = n27;
+    n32.right = n47;
+    n47.right = n56;
+    expect(isValidBST(n32)).toEqual(false);
   });
 });
