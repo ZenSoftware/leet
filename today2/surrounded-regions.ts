@@ -20,14 +20,14 @@ function solve(board: string[][]): void {
   for (let x = 0; x <= lastRow; x++) {
     for (let y = 0; y <= lastCol; y++) {
       if (board[x][y] === 'O') board[x][y] = 'X';
-      if (board[x][y] === 'N') board[x][y] = 'O';
+      if (board[x][y] === 'I') board[x][y] = 'O';
     }
   }
 }
 
 function markIgnore(board: string[][], x: number, y: number): void {
   if (board[x]?.[y] !== 'O') return;
-  board[x][y] = 'N';
+  board[x][y] = 'I';
   markIgnore(board, x + 1, y);
   markIgnore(board, x - 1, y);
   markIgnore(board, x, y + 1);
