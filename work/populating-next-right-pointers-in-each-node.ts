@@ -17,7 +17,6 @@ function connect(root: _Node | null): _Node | null {
   }
 
   dfs(root, 1);
-
   return root;
 }
 
