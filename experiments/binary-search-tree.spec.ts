@@ -73,6 +73,46 @@ describe('Binary Search Tree', () => {
     expect(bst.has(2)).toEqual(false);
   });
 
+  it('removes from right branch correctly', () => {
+    const bst = new BinarySearchTree();
+    bst.insert(1);
+    bst.insert(2);
+    bst.insert(3);
+    bst.insert(4);
+
+    bst.remove(2);
+    expect(bst.has(1)).toEqual(true);
+    expect(bst.has(2)).toEqual(false);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(true);
+
+    bst.remove(1);
+    expect(bst.has(1)).toEqual(false);
+    expect(bst.has(2)).toEqual(false);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(true);
+  });
+
+  it('removes from left branch correctly', () => {
+    const bst = new BinarySearchTree();
+    bst.insert(4);
+    bst.insert(3);
+    bst.insert(2);
+    bst.insert(1);
+
+    bst.remove(2);
+    expect(bst.has(1)).toEqual(true);
+    expect(bst.has(2)).toEqual(false);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(true);
+
+    bst.remove(4);
+    expect(bst.has(1)).toEqual(true);
+    expect(bst.has(2)).toEqual(false);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(false);
+  });
+
   it('searches with find correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     const n1 = bst.find(1);
