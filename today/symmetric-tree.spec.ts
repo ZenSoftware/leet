@@ -14,7 +14,7 @@ describe('Symmetric Tree', () => {
     l2.left = l3;
     l2.right = l4;
     r2.left = r4;
-    r3.right = r3;
+    r2.right = r3;
     expect(isSymmetric(root)).toEqual(true);
   });
 
