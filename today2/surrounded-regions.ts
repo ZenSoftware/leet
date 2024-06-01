@@ -8,13 +8,13 @@ function solve(board: string[][]): void {
   const lastColIndex = board[0].length - 1;
 
   for (let y = 0; y <= lastColIndex; y++) {
-    if (board[0][y] === 'O') markIgnore(board, 0, y);
-    if (board[lastRowIndex][y] === 'O') markIgnore(board, lastRowIndex, y);
+    markIgnore(board, 0, y);
+    markIgnore(board, lastRowIndex, y);
   }
 
   for (let x = 1; x < lastRowIndex; x++) {
-    if (board[x][0] === 'O') markIgnore(board, x, 0);
-    if (board[x][lastColIndex] === 'O') markIgnore(board, x, lastColIndex);
+    markIgnore(board, x, 0);
+    markIgnore(board, x, lastColIndex);
   }
 
   for (let x = 0; x <= lastRowIndex; x++) {
