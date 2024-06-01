@@ -9,15 +9,15 @@ function getRow(rowIndex: number): number[] {
 
   let lastRow = [1, 1];
   for (let i = 1; i < rowIndex; i++) {
-    const nextRow: number[] = Array(lastRow.length + 1);
-    nextRow[0] = 1;
-    nextRow[nextRow.length - 1] = 1;
+    const newRow: number[] = Array(lastRow.length + 1);
+    newRow[0] = 1;
+    newRow[newRow.length - 1] = 1;
 
-    for (let j = 1; j < nextRow.length - 1; j++) {
-      nextRow[j] = lastRow[j - 1] + lastRow[j];
+    for (let j = 1; j < lastRow.length; j++) {
+      newRow[j] = lastRow[j - 1] + lastRow[j];
     }
 
-    lastRow = nextRow;
+    lastRow = newRow;
   }
 
   return lastRow;
