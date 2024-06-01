@@ -147,6 +147,35 @@ class BinarySearchTree<T = number> {
     }
   }
 
+  remove(value: T): boolean {
+    if (!this.has(value)) return false;
+    this.removeHelper(value, this.root as Node<T>, undefined);
+    return true;
+  }
+
+  removeHelper(
+    value: T,
+    root: Node<T> | undefined,
+    parent: Node<T> | undefined
+  ): Node<T> | undefined {
+    if (!root) return root;
+
+    if (value < root.value) {
+      root.left = this.removeHelper(value, root.left, root);
+    } else if (value > root.value) {
+      root.right = this.removeHelper(value, root.right, root);
+    } else {
+      // Node found
+      if (!root.left && !root.right) {
+        if (!parent) this.root = undefined;
+        return undefined;
+      } else if (root.right !== null) {
+      }
+    }
+
+    return root;
+  }
+
   getPreOrderValues() {
     if (!this.root) return [];
     else {

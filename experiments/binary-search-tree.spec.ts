@@ -55,6 +55,15 @@ describe('Binary Search Tree', () => {
     expect(bst.has(-1)).toEqual(false);
   });
 
+  it('removes value correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4]);
+    bst.remove(4);
+    expect(bst.has(1)).toEqual(true);
+    expect(bst.has(2)).toEqual(true);
+    expect(bst.has(3)).toEqual(true);
+    expect(bst.has(4)).toEqual(false);
+  });
+
   it('searches with find correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     const n1 = bst.find(1);
