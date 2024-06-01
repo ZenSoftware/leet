@@ -4,8 +4,23 @@
 export { pathSum, TreeNode };
 
 function pathSum(root: TreeNode | null, targetSum: number): number[][] {
+  if (!root) return [];
+
   const result: number[][] = [];
 
+  function dfs(node: TreeNode, path: number[]) {
+    if (!node.left && !node.right) {
+      const sum = path.reduce((prev, cur) => prev + cur, 0) + node.val;
+      if (sum === targetSum) result.push([...path, node.val]);
+    }
+
+    path.push(node.val);
+    if (node.left) dfs(node.left, path);
+    if (node.right) dfs(node.right, path);
+    path.pop();
+  }
+
+  dfs(root, []);
   return result;
 }
 
