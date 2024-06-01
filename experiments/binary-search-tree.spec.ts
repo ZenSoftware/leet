@@ -107,6 +107,20 @@ describe('Binary Search Tree', () => {
     expect(bst.getInOrderValues()).toEqual([1]);
   });
 
+  it('evaluates successor correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    const n4 = bst.find(4) as any;
+    const successor = bst.successor(n4);
+    expect(successor.value).toEqual(5);
+  });
+
+  it('evaluates predecessor correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    const n4 = bst.find(4) as any;
+    const predecessor = bst.predecessor(n4);
+    expect(predecessor.value).toEqual(3);
+  });
+
   // it('removes node with left and right child correctly', () => {
   //   const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
   //   bst.remove(2);
