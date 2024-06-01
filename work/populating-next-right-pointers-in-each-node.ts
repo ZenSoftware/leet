@@ -10,9 +10,7 @@ function connect(root: _Node | null): _Node | null {
 
   function dfs(node: _Node, level: number) {
     const last = lastNodeByLevel[level];
-
     if (last) last.next = node;
-
     lastNodeByLevel[level] = node;
     if (node.left) dfs(node.left, level + 1);
     if (node.right) dfs(node.right, level + 1);
