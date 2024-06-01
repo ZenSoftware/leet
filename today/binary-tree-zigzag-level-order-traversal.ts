@@ -14,8 +14,6 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
     if (!result) {
       result = [];
       map.set(level, result);
-    } else {
-      result = map.get(level) as number[];
     }
 
     result.push(node.val);
