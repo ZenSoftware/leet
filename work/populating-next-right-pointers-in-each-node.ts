@@ -4,7 +4,32 @@
 export { _Node, connect };
 
 function connect(root: _Node | null): _Node | null {
-  return null;
+  if (!root) return null;
+
+  const map = new Map<number, _Node[]>();
+
+  function dfs(node: _Node, level: number) {
+    let levelNodes = map.get(level) as _Node[];
+    if (!levelNodes) {
+      levelNodes = [];
+      map.set(level, levelNodes);
+    }
+
+    levelNodes.push(node);
+
+    if (node.left) dfs(node.left, level + 1);
+    if (node.right) dfs(node.right, level + 1);
+  }
+
+  dfs(root, 1);
+
+  for (let nodes of map.values()) {
+    for (let i = 0; i < nodes.length - 1; i++) {
+      nodes[i].next = nodes[i + 1];
+    }
+  }
+
+  return root;
 }
 
 class _Node {
