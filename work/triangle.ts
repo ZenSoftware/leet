@@ -14,8 +14,7 @@ function minimumTotal(triangle: number[][]): number {
     const result1 = triangle[row][col] + dfs(row + 1, col);
     const result2 = triangle[row][col] + dfs(row + 1, col + 1);
 
-    memo[key] = Math.min(result1, result2);
-    return memo[key];
+    return (memo[key] = Math.min(result1, result2));
   }
 
   return dfs(0, 0);
