@@ -6,19 +6,28 @@ export { isBalanced, TreeNode };
 function isBalanced(root: TreeNode | null): boolean {
   if (!root) return true;
 
-  let depth = 0;
-  let count = 0;
+  function dfs(node: TreeNode): Info {
+    let leftInfo: Info = { balanced: true, height: 1 };
+    if (node.left) leftInfo = dfs(node.left);
 
-  function dfs(node: TreeNode, level: number) {
-    if (level > depth) depth = level;
-    count++;
-    if (node.left) dfs(node.left, level + 1);
-    if (node.right) dfs(node.right, level + 1);
+    let rightInfo: Info = { balanced: true, height: 1 };
+    if (node.right) rightInfo = dfs(node.right);
+
+    const isBalanced = Math.abs(leftInfo.height - rightInfo.height) <= 1;
+
+    return {
+      balanced: leftInfo.balanced && rightInfo.balanced && isBalanced,
+      height: Math.max(leftInfo.height, rightInfo.height) + 1,
+    };
   }
 
-  dfs(root, 1);
-  const balancedHeight = Math.floor(Math.log2(count));
-  return depth <= balancedHeight + 1;
+  const result = dfs(root);
+  return result.balanced;
+}
+
+interface Info {
+  balanced: boolean;
+  height: number;
 }
 
 class TreeNode {
