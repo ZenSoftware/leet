@@ -184,15 +184,15 @@ class BinarySearchTree<T = number> {
         return undefined;
       } else if (root.left && root.right) {
         // Node has left and right child
-        if (value < root.value) {
-          const replaceWith = this.successor(root);
-          root.value = replaceWith.value;
-          this.removeHelper(replaceWith.value, root.right);
-        } else {
-          const replaceWith = this.successor(root);
-          root.value = replaceWith.value;
-          this.removeHelper(replaceWith.value, root.right);
-        }
+        // if (value < root.value) {
+        //   const replaceWith = this.successor(root);
+        //   root.value = replaceWith.value;
+        //   this.removeHelper(replaceWith.value, root.right);
+        // } else {
+        //   const replaceWith = this.successor(root);
+        //   root.value = replaceWith.value;
+        //   this.removeHelper(replaceWith.value, root.right);
+        // }
       } else if (root.left) {
         // Node only has left branch
         return root.left;
