@@ -4,7 +4,19 @@
 export { maxDepth, TreeNode };
 
 function maxDepth(root: TreeNode | null): number {
-  return -1;
+  if (!root) return 0;
+
+  let max = 0;
+
+  function dfs(node: TreeNode, level: number) {
+    if (level > max) max = level;
+
+    if (node.left) dfs(node.left, level + 1);
+    if (node.right) dfs(node.right, level + 1);
+  }
+
+  dfs(root, 1);
+  return max;
 }
 
 class TreeNode {
