@@ -1,7 +1,7 @@
 import { TreeNode, levelOrder } from './binary-tree-level-order-traversal';
 
 describe('Binary Tree Level Order Traversal', () => {
-  it('evaluates correctly', () => {
+  it('evaluates correctly 1', () => {
     const n3 = new TreeNode(3);
     const n9 = new TreeNode(9);
     const n20 = new TreeNode(20);
@@ -12,5 +12,9 @@ describe('Binary Tree Level Order Traversal', () => {
     n20.left = n15;
     n20.right = n7;
     expect(levelOrder(n3)).toEqual([[3], [9, 20], [15, 7]]);
+  });
+
+  it('evaluates correctly 2', () => {
+    expect(levelOrder(null)).toEqual([]);
   });
 });
