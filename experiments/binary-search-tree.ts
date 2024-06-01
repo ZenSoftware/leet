@@ -149,25 +149,22 @@ class BinarySearchTree<T = number> {
 
   remove(value: T): boolean {
     if (!this.has(value)) return false;
-    this.removeHelper(value, this.root as Node<T>, undefined);
+    if (this.root!.value === value) this.root = undefined;
+    else this.removeHelper(value, this.root as Node<T>);
     return true;
   }
 
-  removeHelper(
-    value: T,
-    root: Node<T> | undefined,
-    parent: Node<T> | undefined
-  ): Node<T> | undefined {
+  removeHelper(value: T, root: Node<T> | undefined): Node<T> | undefined {
     if (!root) return root;
 
     if (value < root.value) {
-      root.left = this.removeHelper(value, root.left, root);
+      root.left = this.removeHelper(value, root.left);
     } else if (value > root.value) {
-      root.right = this.removeHelper(value, root.right, root);
+      root.right = this.removeHelper(value, root.right);
     } else {
       // Node found
       if (!root.left && !root.right) {
-        if (!parent) this.root = undefined;
+        // Node to remove is leaf
         return undefined;
       } else if (root.right !== null) {
       }
