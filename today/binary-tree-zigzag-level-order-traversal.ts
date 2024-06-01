@@ -9,9 +9,9 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
   const map = new Map<number, number[]>();
 
   function dfs(node: TreeNode, level: number) {
-    let result: number[];
+    let result = map.get(level);
 
-    if (!map.get(level)) {
+    if (!result) {
       result = [];
       map.set(level, result);
     } else {
