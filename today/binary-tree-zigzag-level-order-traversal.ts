@@ -10,6 +10,7 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
   function dfs(node: TreeNode, level: number) {
     let result: number[];
+
     if (!map.get(level)) {
       result = [];
       map.set(level, result);
@@ -25,11 +26,10 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
   dfs(root, 0);
 
-  const entries = Array.from(map.entries()).sort(
-    ([aLevel, aArray], [bLevel, bArray]) => aLevel - bLevel
-  );
+  const result = Array.from(map.entries())
+    .sort(([aLevel, aArray], [bLevel, bArray]) => aLevel - bLevel)
+    .map(([aLevel, aArray]) => aArray);
 
-  const result = entries.map(([aLevel, aArray]) => aArray);
   for (let i = 1; i < result.length; i += 2) {
     result[i].reverse();
   }
