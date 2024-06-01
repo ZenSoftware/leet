@@ -40,4 +40,18 @@ describe('Surrounded Regions', () => {
       ['X', 'X', 'O', 'X', 'O'],
     ]);
   });
+
+  it('evaluates correctly 4', () => {
+    const input = [
+      ['O', 'O', 'O'],
+      ['O', 'O', 'O'],
+      ['O', 'O', 'O'],
+    ];
+    solve(input);
+    expect(input).toEqual([
+      ['O', 'O', 'O'],
+      ['O', 'O', 'O'],
+      ['O', 'O', 'O'],
+    ]);
+  });
 });
