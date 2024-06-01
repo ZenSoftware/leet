@@ -41,7 +41,7 @@ describe('Binary Search Tree', () => {
     expect(bst2.root!.right!.right!.right).not.toBe(bst1.root!.right!.right!.right);
   });
 
-  it('searches with has correctly', () => {
+  it('evaluates has correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
     expect(bst.has(1)).toEqual(true);
     expect(bst.has(2)).toEqual(true);
@@ -73,7 +73,7 @@ describe('Binary Search Tree', () => {
     expect(bst.has(2)).toEqual(false);
   });
 
-  it('removes from right branch correctly', () => {
+  it('removes node with only right branch correctly', () => {
     const bst = new BinarySearchTree();
     bst.insert(1);
     bst.insert(2);
@@ -81,19 +81,16 @@ describe('Binary Search Tree', () => {
     bst.insert(4);
 
     bst.remove(2);
-    expect(bst.has(1)).toEqual(true);
-    expect(bst.has(2)).toEqual(false);
-    expect(bst.has(3)).toEqual(true);
-    expect(bst.has(4)).toEqual(true);
+    expect(bst.getInOrderValues()).toEqual([1, 3, 4]);
+
+    bst.remove(3);
+    expect(bst.getInOrderValues()).toEqual([1, 4]);
 
     bst.remove(1);
-    expect(bst.has(1)).toEqual(false);
-    expect(bst.has(2)).toEqual(false);
-    expect(bst.has(3)).toEqual(true);
-    expect(bst.has(4)).toEqual(true);
+    expect(bst.getInOrderValues()).toEqual([4]);
   });
 
-  it('removes from left branch correctly', () => {
+  it('removes node with only left branch correctly', () => {
     const bst = new BinarySearchTree();
     bst.insert(4);
     bst.insert(3);
@@ -101,17 +98,29 @@ describe('Binary Search Tree', () => {
     bst.insert(1);
 
     bst.remove(2);
-    expect(bst.has(1)).toEqual(true);
-    expect(bst.has(2)).toEqual(false);
-    expect(bst.has(3)).toEqual(true);
-    expect(bst.has(4)).toEqual(true);
+    expect(bst.getInOrderValues()).toEqual([1, 3, 4]);
+
+    bst.remove(3);
+    expect(bst.getInOrderValues()).toEqual([1, 4]);
 
     bst.remove(4);
-    expect(bst.has(1)).toEqual(true);
-    expect(bst.has(2)).toEqual(false);
-    expect(bst.has(3)).toEqual(true);
-    expect(bst.has(4)).toEqual(false);
+    expect(bst.getInOrderValues()).toEqual([1]);
   });
+
+  // it('removes node with left and right child correctly', () => {
+  //   const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+  //   bst.remove(2);
+  //   let after = bst.getInOrderValues();
+  //   expect(after).toEqual([1, 3, 4, 5, 6, 7, 8]);
+
+  //   bst.remove(6);
+  //   after = bst.getInOrderValues();
+  //   expect(after).toEqual([1, 3, 4, 5, 7, 8]);
+
+  //   bst.remove(4);
+  //   after = bst.getInOrderValues();
+  //   expect(after).toEqual([1, 3, 5, 7, 8]);
+  // });
 
   it('searches with find correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);

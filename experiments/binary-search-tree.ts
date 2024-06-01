@@ -149,8 +149,24 @@ class BinarySearchTree<T = number> {
 
   remove(value: T): boolean {
     if (!this.has(value)) return false;
-    if (this.root!.value === value) this.root = undefined;
-    else this.removeHelper(value, this.root as Node<T>);
+
+    if (this.root && this.root.value === value) {
+      if (!this.root.left && !this.root.right) {
+        // Node is leaf
+        this.root = undefined;
+      } else if (this.root.left && this.root.right) {
+        // Node has left and right child
+      } else if (this.root.left) {
+        // Node only has left branch
+        this.root = this.root.left;
+      } else {
+        // Node only has right branch
+        this.root = this.root.right;
+      }
+    } else {
+      this.removeHelper(value, this.root as Node<T>);
+    }
+
     return true;
   }
 
@@ -164,13 +180,45 @@ class BinarySearchTree<T = number> {
     } else {
       // Node found
       if (!root.left && !root.right) {
-        // Node to remove is leaf
+        // Node is leaf
         return undefined;
-      } else if (root.right !== null) {
+      } else if (root.left && root.right) {
+        // Node has left and right child
+        if (value < root.value) {
+          const replaceWith = this.successor(root);
+          root.value = replaceWith.value;
+          this.removeHelper(replaceWith.value, root.right);
+        } else {
+          const replaceWith = this.successor(root);
+          root.value = replaceWith.value;
+          this.removeHelper(replaceWith.value, root.right);
+        }
+      } else if (root.left) {
+        // Node only has left branch
+        return root.left;
+      } else {
+        // Node only has right branch
+        return root.right;
       }
     }
 
     return root;
+  }
+
+  successor(root: Node<T>) {
+    let pointer = root.right;
+    while (pointer?.left) {
+      pointer = pointer.left;
+    }
+    return pointer as Node<T>;
+  }
+
+  predecessor(root: Node<T>) {
+    let pointer = root.left;
+    while (pointer?.right) {
+      pointer = pointer.right;
+    }
+    return pointer as Node<T>;
   }
 
   getPreOrderValues() {
