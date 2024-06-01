@@ -4,7 +4,24 @@
 export { sumNumbers, TreeNode };
 
 function sumNumbers(root: TreeNode | null): number {
-  return -1;
+  if (!root) return 0;
+
+  let total = 0;
+
+  function dfs(node: TreeNode, path: number[]) {
+    path.push(node.val);
+    if (!node.left && !node.right) {
+      const strNum = path.reduce((accum, curr) => (accum += curr.toString()), '');
+      total += Number.parseInt(strNum);
+    }
+    if (node.left) dfs(node.left, path);
+    if (node.right) dfs(node.right, path);
+    path.pop();
+  }
+
+  dfs(root, []);
+
+  return total;
 }
 
 class TreeNode {
