@@ -25,13 +25,7 @@ function levelOrder(root: TreeNode | null): number[][] {
 
   dfs(root, 0);
 
-  const entries = Array.from(map.entries()).sort(
-    ([aLevel, aArray], [bLevel, bArray]) => aLevel - bLevel
-  );
-
-  const result = entries.map(([aLevel, aArray]) => aArray);
-
-  return result;
+  return Array.from(map.values());
 }
 
 class TreeNode {

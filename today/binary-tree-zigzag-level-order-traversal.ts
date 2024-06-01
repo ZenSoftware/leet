@@ -26,9 +26,7 @@ function zigzagLevelOrder(root: TreeNode | null): number[][] {
 
   dfs(root, 0);
 
-  const result = Array.from(map.entries())
-    .sort(([aLevel, aArray], [bLevel, bArray]) => aLevel - bLevel)
-    .map(([aLevel, aArray]) => aArray);
+  const result = Array.from(map.values());
 
   for (let i = 1; i < result.length; i += 2) {
     result[i].reverse();
