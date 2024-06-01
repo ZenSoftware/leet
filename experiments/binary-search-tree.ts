@@ -150,6 +150,7 @@ class BinarySearchTree<T = number> {
   remove(value: T): boolean {
     if (!this.has(value)) return false;
 
+    // Handle the case to remove the root of whole bST
     if (this.root && this.root.value === value) {
       if (!this.root.left && !this.root.right) {
         // Node is leaf
@@ -189,9 +190,9 @@ class BinarySearchTree<T = number> {
         //   root.value = replaceWith.value;
         //   this.removeHelper(replaceWith.value, root.right);
         // } else {
-        //   const replaceWith = this.successor(root);
+        //   const replaceWith = this.predecessor(root);
         //   root.value = replaceWith.value;
-        //   this.removeHelper(replaceWith.value, root.right);
+        //   this.removeHelper(replaceWith.value, root.left);
         // }
       } else if (root.left) {
         // Node only has left branch
