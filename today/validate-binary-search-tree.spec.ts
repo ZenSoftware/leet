@@ -12,7 +12,6 @@ describe('Validate Binary Search Tree', () => {
 
   it('evaluates correctly 2', () => {
     const n1 = new TreeNode(1);
-    const n2 = new TreeNode(2);
     const n3 = new TreeNode(3);
     const n4 = new TreeNode(4);
     const n5 = new TreeNode(5);
