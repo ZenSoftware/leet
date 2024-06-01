@@ -4,13 +4,12 @@
 export { maxProfit };
 
 function maxProfit(prices: number[]): number {
+  let min = prices[0];
   let max = 0;
 
-  for (let i = 0; i < prices.length - 1; i++) {
-    for (let j = i + 1; j < prices.length; j++) {
-      const profit = prices[j] - prices[i];
-      if (profit > max) max = profit;
-    }
+  for (let i = 1; i < prices.length; i++) {
+    min = Math.min(min, prices[i]);
+    max = Math.max(max, prices[i] - min);
   }
 
   return max;
