@@ -5,7 +5,6 @@ export { getRow };
 
 function getRow(rowIndex: number): number[] {
   if (rowIndex === 0) return [1];
-  if (rowIndex === 1) return [1, 1];
 
   let lastRow = [1, 1];
   for (let i = 1; i < rowIndex; i++) {
