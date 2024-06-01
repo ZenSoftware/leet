@@ -5,5 +5,6 @@ describe('Interleaving String', () => {
     expect(isInterleave('aabcc', 'dbbca', 'aadbbcbcac')).toEqual(true);
     expect(isInterleave('aabcc', 'dbbca', 'aadbbbaccc')).toEqual(false);
     expect(isInterleave('', '', '')).toEqual(true);
+    expect(isInterleave('', '', 'a')).toEqual(false);
   });
 });
