@@ -4,28 +4,19 @@
 export { canCompleteCircuit };
 
 function canCompleteCircuit(gas: number[], cost: number[]): number {
+  let result = 0;
+  let total = 0;
+  let tank = 0;
   for (let i = 0; i < gas.length; i++) {
-    if (checkCircuit(gas, cost, i)) return i;
+    const val = gas[i] - cost[i];
+    tank += val;
+    total += val;
+    if (total < 0) {
+      total = 0;
+      result = i + 1;
+    }
   }
 
-  return -1;
-}
-
-function checkCircuit(gas: number[], cost: number[], station: number): boolean {
-  let current = station;
-  let tank = 0;
-
-  do {
-    tank += gas[current];
-    tank -= cost[current];
-    if (tank < 0) return false;
-    current = nextIndex(current, gas.length);
-  } while (current !== station);
-
-  return true;
-}
-
-function nextIndex(current: number, circuitLength: number) {
-  if (current + 1 === circuitLength) return 0;
-  else return current + 1;
+  if (tank < 0) return -1;
+  else return result;
 }
