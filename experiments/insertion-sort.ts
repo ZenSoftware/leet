@@ -3,7 +3,7 @@ function insertionSort(nums: number[]): number[] {
   while (i < nums.length) {
     let j = i;
     while (nums[j - 1] >= nums[j]) {
-      [nums[j], nums[j - 1]] = [nums[j - 1], nums[j]];
+      [nums[j - 1], nums[j]] = [nums[j], nums[j - 1]];
       j--;
     }
     i++;
