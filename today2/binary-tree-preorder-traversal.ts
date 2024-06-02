@@ -4,7 +4,18 @@
 export { preorderTraversal, TreeNode };
 
 function preorderTraversal(root: TreeNode | null): number[] {
-  return [];
+  if (!root) return [];
+
+  const result: number[] = [];
+
+  function dfs(node: TreeNode) {
+    result.push(node.val);
+    if (node.left) dfs(node.left);
+    if (node.right) dfs(node.right);
+  }
+
+  dfs(root);
+  return result;
 }
 
 class TreeNode {
