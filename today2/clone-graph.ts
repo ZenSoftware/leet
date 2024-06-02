@@ -8,14 +8,14 @@ function cloneGraph(node: _Node | null): _Node | null {
 
   const visited = new Set<_Node>();
 
-  function dfs(current: _Node) {
+  function crawl(current: _Node) {
     visited.add(current);
     for (const n of current.neighbors) {
-      if (!visited.has(n)) dfs(n);
+      if (!visited.has(n)) crawl(n);
     }
   }
 
-  dfs(node);
+  crawl(node);
 
   const nodeMap = new Map<_Node, _Node>();
   for (const n of visited) {
