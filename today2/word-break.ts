@@ -19,8 +19,8 @@ function wordBreak(s: string, wordDict: string[]): boolean {
         }
       }
       if (matches) {
-        const ans = recurse(str.slice(word.length));
-        if (ans) return (memo[str] = true);
+        const result = recurse(str.slice(word.length));
+        if (result) return (memo[str] = true);
       }
     }
 
