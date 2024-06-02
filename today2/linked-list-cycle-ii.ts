@@ -4,6 +4,16 @@
 export { detectCycle, ListNode };
 
 function detectCycle(head: ListNode | null): ListNode | null {
+  const nodes = new Set<ListNode>();
+
+  let pointer = head;
+
+  while (pointer) {
+    if (nodes.has(pointer)) return pointer;
+    else nodes.add(pointer);
+    pointer = pointer.next;
+  }
+
   return null;
 }
 
