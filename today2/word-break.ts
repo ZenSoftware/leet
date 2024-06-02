@@ -4,7 +4,10 @@
 export { wordBreak };
 
 function wordBreak(s: string, wordDict: string[]): boolean {
+  const memo: Record<string, boolean> = {};
+
   function recurse(str: string): boolean {
+    if (str in memo) return memo[str];
     if (str.length === 0) return true;
 
     for (let word of wordDict) {
@@ -17,11 +20,11 @@ function wordBreak(s: string, wordDict: string[]): boolean {
       }
       if (matches) {
         const ans = recurse(str.slice(word.length));
-        if (ans) return true;
+        if (ans) return (memo[str] = true);
       }
     }
 
-    return false;
+    return (memo[str] = false);
   }
 
   return recurse(s);
