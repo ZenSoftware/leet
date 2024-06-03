@@ -67,19 +67,19 @@ class BinarySearchTree<T = number> {
     }
 
     // Recursively construct a balanced BST
-    function buildTree(start: number, end: number) {
+    function buildBalancedTree(start: number, end: number) {
       if (start > end) return undefined;
 
       const mid = Math.floor((start + end) / 2);
       let node = sortedNodes[mid];
-      node.left = buildTree(start, mid - 1);
-      node.right = buildTree(mid + 1, end);
+      node.left = buildBalancedTree(start, mid - 1);
+      node.right = buildBalancedTree(mid + 1, end);
 
       return node;
     }
 
     // set the new root
-    this.root = buildTree(0, sortedNodes.length - 1);
+    this.root = buildBalancedTree(0, sortedNodes.length - 1);
 
     return this.root;
   }
