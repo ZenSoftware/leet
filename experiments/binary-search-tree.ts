@@ -159,20 +159,27 @@ class BinarySearchTree<T = number> {
 
   private removeHelper(value: T, root: Node<T>): Node<T> | undefined {
     if (value === root.value) {
+      // Node found
       if (!root.left && !root.right) {
+        // Node to remove is a leaf
         return undefined;
       } else if (root.left && root.right) {
+        // Node to remove has left and right children
         const successor = this.successor(root) as Node<T>;
         this.removeHelper(successor.value, root);
         root.value = successor.value;
       } else if (root.left && !root.right) {
+        // Node to remove only has left branch
         return root.left;
       } else {
+        // Node to remove only has right branch
         return root.right;
       }
     } else if (value < root.value) {
+      // Continue searching down left branch
       root.left = this.removeHelper(value, root.left as Node<T>);
     } else {
+      // Continue searching down right branch
       root.right = this.removeHelper(value, root.right as Node<T>);
     }
 
