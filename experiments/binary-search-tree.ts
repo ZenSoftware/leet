@@ -158,7 +158,9 @@ class BinarySearchTree<T = number> {
       if (!root.left && !root.right) {
         return undefined;
       } else if (root.left && root.right) {
-        /** @todo implement */
+        const successor = this.successor(root);
+        this.removeHelper(successor.value, root);
+        root.value = successor.value;
       } else if (root.left && !root.right) {
         return root.left;
       } else {

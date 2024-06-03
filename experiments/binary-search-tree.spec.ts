@@ -121,20 +121,20 @@ describe('Binary Search Tree', () => {
     expect(predecessor.value).toEqual(3);
   });
 
-  // it('removes node with left and right child correctly', () => {
-  //   const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
-  //   bst.remove(2);
-  //   let after = bst.getInOrderValues();
-  //   expect(after).toEqual([1, 3, 4, 5, 6, 7, 8]);
+  it('removes node with left and right child correctly', () => {
+    const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
+    bst.remove(2);
+    let after = bst.getInOrderValues();
+    expect(after).toEqual([1, 3, 4, 5, 6, 7, 8]);
 
-  //   bst.remove(6);
-  //   after = bst.getInOrderValues();
-  //   expect(after).toEqual([1, 3, 4, 5, 7, 8]);
+    bst.remove(6);
+    after = bst.getInOrderValues();
+    expect(after).toEqual([1, 3, 4, 5, 7, 8]);
 
-  //   bst.remove(4);
-  //   after = bst.getInOrderValues();
-  //   expect(after).toEqual([1, 3, 5, 7, 8]);
-  // });
+    bst.remove(4);
+    after = bst.getInOrderValues();
+    expect(after).toEqual([1, 3, 5, 7, 8]);
+  });
 
   it('searches with find correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
