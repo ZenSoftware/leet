@@ -158,6 +158,7 @@ class BinarySearchTree<T = number> {
       if (!root.left && !root.right) {
         return undefined;
       } else if (root.left && root.right) {
+        /** @todo implement */
       } else if (root.left && !root.right) {
         return root.left;
       } else {
