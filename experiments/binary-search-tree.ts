@@ -149,58 +149,24 @@ class BinarySearchTree<T = number> {
 
   remove(value: T): boolean {
     if (!this.has(value)) return false;
-
-    // Handle the case to remove the root of whole bST
-    if (this.root && this.root.value === value) {
-      if (!this.root.left && !this.root.right) {
-        // Node is leaf
-        this.root = undefined;
-      } else if (this.root.left && this.root.right) {
-        // Node has left and right child
-      } else if (this.root.left) {
-        // Node only has left branch
-        this.root = this.root.left;
-      } else {
-        // Node only has right branch
-        this.root = this.root.right;
-      }
-    } else {
-      this.removeHelper(value, this.root as Node<T>);
-    }
-
+    this.root = this.removeHelper(value, this.root as Node<T>);
     return true;
   }
 
-  removeHelper(value: T, root: Node<T> | undefined): Node<T> | undefined {
-    if (!root) return root;
-
-    if (value < root.value) {
-      root.left = this.removeHelper(value, root.left);
-    } else if (value > root.value) {
-      root.right = this.removeHelper(value, root.right);
-    } else {
-      // Node found
+  removeHelper(value: T, root: Node<T>): Node<T> | undefined {
+    if (value === root.value) {
       if (!root.left && !root.right) {
-        // Node is leaf
         return undefined;
       } else if (root.left && root.right) {
-        // Node has left and right child
-        // if (value < root.value) {
-        //   const replaceWith = this.successor(root);
-        //   root.value = replaceWith.value;
-        //   this.removeHelper(replaceWith.value, root.right);
-        // } else {
-        //   const replaceWith = this.predecessor(root);
-        //   root.value = replaceWith.value;
-        //   this.removeHelper(replaceWith.value, root.left);
-        // }
-      } else if (root.left) {
-        // Node only has left branch
+      } else if (root.left && !root.right) {
         return root.left;
       } else {
-        // Node only has right branch
         return root.right;
       }
+    } else if (value < root.value) {
+      root.left = this.removeHelper(value, root.left as Node<T>);
+    } else {
+      root.right = this.removeHelper(value, root.right as Node<T>);
     }
 
     return root;
