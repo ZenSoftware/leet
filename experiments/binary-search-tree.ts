@@ -188,8 +188,6 @@ class BinarySearchTree<T = number> {
 
   /** Get the node that is just larger than the provided node */
   successor(node: Node<T>) {
-    if (!node.right) return undefined;
-
     let pointer = node.right;
     while (pointer?.left) {
       pointer = pointer.left;
@@ -199,8 +197,6 @@ class BinarySearchTree<T = number> {
 
   /** Get the node that is just smaller than the provided node */
   predecessor(node: Node<T>) {
-    if (!node.left) return undefined;
-
     let pointer = node.left;
     while (pointer?.right) {
       pointer = pointer.right;

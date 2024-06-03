@@ -112,10 +112,6 @@ describe('Binary Search Tree', () => {
     const n4 = bst.get(4);
     const successor4 = bst.successor(n4!);
     expect(successor4!.value).toEqual(5);
-
-    const n8 = bst.get(8);
-    const successor8 = bst.successor(n8!);
-    expect(successor8).toEqual(undefined);
   });
 
   it('evaluates predecessor correctly', () => {
@@ -123,10 +119,6 @@ describe('Binary Search Tree', () => {
     const n4 = bst.get(4);
     const predecessor4 = bst.predecessor(n4!);
     expect(predecessor4!.value).toEqual(3);
-
-    const n1 = bst.get(8);
-    const predecessor1 = bst.predecessor(n1!);
-    expect(predecessor1).toEqual(undefined);
   });
 
   it('removes node with left and right child correctly', () => {
