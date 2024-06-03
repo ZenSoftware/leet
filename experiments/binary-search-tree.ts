@@ -31,21 +31,21 @@ class BinarySearchTree<T = number> {
   private constructCopy(bst: BinarySearchTree<T>) {
     if (!bst.root) return;
 
-    function dfs(root: Node<T>, parent: Node<T>) {
+    function dfs(root: Node<T>, copy: Node<T>) {
       if (root.left) {
-        parent.left = { value: root.left.value };
-        dfs(root.left, parent.left);
+        copy.left = { value: root.left.value };
+        dfs(root.left, copy.left);
       }
 
       if (root.right) {
-        parent.right = { value: root.right.value };
-        dfs(root.right, parent.right);
+        copy.right = { value: root.right.value };
+        dfs(root.right, copy.right);
       }
     }
 
-    const newRoot: Node<T> = { value: bst.root.value };
-    dfs(bst.root, newRoot);
-    this.root = newRoot;
+    const copyRoot: Node<T> = { value: bst.root.value };
+    dfs(bst.root, copyRoot);
+    this.root = copyRoot;
   }
 
   /** Constructs a balanced BST from an array of values */
