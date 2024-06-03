@@ -109,16 +109,16 @@ describe('Binary Search Tree', () => {
 
   it('evaluates successor correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
-    const n4 = bst.find(4) as any;
+    const n4 = bst.get(4) as any;
     const successor = bst.successor(n4);
-    expect(successor.value).toEqual(5);
+    expect(successor!.value).toEqual(5);
   });
 
   it('evaluates predecessor correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
-    const n4 = bst.find(4) as any;
+    const n4 = bst.get(4) as any;
     const predecessor = bst.predecessor(n4);
-    expect(predecessor.value).toEqual(3);
+    expect(predecessor!.value).toEqual(3);
   });
 
   it('removes node with left and right child correctly', () => {
@@ -136,27 +136,27 @@ describe('Binary Search Tree', () => {
     expect(after).toEqual([1, 3, 5, 7, 8]);
   });
 
-  it('searches with find correctly', () => {
+  it('Retrieves a node correctly', () => {
     const bst = new BinarySearchTree([1, 2, 3, 4, 5, 6, 7, 8]);
-    const n1 = bst.find(1);
+    const n1 = bst.get(1);
     expect(n1!.value).toEqual(1);
-    const n2 = bst.find(2);
+    const n2 = bst.get(2);
     expect(n2!.value).toEqual(2);
-    const n3 = bst.find(3);
+    const n3 = bst.get(3);
     expect(n3!.value).toEqual(3);
-    const n4 = bst.find(4);
+    const n4 = bst.get(4);
     expect(n4!.value).toEqual(4);
-    const n5 = bst.find(5);
+    const n5 = bst.get(5);
     expect(n5!.value).toEqual(5);
-    const n6 = bst.find(6);
+    const n6 = bst.get(6);
     expect(n6!.value).toEqual(6);
-    const n7 = bst.find(7);
+    const n7 = bst.get(7);
     expect(n7!.value).toEqual(7);
-    const n8 = bst.find(8);
+    const n8 = bst.get(8);
     expect(n8!.value).toEqual(8);
-    const n9 = bst.find(9);
+    const n9 = bst.get(9);
     expect(n9).toEqual(undefined);
-    const n10 = bst.find(-1);
+    const n10 = bst.get(-1);
     expect(n10).toEqual(undefined);
   });
 

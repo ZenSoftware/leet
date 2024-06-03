@@ -4,6 +4,7 @@
 export { BinarySearchTree };
 
 class BinarySearchTree<T = number> {
+  /** The root of the BST */
   root?: Node<T>;
 
   /** Construct a BST with a root of undefined */
@@ -108,7 +109,7 @@ class BinarySearchTree<T = number> {
     }
   }
 
-  /** Searches the tree to determine if the tree has the provided value */
+  /** Searches the tree to determine if it has the provided value */
   has(value: T): boolean {
     if (!this.root) {
       return false;
@@ -126,12 +127,11 @@ class BinarySearchTree<T = number> {
   }
 
   /**
-   * Searches the tree for the value and returns the respective node.
-   * Returns `undefined` if the value does not exist.
+   * Returns the node with the provided value if it exists, otherwise return `undefined`.
    *
    * Use `has()` if you only wish to return a boolean.
    **/
-  find(value: T): Node<T> | undefined {
+  get(value: T): Node<T> | undefined {
     if (!this.root) {
       return undefined;
     } else {
@@ -147,18 +147,22 @@ class BinarySearchTree<T = number> {
     }
   }
 
+  /**
+   * Removes a value from the tree.
+   * Returns `true` if there was a node to remove and `false` otherwise.
+   **/
   remove(value: T): boolean {
     if (!this.has(value)) return false;
     this.root = this.removeHelper(value, this.root as Node<T>);
     return true;
   }
 
-  removeHelper(value: T, root: Node<T>): Node<T> | undefined {
+  private removeHelper(value: T, root: Node<T>): Node<T> | undefined {
     if (value === root.value) {
       if (!root.left && !root.right) {
         return undefined;
       } else if (root.left && root.right) {
-        const successor = this.successor(root);
+        const successor = this.successor(root) as Node<T>;
         this.removeHelper(successor.value, root);
         root.value = successor.value;
       } else if (root.left && !root.right) {
@@ -175,16 +179,22 @@ class BinarySearchTree<T = number> {
     return root;
   }
 
-  successor(root: Node<T>) {
-    let pointer = root.right;
+  /** Get the node that is just larger than the provided node */
+  successor(node: Node<T>) {
+    if (!node.right) return undefined;
+
+    let pointer = node.right;
     while (pointer?.left) {
       pointer = pointer.left;
     }
     return pointer as Node<T>;
   }
 
-  predecessor(root: Node<T>) {
-    let pointer = root.left;
+  /** Get the node that is just smaller than the provided node */
+  predecessor(node: Node<T>) {
+    if (!node.left) return undefined;
+
+    let pointer = node.left;
     while (pointer?.right) {
       pointer = pointer.right;
     }
