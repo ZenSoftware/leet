@@ -4,15 +4,31 @@
 export { MinStack };
 
 class MinStack {
-  constructor() {}
+  stack: number[] = [];
+  minimums: number[] = [];
 
-  push(val: number): void {}
+  push(val: number): void {
+    this.stack.push(val);
 
-  pop(): void {}
+    if (this.minimums.length === 0) this.minimums.push(val);
+    else {
+      const currentMin = this.minimums[this.minimums.length - 1];
+      this.minimums.push(Math.min(currentMin, val));
+    }
+  }
 
-  top(): number {}
+  pop(): void {
+    this.stack.pop();
+    this.minimums.pop();
+  }
 
-  getMin(): number {}
+  top(): number {
+    return this.stack[this.stack.length - 1];
+  }
+
+  getMin(): number {
+    return this.minimums[this.stack.length - 1];
+  }
 }
 
 /**
