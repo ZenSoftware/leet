@@ -4,5 +4,8 @@
 export { findMin };
 
 function findMin(nums: number[]): number {
-  return Infinity;
+  function bs(start: number, end: number): number {
+    if (start >= end) return nums[start];
+  }
+  return bs(0, nums.length - 1);
 }
