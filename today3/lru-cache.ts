@@ -1,34 +1,34 @@
 /**
  * https://leetcode.com/problems/lru-cache/
  */
-export { LRUCache, CacheItem };
+export { LRUCache };
 
 class LRUCache {
-  dummyHead: CacheItem;
-  dummyTail: CacheItem;
-  cache = new Map<number, CacheItem>();
+  private head: CacheItem;
+  private tail: CacheItem;
+  private cache = new Map<number, CacheItem>();
 
   constructor(private capacity: number) {
     if (capacity <= 0) {
       throw Error(`LRUCache capacity must be a positive integer. Recieved: ${capacity}`);
     }
 
-    this.dummyHead = {
+    this.head = {
       key: 'HEAD' as any,
       value: 'HEAD' as any,
       next: undefined as any,
       previous: undefined as any,
     };
 
-    this.dummyTail = {
+    this.tail = {
       key: 'TAIL' as any,
       value: 'TAIL' as any,
       next: undefined as any,
       previous: undefined as any,
     };
 
-    this.dummyHead.next = this.dummyTail;
-    this.dummyTail.previous = this.dummyHead;
+    this.head.next = this.tail;
+    this.tail.previous = this.head;
   }
 
   get(key: number): number {
@@ -49,49 +49,29 @@ class LRUCache {
     } else {
       if (this.cache.size === this.capacity) {
         // remove LRU
-        this.cache.delete(this.dummyTail.previous.key);
-        this.dummyTail.previous.previous.next = this.dummyTail;
-        this.dummyTail.previous = this.dummyTail.previous.previous;
+        this.cache.delete(this.tail.previous.key);
+        this.tail.previous.previous.next = this.tail;
+        this.tail.previous = this.tail.previous.previous;
       }
 
-      item = { key, value, next: this.dummyHead.next, previous: this.dummyHead };
+      item = { key, value, next: this.head.next, previous: this.head };
       this.cache.set(key, item);
-      this.dummyHead.next.previous = item;
-      this.dummyHead.next = item;
+      this.head.next.previous = item;
+      this.head.next = item;
     }
   }
 
-  moveToFront(item: CacheItem) {
-    if (item !== this.dummyHead.next) {
+  private moveToFront(item: CacheItem) {
+    if (item !== this.head.next) {
       item.previous.next = item.next;
       item.next.previous = item.previous;
 
-      item.next = this.dummyHead.next;
-      item.previous = this.dummyHead;
+      item.next = this.head.next;
+      item.previous = this.head;
 
-      this.dummyHead.next.previous = item;
-      this.dummyHead.next = item;
+      this.head.next.previous = item;
+      this.head.next = item;
     }
-  }
-
-  getValuesForward(): any[] {
-    let pointer: CacheItem | undefined = this.dummyHead;
-    const result: any[] = [];
-    while (pointer) {
-      result.push(pointer.value);
-      pointer = pointer.next;
-    }
-    return result;
-  }
-
-  getValuesBackwards(): any[] {
-    let pointer: CacheItem | undefined = this.dummyTail;
-    const result: any[] = [];
-    while (pointer) {
-      result.push(pointer.value);
-      pointer = pointer.previous;
-    }
-    return result;
   }
 }
 
