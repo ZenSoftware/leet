@@ -10,6 +10,7 @@ describe('Search in Rotated Sorted Array', () => {
     expect(search([4, 5, 6, 7, 0, 1, 2], 1)).toEqual(5);
     expect(search([4, 5, 6, 7, 0, 1, 2], 2)).toEqual(6);
     expect(search([4, 5, 6, 7, 0, 1, 2], 3)).toEqual(-1);
+    expect(search([4, 5, 6, 7, 0, 1, 2], 8)).toEqual(-1);
     expect(search([1], 0)).toEqual(-1);
     expect(search([3, 1], 1)).toEqual(1);
   });
