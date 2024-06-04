@@ -6,7 +6,7 @@ export { search };
 function search(nums: number[], target: number): number {
   function search(start: number, end: number): number {
     const mid = Math.floor((start + end) / 2);
-    if (nums[mid] === target) return mid;
+    if (target === nums[mid]) return mid;
     if (start >= end) return -1;
 
     if (nums[start] < nums[mid]) {
