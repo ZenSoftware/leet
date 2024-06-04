@@ -4,7 +4,7 @@
     {
         public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
         {
-
+            return null;
         }
     }
 
