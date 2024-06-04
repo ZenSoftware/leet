@@ -10,7 +10,9 @@ function search(nums: number[], target: number): boolean {
     if (nums[mid] === target) return true;
     if (start >= end) return false;
 
-    if (nums[start] <= nums[mid]) {
+    if (nums[start] === nums[mid]) {
+      return bs(start + 1, end);
+    } else if (nums[start] < nums[mid]) {
       // in left rotation
       if (target > nums[mid]) {
         return bs(mid + 1, end);
