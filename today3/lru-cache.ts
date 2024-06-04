@@ -19,12 +19,14 @@ class LRUCache {
       next: undefined as any,
       previous: undefined as any,
     };
+
     this.dummyTail = {
       key: 'TAIL' as any,
       value: 'TAIL' as any,
       next: undefined as any,
       previous: undefined as any,
     };
+
     this.dummyHead.next = this.dummyTail;
     this.dummyTail.previous = this.dummyHead;
   }
