@@ -30,8 +30,8 @@ function evalRPN(tokens: string[]): number {
       }
       stack.push(result!);
     } else {
-      const int = Number.parseInt(tokens[i]);
-      stack.push(int);
+      const parsed = Number.parseInt(tokens[i]);
+      stack.push(parsed);
     }
   }
 
