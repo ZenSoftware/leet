@@ -12,8 +12,20 @@ function search(nums: number[], target: number): boolean {
 
     if (nums[start] <= nums[mid]) {
       // in left rotation
+      if (target > nums[mid]) {
+        return bs(mid + 1, end);
+      } else {
+        if (target >= nums[start]) return bs(start, mid - 1);
+        else return bs(mid + 1, end);
+      }
     } else {
       // in right rotation
+      if (target < nums[mid]) {
+        return bs(start, mid - 1);
+      } else {
+        if (target <= nums[end]) return bs(mid + 1, end);
+        else return bs(start, mid - 1);
+      }
     }
   }
 
