@@ -4,5 +4,5 @@
 export { reverseWords };
 
 function reverseWords(s: string): string {
-  return '';
+  return s.trim().replace(/\s+/g, ' ').split(' ').reverse().join(' ');
 }
