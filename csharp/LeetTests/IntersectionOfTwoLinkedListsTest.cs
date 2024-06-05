@@ -1,12 +1,15 @@
-﻿namespace LeetTests
+﻿using Leet.IntersectionOfTwoLinkedLists;
+
+namespace LeetTests
 {
     public class IntersectionOfTwoLinkedListsTest
     {
         [Test]
         public void ShouldPass()
         {
-            var leet = new IntersectionOfTwoLinkedLists();
-            Assert.True(leet.Sample());
+            var solution = new Solution();
+            var node = solution.GetIntersectionNode(null, null);
+            //Assert.Equals(node, );
         }
     }
 }
