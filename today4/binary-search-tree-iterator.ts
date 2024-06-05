@@ -4,14 +4,32 @@
 export { BSTIterator, TreeNode };
 
 class BSTIterator {
-  constructor(root: TreeNode | null) {}
+  current = 0;
+  inOrderValues: number[] = [];
+
+  constructor(private root: TreeNode | null) {
+    this.inOrderValues = this.inOrder(root!);
+  }
+
+  inOrder(root: TreeNode) {
+    const result: number[] = [];
+    function bs(node: TreeNode) {
+      if (node.left) bs(node.left);
+      result.push(node.val);
+      if (node.right) bs(node.right);
+    }
+    bs(root);
+    return result;
+  }
 
   next(): number {
-    //
+    const result = this.inOrderValues[this.current];
+    this.current++;
+    return result;
   }
 
   hasNext(): boolean {
-    //
+    return this.current < this.inOrderValues.length;
   }
 }
 
