@@ -5,7 +5,7 @@ namespace LeetTests
     public class IntersectionOfTwoLinkedListsTest
     {
         [Test]
-        public void ShouldPass()
+        public void TestsIntersectionOfTwoLinkedLists()
         {
             var rootA = new ListNode(4);
             var nodeA2 = new ListNode(1);
