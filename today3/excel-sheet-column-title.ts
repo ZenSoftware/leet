@@ -5,14 +5,14 @@ export { convertToTitle };
 
 function convertToTitle(columnNumber: number): string {
   let result = '';
-  let remaining = columnNumber;
-  while (remaining > 26) {
-    let remainder = remaining % 26;
+  let left = columnNumber;
+  while (left > 26) {
+    let remainder = left % 26;
     result = EXCEL_DIGIT[remainder] + result;
-    remaining = Math.floor(remaining / 26);
-    if (remainder === 0) remaining--;
+    left = Math.floor(left / 26);
+    if (remainder === 0) left--;
   }
-  result = EXCEL_DIGIT[remaining % 26] + result;
+  result = EXCEL_DIGIT[left % 26] + result;
   return result;
 }
 
