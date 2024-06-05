@@ -1,4 +1,6 @@
-﻿namespace Leet.TopKFrequentElements
+﻿using System.Runtime.Intrinsics.Arm;
+
+namespace Leet.TopKFrequentElements
 {
     public class Solution
     {
@@ -13,12 +15,28 @@
                     dict.Add(n, 1);
             }
 
-            var values = dict.OrderByDescending(kv => kv.Value);
-            var result = new int[k];
-
-            for(int i = 0; i<k; i++)
+            var buckets = new List<int>[nums.Length + 1];
+            foreach(var (n, count) in dict)
             {
-                result[i] = values.ElementAt(i).Key;
+                if (buckets[count] == null) buckets[count] = new List<int>();
+                buckets[count].Add(n);
+            }
+
+            var i = buckets.Length - 1;
+            var result = new int[k];
+            var r = 0;
+            while (r < k)
+            {
+                if (buckets[i] != null && buckets[i].Count > 0)
+                {
+                    foreach(var key in buckets[i])
+                    {
+                        result[r] = key;
+                        r++;
+                        if (r >= k) break;
+                    }
+                }
+                i--;
             }
 
             return result;
