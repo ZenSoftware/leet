@@ -1,6 +1,4 @@
-﻿using Leet.Problems;
-
-namespace LeetTests
+﻿namespace LeetTests
 {
     public class IntersectionOfTwoLinkedListsTest
     {
