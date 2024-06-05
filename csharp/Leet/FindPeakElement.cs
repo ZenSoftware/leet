@@ -5,11 +5,6 @@ namespace Leet.FindPeakElement
         public int FindPeakElement(int[] nums)
         {
             if (nums.Length == 1) return 0;
-            if (nums.Length == 2)
-            {
-                if (nums[0] > nums[1]) return 0;
-                else return 1;
-            }
             return BinarySearch(nums, 0, nums.Length - 1);
         }
 
