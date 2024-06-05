@@ -10,5 +10,13 @@
             var result = LeetList.ToArray(list);
             Assert.That(result, Is.EqualTo(input));
         }
+
+        [Test]
+        public void ConstructsEmptyList()
+        {
+            var list = LeetList.ToList([]);
+            var result = LeetList.ToArray(list);
+            Assert.That(result, Is.Empty);
+        }
     }
 }
