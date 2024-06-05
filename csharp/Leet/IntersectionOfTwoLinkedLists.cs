@@ -6,23 +6,18 @@ namespace Leet.IntersectionOfTwoLinkedLists
     {
         public ListNode GetIntersectionNode(ListNode headA, ListNode headB)
         {
-            var nodesA = new HashSet<ListNode>();
+            if (headA == null || headB == null) return null;
 
-            var pointer = headA;
-            while (pointer != null)
+            var a = headA;
+            var b = headB;
+
+            while (a != b)
             {
-                nodesA.Add(pointer);
-                pointer = pointer.next;
+                a = a == null ? headB : a.next;
+                b = b == null ? headA : b.next;
             }
 
-            pointer = headB;
-            while (pointer != null)
-            {
-                if (nodesA.Contains(pointer)) break;
-                pointer = pointer.next;
-            }
-
-            return pointer;
+            return a;
         }
     }
 }
