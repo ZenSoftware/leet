@@ -1,4 +1,6 @@
-﻿namespace Leet.IntersectionOfTwoLinkedLists
+﻿using Leet.List;
+
+namespace Leet.IntersectionOfTwoLinkedLists
 {
     public class Solution
     {
@@ -6,12 +8,5 @@
         {
             return null;
         }
-    }
-
-    public class ListNode
-    {
-        public int val;
-        public ListNode next;
-        public ListNode(int x) { val = x; }
     }
 }
