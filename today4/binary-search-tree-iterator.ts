@@ -4,32 +4,30 @@
 export { BSTIterator, TreeNode };
 
 class BSTIterator {
-  current = 0;
-  inOrderValues: number[] = [];
+  stack: TreeNode[] = [];
 
-  constructor(private root: TreeNode | null) {
-    this.inOrderValues = this.inOrder(root!);
-  }
-
-  inOrder(root: TreeNode) {
-    const result: number[] = [];
-    function bs(node: TreeNode) {
-      if (node.left) bs(node.left);
-      result.push(node.val);
-      if (node.right) bs(node.right);
+  constructor(root: TreeNode | null) {
+    let pointer = root;
+    while (pointer) {
+      this.stack.push(pointer!);
+      pointer = pointer!.left;
     }
-    bs(root);
-    return result;
   }
 
   next(): number {
-    const result = this.inOrderValues[this.current];
-    this.current++;
-    return result;
+    const next = this.stack.pop();
+    if (next!.right) {
+      let pointer: TreeNode | null = next!.right;
+      while (pointer) {
+        this.stack.push(pointer!);
+        pointer = pointer!.left;
+      }
+    }
+    return next!.val;
   }
 
   hasNext(): boolean {
-    return this.current < this.inOrderValues.length;
+    return !!this.stack.length;
   }
 }
 
