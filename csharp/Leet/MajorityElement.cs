@@ -1,4 +1,5 @@
-﻿namespace Leet.MajorityElement
+﻿// https://leetcode.com/problems/majority-element/description/
+namespace Leet.MajorityElement
 {
     public class Solution
     {
