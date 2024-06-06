@@ -68,9 +68,15 @@ namespace Leet.LargestNumber
 
         public bool CompareStrings(string a, string b)
         {
-            var ab = long.Parse(a + b);
-            var ba = long.Parse(b + a);
-            return ab <= ba;
+            var ab = a + b;
+            var ba = b + a;
+            for (var i = 0; i < a.Length + b.Length; i++)
+            {
+                var compared = ab[i].CompareTo(ba[i]);
+                if (compared < 0) return true;
+                else if (compared > 0) return false;
+            }
+            return true;
         }
     }
 }
