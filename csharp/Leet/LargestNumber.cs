@@ -10,17 +10,17 @@ namespace Leet.LargestNumber
             {
                 numStrings[i] = nums[i].ToString();
             }
-            var numsString = numStrings.OrderDescending();
+            numStrings = MergeSort(numStrings);
 
             var result = "";
-            foreach (var s in numsString)
+            foreach (var s in numStrings)
             {
                 result += s;
             }
             return result;
         }
 
-        public int[] MergeSort(int[] nums)
+        public string[] MergeSort(string[] nums)
         {
             var mid = (Index)Math.Floor(nums.Length / 2d);
             var left = MergeSort(nums[0..mid]);
@@ -28,12 +28,11 @@ namespace Leet.LargestNumber
             return Merge(left, right);
         }
 
-        public int[] Merge(int[] left, int[] right)
+        public string[] Merge(string[] left, string[] right)
         {
-            var result = new int[left.Length + right.Length];
-            var i = 0;
-            var l = 0;
-            var r = 0;
+            var result = new string[left.Length + right.Length];
+            int i = 0, l = 0, r = 0;
+
             while (l < left.Length && r < right.Length)
             {
                 if (left[l] < right[r])
