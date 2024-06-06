@@ -9,5 +9,6 @@ describe('Binary Tree Inorder Traversal', () => {
     n2.left = n3;
 
     expect(inorderTraversal(n1)).toEqual([1, 3, 2]);
+    expect(inorderTraversal(null)).toEqual([]);
   });
 });

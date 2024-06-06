@@ -5,8 +5,6 @@
 export { inorderTraversal, TreeNode };
 
 function inorderTraversal(root: TreeNode | null): number[] {
-  if (!root) return [];
-
   const stack: TreeNode[] = [];
   const result: number[] = [];
   let current: TreeNode | null = root;
