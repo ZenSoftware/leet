@@ -2,13 +2,14 @@
 
 namespace LeetTests
 {
-    internal class Test
+    internal class LargestNumberTest
     {
         [Test]
-        public void Tests()
+        public void TestsLargestNumber()
         {
-            var soltuion = new Solution();
-            Assert.Pass();
+            var solution = new Solution();
+            Assert.That(solution.LargestNumber([10, 2]), Is.EqualTo("210"));
+            Assert.That(solution.LargestNumber([3, 30, 34, 5, 9]), Is.EqualTo("9534330"));
         }
     }
 }
