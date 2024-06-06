@@ -17,7 +17,15 @@ namespace Leet.LargestNumber
             {
                 result += s;
             }
-            return result;
+
+            var leadingZeroIndex = 0;
+            for (var i = 0; i < result.Length - 1; i++)
+            {
+                if (result[i] == '0') leadingZeroIndex = i + 1;
+                else break;
+            }
+
+            return result[leadingZeroIndex..];
         }
 
         public string[] MergeSort(string[] nums)
@@ -60,25 +68,9 @@ namespace Leet.LargestNumber
 
         public bool CompareStrings(string a, string b)
         {
-            // if (a <= b)
-            int iA = 0, iB = 0;
-            while (iA != a.Length - 1 || iB != b.Length - 1)
-            {
-                if (a[iA].CompareTo(b[iB]) < 0)
-                    return true;
-                else if (a[iA].CompareTo(b[iB]) > 0)
-                    return false;
-
-                if (iA < a.Length - 1) iA++;
-                if (iB < b.Length - 1) iB++;
-            }
-
-            if (a[iA].CompareTo(b[iB]) < 0)
-                return true;
-            else if (a[iA].CompareTo(b[iB]) > 0)
-                return false;
-
-            return true;
+            var ab = long.Parse(a + b);
+            var ba = long.Parse(b + a);
+            return ab <= ba;
         }
     }
 }
