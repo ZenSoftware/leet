@@ -4,19 +4,21 @@
     {
         public IList<string> FindRepeatedDnaSequences(string s)
         {
-            var set = new HashSet<string>();
+            var dict = new Dictionary<string, int>();
 
-            for (int i = 0; i < s.Length - 10; i++)
+            for (var i = 0; i < s.Length - 9; i++)
             {
-                var a = s[i..(i + 10)];
-                for (int j = i + 1; j <= s.Length - 10; j++)
-                {
-                    var b = s[j..(j + 10)];
-                    if (a == b) set.Add(b);
-                }
+                var seq = s.Substring(i, 10);
+                if (!dict.ContainsKey(seq)) dict.Add(seq, 1);
+                else dict[seq]++;
             }
 
-            return set.ToList();
+            var result = new List<string>();
+            foreach (var (seq, count) in dict)
+            {
+                if (count > 1) result.Add(seq);
+            }
+            return result;
         }
     }
 }
