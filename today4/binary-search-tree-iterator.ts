@@ -16,7 +16,13 @@ class BSTIterator {
 
   next(): number {
     const next = this.stack.pop();
-    if (next!.right) this.stack.push(next!.right);
+    if (next!.right) {
+      let pointer: TreeNode | null = next!.right;
+      while (pointer) {
+        this.stack.push(pointer!);
+        pointer = pointer!.left;
+      }
+    }
     return next!.val;
   }
 
