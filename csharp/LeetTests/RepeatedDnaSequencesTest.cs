@@ -8,7 +8,21 @@ namespace LeetTests
         public void TestsRepeatedDnaSequences()
         {
             var soltuion = new Solution();
-            Assert.Pass();
+
+            Assert.That(
+                soltuion.FindRepeatedDnaSequences("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"),
+                Is.EqualTo(new[] { "AAAAACCCCC", "CCCCCAAAAA" })
+            );
+
+            Assert.That(
+                soltuion.FindRepeatedDnaSequences("AAAAAAAAAAAAA"),
+                Is.EqualTo(new[] { "AAAAAAAAAA" })
+            );
+
+            Assert.That(
+                soltuion.FindRepeatedDnaSequences("AAAAAAAAAAA"),
+                Is.EqualTo(new[] { "AAAAAAAAAA" })
+            );
         }
     }
 }
