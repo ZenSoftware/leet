@@ -2,7 +2,7 @@
 
 namespace LeetTests
 {
-    public class CompareVersionNumbersTest
+    internal class CompareVersionNumbersTest
     {
         [Test]
         public void TestCompareVersionNumbers()

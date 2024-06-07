@@ -2,7 +2,7 @@ using Leet.FindPeakElement;
 
 namespace LeetTests
 {
-    public class FindPeakElementTest
+    internal class FindPeakElementTest
     {
         [Test]
         public void TestFindPeakElement()

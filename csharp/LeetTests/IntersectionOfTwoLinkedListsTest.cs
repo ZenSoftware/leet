@@ -2,7 +2,7 @@
 
 namespace LeetTests
 {
-    public class IntersectionOfTwoLinkedListsTest
+    internal class IntersectionOfTwoLinkedListsTest
     {
         [Test]
         public void TestsIntersectionOfTwoLinkedLists()
