@@ -8,7 +8,18 @@ namespace LeetTests
         public void TestsNumberOf1BitsTest()
         {
             var solution = new Solution();
-            Assert.Pass();
+            Assert.That(
+                solution.HammingWeight(11),
+                Is.EqualTo(3)
+            );
+            Assert.That(
+                solution.HammingWeight(128),
+                Is.EqualTo(1)
+            );
+            Assert.That(
+                solution.HammingWeight(2147483645),
+                Is.EqualTo(30)
+            );
         }
     }
 }
