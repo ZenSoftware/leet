@@ -4,7 +4,12 @@ namespace Leet.ReverseBits
     {
         public uint reverseBits(uint n)
         {
-            return 1u;
+            var result = 0u;
+            for (var i = 0; i < 32; i++)
+            {
+                result |= (((1u << i) & n) >> i) << (31 - i);
+            }
+            return result;
         }
     }
 }
