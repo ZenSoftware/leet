@@ -8,7 +8,14 @@ namespace LeetTests
         public void TestsHouseRobber()
         {
             var solution = new Solution();
-            Assert.Pass();
+            Assert.That(
+                solution.Rob([1, 2, 3, 1]),
+                Is.EqualTo(4)
+            );
+            Assert.That(
+                solution.Rob([2, 7, 9, 3, 1]),
+                Is.EqualTo(12)
+            );
         }
     }
 }
