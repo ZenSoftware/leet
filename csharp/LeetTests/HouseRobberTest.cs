@@ -16,6 +16,10 @@ namespace LeetTests
                 solution.Rob([2, 7, 9, 3, 1]),
                 Is.EqualTo(12)
             );
+            Assert.That(
+                solution.Rob([2, 1, 1, 2]),
+                Is.EqualTo(4)
+            );
         }
     }
 }
