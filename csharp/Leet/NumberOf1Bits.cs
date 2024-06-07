@@ -5,7 +5,13 @@ namespace Leet.NumberOf1Bits
     {
         public int HammingWeight(int n)
         {
-            return -1;
+            var count = 0;
+            for (var i = 0; i < 32; i++)
+            {
+                var firstBit = (n >> i) & 1;
+                if (firstBit == 1) count++;
+            }
+            return count;
         }
     }
 }
