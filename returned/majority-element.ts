@@ -8,17 +8,13 @@ export { majorityElement };
 
 function majorityElement(nums: number[]): number {
   const majority_length = Math.floor(nums.length / 2);
-  const hash = new Map<number, number>();
+  const hash: Record<number, number> = {};
 
   for (const num of nums) {
-    let count = hash.get(num);
-    if (count === undefined) {
-      count = 0;
-    }
-    hash.set(num, ++count);
-    if (count > majority_length) {
-      return num;
-    }
+    let count = hash[num];
+    if (count === undefined) count = 0;
+    hash[num] = ++count;
+    if (count > majority_length) return num;
   }
 
   throw 'No majority element';
