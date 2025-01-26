@@ -8,17 +8,14 @@
 export { removeDuplicates };
 
 function removeDuplicates(nums: number[]): number {
-  let i = 0;
-  let j = 0;
+  let index = 1;
 
-  while (j < nums.length) {
-    while (nums[j] === nums[j + 1]) {
-      j++;
-    }
-    if (j < nums.length) {
-      nums[i++] = nums[j++];
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[i - 1]) {
+      nums[index] = nums[i];
+      index++;
     }
   }
 
-  return i;
+  return index;
 }
