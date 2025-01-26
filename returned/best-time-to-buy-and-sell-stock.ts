@@ -11,8 +11,7 @@ function maxProfit(prices: number[]): number {
   let buyDay = 0;
   let max = 0;
   for (let sellDay = 1; sellDay < prices.length; sellDay++) {
-    let profit = prices[sellDay] - prices[buyDay];
-    max = Math.max(max, profit);
+    max = Math.max(max, prices[sellDay] - prices[buyDay]);
     if (prices[sellDay] < prices[buyDay]) buyDay = sellDay;
   }
   return max;
