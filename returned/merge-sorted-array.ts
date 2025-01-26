@@ -14,18 +14,13 @@ function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 
   while (i >= 0 && j >= 0) {
     if (nums1[i] > nums2[j]) {
-      nums1[head] = nums1[i];
-      i--;
+      nums1[head--] = nums1[i--];
     } else {
-      nums1[head] = nums2[j];
-      j--;
+      nums1[head--] = nums2[j--];
     }
-    head--;
   }
 
   while (j >= 0) {
-    nums1[head] = nums2[j];
-    j--;
-    head--;
+    nums1[head--] = nums2[j--];
   }
 }
