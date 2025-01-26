@@ -8,15 +8,12 @@
 export { removeElement };
 
 function removeElement(nums: number[], val: number): number {
-  let i = 0;
-  let j = 0;
-  while (j < nums.length) {
-    while (nums[j] === val) {
-      j++;
-    }
-    if (j < nums.length) {
-      nums[i++] = nums[j++];
+  let index = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== val) {
+      nums[index] = nums[i];
+      index++;
     }
   }
-  return i;
+  return index;
 }
