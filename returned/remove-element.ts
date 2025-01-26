@@ -14,7 +14,9 @@ function removeElement(nums: number[], val: number): number {
     while (nums[j] === val) {
       j++;
     }
-    if (j < nums.length) nums[i++] = nums[j++];
+    if (j < nums.length) {
+      nums[i++] = nums[j++];
+    }
   }
   return i;
 }
