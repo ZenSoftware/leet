@@ -24,8 +24,8 @@ function productExceptSelf(nums: number[]): number[] {
 
   const result = new Array(nums.length);
   result[0] = postfix[1];
-  result[nums.length - 1] = prefix[nums.length - 2];
-  for (let i = 1; i <= nums.length - 2; i++) {
+  result[result.length - 1] = prefix[prefix.length - 2];
+  for (let i = 1; i <= result.length - 2; i++) {
     result[i] = prefix[i - 1] * postfix[i + 1];
   }
 
