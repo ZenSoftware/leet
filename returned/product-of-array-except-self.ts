@@ -10,22 +10,24 @@ export { productExceptSelf };
 function productExceptSelf(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
+  const endIndex = nums.length - 1;
+
   const prefix = new Array(nums.length);
   prefix[0] = nums[0];
-  for (let i = 1; i < prefix.length; i++) {
+  for (let i = 1; i <= endIndex; i++) {
     prefix[i] = prefix[i - 1] * nums[i];
   }
 
   const postfix = new Array(nums.length);
-  postfix[postfix.length - 1] = nums[nums.length - 1];
-  for (let i = postfix.length - 2; i >= 0; i--) {
+  postfix[endIndex] = nums[endIndex];
+  for (let i = endIndex - 1; i >= 0; i--) {
     postfix[i] = nums[i] * postfix[i + 1];
   }
 
   const result = new Array(nums.length);
   result[0] = postfix[1];
-  result[result.length - 1] = prefix[prefix.length - 2];
-  for (let i = 1; i <= result.length - 2; i++) {
+  result[endIndex] = prefix[endIndex - 1];
+  for (let i = 1; i <= endIndex - 1; i++) {
     result[i] = prefix[i - 1] * postfix[i + 1];
   }
 
