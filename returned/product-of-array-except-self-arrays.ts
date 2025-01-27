@@ -10,18 +10,25 @@ export { productExceptSelf };
 function productExceptSelf(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
 
-  // prefix pass
-  const result = new Array(nums.length);
-  result[0] = 1;
-  for (let i = 1; i < nums.length; i++) {
-    result[i] = result[i - 1] * nums[i - 1];
+  const endIndex = nums.length - 1;
+
+  const prefix = new Array(nums.length);
+  prefix[0] = nums[0];
+  for (let i = 1; i <= endIndex; i++) {
+    prefix[i] = prefix[i - 1] * nums[i];
   }
 
-  // postfix pass
-  let postfix = 1;
-  for (let i = nums.length - 2; i >= 0; i--) {
-    postfix *= nums[i + 1];
-    result[i] *= postfix;
+  const postfix = new Array(nums.length);
+  postfix[endIndex] = nums[endIndex];
+  for (let i = endIndex - 1; i >= 0; i--) {
+    postfix[i] = nums[i] * postfix[i + 1];
+  }
+
+  const result = new Array(nums.length);
+  result[0] = postfix[1];
+  result[endIndex] = prefix[endIndex - 1];
+  for (let i = 1; i <= endIndex - 1; i++) {
+    result[i] = prefix[i - 1] * postfix[i + 1];
   }
 
   return result;
