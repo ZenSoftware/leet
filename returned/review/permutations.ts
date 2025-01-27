@@ -1,19 +1,19 @@
-function permutations(elements: number[]): number[][] {
+function permutations<T>(elements: T[]): T[][] {
   if (elements.length === 0) return [[]];
 
   const firstEl = elements[0];
   const withoutFirst = elements.slice(1);
   const permsWithoutFirst = permutations(withoutFirst);
-  const permsWithFirst: number[][] = [];
+  const allPermutations: T[][] = [];
 
   for (let perm of permsWithoutFirst) {
     for (let i = 0; i <= perm.length; i++) {
       const permWithFirst = [...perm.slice(0, i), firstEl, ...perm.slice(i)];
-      permsWithFirst.push(permWithFirst);
+      allPermutations.push(permWithFirst);
     }
   }
 
-  return permsWithFirst;
+  return allPermutations;
 }
 
-console.log(permutations([1, 2, 3]));
+console.log(permutations([1, 2, 'a']));
