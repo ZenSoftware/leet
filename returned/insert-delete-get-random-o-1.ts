@@ -42,8 +42,6 @@ class RandomizedSet {
   }
 
   private swap(a: number, b: number) {
-    const temp = this.elements[a];
-    this.elements[a] = this.elements[b];
-    this.elements[b] = temp;
+    [this.elements[a], this.elements[b]] = [this.elements[b], this.elements[a]];
   }
 }
