@@ -17,21 +17,21 @@ function convert(s: string, numRows: number): string {
 
   let i = 0;
   let n = 0;
-  let forward = true;
+  let ascending = true;
 
   while (i < s.length) {
     result[n] += s[i];
 
-    if (forward) {
+    if (ascending) {
       if (n === numRows - 1) {
-        forward = false;
+        ascending = false;
         n--;
       } else {
         n++;
       }
     } else {
       if (n === 0) {
-        forward = true;
+        ascending = true;
         n++;
       } else {
         n--;
