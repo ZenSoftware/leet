@@ -7,22 +7,17 @@
 export { longestCommonPrefix };
 
 function longestCommonPrefix(strs: string[]): string {
-  let result = '';
   let index = 0;
+  const sorted = strs.sort((a, b) => (a < b ? -1 : 1));
+  const firstWord = sorted[0];
+  const lastWord = sorted[sorted.length - 1];
 
-  while (index < strs[0].length) {
-    let equals = true;
-
-    for (let i = 1; i < strs.length; i++) {
-      if (strs[0][index] !== strs[i][index]) {
-        equals = false;
-        break;
-      }
+  for (let i = 0; i < firstWord.length; i++) {
+    if (firstWord[i] !== lastWord[i]) {
+      break;
     }
-
-    if (!equals) break;
-    result += strs[0][index++];
+    index++;
   }
 
-  return result;
+  return firstWord.slice(0, index);
 }
