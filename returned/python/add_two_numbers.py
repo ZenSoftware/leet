@@ -25,4 +25,33 @@ def to_array(head: Optional[ListNode]) -> List[int]:
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        return None
+        dummy_result_head = ListNode()
+        pointer = dummy_result_head
+        carry = 0
+
+        while (l1 != None) | (l2 != None):
+            if l1 == None:
+                sum = l2.val + carry
+                l2 = l2.next
+            elif l2 == None:
+                sum = l1.val + carry
+                l1 = l1.next
+            else:
+                sum = l1.val + l2.val + carry
+                l1 = l1.next
+                l2 = l2.next
+                
+            if sum >= 10:
+                sum -= 10
+                carry = 1
+            else:
+                carry = 0
+
+            pointer.next = ListNode(sum)
+            pointer = pointer.next
+            
+
+        if carry == 1:
+            pointer.next = ListNode(1)
+            
+        return dummy_result_head.next
