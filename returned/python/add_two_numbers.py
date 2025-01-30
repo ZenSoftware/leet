@@ -4,11 +4,7 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-
-class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        return None
-
+        
 def to_nodes(array: List[int]) -> Optional[ListNode]:
     if len(array) == 0:
         return None
@@ -26,3 +22,7 @@ def to_array(head: Optional[ListNode]) -> List[int]:
         result.append(head.val)
         head = head.next
     return result
+
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        return None
