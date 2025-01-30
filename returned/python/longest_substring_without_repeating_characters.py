@@ -3,15 +3,14 @@ class Solution:
         if len(s) <= 1:
             return len(s)
         maximum = 1
-        i = 0
-        while i <= len(s) - 1 - maximum:
-            cache = set(s[i])
-            j = i+1
-            while j <= len(s) - 1:
-                if s[j] in cache:
-                    break
-                maximum = max(maximum, j-i+1)
-                cache.add(s[j])
-                j += 1
-            i += 1
+        l = 0
+        r = 1
+        cache = set(s[0])
+        while r <= len(s) - 1:
+            while (s[r] in cache) & (l < r):
+                cache.remove(s[l])
+                l += 1
+            cache.add(s[r])
+            maximum = max(maximum, r - l + 1)
+            r += 1
         return maximum
