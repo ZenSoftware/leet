@@ -10,6 +10,3 @@ class Solution:
             if dif in cache:
                 return [cache[dif], i]
             cache[nums[i]] = i
-
-sol = Solution.twoSum(None, [2,7,11,15], 9)
-print(sol)
