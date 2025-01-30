@@ -3,7 +3,7 @@ class Solution:
         result = 0
         l = 0
         char_set = set()
-
+        
         for r in range(len(s)):
             while s[r] in char_set:
                 char_set.remove(s[l])
