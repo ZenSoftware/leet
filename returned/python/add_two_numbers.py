@@ -22,8 +22,7 @@ def to_array(head: Optional[ListNode]) -> List[int]:
     if head == None:
         return []
     result = []
-    pointer = head
-    while pointer != None:
-        result.append(pointer.val)
-        pointer = pointer.next
+    while head != None:
+        result.append(head.val)
+        head = head.next
     return result
