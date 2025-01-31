@@ -12,9 +12,8 @@ class Solution:
                 k = j+1
                 while k < nums_len:
                     if nums[i] + nums[j] + nums[k] == 0:
-                        array_results =[nums[i], nums[j], nums[k]]
+                        array_results = [nums[i], nums[j], nums[k]]
                         array_results.sort()
-                        # result.append((nums[i], nums[j], nums[k]))
                         result.add(tuple(array_results))
                     k += 1
                 j += 1
