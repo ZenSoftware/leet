@@ -11,9 +11,7 @@ class Solution:
             while j < k:
                 total = nums[i] + nums[j] + nums[k]
                 if total == 0:
-                    entry = [nums[i], nums[j], nums[k]]
-                    entry.sort()
-                    result.add(tuple(entry))
+                    result.add((nums[i], nums[j], nums[k]))
                     j += 1
                     k -= 1
                 elif total < 0:
