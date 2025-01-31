@@ -3,20 +3,23 @@ from typing import List
 
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
         result = set()
         i = 0
-        nums_len = len(nums)
-        while i < nums_len - 2:
-            j = i+1
-            while j < nums_len - 1:
-                k = j+1
-                while k < nums_len:
-                    if nums[i] + nums[j] + nums[k] == 0:
-                        array_results = [nums[i], nums[j], nums[k]]
-                        array_results.sort()
-                        result.add(tuple(array_results))
-                    k += 1
-                j += 1
+        while i < len(nums) - 2:
+            j, k = i+1, len(nums)-1
+            while j < k:
+                total = nums[i] + nums[j] + nums[k]
+                if total == 0:
+                    entry = [nums[i], nums[j], nums[k]]
+                    entry.sort()
+                    result.add(tuple(entry))
+                    j += 1
+                    k -= 1
+                elif total < 0:
+                    j += 1
+                else:
+                    k -= 1
             i += 1
-        result = [list(x) for x in result]
-        return result
+        return [list(x) for x in result]
+        
