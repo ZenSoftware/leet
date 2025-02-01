@@ -7,13 +7,7 @@ class ListNode:
         self.val = val
         self.next = next
     def __lt__(self, other):
-        self.val < other.val
-    def __le__(self, other):
-        self.val <= other.val
-    def __gt__(self, other):
-        self.val > other.val
-    def __ge__(self, other):
-        self.val >= other.val
+        return self.val < other.val
 
 def to_nodes(elements: List[int]) -> Optional[ListNode]:
     if not elements:
