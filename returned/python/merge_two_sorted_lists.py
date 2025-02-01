@@ -42,7 +42,7 @@ class Solution:
             p2 = list1
 
         while p1 and p2:
-            while p1.next and p2 and (p1.next.val <= p2.val):
+            while p1.next and (p1.next.val <= p2.val):
                 p1 = p1.next
 
             if p1.val <= p2.val:
