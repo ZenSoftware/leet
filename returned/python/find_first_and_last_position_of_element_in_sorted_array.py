@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def bs(is_searching_left):    
+        def binary_search(is_searching_left):    
             left = 0
             right = len(nums) - 1
             index = -1
@@ -20,6 +20,6 @@ class Solution:
                     else:
                         left = mid + 1    
             return index
-        left_index = bs(True)
-        right_index = bs(False)
-        return [left_index, right_index]
+        left = binary_search(True)
+        right = binary_search(False)
+        return [left, right]
