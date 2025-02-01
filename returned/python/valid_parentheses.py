@@ -2,16 +2,13 @@
 
 class Solution:
     def isValid(self, s: str) -> bool:
-        progress = []
-        for b in s:
-            if b == '{' or b == '(' or b == '[':
-                progress.append(b)
-            elif len(progress) == 0:
+        stack = []
+        mappings = {'}':'{', ')':'(', ']':'['}
+        for c in s:
+            if c in mappings.values():
+                stack.append(c)
+            elif not stack:
                 return False
-            elif b == '}' and progress.pop() != '{':
+            elif stack.pop() != mappings[c]:
                 return False
-            elif b == ')' and progress.pop() != '(':
-                return False
-            elif b == ']' and progress.pop() != '[':
-                return False
-        return len(progress) == 0
+        return not stack
