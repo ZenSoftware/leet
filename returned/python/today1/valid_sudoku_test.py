@@ -10,4 +10,4 @@ def test1():
             ,[".","6",".",".",".",".","2","8","."]
             ,[".",".",".","4","1","9",".",".","5"]
             ,[".",".",".",".","8",".",".","7","9"]]
-    assert Solution.isValidSudoku(None,board) == True
+    assert Solution().isValidSudoku(board) == True

@@ -6,16 +6,16 @@ def test1():
 
 def test2():
     lists = to_node_list([[1,4,5],[1,3,4],[2,6]])
-    result = Solution.mergeKLists(None, lists)
+    result = Solution().mergeKLists(lists)
     assert to_array(result) == [1,1,2,3,4,4,5,6]
     
 # def test3():
 #     lists = to_node_list([])
-#     result = Solution.mergeKLists(None, lists)
+#     result = Solution().mergeKLists(lists)
 #     assert to_array(result) == []
 
 # def test4():
 #     lists = to_node_list([[]])
-#     result = Solution.mergeKLists(None, lists)
+#     result = Solution().mergeKLists(lists)
 #     assert to_array(result) == []
 

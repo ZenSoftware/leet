@@ -27,7 +27,7 @@ def to_array(head: Optional[ListNode]) -> List[int]:
 
 class Solution:
     def swapPairs(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        dummy = ListNode(None, head)
+        dummy = ListNode(next=head)
         p = dummy
 
         while p and p.next and p.next.next:

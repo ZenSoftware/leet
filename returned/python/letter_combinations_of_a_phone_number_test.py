@@ -1,10 +1,10 @@
 from letter_combinations_of_a_phone_number import Solution
 
 def test1():
-    assert Solution.letterCombinations(None, "23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+    assert Solution().letterCombinations("23") == ["ad","ae","af","bd","be","bf","cd","ce","cf"]
 
 def test2():
-    assert Solution.letterCombinations(None, "") == []
+    assert Solution().letterCombinations("") == []
 
 def test3():
-    assert Solution.letterCombinations(None, "2") == ["a","b","c"]
+    assert Solution().letterCombinations("2") == ["a","b","c"]

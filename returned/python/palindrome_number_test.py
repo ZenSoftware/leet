@@ -1,10 +1,10 @@
 from palindrome_number import Solution
 
 def test1():
-    assert Solution.isPalindrome(None, 121) == True
+    assert Solution().isPalindrome(121) == True
 
 def test2():
-    assert Solution.isPalindrome(None, -121) == False
+    assert Solution().isPalindrome(-121) == False
 
 def test3():
-    assert Solution.isPalindrome(None, 10) == False
+    assert Solution().isPalindrome(10) == False
