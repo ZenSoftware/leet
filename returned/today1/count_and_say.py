@@ -5,7 +5,6 @@ class Solution:
         def rle(chars: str, s: int) -> str:
             if s == n:
                 return chars
-
             output = ''
             current = chars[0]
             count = 0
@@ -17,6 +16,5 @@ class Solution:
                     current = c
                     count = 1
             output += str(count) + current
-
             return rle(output, s+1)
         return rle('1',1)
