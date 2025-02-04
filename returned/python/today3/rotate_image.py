@@ -6,8 +6,8 @@ class Solution:
         l, r = 0, len(matrix) - 1
 
         while l < r:
+            t, b = l, r
             for i in range(r-l):
-                t, b = l, r
                 topLeft = matrix[t][l+i]
                 matrix[t][l+i] = matrix[b-i][l]
                 matrix[b-i][l] = matrix[b][r-i]
