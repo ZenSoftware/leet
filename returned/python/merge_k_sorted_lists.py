@@ -6,8 +6,6 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
-    def __lt__(self, other):
-        return self.val < other.val
 
 def to_nodes(elements: List[int]) -> Optional[ListNode]:
     if not elements:
@@ -37,9 +35,11 @@ def to_array(head: Optional[ListNode]) -> List[int]:
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        lists = [x for x in lists if x != None]
         dummy = ListNode()
         current = dummy
 
+        ListNode.__lt__ = lambda self, other: self.val < other.val
         heapify(lists)
 
         while lists:
