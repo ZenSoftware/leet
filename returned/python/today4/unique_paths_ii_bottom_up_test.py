@@ -1,4 +1,4 @@
-from unique_paths_ii import Solution
+from unique_paths_ii_bottom_up import Solution
 
 def test1():
     assert Solution().uniquePathsWithObstacles([[0,0,0],[0,1,0],[0,0,0]]) == 2
