@@ -9,11 +9,13 @@ class Solution:
         row_count = len(matrix)
         col_count = len(matrix[0])
 
+        # Replace all 0s with 'T'
         for i in range(row_count):
             for j in range(col_count):
                 if matrix[i][j] == 0:
                     matrix[i][j] = 'T'
         
+        # Set rows and cols to 0
         for i in range(row_count):
             for j in range(col_count):
                 if matrix[i][j] == 'T':
@@ -23,7 +25,8 @@ class Solution:
                     for c in range(col_count):
                         if matrix[i][c] != 'T':
                             matrix[i][c] = 0
-        
+
+        # Replace all 'T's with 0
         for i in range(row_count):
             for j in range(col_count):
                 if matrix[i][j] == 'T':
