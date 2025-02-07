@@ -7,12 +7,12 @@ class Solution:
         def dfs(i: int) -> int:
             if i == len(s):
                 return 1
+            if s[i] == '0':
+                return 0
             if i in memo:
                 return memo[i]
-            count = 0
-            if s[i] != '0':
-                count += dfs(i+1)
-            if i <= len(s)-2 and s[i] != '0' and int(s[i:i+2]) <= 26:
+            count = dfs(i+1)
+            if i+1 < len(s) and int(s[i]+s[i+1]) <= 26:
                 count += dfs(i+2)
             memo[i] = count
             return count
