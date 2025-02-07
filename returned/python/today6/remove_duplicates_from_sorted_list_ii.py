@@ -27,15 +27,15 @@ def to_array(head: Optional[ListNode]) -> List[int]:
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(next=head)
-        pointer = dummy
+        p = dummy
 
-        while pointer.next:
-            if pointer.next.next and pointer.next.val == pointer.next.next.val:
-                dup_pointer = pointer.next.next
-                while dup_pointer.next and dup_pointer.val == dup_pointer.next.val:
-                    dup_pointer = dup_pointer.next
-                pointer.next = dup_pointer.next
+        while p.next:
+            if p.next.next and p.next.val == p.next.next.val:
+                dup = p.next.next
+                while dup.next and dup.val == dup.next.val:
+                    dup = dup.next
+                p.next = dup.next
             else:
-                pointer = pointer.next
+                p = p.next
 
         return dummy.next
