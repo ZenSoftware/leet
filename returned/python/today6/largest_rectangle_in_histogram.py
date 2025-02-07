@@ -5,23 +5,21 @@ class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
         largest = float('-inf')
         stack = []
-        i = 0
-        
-        while i < len(heights):
-            if not stack or heights[i] >= stack[-1][1]:
-                stack.append((i, heights[i]))
+
+        for i, h in enumerate(heights):
+            if not stack or h >= stack[-1][1]:
+                stack.append((i, h))
             else:
-                while stack and stack[-1][1] > heights[i]:
-                    (index, height) = stack.pop()
-                    area = (i - index) * height
+                while stack and stack[-1][1] > h:
+                    (j, height) = stack.pop()
+                    area = (i - j) * height
                     if area > largest:
                         largest = area
-                stack.append((index, heights[i]))
-            i += 1
-
+                stack.append((j, h))
+ 
         while stack:
-            (index, height) = stack.pop()
-            area = (i - index) * height
+            (j, height) = stack.pop()
+            area = (len(heights) - j) * height
             if area > largest:
                 largest = area
 
