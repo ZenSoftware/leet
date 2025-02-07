@@ -7,20 +7,15 @@ class Solution:
         stack = []
 
         for i, h in enumerate(heights):
-            if not stack or h >= stack[-1][1]:
-                stack.append((i, h))
-            else:
-                while stack and stack[-1][1] > h:
-                    j, height = stack.pop()
-                    area = (i - j) * height
-                    if area > largest:
-                        largest = area
-                stack.append((j, h))
+            start = i
+            while stack and stack[-1][1] > h:
+                index, height = stack.pop()
+                largest = max(largest, (i - index) * height)
+                start = index
+            stack.append((start, h))
  
         while stack:
-            j, height = stack.pop()
-            area = (len(heights) - j) * height
-            if area > largest:
-                largest = area
+            index, height = stack.pop()
+            largest = max(largest, (len(heights) - index) * height)
 
         return largest
