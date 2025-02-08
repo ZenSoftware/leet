@@ -9,8 +9,7 @@ class Node:
 
 def bfs(root: Node) -> List[int]:
     result = []
-    stack = deque()
-    stack.append(root)
+    stack = deque([root])
 
     while stack:
         level_size = len(stack)
