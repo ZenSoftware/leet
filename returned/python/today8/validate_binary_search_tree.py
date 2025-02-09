@@ -11,7 +11,6 @@ class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         if not root:
             return True
-        
         left_valid = self.allLessThan(root, root.left) and self.isValidBST(root.left)
         right_valid = self.allGreaterThan(root, root.right) and self.isValidBST(root.right)
         return left_valid and right_valid
