@@ -9,22 +9,13 @@ class TreeNode:
 
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
-        left_valid = self.allLessThan(root, root.left) and self.isValidBST(root.left)
-        right_valid = self.allGreaterThan(root, root.right) and self.isValidBST(root.right)
-        return left_valid and right_valid
-    
-    def allGreaterThan(self, root: Optional[TreeNode], node: Optional[TreeNode]) -> bool:
-        if not node:
-            return True
-        if root.val >= node.val:
-            return False
-        return self.allGreaterThan(root, node.left) and self.allGreaterThan(root, node.right)
-    
-    def allLessThan(self, root: Optional[TreeNode], node: Optional[TreeNode]) -> bool:
-        if not node:
-            return True
-        if root.val <= node.val:
-            return False
-        return self.allLessThan(root, node.left) and self.allLessThan(root, node.right)
+        def valid(node, left, right):
+            if not node:
+                return True
+            if not (left < node.val < right):
+                return False
+            
+            left_valid = valid(node.left, left, node.val)
+            right_valid = valid(node.right, node.val, right)
+            return left_valid and right_valid
+        return valid(root, float('-inf'), float('inf'))

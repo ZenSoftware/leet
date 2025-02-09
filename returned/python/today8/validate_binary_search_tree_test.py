@@ -19,5 +19,4 @@ def test2():
     n6.left = n3
     n6.right = n7
 
-    assert Solution().allGreaterThan(n5, n6) == False
     assert Solution().isValidBST(n5) == False
