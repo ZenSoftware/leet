@@ -14,9 +14,11 @@ class Solution:
         
         result = []
         def dfs(node: Optional[TreeNode], sum: int, path: List[int]) -> None:
-            if node.left == None and node.right == None and sum - node.val == 0:
-                result.append(path + [node.val])
-            
+            if node.left == None and node.right == None:
+                if sum - node.val == 0:
+                    result.append(path + [node.val])
+                return
+
             path.append(node.val)
             if node.left:
                 dfs(node.left, sum-node.val, path)
