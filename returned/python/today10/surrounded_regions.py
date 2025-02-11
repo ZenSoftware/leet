@@ -35,8 +35,8 @@ class Solution:
         def queue_add(row, col):
             if ((0 <= row < row_count) and
                 (0 <= col < col_count) and
-                (row,col) not in visited and
-                board[row][col] == 'O'):
+                board[row][col] == 'O' and
+                (row,col) not in visited):
                 visited.add((row,col))
                 queue.append((row,col))
 
