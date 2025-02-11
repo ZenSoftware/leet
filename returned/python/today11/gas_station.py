@@ -3,15 +3,7 @@ from typing import List
 
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        total_gas = 0
-        for g in gas:
-            total_gas += g
-
-        total_cost = 0
-        for c in cost:
-            total_cost += c
-        
-        if total_gas - total_cost < 0:
+        if sum(gas) - sum(cost) < 0:
             return -1
         
         for i in range(len(gas) - 1):
