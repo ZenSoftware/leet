@@ -7,12 +7,12 @@ class Solution:
         col_count = len(board[0])
 
         for col in range(col_count):
-            self.bfs((0, col), board)
-            self.bfs((row_count-1, col), board)
+            self.mark_exclude((0, col), board)
+            self.mark_exclude((row_count-1, col), board)
 
         for row in range(1, row_count-1):
-            self.bfs((row, 0), board)
-            self.bfs((row, col_count-1), board)
+            self.mark_exclude((row, 0), board)
+            self.mark_exclude((row, col_count-1), board)
         
         for row in range(row_count):
             for col in range(col_count):
@@ -21,7 +21,7 @@ class Solution:
                 elif board[row][col] == 'T':
                     board[row][col] = 'O'
 
-    def bfs(self, coord: Tuple[int, int], board: List[List[str]]):
+    def mark_exclude(self, coord: Tuple[int, int], board: List[List[str]]):
         if board[coord[0]][coord[1]] == 'X':
             return
         
