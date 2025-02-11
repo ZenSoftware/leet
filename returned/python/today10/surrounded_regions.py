@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/surrounded-regions/
 from collections import deque
 from typing import List, Tuple
 
@@ -27,10 +28,8 @@ class Solution:
         
         row_count = len(board)
         col_count = len(board[0])
-        visited = set()
-        visited.add(coord)
-        queue = deque()
-        queue.append(coord)
+        visited = set([coord])
+        queue = deque([coord])
 
         def queue_add(row, col):
             if ((0 <= row < row_count) and
