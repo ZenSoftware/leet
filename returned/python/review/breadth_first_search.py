@@ -9,18 +9,18 @@ class Node:
 
 def bfs(root: Node) -> List[int]:
     result = []
-    stack = deque([root])
+    queue = deque([root])
 
-    while stack:
-        level_size = len(stack)
+    while queue:
+        level_size = len(queue)
         level_vals = []
         for _ in range(level_size):
-            node = stack.popleft()
+            node = queue.popleft()
             level_vals.append(node.val)
             if node.left:
-                stack.append(node.left)
+                queue.append(node.left)
             if node.right:
-                stack.append(node.right)
+                queue.append(node.right)
         result.append(level_vals)
     
     return result

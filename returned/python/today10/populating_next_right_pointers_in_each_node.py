@@ -13,17 +13,17 @@ class Solution:
         if not root:
             return None
         
-        stack = deque([root])
-        while stack:
-            level_size = len(stack)
+        queue = deque([root])
+        while queue:
+            level_size = len(queue)
 
             for i in range(level_size - 1):
-                stack[i].next = stack[i+1]
+                queue[i].next = queue[i+1]
 
             for _ in range(level_size):
-                node = stack.popleft()
+                node = queue.popleft()
                 if node.left:
-                    stack.append(node.left)
+                    queue.append(node.left)
                 if node.right:
-                    stack.append(node.right)
+                    queue.append(node.right)
         return root

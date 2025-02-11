@@ -12,16 +12,16 @@ class Solution:
         if not root:
             return []
         result = []
-        stack = deque([root])
-        while stack:
-            level_size = len(stack)
+        queue = deque([root])
+        while queue:
+            level_size = len(queue)
             level_result = []
             for _ in range(level_size):
-                next = stack.popleft()
+                next = queue.popleft()
                 level_result.append(next.val)
                 if next.left:
-                    stack.append(next.left)
+                    queue.append(next.left)
                 if next.right:
-                    stack.append(next.right)
+                    queue.append(next.right)
             result.append(level_result)
         return result
