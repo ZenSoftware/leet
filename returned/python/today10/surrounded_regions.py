@@ -8,12 +8,12 @@ class Solution:
         col_count = len(board[0])
 
         for col in range(col_count):
-            self.mark_exclude((0, col), board)
-            self.mark_exclude((row_count-1, col), board)
+            self.mark_exclude(board, (0, col))
+            self.mark_exclude(board, (row_count-1, col))
 
         for row in range(1, row_count-1):
-            self.mark_exclude((row, 0), board)
-            self.mark_exclude((row, col_count-1), board)
+            self.mark_exclude(board, (row, 0))
+            self.mark_exclude(board, (row, col_count-1))
         
         for row in range(row_count):
             for col in range(col_count):
@@ -22,7 +22,7 @@ class Solution:
                 elif board[row][col] == 'T':
                     board[row][col] = 'O'
 
-    def mark_exclude(self, coord: Tuple[int, int], board: List[List[str]]):
+    def mark_exclude(self, board: List[List[str]], coord: Tuple[int, int]):
         if board[coord[0]][coord[1]] == 'X':
             return
         
