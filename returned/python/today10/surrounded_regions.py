@@ -36,6 +36,7 @@ class Solution:
                 (0 <= col < col_count) and
                 board[row][col] == 'O' and
                 (row,col) not in visited):
+                
                 visited.add((row,col))
                 queue.append((row,col))
 
