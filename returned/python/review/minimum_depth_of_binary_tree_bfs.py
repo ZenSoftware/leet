@@ -16,8 +16,7 @@ class Solution:
         queue = deque([root])
         depth = 1
         while queue:
-            level_size = len(queue)
-            for _ in range(level_size):
+            for _ in range(len(queue)):
                 node = queue.popleft()
                 if node.left == None and node.right == None:
                     return depth

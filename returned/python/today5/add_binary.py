@@ -7,7 +7,7 @@ class Solution:
         ans = []
         carry = 0
         while index_a >= 0 or index_b >= 0 or carry == 1:
-            digit_a, digit_b = 0
+            digit_a, digit_b = 0, 0
             if index_a >= 0:
                 digit_a = int(a[index_a])
             if index_b >= 0:

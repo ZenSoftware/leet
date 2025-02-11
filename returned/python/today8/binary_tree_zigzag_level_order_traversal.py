@@ -16,9 +16,8 @@ class Solution:
         queue = deque([root])
         left_to_right = True
         while queue:
-            level_size = len(queue)
             level_result = []
-            for _ in range(level_size):
+            for _ in range(len(queue)):
                 next = queue.popleft()
                 if next.left:
                     queue.append(next.left)

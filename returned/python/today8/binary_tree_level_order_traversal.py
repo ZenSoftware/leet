@@ -14,9 +14,8 @@ class Solution:
         result = []
         queue = deque([root])
         while queue:
-            level_size = len(queue)
             level_result = []
-            for _ in range(level_size):
+            for _ in range(len(queue)):
                 next = queue.popleft()
                 level_result.append(next.val)
                 if next.left:

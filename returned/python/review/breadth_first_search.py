@@ -12,9 +12,8 @@ def bfs(root: Node) -> List[int]:
     queue = deque([root])
 
     while queue:
-        level_size = len(queue)
         level_vals = []
-        for _ in range(level_size):
+        for _ in range(len(queue)):
             node = queue.popleft()
             level_vals.append(node.val)
             if node.left:
