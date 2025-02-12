@@ -4,19 +4,19 @@ from typing import List, Tuple
 
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
-        row_count = len(board)
-        col_count = len(board[0])
+        rows = len(board)
+        cols = len(board[0])
 
-        for col in range(col_count):
+        for col in range(cols):
             self.mark_exclude(board, (0, col))
-            self.mark_exclude(board, (row_count-1, col))
+            self.mark_exclude(board, (rows-1, col))
 
-        for row in range(1, row_count-1):
+        for row in range(1, rows-1):
             self.mark_exclude(board, (row, 0))
-            self.mark_exclude(board, (row, col_count-1))
+            self.mark_exclude(board, (row, cols-1))
         
-        for row in range(row_count):
-            for col in range(col_count):
+        for row in range(rows):
+            for col in range(cols):
                 if board[row][col] == 'O':
                     board[row][col] = 'X'
                 elif board[row][col] == 'T':
@@ -26,14 +26,14 @@ class Solution:
         if board[coord[0]][coord[1]] == 'X':
             return
         
-        row_count = len(board)
-        col_count = len(board[0])
+        rows = len(board)
+        cols = len(board[0])
         visited = set([coord])
         queue = deque([coord])
 
         def queue_add(row, col):
-            if ((0 <= row < row_count) and
-                (0 <= col < col_count) and
+            if (row in range(rows) and
+                col in range(cols) and
                 board[row][col] == 'O' and
                 (row,col) not in visited):
                 
