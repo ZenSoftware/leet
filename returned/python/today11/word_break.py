@@ -12,11 +12,9 @@ class Solution:
                 return False
             if (l,r) in memo:
                 return memo[(l,r)]
-        
-            segment = s[l:r+1]
             
             result = False
-            if segment in wordDict:
+            if s[l:r+1] in wordDict:
                 result = dfs(r+1, r+1)
 
             memo[(l,r)] = result or dfs(l, r+1)
