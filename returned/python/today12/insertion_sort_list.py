@@ -8,9 +8,6 @@ class ListNode:
 
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head:
-            return head
-        
         dummy = ListNode(float('-inf'), next=head)
         pointer = head
         prev = dummy
