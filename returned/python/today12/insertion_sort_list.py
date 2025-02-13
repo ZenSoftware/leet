@@ -15,16 +15,16 @@ class Solution:
         pointer = head
         prev = dummy
         while pointer:
-            next_node = pointer.next
+            next = pointer.next
             if pointer.val < prev.val:
                 temp = dummy
                 while pointer.val > temp.next.val:
                     temp = temp.next
                 pointer.next = temp.next
                 temp.next = pointer
-                prev.next = next_node
+                prev.next = next
             else:
                 prev = prev.next
-            pointer = next_node
+            pointer = next
         
         return dummy.next
