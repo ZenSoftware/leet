@@ -13,7 +13,7 @@ class Solution:
         prev = dummy
         while current:
             next = current.next
-            if current.val < prev.val:
+            if prev.val > current.val:
                 temp = dummy
                 while current.val > temp.next.val:
                     temp = temp.next
