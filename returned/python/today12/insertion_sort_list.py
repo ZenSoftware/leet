@@ -15,7 +15,7 @@ class Solution:
             next = current.next
             if prev.val > current.val:
                 temp = dummy
-                while current.val > temp.next.val:
+                while temp.next.val < current.val:
                     temp = temp.next
                 current.next = temp.next
                 temp.next = current
