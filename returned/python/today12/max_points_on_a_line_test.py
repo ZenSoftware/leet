@@ -5,3 +5,6 @@ def test1():
 
 def test2():
     assert Solution().maxPoints([[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]) == 4
+
+def test3():
+    assert Solution().maxPoints([[0,1],[0,0]]) == 2
