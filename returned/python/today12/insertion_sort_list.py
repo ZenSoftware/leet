@@ -9,19 +9,19 @@ class ListNode:
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode(float('-inf'), next=head)
-        pointer = head
+        current = head
         prev = dummy
-        while pointer:
-            next = pointer.next
-            if pointer.val < prev.val:
+        while current:
+            next = current.next
+            if current.val < prev.val:
                 temp = dummy
-                while pointer.val > temp.next.val:
+                while current.val > temp.next.val:
                     temp = temp.next
-                pointer.next = temp.next
-                temp.next = pointer
+                current.next = temp.next
+                temp.next = current
                 prev.next = next
             else:
                 prev = prev.next
-            pointer = next
+            current = next
         
         return dummy.next
