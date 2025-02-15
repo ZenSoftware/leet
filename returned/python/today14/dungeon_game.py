@@ -26,5 +26,4 @@ class Solution:
             dfs(x+1, y, new_initial, new_current)
 
         dfs(0, 0, 1, 1)
-        
         return min_initial
