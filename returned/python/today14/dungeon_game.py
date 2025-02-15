@@ -11,8 +11,8 @@ class Solution:
             if x not in range(rows) or y not in range(cols):
                 return
             
-            new_current = current + dungeon[x][y]
             new_initial = initial
+            new_current = current + dungeon[x][y]
             if new_current <= 0:
                 new_initial += abs(new_current) + 1
                 new_current = 1
