@@ -7,7 +7,7 @@ class Solution:
         cols = len(dungeon[0])
         min_initial = float('inf')
 
-        def dfs(x: int, y: int, current: int, initial: int):
+        def dfs(x: int, y: int, initial: int, current: int):
             if x not in range(rows) or y not in range(cols):
                 return
             
@@ -22,8 +22,8 @@ class Solution:
                 min_initial = min(min_initial, new_initial)
                 return
             
-            dfs(x, y+1, new_current, new_initial)
-            dfs(x+1, y, new_current, new_initial)
+            dfs(x, y+1, new_initial, new_current)
+            dfs(x+1, y, new_initial, new_current)
 
         dfs(0, 0, 1, 1)
         
