@@ -1,4 +1,4 @@
-from dungeon_game import Solution
+from dungeon_game_bottom_up import Solution
 
 def test1():
     assert Solution().calculateMinimumHP([[-2,-3,3],[-5,-10,1],[10,30,-5]]) == 7
