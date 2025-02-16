@@ -11,5 +11,4 @@ class Solution:
             else:
                 shifted = digit >> (i-15)*2-1
             result = result | shifted
-            print(format(result, '032b'))
         return result
