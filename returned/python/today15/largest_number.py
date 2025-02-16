@@ -3,17 +3,13 @@ from typing import List
 
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
-        numStrs = [str(n) for n in nums]
+        numStrs = list(map(str, nums))
         numStrs = self._mergeSort(numStrs)
-        joined = "".join(numStrs)
-        trimmed = self._trimLeadingZeros(joined)
-        return trimmed
-    
-    def _trimLeadingZeros(self, s: str) -> str:
-        i = 0
-        while s[i] == '0' and i < len(s) - 1:
-            i += 1
-        return s[i:]
+        
+        if numStrs[0] == '0':
+            return '0'
+        
+        return "".join(numStrs)
 
     def _mergeSort(self, numStrs: List[str]) -> List[str]:
         def merge(left: List[str], right: List[str]) -> List[str]:
