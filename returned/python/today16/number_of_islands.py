@@ -8,28 +8,18 @@ class Solution:
         cols = len(grid[0])
         count = 0
 
-        def bfs(row, col):
-            if (0 <= row < rows and
-                0 <= col < cols and
-                grid[row][col] == '1' and
-                (row, col) not in visited):
-                
-                visited.append((row, col))
-                queue.append((row, col))
-
         for i in range(rows):
             for j in range(cols):
                 if grid[i][j] == '1':
                     count += 1
-                    visited = [(i,j)]
                     queue = deque([(i,j)])
-
                     while queue:
                         for _ in range(len(queue)):
-                            row, col = queue.popleft()
-                            grid[row][col] = 'X'
-                            bfs(row+1,col)
-                            bfs(row-1,col)
-                            bfs(row,col+1)
-                            bfs(row,col-1)
+                            x, y = queue.popleft()
+                            if 0 <= x < rows and 0 <= y < cols and grid[x][y] == '1':
+                                grid[x][y] = 'X'
+                                queue.append((x+1, y))
+                                queue.append((x-1, y))
+                                queue.append((x, y+1))
+                                queue.append((x, y-1))
         return count
