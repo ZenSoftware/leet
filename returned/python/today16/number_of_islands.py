@@ -14,12 +14,11 @@ class Solution:
                     count += 1
                     queue = deque([(i,j)])
                     while queue:
-                        for _ in range(len(queue)):
-                            x, y = queue.popleft()
-                            if 0 <= x < rows and 0 <= y < cols and grid[x][y] == '1':
-                                grid[x][y] = 'X'
-                                queue.append((x+1, y))
-                                queue.append((x-1, y))
-                                queue.append((x, y+1))
-                                queue.append((x, y-1))
+                        x, y = queue.popleft()
+                        if 0 <= x < rows and 0 <= y < cols and grid[x][y] == '1':
+                            grid[x][y] = 'X'
+                            queue.append((x+1, y))
+                            queue.append((x-1, y))
+                            queue.append((x, y+1))
+                            queue.append((x, y-1))
         return count
