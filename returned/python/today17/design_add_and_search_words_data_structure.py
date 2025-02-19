@@ -1,9 +1,10 @@
 # https://leetcode.com/problems/design-add-and-search-words-data-structure/
+from typing import Dict
 
 class Node:
     def __init__(self, val):
         self.val = val
-        self.children = dict()
+        self.children: Dict[str, Node] = dict()
         self.terminal = False
 
 class WordDictionary:
@@ -25,8 +26,8 @@ class WordDictionary:
     def dfs(self, word: str, node: Node) -> bool:
         for i, c in enumerate(word):
             if c == '.':
-                for child in node.children:
-                    if self.dfs(word[i+1:], node.children[child]):
+                for _, child in node.children.items():
+                    if self.dfs(word[i+1:], child):
                         return True
                 return False
             elif c not in node.children:
