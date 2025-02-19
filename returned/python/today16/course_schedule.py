@@ -11,7 +11,7 @@ class Solution:
         def dfs(course: int) -> bool:
             if course in visited:
                 return False
-            if len(prereqMap[course]) == 0:
+            if prereqMap[course] == []:
                 return True
             
             visited.add(course)
@@ -26,4 +26,3 @@ class Solution:
             if not dfs(course):
                 return False
         return True
-        
