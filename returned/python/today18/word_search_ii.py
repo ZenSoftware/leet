@@ -3,8 +3,8 @@ from typing import List
 
 class Solution:
     def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        rows = len(board)
-        cols = len(board[0])
+        rows, cols = len(board), len(board[0])
+        
         def exists(r: int, c: int, word: str, i: int, visited: set) -> bool:
             if r not in range(rows):
                 return False
@@ -29,7 +29,7 @@ class Solution:
             return right or left or up or down
         
         result = []
-        def check_exists(word):
+        def scan_board(word):
             for r in range(rows):
                 for c in range(cols):
                     if exists(r, c, word, 0, set()):
@@ -37,6 +37,6 @@ class Solution:
                         return
                     
         for word in words:
-            check_exists(word)
+            scan_board(word)
                         
         return result
