@@ -6,8 +6,8 @@ class Solution:
             return s
 
         for i in range(len(s)):
-            prefix = s[len(s)-i:]
-            prefix = prefix[::-1]
+            suffix = s[len(s)-i:]
+            prefix = suffix[::-1]
             pal = prefix + s
             if self.is_palindrome(pal):
                 return pal
