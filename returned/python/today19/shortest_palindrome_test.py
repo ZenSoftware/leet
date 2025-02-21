@@ -8,3 +8,6 @@ def test2():
 
 def test3():
     assert Solution().shortestPalindrome('aba') == 'aba'
+
+def test4():
+    assert Solution().shortestPalindrome('a') == 'a'

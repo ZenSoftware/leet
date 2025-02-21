@@ -2,16 +2,14 @@
 
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
-        if len(s) == 1:
-            return s
-
         s_reversed = s[::-1]
         longest = 0
-        for i in range(1, len(s)+1):
-            prefix = s[:i]
-            suffix = s_reversed[len(s)-i:]
+        for i in range(len(s)):
+            prefix = s[:len(s)-i]
+            suffix = s_reversed[i:]
             if prefix == suffix:
-                longest = i
+                longest = len(s)-i
+                break
         
         suffix = s[longest:]
         prefix = suffix[::-1]
