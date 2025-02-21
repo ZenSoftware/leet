@@ -2,21 +2,17 @@
 
 class Solution:
     def shortestPalindrome(self, s: str) -> str:
-        if not s:
+        if len(s) == 1:
             return s
 
-        for i in range(len(s)):
-            suffix = s[len(s)-i:]
-            prefix = suffix[::-1]
-            pal = prefix + s
-            if self.is_palindrome(pal):
-                return pal
-
-    def is_palindrome(self, s: str) -> bool:
-        l, r = 0, len(s) - 1
-        while l < r:
-            if s[l] != s[r]:
-                return False
-            l += 1
-            r -= 1
-        return True
+        s_reversed = s[::-1]
+        longest = 0
+        for i in range(1, len(s)+1):
+            prefix = s[:i]
+            suffix = s_reversed[len(s)-i:]
+            if prefix == suffix:
+                longest = i
+        
+        suffix = s[longest:]
+        prefix = suffix[::-1]
+        return prefix + s

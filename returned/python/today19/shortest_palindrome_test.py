@@ -5,3 +5,6 @@ def test1():
 
 def test2():
     assert Solution().shortestPalindrome('abcd') == 'dcbabcd'
+
+def test3():
+    assert Solution().shortestPalindrome('aba') == 'aba'
