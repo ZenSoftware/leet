@@ -1,14 +1,14 @@
 # https://leetcode.com/problems/word-search-ii/
-from typing import List
+from typing import Dict, List, Tuple
 
 class TrieNode:
     def __init__(self):
-        self.children = dict()
+        self.children: Dict[str, TrieNode] = dict()
         self.terminal = None
 
 class Trie:
     def __init__(self, words: List[str]):
-        self.root = TrieNode(None)
+        self.root = TrieNode()
         for word in words:
             node = self.root
             for c in word:
@@ -16,6 +16,21 @@ class Trie:
                     node.children[c] = TrieNode()
                 node = node.children[c]
             node.terminal = word
+    
+    def prune(self, word: str):
+        node = self.root
+        path: List[Tuple[TrieNode, str]] = []
+
+        for child_key in word:
+            path.append((node, child_key))
+            node = node.children[child_key]
+        
+        for parent, child_key in reversed(path):
+            target = parent.children[child_key]
+            if len(target.children) == 0:
+                del parent.children[child_key]
+            else:
+                return
 
 class Solution:
 
@@ -34,16 +49,17 @@ class Solution:
             if board[r][c] not in node.children:
                 return
             
-            next_node = node.children[board[r][c]]
-            if next_node.terminal:
-                result.add(next_node.terminal)
+            node = node.children[board[r][c]]
+            if node.terminal:
+                result.add(node.terminal)
+                trie.prune(node.terminal)
 
             visited.add((r,c))
 
-            scan(r-1, c, next_node)
-            scan(r+1, c, next_node)
-            scan(r, c-1, next_node)
-            scan(r, c+1, next_node)
+            scan(r-1, c, node)
+            scan(r+1, c, node)
+            scan(r, c-1, node)
+            scan(r, c+1, node)
 
             visited.remove((r,c))
         

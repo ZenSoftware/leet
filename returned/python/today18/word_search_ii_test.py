@@ -23,4 +23,4 @@ def test4():
 def test5():
     board = [["o","a","b","n"],["o","t","a","e"],["a","h","k","r"],["a","f","l","v"]]
     words = ["oa","oaa"]
-    assert Solution().findWords(board, words) == ["oa","oaa"]
+    assert Solution().findWords(board, words) == ['oa', 'oaa']
