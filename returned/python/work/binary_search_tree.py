@@ -86,17 +86,14 @@ class BinarySearchTree:
                 if node.count > 1 and not force:
                     node.count -= 1
                 else:
-                    if not node.left and not node.right:
-                        return None
-                    elif not node.left and node.right:
+                    if not node.left:
                         return node.right
-                    elif node.left and not node.right:
+                    elif not node.right:
                         return node.left
-                    else:
-                        successor = get_successor(node.right)
-                        self.delete(successor.value, force=True)
-                        node.value = successor.value
-                        node.count = successor.count
+                    successor = get_successor(node.right)
+                    self.delete(successor.value, force=True)
+                    node.value = successor.value
+                    node.count = successor.count
             return node
         
         dfs(self.root)
