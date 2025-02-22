@@ -3,7 +3,9 @@ from word_search_ii import Solution
 def test1():
     board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"]]
     words = ["oath","pea","eat","rain"]
-    assert Solution().findWords(board, words) == ['oath', 'eat']
+    result = Solution().findWords(board, words)
+    result.sort()
+    assert result == ['eat', 'oath']
 
 def test2():
     board = [["a","b"],["c","d"]]
@@ -23,4 +25,6 @@ def test4():
 def test5():
     board = [["o","a","b","n"],["o","t","a","e"],["a","h","k","r"],["a","f","l","v"]]
     words = ["oa","oaa"]
-    assert Solution().findWords(board, words) == ['oa', 'oaa']
+    result = Solution().findWords(board, words)
+    result.sort()
+    assert result == ['oa', 'oaa']
