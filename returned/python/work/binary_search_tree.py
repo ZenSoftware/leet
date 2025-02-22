@@ -90,13 +90,15 @@ class BinarySearchTree:
             if node.right:
                 return dfs(node.right)
             return node.value
-        if not self.root: return None
-        else: return dfs(self.root)
+        if not self.root:
+            return None
+        return dfs(self.root)
     
     def get_min(self) -> Optional[int]:
         def dfs(node: Node):
             if node.left:
                 return dfs(node.left)
             return node.value
-        if not self.root: return None
-        else: return dfs(self.root)
+        if not self.root:
+            return None
+        return dfs(self.root)
