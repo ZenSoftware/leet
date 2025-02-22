@@ -4,6 +4,15 @@ def test_constructor():
     bst = BinarySearchTree([1,2,3,4,5,6,7])
     assert bst.root.value == 4
 
+def test_insert():
+    bst = BinarySearchTree()
+    bst.insert(1)
+    assert bst.get_inorder() == [1]
+    bst.insert(2)
+    assert bst.get_inorder() == [1,2]
+    bst.insert(3)
+    assert bst.get_inorder() == [1,2,3]
+
 def test_delete():
     bst = BinarySearchTree([1,2,3,4,5,5,6,7])
     assert bst.get_inorder() == [1,2,3,4,5,5,6,7]
