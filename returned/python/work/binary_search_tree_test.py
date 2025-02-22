@@ -43,7 +43,7 @@ def test_get_level_order():
     assert bst.get_level_order() == [       [5],
                                            [2, 8],
                                         [1, 3, 6, 9],
-                                          [4, 7, 10]]
+                                          [4, 7,  10]]
 
 def test_get_height():
     #       4
