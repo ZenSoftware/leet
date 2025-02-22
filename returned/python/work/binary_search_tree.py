@@ -84,6 +84,16 @@ class BinarySearchTree:
             return node
         
         dfs(self.root)
+    
+    def get_height(self, node = None) -> int:
+        def dfs(node: Node) -> int:
+            if not node:
+                return -1
+            return 1 + max(dfs(node.left), dfs(node.right))
+        if not node:
+            return dfs(self.root)
+        else:
+            return dfs(node)
 
     def get_max(self) -> Optional[int]:
         def dfs(node: Node):

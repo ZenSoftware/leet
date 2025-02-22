@@ -37,3 +37,14 @@ def test_get_min():
     assert bst.get_min() == 1
     bst = BinarySearchTree()
     assert bst.get_min() == None
+
+def test_get_height():
+    #       4
+    #      / \
+    #     2   6
+    #    / \ / \
+    #   1  3 5  7
+    bst = BinarySearchTree([1,2,3,4,5,6,7])
+    assert bst.get_height() == 2
+    bst.insert(8)
+    assert bst.get_height() == 3
