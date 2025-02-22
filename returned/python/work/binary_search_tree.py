@@ -1,4 +1,5 @@
 from typing import Iterable, List, Optional
+from collections import deque
 
 class Node:
     def __init__(self, value: int):
@@ -50,6 +51,21 @@ class BinarySearchTree:
                 result.append(node.value)
             dfs(node.right)
         dfs(self.root)
+        return result
+    
+    def get_level_order(self) -> List[List[int]]:
+        if not self.root:
+            return []
+        result = []
+        queue = deque([self.root])
+        while queue:
+            level = []
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                level.append(node.value)
+                if node.left: queue.append(node.left)
+                if node.right: queue.append(node.right)
+            result.append(level)
         return result
 
     def delete(self, el: int, force=False):

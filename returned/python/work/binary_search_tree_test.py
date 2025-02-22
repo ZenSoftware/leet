@@ -38,6 +38,13 @@ def test_get_min():
     bst = BinarySearchTree()
     assert bst.get_min() == None
 
+def test_get_level_order():
+    bst = BinarySearchTree([1,2,3,4,5,6,7,8,9,10])
+    assert bst.get_level_order() == [       [5],
+                                           [2, 8],
+                                        [1, 3, 6, 9],
+                                          [4, 7, 10]]
+
 def test_get_height():
     #       4
     #      / \
