@@ -6,9 +6,9 @@ def test_constructor():
 
 def test_insert():
     bst = BinarySearchTree()
-    bst.insert(1)
-    assert bst.get_inorder() == [1]
     bst.insert(2)
+    assert bst.get_inorder() == [2]
+    bst.insert(1)
     assert bst.get_inorder() == [1,2]
     bst.insert(3)
     assert bst.get_inorder() == [1,2,3]
