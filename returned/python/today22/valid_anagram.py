@@ -15,7 +15,7 @@ class Solution:
             count_t[c] += 1
         
         for c in count_s:
-            if count_t[c] != count_s[c]:
+            if count_s[c] != count_t[c]:
                 return False
             
         return True
