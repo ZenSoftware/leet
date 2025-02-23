@@ -96,7 +96,7 @@ class BinarySearchTree:
                     node.count = successor.count
             return node
         
-        dfs(self.root)
+        self.root = dfs(self.root)
     
     def get_height(self, node = None) -> int:
         def dfs(node: Node) -> int:
