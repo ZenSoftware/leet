@@ -14,8 +14,8 @@ class Solution:
         for c in t:
             count_t[c] += 1
         
-        for char_s in count_s:
-            if count_t[char_s] != count_s[char_s]:
+        for c in count_s:
+            if count_t[c] != count_s[c]:
                 return False
             
         return True
