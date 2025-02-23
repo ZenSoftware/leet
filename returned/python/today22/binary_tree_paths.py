@@ -14,9 +14,9 @@ class Solution:
         def dfs(root: Optional[TreeNode], path: List[str]):
             if not root:
                 return
-            path.append(root.val)
+            path.append(str(root.val))
             if root.left == None and root.right == None:
-                result.append('->'.join(map(str, path)))
+                result.append('->'.join(path))
             dfs(root.left, path)
             dfs(root.right, path)
             path.pop()
