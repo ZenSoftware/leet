@@ -9,11 +9,15 @@ class TreeNode:
 
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        result = []
-        def dfs(node: Optional[TreeNode]):
-            if not node: return
-            dfs(node.left)
-            result.append(node.val)
-            dfs(node.right)
-        dfs(root)
-        return result[k-1]
+        n = 0
+        stack = []
+        cur = root
+        while cur or stack:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            n += 1
+            if n == k:
+                return cur.val
+            cur = cur.right
