@@ -8,12 +8,26 @@ class ListNode:
 
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        self.curr = head
-        return self.solve(head)
-
-    def solve(self, head: Optional[ListNode]) -> bool:
-        if not head:
-            return True
-        ans = self.solve(head.next) and self.curr.val == head.val
-        self.curr = self.curr.next
-        return ans
+        slow, fast = head, head
+        while fast:
+            slow = slow.next
+            if fast.next:
+                fast = fast.next.next
+            else:
+                break
+        
+        reversed = ListNode(None)
+        while slow:
+            next = slow.next
+            slow.next = reversed.next
+            reversed.next = slow
+            slow = next
+        
+        p1, p2 = head, reversed.next
+        while p2:
+            if p1.val != p2.val:
+                return False
+            p1 = p1.next
+            p2 = p2.next
+        
+        return True

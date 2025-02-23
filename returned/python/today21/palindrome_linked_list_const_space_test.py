@@ -33,3 +33,7 @@ def test2():
 def test3():
     nodes = to_nodes([1,2])
     assert Solution().isPalindrome(nodes) == False
+
+def test4():
+    nodes = to_nodes([1,2,3,4,5])
+    assert Solution().isPalindrome(nodes) == False
