@@ -66,7 +66,6 @@ class Solution:
 
     def sayHundreds(self, n: str) -> str:
         n = self.stripLeadingZeros(n)
-
         result = []
 
         if len(n) >= 3:
