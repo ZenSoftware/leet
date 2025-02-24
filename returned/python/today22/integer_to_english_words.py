@@ -34,6 +34,13 @@ class Solution:
         '8': 'Eighty',
         '9': 'Ninety',
     }
+
+    groups = {
+        1: 'Thousand',
+        2: 'Million',
+        3: 'Billion',
+        4: 'Trillion',
+    }
     
     def numberToWords(self, num: int) -> str:
         if num == 0:
@@ -46,28 +53,12 @@ class Solution:
         if not self.isZeros(hundreds):
             result.append(self.sayHundreds(hundreds))
 
-        if len(n) > 3:
-            thousands = n[-min(len(n), 6) : -3]
-            if thousands != '000':
-                result.appendleft('Thousand')
-                result.appendleft(self.sayHundreds(thousands))
-        
-        if len(n) > 6:
-            millions = n[-min(len(n), 9) : -6]
-            if millions != '000':
-                result.appendleft('Million')
-                result.appendleft(self.sayHundreds(millions))
-
-        if len(n) > 9:
-            billions = n[-min(len(n), 12) : -9]
-            if billions != '000':
-                result.appendleft('Billion')
-                result.appendleft(self.sayHundreds(billions))
-
-        if len(n) > 12:
-            trillions = n[-min(len(n), 15) : -12]
-            result.appendleft('Trillion')
-            result.appendleft(self.sayHundreds(trillions))
+        for i, group_name in self.groups.items():
+            if len(n) > 3*i:
+                group = n[-min(len(n), 3*i + 3) : -3*i]
+                if not self.isZeros(group):
+                    result.appendleft(group_name)
+                    result.appendleft(self.sayHundreds(group))
 
         return ' '.join(result)
 
