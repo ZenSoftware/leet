@@ -40,6 +40,7 @@ class Solution:
         
         n = str(num)
         result = []
+        
         hundreds = n[-min(len(n), 3):] 
         if not self.isZeros(hundreds):
             result.append(self.sayHundreds(hundreds))
