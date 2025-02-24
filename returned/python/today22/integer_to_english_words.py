@@ -59,6 +59,8 @@ class Solution:
                 if not self.isZeros(group):
                     result.appendleft(group_name)
                     result.appendleft(self.sayHundreds(group))
+            else:
+                break
 
         return ' '.join(result)
 
