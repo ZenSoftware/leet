@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/integer-to-english-words/description/
+from collections import deque
 
 class Solution:
     initial = {
@@ -39,7 +40,7 @@ class Solution:
             return 'Zero'
         
         n = str(num)
-        result = []
+        result = deque()
         
         hundreds = n[-min(len(n), 3):] 
         if not self.isZeros(hundreds):
@@ -48,25 +49,25 @@ class Solution:
         if len(n) > 3:
             thousands = n[-min(len(n), 6) : -3]
             if thousands != '000':
-                result.insert(0, 'Thousand')
-                result.insert(0, self.sayHundreds(thousands))
+                result.appendleft('Thousand')
+                result.appendleft(self.sayHundreds(thousands))
         
         if len(n) > 6:
             millions = n[-min(len(n), 9) : -6]
             if millions != '000':
-                result.insert(0, 'Million')
-                result.insert(0, self.sayHundreds(millions))
+                result.appendleft('Million')
+                result.appendleft(self.sayHundreds(millions))
 
         if len(n) > 9:
             billions = n[-min(len(n), 12) : -9]
             if billions != '000':
-                result.insert(0, 'Billion')
-                result.insert(0, self.sayHundreds(billions))
+                result.appendleft('Billion')
+                result.appendleft(self.sayHundreds(billions))
 
         if len(n) > 12:
             trillions = n[-min(len(n), 15) : -12]
-            result.insert(0, 'Trillion')
-            result.insert(0, self.sayHundreds(trillions))
+            result.appendleft('Trillion')
+            result.appendleft(self.sayHundreds(trillions))
 
         return ' '.join(result)
 
