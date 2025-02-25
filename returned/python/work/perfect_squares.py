@@ -9,12 +9,11 @@ class Solution:
         while queue:
             for _ in range(len(queue)):
                 current = queue.popleft()
-                edges = []
+                children = []
                 i = 1
                 while i**2 <= n-current:
-                    edges.append(i**2)
+                    children.append(i**2 + current)
                     i += 1
-                children = list(map(lambda x: x+current, edges))
                 
                 for child in children:
                     if child not in memo:
