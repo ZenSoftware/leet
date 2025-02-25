@@ -3,14 +3,15 @@ from typing import List
 
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        end = len(nums) - 1
-        while end > 0 and nums[end] == 0:
-            end -= 1
-        
-        while end >= 0:
-            if nums[end] == 0:
-                p = end
-                while p+1 < len(nums) and nums[p+1] != 0:
-                    nums[p], nums[p+1] = nums[p+1], nums[p]
-                    p += 1
-            end -= 1
+        result = []
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                result.append(nums[i])
+                
+        for i in range(len(result)):
+            nums[i] = result[i]
+
+        i += 1
+        while i < len(nums):
+            nums[i] = 0
+            i += 1
