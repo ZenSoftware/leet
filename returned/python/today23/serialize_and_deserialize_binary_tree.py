@@ -13,6 +13,7 @@ class Codec:
     def serialize(self, root):
         if not root:
             return ''
+        
         levels = []
         queue = deque([root])
         while queue:
@@ -26,31 +27,31 @@ class Codec:
                     queue.append(node.right)
             levels.append(level)
         
-        withNulls = [[str(root.val)]]
+        with_nulls = [[str(root.val)]]
         for i in range(len(levels)-1):
             level = levels[i]
-            showNulls = False
-            withNullsLevel = []
+            show_nulls = False
+            with_nulls_level = []
             for n in reversed(level):
                 if n.right:
-                    withNullsLevel.append(str(n.right.val))
-                    showNulls = True
-                elif showNulls:
-                    withNullsLevel.append('null')
+                    with_nulls_level.append(str(n.right.val))
+                    show_nulls = True
+                elif show_nulls:
+                    with_nulls_level.append('null')
                 
                 if n.left:
-                    withNullsLevel.append(str(n.left.val))
-                    showNulls = True
-                elif showNulls:
-                    withNullsLevel.append('null')
-            withNullsLevel.reverse()
-            withNulls.append(withNullsLevel)
+                    with_nulls_level.append(str(n.left.val))
+                    show_nulls = True
+                elif show_nulls:
+                    with_nulls_level.append('null')
+            with_nulls_level.reverse()
+            with_nulls.append(with_nulls_level)
         
-        stringified = []
-        for level in withNulls:
-            stringified.append(','.join(level))
+        stringified_levels = []
+        for level in with_nulls:
+            stringified_levels.append(','.join(level))
         
-        return '|'.join(stringified)
+        return '|'.join(stringified_levels)
 
     def deserialize(self, data):
         if not data:
