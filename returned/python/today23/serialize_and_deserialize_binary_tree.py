@@ -1,6 +1,5 @@
 # https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
 from collections import deque
-from typing import Optional
 
 class TreeNode(object):
     def __init__(self, x):
