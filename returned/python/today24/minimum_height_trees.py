@@ -22,6 +22,8 @@ class Solution:
                     queue.extend(adjacent)
                     visited.update(tree[node])
                 height += 1
+                if heights and height > min(heights):
+                    break
             heights[height].append(i)
 
         return heights[min(heights)]
