@@ -14,6 +14,7 @@ class Solution:
                 prev2 = num[p1_end+1 : p2_end+1]
                 if prev2[0] == '0' and len(prev2) > 1:
                     break
+                
                 if self.valid(num, int(prev1), int(prev2), p2_end+1):
                     return True
         
