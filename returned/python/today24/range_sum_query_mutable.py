@@ -4,7 +4,6 @@
 from typing import List
 
 class BinaryIndexTree:
-
     def __init__(self, nums: List[int]):
         self.tree = [0] * (len(nums)+1)
         for i, v in enumerate(nums):
@@ -25,7 +24,6 @@ class BinaryIndexTree:
         return result
 
 class NumArray:
-
     def __init__(self, nums: List[int]):
         self.nums = nums
         self.bit = BinaryIndexTree(nums)
