@@ -14,19 +14,20 @@ class Solution:
                 prev2 = num[p1_end+1 : p2_end+1]
                 if prev2[0] == '0' and len(prev2) > 1:
                     break
-                if self.valid(num, prev1, prev2, p2_end+1):
+                if self.valid(num, int(prev1), int(prev2), p2_end+1):
                     return True
         
         return False
     
-    def valid(self, num: str, prev1: str, prev2: str, i: int):
+    def valid(self, num: str, prev1: int, prev2: int, i: int):
         while i < len(num):
-            total = str(int(prev1) + int(prev2))
-            num3 = num[i : i+len(total)]
-            if num3 != total:
+            total = prev1 + prev2
+            string_total = str(total)
+            next_num = num[i : i+len(string_total)]
+            if next_num != string_total:
                 return False
             prev1 = prev2
             prev2 = total
-            i += len(total)
+            i += len(string_total)
 
         return True
