@@ -9,7 +9,7 @@ class Solution:
             adjacencies[a].add(b)
             adjacencies[b].add(a)
         
-        heights = defaultdict(lambda: [])
+        heights = defaultdict(list)
         
         for i in range(n):
             visited = set([i])
