@@ -4,10 +4,10 @@ from collections import defaultdict, deque
 
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-        tree = defaultdict(set)
+        adjacencies = defaultdict(set)
         for a, b in edges:
-            tree[a].add(b)
-            tree[b].add(a)
+            adjacencies[a].add(b)
+            adjacencies[b].add(a)
         
         heights = defaultdict(lambda: [])
         
@@ -18,9 +18,9 @@ class Solution:
             while queue:
                 for _ in range(len(queue)):
                     node = queue.popleft()
-                    adjacent = tree[node].difference(visited)
+                    adjacent = adjacencies[node].difference(visited)
                     queue.extend(adjacent)
-                    visited.update(tree[node])
+                    visited.update(adjacencies[node])
                 height += 1
                 if heights and height > min(heights):
                     break
