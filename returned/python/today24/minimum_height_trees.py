@@ -4,26 +4,29 @@ from collections import defaultdict, deque
 
 class Solution:
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-        adjacencies = defaultdict(set)
+        if n == 1:
+            return [0]
+        
+        adjacencies = defaultdict(list)
         for a, b in edges:
-            adjacencies[a].add(b)
-            adjacencies[b].add(a)
-        
-        heights = defaultdict(list)
-        
-        for i in range(n):
-            visited = set([i])
-            queue = deque([i])
-            height = 1
-            while queue:
-                for _ in range(len(queue)):
-                    node = queue.popleft()
-                    adjacent = adjacencies[node].difference(visited)
-                    queue.extend(adjacent)
-                    visited.update(adjacent)
-                height += 1
-                if heights and height > min(heights):
-                    break
-            heights[height].append(i)
+            adjacencies[a].append(b)
+            adjacencies[b].append(a)
 
-        return heights[min(heights)]
+        edge_count = {}
+        leaves = deque()
+        for source, neighbors in adjacencies.items():
+            if len(neighbors) == 1:
+                leaves.append(source)
+            edge_count[source] = len(neighbors)
+
+        while leaves:
+            if n <= 2:
+                return list(leaves)
+            for _ in range(len(leaves)):
+                leaf = leaves.popleft()
+                n -= 1
+                for neighbor in adjacencies[leaf]:
+                    edge_count[neighbor] -= 1
+                    if edge_count[neighbor] == 1:
+                        leaves.append(neighbor)
+                
