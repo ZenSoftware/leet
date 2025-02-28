@@ -20,7 +20,7 @@ class Solution:
                     node = queue.popleft()
                     adjacent = adjacencies[node].difference(visited)
                     queue.extend(adjacent)
-                    visited.update(adjacencies[node])
+                    visited.update(adjacent)
                 height += 1
                 if heights and height > min(heights):
                     break
