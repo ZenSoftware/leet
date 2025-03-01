@@ -8,4 +8,3 @@ def test2():
 
 def test3():
     assert Solution().maxNumber([3,9], [8,9], 3) == [9,8,9]
-
