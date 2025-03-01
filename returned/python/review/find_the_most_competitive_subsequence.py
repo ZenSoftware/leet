@@ -10,5 +10,4 @@ class Solution:
                 m -= 1
                 stack.pop()
             stack.append(n)
-        
         return stack[:k]
