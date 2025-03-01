@@ -3,17 +3,12 @@ from typing import List
 
 class Solution:
     def maxProduct(self, words: List[str]) -> int:
-        wordSets = {}
+        wordSets = {i: set(word) for i, word in enumerate(words)}
         largest = 0
         for i in range(len(words)):
             for j in range(i+1, len(words)):
-                if i not in wordSets:
-                    wordSets[i] = set(words[i])
-                if j not in wordSets:
-                    wordSets[j] = set(words[j])
                 if self.allUnique(wordSets[i], wordSets[j]):
-                    product = len(words[i]) * len(words[j])
-                    largest = max(largest, product)
+                    largest = max(largest, len(words[i]) * len(words[j]))
         return largest
 
     def allUnique(self, a: set, b: set) -> bool:
