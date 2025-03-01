@@ -11,8 +11,7 @@ class Solution:
                 while (string_builder and
                        string_builder[-1] > char and
                        i < last_position[string_builder[-1]]):
-                    seen.remove(string_builder[-1])
-                    string_builder.pop()
+                    seen.remove(string_builder.pop())
                 seen.add(char)
                 string_builder.append(char)
 
