@@ -2,16 +2,18 @@
 
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        last_position = {c: i for i, c in enumerate(s)}
+        last_position = {char: i for i, char in enumerate(s)}
         seen = set()
-        result = []
+        string_builder = []
 
-        for i, c in enumerate(s):
-            if c not in seen:
-                while result and result[-1] > c and i < last_position[result[-1]]:
-                    seen.remove(result[-1])
-                    result.pop()
-                seen.add(c)
-                result.append(c)
+        for i, char in enumerate(s):
+            if char not in seen:
+                while (string_builder and
+                       string_builder[-1] > char and
+                       i < last_position[string_builder[-1]]):
+                    seen.remove(string_builder[-1])
+                    string_builder.pop()
+                seen.add(char)
+                string_builder.append(char)
 
-        return ''.join(result)
+        return ''.join(string_builder)
