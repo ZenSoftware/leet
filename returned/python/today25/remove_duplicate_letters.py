@@ -2,9 +2,7 @@
 
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
-        last_position = {}
-        for i, c in enumerate(s):
-            last_position[c] = i
+        last_position = {c: i for i, c in enumerate(s)}
         seen = set()
         result = []
 
