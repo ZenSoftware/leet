@@ -16,23 +16,23 @@ def shortest_path(start: GraphNode, end: GraphNode) -> Tuple[int, List[GraphNode
     heap = [(0, start)]
 
     while heap:
-        currDistance, currNode = heappop(heap)
-        if currNode == end:
+        curDistance, curNode = heappop(heap)
+        if curNode == end:
             break
-        if currNode in visited:
+        if curNode in visited:
             continue
-        visited.add(currNode)
-        for edgeDistance, neighbor in currNode.adjacent:
-            distance = currDistance + edgeDistance
+        visited.add(curNode)
+        for edgeDistance, neighbor in curNode.adjacent:
+            distance = curDistance + edgeDistance
             if neighbor not in visited and distance < distances[neighbor]:
                 distances[neighbor] = distance
-                predecessors[neighbor] = currNode
+                predecessors[neighbor] = curNode
                 heappush(heap, (distance, neighbor))
     
     path = []
-    currNode = end
-    while currNode != start:
-        path.append(predecessors[currNode])
-        currNode = predecessors[currNode]
+    curNode = end
+    while curNode != start:
+        path.append(predecessors[curNode])
+        curNode = predecessors[curNode]
     path.append(start)
     return (distances[end], path[::-1])
