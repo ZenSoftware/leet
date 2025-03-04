@@ -5,30 +5,20 @@ class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         ROWS = len(matrix)
         COLS = len(matrix[0])
-        memo = {}
+        memo = [[0]*COLS for _ in range(ROWS)]
         
-        def dfs(r: int, c: int, prev: int) -> int:
-            if r not in range(ROWS):
-                return 0
-            if c not in range(COLS):
-                return 0
-            if prev >= matrix[r][c]:
-                return 0
-            key = (r,c,prev)
-            if key in memo:
-                return memo[key]
-
-            prev = matrix[r][c]
-            right = dfs(r, c+1, prev) + 1
-            left = dfs(r, c-1, prev) + 1
-            up = dfs(r+1, c, prev) + 1
-            down = dfs(r-1, c, prev) + 1
-
-            memo[key] = max(right, left, up, down)
-            return memo[key]
+        def dfs(i: int, j: int) -> int:
+            if memo[i][j]:
+                return memo[i][j]
+            path = 1
+            for x, y in [[0,1], [0,-1], [1,0], [-1,0]]:
+                if i+x in range(ROWS) and j+y in range(COLS) and matrix[i][j] < matrix[i+x][j+y]:
+                    path = max(path, 1 + dfs(i+x, j+y))
+            memo[i][j] = path
+            return path
     
-        largest = 0
-        for r in range(ROWS):
-            for c in range(COLS):
-                largest = max(largest, dfs(r, c, float('-inf')))
-        return largest
+        res = 0
+        for i in range(ROWS):
+            for j in range(COLS):
+                res = max(res, dfs(i, j))
+        return res
