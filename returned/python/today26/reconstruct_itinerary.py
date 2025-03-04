@@ -13,14 +13,17 @@ class Solution:
             for i, ticket in enumerate(remaining):
                 if path[-1] == ticket[0]:
                     path.append(ticket[1])
-                    backtrack(path, remaining[:i] + remaining[i+1:])
+                    next_remaining = remaining.copy()
+                    del next_remaining[i]
+                    backtrack(path, next_remaining)
                     path.pop()
         
         for i, ticket in enumerate(tickets):
             if ticket[0] == 'JFK':
                 path = [ticket[0], ticket[1]]
-                remaining = tickets[:i] + tickets[i+1:]
+                remaining = tickets.copy()
+                del remaining[i]
                 backtrack(path, remaining)
-        
+
         paths.sort()
         return paths[0]
