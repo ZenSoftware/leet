@@ -17,7 +17,7 @@ class Solution:
         duplicateLength = 2**(i+1) - 2**i
         remaining = n - 2**(i+1)
         if remaining <= duplicateLength:
-            duplicate = result[2**i : 2**i + remaining+1]
+            duplicate = result[2**i : 2**i+remaining+1]
             result.extend(duplicate)
         else:
             duplicate = result[2**i : 2**(i+1)]
