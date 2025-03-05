@@ -23,5 +23,5 @@ class Solution:
             duplicate = result[2**i : 2**(i+1)]
             result.extend(duplicate)
             result.extend(map(lambda x: x+1, duplicate[:remaining-duplicateLength+1]))
-            
+
         return result
