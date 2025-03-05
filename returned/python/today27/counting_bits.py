@@ -14,14 +14,14 @@ class Solution:
             result.extend(map(lambda x: x+1, duplicate))
             i += 1
             
-        duplicateLength = 2**(i+1) - 2**i
-        remainingLength = n - 2**(i+1)
-        if remainingLength <= duplicateLength:
-            duplicate = result[2**i : 2**i+remainingLength+1]
+        duplicate_length = 2**(i+1) - 2**i
+        remaining_length = n - 2**(i+1)
+        if remaining_length <= duplicate_length:
+            duplicate = result[2**i : 2**i+remaining_length+1]
             result.extend(duplicate)
         else:
             duplicate = result[2**i : 2**(i+1)]
             result.extend(duplicate)
-            result.extend(map(lambda x: x+1, duplicate[:remainingLength-duplicateLength+1]))
+            result.extend(map(lambda x: x+1, duplicate[:remaining_length-duplicate_length+1]))
 
         return result
