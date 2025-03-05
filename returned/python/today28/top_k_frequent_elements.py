@@ -1,13 +1,7 @@
 # https://leetcode.com/problems/top-k-frequent-elements/description/
 from typing import List
-from collections import defaultdict
+from collections import Counter
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        counter = defaultdict(int)
-        for n in nums:
-            counter[n] += 1
-
-        nums_sorted = sorted(counter.items(), key=lambda x: x[1], reverse=True)
-        nums_sorted = [k for k,v in nums_sorted]
-        return nums_sorted[:k]
+        return [n for n,c in Counter(nums).most_common(k)]
