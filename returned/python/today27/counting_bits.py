@@ -15,13 +15,13 @@ class Solution:
             i += 1
             
         duplicateLength = 2**(i+1) - 2**i
-        remaining = n - 2**(i+1)
-        if remaining <= duplicateLength:
-            duplicate = result[2**i : 2**i+remaining+1]
+        remainingLength = n - 2**(i+1)
+        if remainingLength <= duplicateLength:
+            duplicate = result[2**i : 2**i+remainingLength+1]
             result.extend(duplicate)
         else:
             duplicate = result[2**i : 2**(i+1)]
             result.extend(duplicate)
-            result.extend(map(lambda x: x+1, duplicate[:remaining-duplicateLength+1]))
+            result.extend(map(lambda x: x+1, duplicate[:remainingLength-duplicateLength+1]))
 
         return result
