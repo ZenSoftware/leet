@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/reverse-vowels-of-a-string/description/
 
 class Solution:
-    VOWELS = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+    VOWELS = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
 
     def reverseVowels(self, s: str) -> str:
         s = list(s)
