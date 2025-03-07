@@ -34,7 +34,7 @@ class Solution:
             next_index = binary_search(i, 30)
             thirty_day = dfs(next_index, total+costs[2])
 
-            memo[(i,total)] = min(one_day, seven_day, thirty_day)
+            memo[(i, total)] = min(one_day, seven_day, thirty_day)
             return memo[(i, total)]
 
         return dfs(0, 0)
