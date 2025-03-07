@@ -7,7 +7,8 @@ class Solution:
         
         def binary_search(start: int, ticket_days: int) -> int:
             target = days[start] + ticket_days
-            l, r = start, min(start+ticket_days, len(days)-1)
+            l = start
+            r = min(start+ticket_days, len(days)-1)
             while l <= r:
                 m = (l + r) // 2
                 if target < days[m]:
