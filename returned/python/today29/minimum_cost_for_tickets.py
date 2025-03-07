@@ -28,11 +28,11 @@ class Solution:
 
             one_day = dfs(i+1, total+costs[0])
             
-            j = binary_search(i, 7)
-            seven_day = dfs(j, total+costs[1])
+            next_index = binary_search(i, 7)
+            seven_day = dfs(next_index, total+costs[1])
 
-            j = binary_search(i, 30)
-            thirty_day = dfs(j, total+costs[2])
+            next_index = binary_search(i, 30)
+            thirty_day = dfs(next_index, total+costs[2])
 
             memo[(i,total)] = min(one_day, seven_day, thirty_day)
             return memo[(i, total)]
