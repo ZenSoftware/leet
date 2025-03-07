@@ -3,6 +3,8 @@ from typing import List
 
 class Solution:
     def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+        memo = {}
+        
         def binary_search(start: int, ticket_days: int) -> int:
             target = days[start] + ticket_days
             l, r = start, min(start+ticket_days, len(days)-1)
@@ -17,6 +19,9 @@ class Solution:
             return l
         
         def dfs(i: int, total) -> int:
+            if (i, total) in memo:
+                return memo[(i, total)]
+            
             if i >= len(days):
                 return total
 
@@ -28,6 +33,7 @@ class Solution:
             j = binary_search(i, 30)
             thirty_day = dfs(j, total+costs[2])
 
-            return min(one_day, seven_day, thirty_day)
+            memo[(i,total)] = min(one_day, seven_day, thirty_day)
+            return memo[(i, total)]
 
         return dfs(0, 0)
