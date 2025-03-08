@@ -29,10 +29,10 @@ class Twitter:
         # construct result
         res = []
         while heap and len(res) < 10:
-            count, tweetId, tweeter_id, index= heappop(heap)
+            count, tweetId, tweeterId, index= heappop(heap)
             res.append(tweetId)
             if index >= 0:
-                tweet = self.tweets[tweeter_id][index]
+                tweet = self.tweets[tweeterId][index]
                 heappush(heap, tweet)
         
         return res
