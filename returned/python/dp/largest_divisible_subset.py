@@ -6,12 +6,12 @@ class Solution:
         nums.sort()
         
         dp = [[n] for n in nums]
-        longest = []
+        res = []
         for i in reversed(range(len(nums))):
             for j in range(i+1, len(nums)):
                 if nums[j] % nums[i] == 0:
                     tmp = [nums[i]] + dp[j]
                     dp[i] = tmp if len(tmp) > len(dp[i]) else dp[i]
-            if len(dp[i]) > len(longest):
-                longest = dp[i]    
-        return longest
+            if len(dp[i]) > len(res):
+                res = dp[i]    
+        return res
