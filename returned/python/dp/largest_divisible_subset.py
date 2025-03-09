@@ -9,6 +9,8 @@ class Solution:
         def dfs(i: int) -> List[int]:
             if i >= len(nums):
                 return []
+            if i in memo:
+                return memo[i]
             
             res = [nums[i]]
             for j in range(i+1, len(nums)):
@@ -16,6 +18,7 @@ class Solution:
                     tmp = [nums[i]] + dfs(j)
                     if len(tmp) > len(res):
                         res = tmp
+            memo[i] = res
             return res
         
         res = []
