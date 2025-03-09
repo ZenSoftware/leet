@@ -5,7 +5,7 @@ class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         nums.sort()
         res = []
-        def dfs(i: int, path: List[int]) -> List[int]:
+        def dfs(i: int, path: List[int]):
             nonlocal res
             if i >= len(nums):
                 if len(res) < len(path):
