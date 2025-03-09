@@ -4,9 +4,8 @@ from typing import List
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         nums.sort()
-        
         dp = [[n] for n in nums]
-        res = []
+        res = [nums[0]]
         for i in reversed(range(len(nums))):
             for j in range(i+1, len(nums)):
                 if nums[j] % nums[i] == 0:
