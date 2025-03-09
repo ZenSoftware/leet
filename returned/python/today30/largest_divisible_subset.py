@@ -14,7 +14,7 @@ class Solution:
             
             res = dfs(i+1, prev)
             if nums[i] % prev == 0:
-                tmp = dfs(i+1, nums[i]) + [nums[i]]
+                tmp = [nums[i]] + dfs(i+1, nums[i])
                 res = tmp if len(tmp) > len(res) else res
 
             memo[(i, prev)] = res
