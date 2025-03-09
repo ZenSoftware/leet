@@ -12,7 +12,7 @@ class Solution:
                     res = path.copy()
                 return
             
-            if len(path) == 0 or nums[i] % path[-1] == 0 or path[-1] % nums[i] == 0:
+            if len(path) == 0 or nums[i] % path[-1] == 0:
                 path.append(nums[i])
                 dfs(i+1, path)
                 path.pop()
@@ -20,4 +20,3 @@ class Solution:
             dfs(i+1, path)
         dfs(0, [])
         return res
-        
