@@ -4,19 +4,20 @@ from typing import List
 class Solution:
     def largestDivisibleSubset(self, nums: List[int]) -> List[int]:
         nums.sort()
-        res = []
-        def dfs(i: int, path: List[int]):
-            nonlocal res
+        memo = {}
+
+        def dfs(i: int, prev: int) -> List[int]:
             if i >= len(nums):
-                if len(res) < len(path):
-                    res = path.copy()
-                return
+                return []
+            if (i, prev) in memo:
+                return memo[(i, prev)]
             
-            if len(path) == 0 or nums[i] % path[-1] == 0:
-                path.append(nums[i])
-                dfs(i+1, path)
-                path.pop()
-            
-            dfs(i+1, path)
-        dfs(0, [])
-        return res
+            res = dfs(i+1, prev)
+            if nums[i] % prev == 0:
+                tmp = dfs(i+1, nums[i]) + [nums[i]]
+                res = tmp if len(tmp) > len(res) else res
+
+            memo[(i, prev)] = res
+            return res
+        
+        return dfs(0, 1)
