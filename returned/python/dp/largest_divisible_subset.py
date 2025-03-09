@@ -12,6 +12,5 @@ class Solution:
                 if nums[j] % nums[i] == 0:
                     tmp = [nums[i]] + dp[j]
                     dp[i] = tmp if len(tmp) > len(dp[i]) else dp[i]
-            if len(dp[i]) > len(res):
-                res = dp[i]    
+                res = dp[i] if len(dp[i]) > len(res) else res
         return res
