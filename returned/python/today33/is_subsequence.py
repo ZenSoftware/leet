@@ -2,11 +2,11 @@
 
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        j = 0
+        i = 0
         for char_s in s:
-            while j < len(t) and t[j] != char_s:
-                j += 1
-            if j >= len(t) or t[j] != char_s:
+            while i < len(t) and t[i] != char_s:
+                i += 1
+            if i >= len(t) or t[i] != char_s:
                 return False
-            j += 1
+            i += 1
         return True
