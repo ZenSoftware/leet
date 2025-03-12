@@ -14,7 +14,7 @@ class File:
 
 class Solution:
     def lengthLongestPath(self, input: str) -> int:
-        root = self.build(input)
+        root = self._build(input)
         result = 0
         def dfs(path: List[Directory | File]):
             nonlocal result
@@ -31,33 +31,33 @@ class Solution:
                 path.append(p)
                 dfs(path)
                 path.pop()
-                
+
         dfs([root])
         return result
 
-    def build(self, input: str) -> Directory:
+    def _build(self, input: str) -> Directory:
         input = input.split('\n')
         root = Directory('', None, -1)
         dir = root
         for item in input:
-            item_depth = self.get_depth(item)
+            item_depth = self._get_depth(item)
             if dir.depth+2 == item_depth:
                 dir = dir.children[-1]
             else:
                 while dir.depth+1 > item_depth:
                     dir = dir.parent
 
-            if self.is_file(item):
+            if self._is_file(item):
                 dir.children.append(File(item))
             else:
                 dir.children.append(Directory(item, dir, dir.depth+1))
 
         return root
         
-    def get_depth(self, subpath: str) -> int:
+    def _get_depth(self, subpath: str) -> int:
         for i, c in enumerate(subpath):
             if c != '\t':
                 return i
     
-    def is_file(self, subpath: str) -> int:
+    def _is_file(self, subpath: str) -> int:
         return '.' in subpath
