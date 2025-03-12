@@ -6,7 +6,7 @@ class Solution:
         for char_s in s:
             while i < len(t) and t[i] != char_s:
                 i += 1
-            if i >= len(t) or t[i] != char_s:
+            if i >= len(t):
                 return False
             i += 1
         return True
