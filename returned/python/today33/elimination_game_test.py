@@ -7,5 +7,5 @@ def test2():
     assert Solution().lastRemaining(1) == 1
     
 def test3():
-    assert Solution().lastRemaining(500) == 1
+    assert Solution().lastRemaining(500) == 246
     
