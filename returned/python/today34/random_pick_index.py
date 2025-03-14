@@ -12,4 +12,5 @@ class Solution:
 
     def pick(self, target: int) -> int:
         indexes = self.nums_dict[target]
-        return indexes[randint(0, len(indexes)-1)]
+        rand_pick = randint(0, len(indexes)-1)
+        return indexes[rand_pick]
