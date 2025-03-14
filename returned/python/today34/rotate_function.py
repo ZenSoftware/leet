@@ -2,6 +2,10 @@
 from typing import List
 
 class Solution:
+    '''
+    Time: O(n^2)
+    Space: O(1)
+    '''
     def maxRotateFunction(self, nums: List[int]) -> int:
         ans = float('-inf')
         for rotations in range(len(nums)):
