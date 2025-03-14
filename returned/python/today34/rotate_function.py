@@ -3,17 +3,18 @@ from typing import List
 
 class Solution:
     '''
-    Time: O(n^2)
+    Time: O(n)
     Space: O(1)
     '''
     def maxRotateFunction(self, nums: List[int]) -> int:
-        ans = float('-inf')
-        for rotations in range(len(nums)):
-            offset = len(nums) - rotations
-            total = 0
-            for i in range(len(nums)):
-                if offset + i >= len(nums):
-                    offset = -i
-                total += nums[offset + i] * i
-            ans = max(ans, total)
+        length = len(nums)
+        total = sum(nums)
+        prev = 0
+        for i, n in enumerate(nums):
+            prev += i*n
+
+        ans = prev
+        for k in range(1, len(nums)):
+            prev = prev + total - length * nums[length-k]
+            ans = max(ans, prev)
         return ans
