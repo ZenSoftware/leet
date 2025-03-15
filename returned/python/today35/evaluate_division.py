@@ -4,13 +4,10 @@ from collections import deque, defaultdict
 
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        adjacencies = defaultdict(list)
-        vertexes = set()
-        for i, e in enumerate(equations):
-            adjacencies[e[0]].append((e[1], i))
-            adjacencies[e[1]].append((e[0], i))
-            vertexes.add(e[0])
-            vertexes.add(e[1])
+        edges = defaultdict(list)
+        for i, eq in enumerate(equations):
+            edges[eq[0]].append((eq[1], i))
+            edges[eq[1]].append((eq[0], i))
 
         def bfs(query: List[str]) -> List[str]:
             previous = {}            
@@ -19,7 +16,7 @@ class Solution:
                 current = queue.popleft()
                 if current == query[1]:
                     break
-                for adj, i in adjacencies[current]:
+                for adj, i in edges[current]:
                     if adj not in previous:
                         queue.append(adj)
                         previous[adj] = (current, i)
@@ -29,14 +26,14 @@ class Solution:
             
             path = []
             while current != query[0]:
-                parent, equationIndex = previous[current]
-                path.append(equationIndex)
+                parent, eqIndex = previous[current]
+                path.append(eqIndex)
                 current = parent
             return path[::-1]
     
         def solve(query: List[str], path: List[int]) -> int:
             if not path:
-                if query[0] == query[1] and query[0] in vertexes:
+                if query[0] == query[1] and query[0] in edges:
                     return 1.0
                 return -1.0
             ans = 1
