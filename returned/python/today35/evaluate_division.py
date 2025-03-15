@@ -4,10 +4,10 @@ from collections import deque, defaultdict
 
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-        edges = defaultdict(list)
+        graph = defaultdict(list)
         for i, eq in enumerate(equations):
-            edges[eq[0]].append((eq[1], i))
-            edges[eq[1]].append((eq[0], i))
+            graph[eq[0]].append((eq[1], i))
+            graph[eq[1]].append((eq[0], i))
 
         def bfs(query: List[str]) -> List[str]:
             previous = {}            
@@ -16,24 +16,27 @@ class Solution:
                 current = queue.popleft()
                 if current == query[1]:
                     break
-                for adj, i in edges[current]:
+                for adj, i in graph[current]:
                     if adj not in previous:
                         queue.append(adj)
                         previous[adj] = (current, i)
             
+            # Return an empty list if no path exists for the provided query
             if current != query[1]:
                 return []
             
+            # Construct the chain of indicies that represent the
+            # path from query start, to query end
             path = []
             while current != query[0]:
-                parent, eqIndex = previous[current]
-                path.append(eqIndex)
+                parent, i = previous[current]
+                path.append(i)
                 current = parent
             return path[::-1]
     
         def solve(query: List[str], path: List[int]) -> int:
             if not path:
-                if query[0] == query[1] and query[0] in edges:
+                if query[0] == query[1] and query[0] in graph:
                     return 1.0
                 return -1.0
             ans = 1
