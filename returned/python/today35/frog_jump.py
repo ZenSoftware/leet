@@ -9,24 +9,14 @@ class Solution:
             
             result = False
 
-            if k-1 > 0:
-                for j in range(i+1, len(stones)):
-                    if k-1 < stones[j] - stones[i]:
-                        break
-                    elif k-1 == stones[j] - stones[i]:
-                        result |= dfs(j, k-1)
-            
-            for j in range(i+1, len(stones)):
-                if k < stones[j] - stones[i]:
-                    break
-                elif k == stones[j] - stones[i]:
-                    result |= dfs(j, k)
-            
-            for j in range(i+1, len(stones)):
-                if k+1 < stones[j] - stones[i]:
-                    break
-                elif k+1 == stones[j] - stones[i]:
-                    result |= dfs(j, k+1)
-            
+            for kth in range(k-1, k+2):
+                if kth > 0:
+                    for j in range(i+1, len(stones)):
+                        distance = stones[j] - stones[i]
+                        if kth < distance:
+                            break
+                        elif kth == distance:
+                            result |= dfs(j, kth)
+                            
             return result
         return dfs(0, 0)
