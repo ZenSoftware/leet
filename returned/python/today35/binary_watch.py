@@ -1,14 +1,16 @@
 # https://leetcode.com/problems/binary-watch/description/
 from typing import List
 
+BIT_COUNTS = {}
+for i in range(60):
+    BIT_COUNTS[i] = bin(i).count('1')
+
 class Solution:
     def readBinaryWatch(self, turnedOn: int) -> List[str]:
         result = []
         for h in range(12):
             for m in range(60):
-                hour_bits = bin(h).count('1')
-                minute_bits = bin(m).count('1')
-                if hour_bits + minute_bits == turnedOn:
+                if BIT_COUNTS[h] + BIT_COUNTS[m] == turnedOn:
                     time = '{0}:{1:02d}'.format(h, m)
                     result.append(time)
         return result
