@@ -2,6 +2,10 @@
 
 class Solution:
     def toHex(self, num: int) -> str:
+        '''
+        Time: O(log n) dividing by 16 each time gives us a logarithm of base 16
+        Space: O(1)
+        '''
         if num == 0:
             return '0'
         
