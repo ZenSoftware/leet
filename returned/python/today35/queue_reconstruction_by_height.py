@@ -9,14 +9,17 @@ class Solution:
             nonlocal result
             if len(current) == len(people):
                 result = current.copy()
-                return
+                return True
             
             for i, r in enumerate(remaining):
                 if self.countAhead(current, r) == r[1]:
                     current.append(r)
-                    backtrack(remaining[:i] + remaining[i+1:], current)
+                    if backtrack(remaining[:i] + remaining[i+1:], current):
+                        return True
                     current.pop()
-        
+            
+            return False
+            
         backtrack(people, [])
         return result
     
