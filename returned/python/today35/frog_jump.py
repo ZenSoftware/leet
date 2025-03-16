@@ -9,14 +9,13 @@ class Solution:
             if i == len(stones)-1:
                 return True
             
-            for kth in range(k-1, k+2):
-                if kth > 0:
+            for next_k in range(k-1, k+2):
+                if next_k > 0:
                     for j in range(i+1, len(stones)):
                         distance = stones[j] - stones[i]
-                        if kth < distance:
+                        if next_k < distance:
                             break
-                        elif kth == distance:
-                            if dfs(j, kth):
-                                return True
+                        elif next_k == distance and dfs(j, next_k):
+                            return True
             return False
         return dfs(0, 0)
