@@ -3,6 +3,10 @@ from typing import List
 
 class Solution:
     def fizzBuzz(self, n: int) -> List[str]:
+        '''
+        Time: O(1)
+        Space: O(1)
+        '''
         res = []
         for i in range(1,n+1):
             divisible_3 = i % 3 == 0
