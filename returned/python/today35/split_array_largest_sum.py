@@ -1,12 +1,13 @@
 # https://leetcode.com/problems/split-array-largest-sum/description/
 from typing import List
+from functools import cache
 
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
+        @cache
         def dfs(i: int, m: int):
             if m == 1:
                 return sum(nums[i:])
-            
             current = 0
             res = float('inf')
             for j in range(i, len(nums)-m+1):
