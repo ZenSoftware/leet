@@ -3,13 +3,13 @@ from collections import Counter
 
 class Solution:
     def longestPalindrome(self, s: str) -> int:
-        length = 0
+        total = 0
         for _, count in Counter(s).items():
             if count % 2 == 1:
-                if length % 2 == 1:
-                    length += count - 1
+                if total % 2 == 1:
+                    total += count - 1
                 else:
-                    length += count
+                    total += count
             else:
-                length += count
-        return length
+                total += count
+        return total
