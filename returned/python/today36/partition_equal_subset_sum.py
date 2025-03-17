@@ -6,12 +6,9 @@ class Solution:
         def dfs(i: int, sum1: int, sum2: int) -> bool:
             if i >= len(nums):
                 return sum1 == sum2
-            result = False
             
-            result |= dfs(i+1, sum1 + nums[i], sum2)
-            if result:
+            if dfs(i+1, sum1 + nums[i], sum2):
                 return True
 
-            result |= dfs(i+1, sum1, sum2 + nums[i])
-            return result
+            return dfs(i+1, sum1, sum2 + nums[i])
         return dfs(0, 0, 0)
