@@ -3,20 +3,15 @@ from typing import List
 
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        def dfs(i: int, nums1: List[int], nums2: List[int]) -> bool:
+        def dfs(i: int, sum1: int, sum2: int) -> bool:
             if i >= len(nums):
-                return sum(nums1) == sum(nums2)
+                return sum1 == sum2
             result = False
             
-            nums1.append(nums[i])
-            result |= dfs(i+1, nums1, nums2)
-            nums1.pop()
+            result |= dfs(i+1, sum1 + nums[i], sum2)
             if result:
                 return True
 
-            nums2.append(nums[i])
-            result |= dfs(i+1, nums1, nums2)
-            nums2.pop()
-
+            result |= dfs(i+1, sum1, sum2 + nums[i])
             return result
-        return dfs(0, [], [])
+        return dfs(0, 0, 0)
