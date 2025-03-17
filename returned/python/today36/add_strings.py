@@ -4,7 +4,7 @@ class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
         i1 = len(num1)-1
         i2 = len(num2)-1
-        result = ''
+        result = []
         carry = 0
         while i1 >= 0 or i2 >= 0 or carry > 0:
             d1 = 0
@@ -17,13 +17,13 @@ class Solution:
             
             place = d1 + d2 + carry
             if place >= 10:
-                result = str(place - 10) + result
+                result.append(str(place - 10))
                 carry = 1
             else:
-                result = str(place) + result
+                result.append(str(place))
                 carry = 0
 
             i1 -= 1
             i2 -= 1
 
-        return result
+        return ''.join(reversed(result))
