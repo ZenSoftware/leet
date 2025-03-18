@@ -2,6 +2,10 @@
 from typing import List
 
 class Solution:
+    '''
+    Time: O(m*n)
+    Space: O(m*n)
+    '''
     def pacificAtlantic(self, heights: List[List[int]]) -> List[List[int]]:
         ROWS, COLS = len(heights), len(heights[0])
         pacific, atlantic = set(), set()
