@@ -9,14 +9,11 @@ class Solution:
         def dfs(r, c, h, ocean):
             if (r not in range(ROWS) or
                 c not in range(COLS) or
-                (r,c) in ocean):
+                (r,c) in ocean or
+                heights[r][c] < h):
                 return
             
-            if heights[r][c] >= h:
-                ocean.add((r,c))
-            else:
-                return
-            
+            ocean.add((r,c))
             for i, j in [[0,1],[0,-1],[1,0],[-1,0]]:
                 dfs(r+i, c+j, heights[r][c], ocean)
 
