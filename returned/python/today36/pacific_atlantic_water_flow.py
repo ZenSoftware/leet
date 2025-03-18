@@ -6,8 +6,8 @@ class Solution:
         ROWS, COLS = len(heights), len(heights[0])
         pacific, atlantic = set(), set()
 
-        def bfs(r, c, h, ocean, visited):
-            if r not in range(ROWS) or c not in range(COLS) or (r,c) in visited:
+        def bfs(r, c, h, ocean):
+            if r not in range(ROWS) or c not in range(COLS) or (r,c) in ocean:
                 return
             
             if heights[r][c] >= h:
@@ -15,18 +15,16 @@ class Solution:
             else:
                 return
             
-            visited.add((r,c))
             for i, j in [[0,1],[0,-1],[1,0],[-1,0]]:
-                bfs(r+i, c+j, heights[r][c], ocean, visited)
-            visited.pop()
+                bfs(r+i, c+j, heights[r][c], ocean)
 
         for r in range(ROWS):
-            bfs(r, 0, -1, pacific, set())
-            bfs(r, COLS-1, -1, atlantic, set())
+            bfs(r, 0, -1, pacific)
+            bfs(r, COLS-1, -1, atlantic)
             
         for c in range(COLS):
-            bfs(0, c, -1, pacific, set())
-            bfs(ROWS-1, c, -1, atlantic, set())
+            bfs(0, c, -1, pacific)
+            bfs(ROWS-1, c, -1, atlantic)
 
         result = []
         for coord in pacific.intersection(atlantic):
