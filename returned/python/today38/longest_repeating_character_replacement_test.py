@@ -11,3 +11,6 @@ def test3():
 
 def test4():
     assert Solution().characterReplacement('BAAAA', 0) == 4
+
+def test5():
+    assert Solution().characterReplacement('AAABBAAAA', 1) == 5
