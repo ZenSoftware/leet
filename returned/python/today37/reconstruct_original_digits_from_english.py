@@ -34,8 +34,8 @@ class Solution:
         # v appears in 'seven' and 'five'
         num_occ['7'] = char_occ['v'] - num_occ['5']
 
-        # n appears in 'nine', 'one' and 'seven'
-        num_occ['9'] = char_occ['n'] - num_occ['1'] - num_occ['7']
+        # n appears in 'nine', 'five', 'six' and 'eight'
+        num_occ['9'] = char_occ['i'] - num_occ['5'] - num_occ['6'] - num_occ['8']
 
         return num_occ
 
