@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/longest-repeating-character-replacement/description/
+
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
         '''
