@@ -20,7 +20,6 @@ class Solution:
         for r in range(ROWS):
             dfs(r, 0, -1, pacific)
             dfs(r, COLS-1, -1, atlantic)
-            
         for c in range(COLS):
             dfs(0, c, -1, pacific)
             dfs(ROWS-1, c, -1, atlantic)
