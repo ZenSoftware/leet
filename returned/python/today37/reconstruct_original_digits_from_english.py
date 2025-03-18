@@ -2,8 +2,19 @@
 from collections import Counter
 
 class Solution:
-    NUMBERS = {'0': Counter({'z': 1, 'e': 1, 'r': 1, 'o': 1}), '1': Counter({'o': 1, 'n': 1, 'e': 1}), '2': Counter({'t': 1, 'w': 1, 'o': 1}), '3': Counter({'e': 2, 't': 1, 'h': 1, 'r': 1}), '4': Counter({'f': 1, 'o': 1, 'u': 1, 'r': 1}), '5': Counter({'f': 1, 'i': 1, 'v': 1, 'e': 1}), '6': Counter({'s': 1, 'i': 1, 'x': 1}), '7': Counter({'e': 2, 's': 1, 'v': 1, 'n': 1}), '8': Counter({'e': 1, 'i': 1, 'g': 1, 'h': 1, 't': 1}), '9': Counter({'n': 2, 'i': 1, 'e': 1})}
-    
+    NUMBERS = {
+        '0': Counter('zero'),
+        '1': Counter('one'),
+        '2': Counter('two'),
+        '3': Counter('three'),
+        '4': Counter('four'),
+        '5': Counter('five'),
+        '6': Counter('six'),
+        '7': Counter('seven'),
+        '8': Counter('eight'),
+        '9': Counter('nine'),
+    }
+
     def originalDigits(self, s: str) -> str:
         counts = Counter(s)
         result = ''
