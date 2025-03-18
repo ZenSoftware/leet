@@ -29,8 +29,6 @@ class Solution:
             bfs(ROWS-1, c, -1, atlantic, set())
 
         result = []
-        for r in range(ROWS):
-            for c in range(COLS):
-                if (r,c) in pacific and (r,c) in atlantic:
-                    result.append([r,c])
+        for coord in pacific.intersection(atlantic):
+            result.append(list(coord))
         return result
