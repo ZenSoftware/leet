@@ -7,7 +7,9 @@ class Solution:
         pacific, atlantic = set(), set()
 
         def dfs(r, c, h, ocean):
-            if r not in range(ROWS) or c not in range(COLS) or (r,c) in ocean:
+            if (r not in range(ROWS) or
+                c not in range(COLS) or
+                (r,c) in ocean):
                 return
             
             if heights[r][c] >= h:
