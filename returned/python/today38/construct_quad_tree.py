@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/construct-quad-tree/description/
+# Solution: https://leetcode.com/problems/construct-quad-tree/solutions/3234560/python-fully-optimized-recursion-o-n-2/
 from typing import List
 
 class Node:
@@ -12,44 +13,23 @@ class Node:
 
 class Solution:
     def construct(self, grid: List[List[int]]) -> 'Node':
-        ROWS, COLS = len(grid), len(grid[0])
+        def is_same(r, c, size):
+            val = grid[r][c]
+            for i in range(r, r+size):
+                for j in range(c, c+size):
+                    if grid[i][j] != val:
+                        return False
+            return True
         
-        i, j = 0, 0
-        while i < ROWS:
-            if grid[i][j] != 0:
-                break
-            j += 1
-            if j == COLS:
-                j = 0
-                i += 1
-        else:
-            return Node(0, True, None, None, None, None)
+        def dfs(r, c, size):
+            if is_same(r, c, size):
+                return Node(grid[r][c], True, None, None, None, None)
+            
+            half = size//2
+            topLeft = dfs(r, c, half)
+            topRight = dfs(r, c+half, half)
+            bottomLeft = dfs(r+half, c, half)
+            bottomRight = dfs(r+half, c+half, half)
+            return Node(0, False, topLeft, topRight, bottomLeft, bottomRight)
         
-        i, j = 0, 0
-        while i < ROWS:
-            if grid[i][j] != 1:
-                break
-            j += 1
-            if j == COLS:
-                j = 0
-                i += 1
-        else:
-            return Node(1, True, None, None, None, None)
-
-        topLeftGrid = []
-        topRightGrid = []
-        for i in range(ROWS//2):
-            topLeftGrid.append(grid[i][:COLS//2])
-            topRightGrid.append(grid[i][COLS//2:])
-
-        bottomLeftGrid = []
-        bottomRightGrid = []
-        for i in range(ROWS//2, ROWS):
-            bottomLeftGrid.append(grid[i][:COLS//2])
-            bottomRightGrid.append(grid[i][COLS//2:])
-
-        topLeft = self.construct(topLeftGrid)
-        topRight = self.construct(topRightGrid)
-        bottomLeft = self.construct(bottomLeftGrid)
-        bottomRight = self.construct(bottomRightGrid)
-        return Node(0, False, topLeft, topRight, bottomLeft, bottomRight)
+        return dfs(0, 0, len(grid))
