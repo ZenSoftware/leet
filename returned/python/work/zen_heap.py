@@ -1,6 +1,6 @@
 from typing import List
 
-class MinHeap():
+class MinHeap:
     def __init__(self, elements: List =[]):
         self.heap = elements
         self.heapify()
@@ -64,3 +64,32 @@ class MinHeap():
     
     def right_index(self, i: int) -> int:
         return 2*i+2
+
+class MaxHeap(MinHeap):    
+    def sift_up(self, i: int):
+        while i != 0 and self.heap[i] > self.heap[parent_index := self.parent_index(i)]:
+            self.heap[parent_index], self.heap[i] = self.heap[i], self.heap[parent_index]
+            i = parent_index
+
+    def sift_down(self, i: int):
+        while True:
+            size = len(self.heap)
+            l = self.left_index(i)
+            r = self.right_index(i)
+            if l < size and r < size:
+                if self.heap[l] >= self.heap[r] and self.heap[i] < self.heap[l]:
+                    self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                    i = l
+                elif self.heap[l] < self.heap[r] and self.heap[i] < self.heap[r]:
+                    self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
+                    i = r
+                else:
+                    break
+            elif l < size:
+                if self.heap[i] < self.heap[l]:
+                    self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                    i = l
+                else:
+                    break
+            else:
+                break
