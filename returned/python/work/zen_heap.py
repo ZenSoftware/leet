@@ -8,7 +8,7 @@ class MinHeap():
     def __len__(self):
         return len(self.heap)
         
-    def heapify(self) -> List:
+    def heapify(self):
         for i in reversed(range(len(self.heap))):
             self.sift_down(i)
 
