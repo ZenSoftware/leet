@@ -10,13 +10,10 @@ class Node:
 
 class Solution:
     def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        if not head:
-            return head
-        
         def compute_flatten(head: Node) -> Tuple[Node, Node]:
             pointer = head
-
             tail = head
+            
             while pointer:
                 if pointer.child:
                     child_head, child_tail = compute_flatten(pointer.child)
