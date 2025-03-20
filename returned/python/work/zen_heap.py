@@ -1,7 +1,7 @@
 from typing import List
 
 class MinHeap:
-    def __init__(self, elements: List =[]):
+    def __init__(self, elements: List = []):
         self.heap = elements
         self.heapify()
 
