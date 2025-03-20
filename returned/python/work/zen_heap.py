@@ -1,8 +1,9 @@
 from typing import List
 
 class MinHeap:
-    def __init__(self, elements: List = []):
+    def __init__(self, elements: List = [], key=lambda x: x):
         self.heap = elements
+        self.key = key
         self.heapify()
 
     def __len__(self):
@@ -13,25 +14,33 @@ class MinHeap:
             self.sift_down(i)
 
     def sift_up(self, i: int):
-        while i != 0 and self.heap[i] < self.heap[p := self.parent_index(i)]:
+        def val(x):
+            return self.key(self.heap[x])
+        
+        while i != 0 and val(i) < val(p := self.parent_index(i)):
             self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
             i = p
+        return i
 
     def sift_down(self, i: int):
+        def val(x):
+            return self.key(self.heap[x])
+
         size = len(self.heap)
         l = self.left_index(i)
         r = self.right_index(i)
         if l < size and r < size:
-            if self.heap[l] < self.heap[r] and self.heap[i] > self.heap[l]:
+            if val(l) < val(r) and val(i) > val(l):
                 self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
-                self.sift_down(l)
-            elif self.heap[l] >= self.heap[r] and self.heap[i] > self.heap[r]:
+                return self.sift_down(l)
+            elif val(l) >= val(r) and val(i) > val(r):
                 self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
-                self.sift_down(r)
+                return self.sift_down(r)
         elif l < size:
-            if self.heap[i] > self.heap[l]:
+            if val(i) > val(l):
                 self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
-                self.sift_down(l)
+                return self.sift_down(l)
+        return i
 
     def push(self, val):
         self.heap.append(val)
@@ -60,22 +69,30 @@ class MinHeap:
 
 class MaxHeap(MinHeap):
     def sift_up(self, i: int):
-        while i != 0 and self.heap[i] > self.heap[p := self.parent_index(i)]:
+        def val(x):
+            return self.key(self.heap[x])
+        
+        while i != 0 and val(i) > val(p := self.parent_index(i)):
             self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
             i = p
+        return i
 
     def sift_down(self, i: int):
+        def val(x):
+            return self.key(self.heap[x])
+
         size = len(self.heap)
         l = self.left_index(i)
         r = self.right_index(i)
         if l < size and r < size:
-            if self.heap[l] > self.heap[r] and self.heap[i] < self.heap[l]:
+            if val(l) > val(r) and val(i) < val(l):
                 self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
-                self.sift_down(l)
-            elif self.heap[l] <= self.heap[r] and self.heap[i] < self.heap[r]:
+                return self.sift_down(l)
+            elif val(l) <= val(r) and val(i) < val(r):
                 self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
-                self.sift_down(r)
+                return self.sift_down(r)
         elif l < size:
-            if self.heap[i] < self.heap[l]:
+            if val(i) < val(l):
                 self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
-                self.sift_down(l)
+                return self.sift_down(l)
+        return i

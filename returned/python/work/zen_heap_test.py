@@ -1,5 +1,5 @@
 from zen_heap import MinHeap, MaxHeap
-from random import randint
+from random import randint, shuffle
 from heapq import heapify, heappush
 
 def test_min_heap():
@@ -18,7 +18,23 @@ def test_max_heap():
     for i in range(1, len(sorted)):
         assert sorted[i-1] >= sorted[i]
 
-def test_push():
+def test_key():
+    class Node:
+        def __init__(self, val):
+            self.val = val
+    
+    arr = []
+    for i in range(100):
+        arr.append(Node(i))
+    shuffle(arr)
+    heap = MinHeap(arr, key=lambda x: x.val)
+    sorted = []
+    while len(heap):
+        sorted.append(heap.pop().val)
+    for i in range(1, len(sorted)):
+        assert sorted[i-1] <= sorted[i]
+
+def test_min_push():
     heap = MinHeap()
     for i in range(100):
         heap.push(randint(1,100))
@@ -27,6 +43,16 @@ def test_push():
         sorted.append(heap.pop())
     for i in range(1, len(sorted)):
         assert sorted[i-1] <= sorted[i]
+
+def test_max_push():
+    heap = MaxHeap()
+    for i in range(100):
+        heap.push(randint(1,100))
+    sorted = []
+    while len(heap):
+        sorted.append(heap.pop())
+    for i in range(1, len(sorted)):
+        assert sorted[i-1] >= sorted[i]
 
 def test_sift_down():
     heap = MinHeap()
