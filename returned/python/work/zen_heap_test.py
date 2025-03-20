@@ -43,8 +43,8 @@ def test_heapq_heapify_equivalency():
 
 def test_heapq_push_equivalency():
     input = [randint(1,100) for _ in range(100)]
-    heapq_heap = []
     my_heap = MinHeap()
+    heapq_heap = []
     for el in input:
         my_heap.push(el)
         heappush(heapq_heap, el)
