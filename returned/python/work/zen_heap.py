@@ -13,9 +13,9 @@ class MinHeap:
             self.sift_down(i)
 
     def sift_up(self, i: int):
-        while i != 0 and self.heap[i] < self.heap[parent_index := self.parent_index(i)]:
-            self.heap[parent_index], self.heap[i] = self.heap[i], self.heap[parent_index]
-            i = parent_index
+        while i != 0 and self.heap[i] < self.heap[p := self.parent_index(i)]:
+            self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
+            i = p
 
     def sift_down(self, i: int):
         size = len(self.heap)
@@ -60,9 +60,9 @@ class MinHeap:
 
 class MaxHeap(MinHeap):
     def sift_up(self, i: int):
-        while i != 0 and self.heap[i] > self.heap[parent_index := self.parent_index(i)]:
-            self.heap[parent_index], self.heap[i] = self.heap[i], self.heap[parent_index]
-            i = parent_index
+        while i != 0 and self.heap[i] > self.heap[p := self.parent_index(i)]:
+            self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
+            i = p
 
     def sift_down(self, i: int):
         size = len(self.heap)
