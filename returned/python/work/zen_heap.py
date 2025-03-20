@@ -45,9 +45,9 @@ class MinHeap:
             return None
         last_index = len(self.heap)-1
         self.heap[0], self.heap[last_index] = self.heap[last_index], self.heap[0]
-        top = self.heap.pop()
+        result = self.heap.pop()
         self.sift_down(0)
-        return top
+        return result
 
     def parent_index(self, i: int) -> int:
         return (i-1)//2
