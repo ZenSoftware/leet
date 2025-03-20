@@ -1,5 +1,6 @@
 from zen_heap import MinHeap, MaxHeap
 from random import randint
+from heapq import heapify, heappush
 
 def test_min_heap():
     heap = MinHeap([randint(1,100) for _ in range(100)])
@@ -32,3 +33,19 @@ def test_sift_down():
     heap.heap = [3,2,1]
     heap.sift_down(0)
     assert heap.heap == [1,2,3]
+
+def test_heapq_heapify_equivalency():
+    input_mine = [randint(1,100) for _ in range(100)]
+    input_heapq = input_mine.copy()
+    my_heap = MinHeap(input_mine)
+    heapify(input_heapq)
+    assert input_heapq == my_heap.heap
+
+def test_heapq_push_equivalency():
+    input = [randint(1,100) for _ in range(100)]
+    heapq_heap = []
+    my_heap = MinHeap()
+    for el in input:
+        my_heap.push(el)
+        heappush(heapq_heap, el)
+    assert my_heap.heap == heapq_heap

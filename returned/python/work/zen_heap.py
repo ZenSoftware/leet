@@ -23,10 +23,10 @@ class MinHeap:
             l = self.left_index(i)
             r = self.right_index(i)
             if l < size and r < size:
-                if self.heap[l] <= self.heap[r] and self.heap[i] > self.heap[l]:
+                if self.heap[l] < self.heap[r] and self.heap[i] > self.heap[l]:
                     self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
                     i = l
-                elif self.heap[l] > self.heap[r] and self.heap[i] > self.heap[r]:
+                elif self.heap[l] >= self.heap[r] and self.heap[i] > self.heap[r]:
                     self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
                     i = r
                 else:
@@ -77,10 +77,10 @@ class MaxHeap(MinHeap):
             l = self.left_index(i)
             r = self.right_index(i)
             if l < size and r < size:
-                if self.heap[l] >= self.heap[r] and self.heap[i] < self.heap[l]:
+                if self.heap[l] > self.heap[r] and self.heap[i] < self.heap[l]:
                     self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
                     i = l
-                elif self.heap[l] < self.heap[r] and self.heap[i] < self.heap[r]:
+                elif self.heap[l] <= self.heap[r] and self.heap[i] < self.heap[r]:
                     self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
                     i = r
                 else:
