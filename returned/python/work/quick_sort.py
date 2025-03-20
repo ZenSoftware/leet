@@ -16,5 +16,6 @@ def quick_sort(elements: List) -> List:
 
         sort(start, i-1)
         sort(i+1, end)
+        
     sort(0, len(elements)-1)
     return elements
