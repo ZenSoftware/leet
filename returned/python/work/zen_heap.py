@@ -25,20 +25,23 @@ class MinHeap:
     def sift_down(self, i: int):
         def val(x):
             return self.key(self.heap[x])
+        
+        def swap(a,b):
+            self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
 
         size = len(self.heap)
         l = self.left_index(i)
         r = self.right_index(i)
         if l < size and r < size:
             if val(l) < val(r) and val(i) > val(l):
-                self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                swap(i, l)
                 return self.sift_down(l)
             elif val(l) >= val(r) and val(i) > val(r):
-                self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
+                swap(i, r)
                 return self.sift_down(r)
         elif l < size:
             if val(i) > val(l):
-                self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                swap(i, l)
                 return self.sift_down(l)
         return i
 
@@ -57,7 +60,7 @@ class MinHeap:
         result = self.heap.pop()
         self.sift_down(0)
         return result
-
+    
     def parent_index(self, i: int) -> int:
         return (i-1)//2
 
@@ -80,19 +83,22 @@ class MaxHeap(MinHeap):
     def sift_down(self, i: int):
         def val(x):
             return self.key(self.heap[x])
+        
+        def swap(a,b):
+            self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
 
         size = len(self.heap)
         l = self.left_index(i)
         r = self.right_index(i)
         if l < size and r < size:
             if val(l) > val(r) and val(i) < val(l):
-                self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                swap(i, l)
                 return self.sift_down(l)
             elif val(l) <= val(r) and val(i) < val(r):
-                self.heap[r], self.heap[i] = self.heap[i], self.heap[r]
+                swap(i, r)
                 return self.sift_down(r)
         elif l < size:
             if val(i) < val(l):
-                self.heap[l], self.heap[i] = self.heap[i], self.heap[l]
+                swap(i, l)
                 return self.sift_down(l)
         return i
