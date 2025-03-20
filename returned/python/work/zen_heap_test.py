@@ -23,9 +23,7 @@ def test_key():
         def __init__(self, val):
             self.val = val
     
-    arr = []
-    for i in range(100):
-        arr.append(Node(i))
+    arr = [Node(i) for i in range(100)]
     shuffle(arr)
     heap = MinHeap(arr, key=lambda x: x.val)
     sorted = []
