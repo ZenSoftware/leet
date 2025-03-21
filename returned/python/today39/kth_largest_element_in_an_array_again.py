@@ -3,6 +3,11 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(2n)
+    Space: O(1)
+    """
+
     def findKthLargest(self, nums: List[int], k: int) -> int:
         goal = len(nums) - k
 
