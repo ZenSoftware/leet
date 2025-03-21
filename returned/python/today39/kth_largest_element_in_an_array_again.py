@@ -20,21 +20,20 @@ class Solution:
      [4 3 2 1 5 3 3]
     i j
 
-     [2 1 | 4 3 5 3 3]     if num[j] < pivot: swap(i, j)
+     [2 1 | 4 3 5 3 3]     if num[j] < pivot: swap(++i, j)
         i           j
 
-     pivots final resting place of pivot will be at i+1
+     Pivots final resting place of pivot will be at i+1.
+     Store the index of the beginnging of 2nd partition.
      [2 1 | 3 3 5 3 4]
-        i           j
             ^
          dup_start
-     store the index of the beginnging of 2nd partition (duplicates)
 
-     shuffle all duplicates of pivot into the 2nd partition
+     Shuffle all duplicates of pivot into the 2nd partition.
      [2 1 | 3 3 5 3 4]
             i j
 
-     [2 1 | 3 3 3 | 5 4]    if num[j] == pivot: swap(i, j)
+     [2 1 | 3 3 3 | 5 4]    if num[j] == pivot: swap(++i, j)
                 i   j
                 ^
              dup_end
