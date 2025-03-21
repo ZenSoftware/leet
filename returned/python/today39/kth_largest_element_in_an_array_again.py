@@ -1,19 +1,59 @@
 # https://leetcode.com/problems/kth-largest-element-in-an-array/
 from typing import List
+from random import randint
 
 
 class Solution:
     """
-    Time: O(2n)
-    Space: O(1)
+     Time: O(n)
+     Space: O(1)
+
+     k = 4, len(nums) == 7
+     0 1 2 3 4 5 6
+           ^--k--^
+         goal   end
+
+     goal = end - k + 1
+     goal = (len(nums) - 1) - k + 1
+     goal = len(nums) - k
+
+                  p
+     [4 3 2 1 5 3 3]
+    i j
+
+     [2 1 | 4 3 5 3 3]   if num[j] < pivot: swap(i, j)
+        i           j
+
+     pivots final resting place of pivot will be at i+1
+     [2 1 | 3 3 5 3 4]
+        i           j
+            ^
+         dup_start
+     store the index of the beginnging of 2nd partition (duplicates)
+
+     shuffle all duplicates of pivot into the 2nd partition
+     [2 1 | 3 3 5 3 4]
+            i j
+
+     [2 1 | 3 3 3 | 5 4]    if num[j] == pivot: swap(i, j)
+                i   j
+                ^
+             dup_end
+
+     [2 1 | 3 3 3 | 5 4]
+      1st    2nd    3rd
+
     """
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
         goal = len(nums) - k
 
         def quick_select(start, end):
-            # 1st patition contains all elements less than the pivot
+            # Process the 1st patition, the front of array to
+            # contain all elements less than the pivot
             i = start - 1
+            pivot_index = randint(start, end)
+            nums[pivot_index], nums[end] = nums[end], nums[pivot_index]
             pivot = nums[end]
             for j in range(start, end):
                 if nums[j] < pivot:
@@ -22,8 +62,8 @@ class Solution:
             dup_start = i + 1
             nums[dup_start], nums[end] = nums[end], nums[dup_start]
 
-            # 2nd partition contains all duplicates of pivot
-            # 3rd partition contains all elements greater than the pivot
+            # Process 2nd partition such that it contains all duplicates of pivot
+            # Finally, the 3rd partition will contain all elements greater than the pivot
             i = dup_start
             for j in range(dup_start + 1, end + 1):
                 if nums[j] == pivot:
