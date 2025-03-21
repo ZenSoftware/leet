@@ -5,9 +5,6 @@ from collections import defaultdict, deque
 
 class Solution:
     def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:
-        if endGene not in bank and startGene != endGene:
-            return -1
-
         # Construct graph
         graph = defaultdict(set)
         for gene in bank:
