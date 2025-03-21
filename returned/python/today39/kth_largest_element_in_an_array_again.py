@@ -49,12 +49,14 @@ class Solution:
         goal = len(nums) - k
 
         def quick_select(start, end):
-            # Process the 1st patition such that the front of
-            # the array contains all elements less than the pivot.
-            i = start - 1
+            # Choose a random pivot and move it to the end
             pivot_index = randint(start, end)
             nums[pivot_index], nums[end] = nums[end], nums[pivot_index]
             pivot = nums[end]
+
+            # Process the 1st patition such that the front of
+            # the array contains all elements less than the pivot.
+            i = start - 1
             for j in range(start, end):
                 if nums[j] < pivot:
                     i += 1
