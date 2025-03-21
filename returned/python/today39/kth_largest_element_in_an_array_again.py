@@ -72,8 +72,8 @@ class Solution:
                     nums[i], nums[j] = nums[j], nums[i]
             dup_end = i
 
-            # Recurse on the 1st and 3rd partitions.
-            # Skip the 2nd partition due to it containing only duplicates.
+            # Recurse on the partition containing the goal.
+            # Return if the goal is within the 2nd partition.
             if goal < dup_start:
                 return quick_select(start, dup_start - 1)
             elif dup_end < goal:
