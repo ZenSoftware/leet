@@ -23,7 +23,7 @@ class Solution:
      [2 1 | 4 3 5 3 3]     if num[j] < pivot: swap(++i, j)
         i           j
 
-     Pivots final resting place of pivot will be at i+1.
+     Pivot's final resting place will be at i+1.
      Store the index of the beginnging of 2nd partition.
      [2 1 | 3 3 5 3 4]
             ^
