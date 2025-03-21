@@ -20,7 +20,7 @@ class Solution:
      [4 3 2 1 5 3 3]
     i j
 
-     [2 1 | 4 3 5 3 3]   if num[j] < pivot: swap(i, j)
+     [2 1 | 4 3 5 3 3]     if num[j] < pivot: swap(i, j)
         i           j
 
      pivots final resting place of pivot will be at i+1
