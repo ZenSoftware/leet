@@ -4,6 +4,12 @@ from collections import defaultdict, deque
 
 
 class Solution:
+    """
+    n = number of genes in the bank
+    Time: O(n^2)
+    Space: O(n)
+    """
+
     def minMutation(self, startGene: str, endGene: str, bank: List[str]) -> int:
         # A gene is adjacent if it differs by 1 character.
         # startGene may not be in bank, thus start by addinging it to the graph.
