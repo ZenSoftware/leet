@@ -62,8 +62,9 @@ class Solution:
             dup_start = i + 1
             nums[dup_start], nums[end] = nums[end], nums[dup_start]
 
-            # Process 2nd partition such that it contains all the duplicates of pivot.
-            # Thus, the 3rd partition will contain all elements strictly greater than the pivot.
+            # Process 2nd partition such that it contains all the duplicates
+            # of pivot.  Thus, the 3rd partition will contain all elements
+            # strictly greater than the pivot.
             i = dup_start
             for j in range(dup_start + 1, end + 1):
                 if nums[j] == pivot:
