@@ -8,11 +8,10 @@ class Solution:
      Time: O(n)
      Space: O(1)
 
-     k = 4, len(nums) == 7
-     0 1 2 3 4 5 6
-           ^--k--^
-         goal   end
-
+     k: 4, len(nums): 7
+     indicies: 0 1 2 3 4 5 6
+                     ^--k--^
+                   goal   end
      goal = end - k + 1
      goal = (len(nums) - 1) - k + 1
      goal = len(nums) - k
@@ -43,6 +42,7 @@ class Solution:
      [2 1 | 3 3 3 | 5 4]
       1st    2nd    3rd
 
+      Recurse on 1st and 3rd partitions
     """
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
