@@ -42,7 +42,8 @@ class Solution:
      [2 1 | 3 3 3 | 5 4]
       1st    2nd    3rd
 
-     Recurse on 1st and 3rd partitions
+     Recurse on the partition containing the goal.
+     Return if the goal is within the 2nd partition.
     """
 
     def findKthLargest(self, nums: List[int], k: int) -> int:
