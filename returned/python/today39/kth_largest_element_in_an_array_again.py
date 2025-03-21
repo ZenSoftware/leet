@@ -49,8 +49,8 @@ class Solution:
         goal = len(nums) - k
 
         def quick_select(start, end):
-            # Process the 1st patition, the front of array to
-            # contain all elements less than the pivot
+            # Process the 1st patition such that the front of
+            # the array contains all elements less than the pivot.
             i = start - 1
             pivot_index = randint(start, end)
             nums[pivot_index], nums[end] = nums[end], nums[pivot_index]
@@ -62,8 +62,8 @@ class Solution:
             dup_start = i + 1
             nums[dup_start], nums[end] = nums[end], nums[dup_start]
 
-            # Process 2nd partition such that it contains all duplicates of pivot
-            # Finally, the 3rd partition will contain all elements greater than the pivot
+            # Process 2nd partition such that it contains all the duplicates of pivot.
+            # Thus, the 3rd partition will contain all elements strictly greater than the pivot.
             i = dup_start
             for j in range(dup_start + 1, end + 1):
                 if nums[j] == pivot:
@@ -71,8 +71,8 @@ class Solution:
                     nums[i], nums[j] = nums[j], nums[i]
             dup_end = i
 
-            # Recurse on the 1st and 3rd partitions
-            # Skip the 2nd partition due to it containing only duplicates
+            # Recurse on the 1st and 3rd partitions.
+            # Skip the 2nd partition due to it containing only duplicates.
             if goal < dup_start:
                 return quick_select(start, dup_start - 1)
             elif dup_end < goal:
