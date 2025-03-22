@@ -1,27 +1,32 @@
 # https://leetcode.com/problems/loud-and-rich/description/
 from typing import List
-from collections import defaultdict
-from functools import cache
+from collections import defaultdict, deque
 
 
 class Solution:
     def loudAndRich(self, richer: List[List[int]], quiet: List[int]) -> List[int]:
+        n = len(quiet)
         graph = defaultdict(set)
+        indegree = [0] * n
         for a, b in richer:
-            graph[b].add((quiet[a], a))
+            graph[a].add(b)
+            indegree[b] += 1
 
-        @cache
-        def dfs(curr: int) -> List:
-            result = set()
-            for adj in graph[curr]:
-                result.add(adj)
-                result.update(dfs(adj[1]))
-            return result
+        queue = deque()
+        for i, degree in enumerate(indegree):
+            if degree == 0:
+                queue.append(i)
 
-        answer = []
-        for i in range(len(quiet)):
-            richer_than_curr = list(dfs(i))
-            richer_than_curr.append((quiet[i], i))
-            _, a = min(richer_than_curr)
-            answer.append(a)
+        answer = list(range(n))
+        while queue:
+            node = queue.popleft()
+
+            for neighbor in graph[node]:
+                if quiet[answer[node]] < quiet[answer[neighbor]]:
+                    answer[neighbor] = answer[node]
+
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+
         return answer
