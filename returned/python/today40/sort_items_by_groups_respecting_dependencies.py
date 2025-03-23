@@ -27,6 +27,7 @@ class Solution:
             if group[i] == -1:
                 group[i] = group_id
                 group_id += 1
+            item_groups[group[i]].append(i)
 
         item_graph = defaultdict(list)
         item_indegree = defaultdict(int)
@@ -38,14 +39,12 @@ class Solution:
                     item_graph[u].append(v)
                     item_indegree[v] += 1
 
-        for i, g in enumerate(group):
-            item_groups[g].append(i)
-
-        sorted_items = defaultdict(list)
-        for g, item_group in item_groups.items():
-            sorted_items[g] = topo_sort(item_group, item_graph, item_indegree)
-            if len(item_group) != len(sorted_items[g]):
+        sorted_items_grouped = defaultdict(list)
+        for group_id, item_group in item_groups.items():
+            sorted_items = topo_sort(item_group, item_graph, item_indegree)
+            if len(item_group) != len(sorted_items[group_id]):
                 return []
+            sorted_items_grouped[group_id] = sorted_items
 
         group_graph = defaultdict(list)
         group_indegree = defaultdict(int)
@@ -57,12 +56,12 @@ class Solution:
                     group_graph[group[u]].append(group[v])
                     group_indegree[group[v]] += 1
 
-        sorted_groups = topo_sort(range(group_id), group_graph, group_indegree)
-        if len(sorted_groups) != len(range(group_id)):
+        sorted_groups = topo_sort(item_groups.keys(), group_graph, group_indegree)
+        if len(sorted_groups) != len(item_groups):
             return []
 
         result = []
-        for g in sorted_groups:
-            result.extend(sorted_items[g])
+        for group_id in sorted_groups:
+            result.extend(sorted_items_grouped[group_id])
 
         return result
