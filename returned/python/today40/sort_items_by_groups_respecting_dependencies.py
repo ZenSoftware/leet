@@ -4,11 +4,6 @@ from collections import deque, defaultdict
 
 
 class Solution:
-    """
-    O(E + V)
-
-    """
-
     def sortItems(
         self, n: int, m: int, group: List[int], beforeItems: List[List[int]]
     ) -> List[int]:
