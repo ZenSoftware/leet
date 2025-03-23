@@ -4,6 +4,11 @@ from collections import deque, defaultdict
 
 
 class Solution:
+    """
+    O(E + V)
+
+    """
+
     def sortItems(
         self, n: int, m: int, group: List[int], beforeItems: List[List[int]]
     ) -> List[int]:
@@ -42,7 +47,7 @@ class Solution:
         sorted_items_grouped = defaultdict(list)
         for group_id, item_group in item_groups.items():
             sorted_items = topo_sort(item_group, item_graph, item_indegree)
-            if len(item_group) != len(sorted_items[group_id]):
+            if len(item_group) != len(sorted_items):
                 return []
             sorted_items_grouped[group_id] = sorted_items
 
