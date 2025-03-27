@@ -7,12 +7,21 @@ class Solution:
         n = len(intervals)
         indexed = [(interval, i) for i, interval in enumerate(intervals)]
         indexed.sort()
+
+        def search(end):
+            left, right = 0, n - 1
+            while left <= right:
+                mid = (left + right) // 2
+                start = indexed[mid][0][0]
+                if end > start:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            return left if left < n else -1
+
         answer = [-1] * n
-        for i in range(0, n):
-            j_interval, j = indexed[i]
-            for i2 in range(i, n):
-                k_interval, k = indexed[i2]
-                if j_interval[1] <= k_interval[0]:
-                    answer[j] = k
-                    break
+        for i, (_, end) in enumerate(intervals):
+            pos = search(end)
+            if pos != -1:
+                answer[i] = indexed[pos][1]
         return answer
