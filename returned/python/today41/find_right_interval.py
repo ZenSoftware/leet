@@ -8,8 +8,8 @@ class Solution:
         indexed = [(interval, i) for i, interval in enumerate(intervals)]
         indexed.sort()
 
-        def search(end):
-            left, right = 0, n - 1
+        def search(end, lo=0):
+            left, right = lo, n - 1
             while left <= right:
                 mid = (left + right) // 2
                 start = indexed[mid][0][0]
@@ -20,8 +20,8 @@ class Solution:
             return left if left < n else -1
 
         answer = [-1] * n
-        for i, (_, end) in enumerate(intervals):
-            pos = search(end)
+        for lo, [(_, end), index] in enumerate(indexed):
+            pos = search(end, lo)
             if pos != -1:
-                answer[i] = indexed[pos][1]
+                answer[index] = indexed[pos][1]
         return answer
