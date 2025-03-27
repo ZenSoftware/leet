@@ -5,12 +5,17 @@ from functools import cache
 
 
 class Solution:
+    """
+    Time: O(n^3)
+    Space: O(n^2)
+    """
+
     def checkIfPrerequisite(
         self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]
     ) -> List[bool]:
         graph = defaultdict(set)
-        for a, b in prerequisites:
-            graph[b].add(a)
+        for prereq, course in prerequisites:
+            graph[course].add(prereq)
 
         @cache
         def dfs(course):
