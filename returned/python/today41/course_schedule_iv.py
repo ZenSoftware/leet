@@ -1,26 +1,27 @@
 # https://leetcode.com/problems/course-schedule-iv/description/
 from typing import List
-from collections import defaultdict, deque
+from collections import defaultdict
 
 
 class Solution:
     def checkIfPrerequisite(
         self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]
     ) -> List[bool]:
-        graph = defaultdict(list)
-        for dependency, dependent in prerequisites:
-            graph[dependency].append(dependent)
+        cache = defaultdict(set)
+        graph = defaultdict(set)
+        for a, b in prerequisites:
+            graph[b].add(a)
 
-        def bfs(query: List[int]) -> bool:
-            queue = deque([query[0]])
-            while queue:
-                cur = queue.popleft()
-                if cur == query[1]:
-                    return True
-                queue.extend(graph[cur])
-            return False
+        def dfs(course):
+            if course in cache:
+                return cache[course]
+            prereqs = set([course])
+            for adj in graph[course]:
+                prereqs.update(dfs(adj))
+            cache[course] = prereqs
+            return prereqs
 
         result = []
-        for query in queries:
-            result.append(bfs(query))
+        for prereq, course in queries:
+            result.append(prereq in dfs(course))
         return result
