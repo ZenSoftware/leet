@@ -17,11 +17,11 @@ class Solution:
                     left = mid + 1
                 else:
                     right = mid - 1
-            return left if left < n else -1
+            return left if left < n else None
 
-        answer = [-1] * n
+        result = [-1] * n
         for lo, [(_, end), index] in enumerate(indexed):
             pos = search(end, lo)
-            if pos != -1:
-                answer[index] = indexed[pos][1]
-        return answer
+            if pos is not None:
+                result[index] = indexed[pos][1]
+        return result
