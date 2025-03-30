@@ -24,7 +24,9 @@ class Solution:
         for i in range(len(s) - len(p) + 1):
             if is_anagram():
                 res.append(i)
+
             s_counts[s[i]] -= 1
             if i + len(p) in range(len(s)):
-                s_counts[s[i + len(p)]] += 1
+                next_char = s[i + len(p)]
+                s_counts[next_char] += 1
         return res
