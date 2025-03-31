@@ -3,6 +3,11 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(n^3)
+    Space: O(n^2)
+    """
+
     def numberOfBoomerangs(self, points: List[List[int]]) -> int:
         n = len(points)
         distances = {}
