@@ -10,7 +10,7 @@ class ListNode:
 
 class Solution:
     """
-    Time: O(3n)
+    Time: O(n)
     Space: O(1)
     keeping overflow in mind
     """
