@@ -10,8 +10,9 @@ class ListNode:
 
 class Solution:
     """
-    Time: O(5n)
+    Time: O(3n)
     Space: O(1)
+    keeping overflow in mind
     """
 
     def addTwoNumbers(
@@ -31,7 +32,7 @@ class Solution:
 
         res = ListNode(None)
         carry = 0
-        while l1 or l2:
+        while l1 or l2 or carry:
             d1, d2 = 0, 0
             if l1:
                 d1 = l1.val

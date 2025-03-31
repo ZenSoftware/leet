@@ -36,3 +36,10 @@ def test1():
     l2 = to_nodes([5, 6, 4])
     result = Solution().addTwoNumbers(l1, l2)
     assert to_array(result) == [7, 8, 0, 7]
+
+
+def test2():
+    l1 = to_nodes([5])
+    l2 = to_nodes([5])
+    result = Solution().addTwoNumbers(l1, l2)
+    assert to_array(result) == [1, 0]
