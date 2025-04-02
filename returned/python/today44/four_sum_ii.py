@@ -4,6 +4,11 @@ from collections import defaultdict
 
 
 class Solution:
+    """
+    Time: O(n^2)
+    Space: O(n)
+    """
+
     def fourSumCount(
         self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]
     ) -> int:
