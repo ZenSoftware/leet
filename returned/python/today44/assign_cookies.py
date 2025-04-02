@@ -11,13 +11,10 @@ class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         g.sort()
         s.sort()
-        res = 0
-        i = 0
-        for greed in g:
-            while i < len(s) and s[i] < greed:
-                i += 1
-            if i >= len(s):
-                return res
-            res += 1
-            i += 1
+        g_idx, s_idx, res = 0, 0, 0
+        while g_idx < len(g) and s_idx < len(s):
+            if g[g_idx] <= s[s_idx]:
+                res += 1
+                g_idx += 1
+            s_idx += 1
         return res
