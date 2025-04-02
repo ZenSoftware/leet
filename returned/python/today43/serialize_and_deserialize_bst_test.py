@@ -15,7 +15,7 @@ def test1():
     n1.right = n3
     n3.left = n4
     serialized = Codec().serialize(n1)
-    assert serialized == "1|2,3|null,null,4,null"
+    assert serialized == "1,2,n,n,3,4,n,n,n"
 
     deserialized = Codec().deserialize(serialized)
     assert deserialized.val == 1
