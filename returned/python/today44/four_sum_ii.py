@@ -15,6 +15,6 @@ class Solution:
         res = 0
         for n3 in nums3:
             for n4 in nums4:
-                res += memo[-n3 - n4]
+                res += memo[-(n3 + n4)]
 
         return res
