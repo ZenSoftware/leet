@@ -11,3 +11,7 @@ def test2():
 
 def test3():
     assert Solution().find132pattern([-1, 3, 2, 0]) == True
+
+
+def test4():
+    assert Solution().find132pattern([4, 3, 2, 1]) == False
