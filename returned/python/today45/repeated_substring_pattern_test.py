@@ -15,3 +15,7 @@ def test3():
 
 def test4():
     assert Solution().repeatedSubstringPattern("babbabbabbabbab") == True
+
+
+def test5():
+    assert Solution().repeatedSubstringPattern("aabaaba") == False
