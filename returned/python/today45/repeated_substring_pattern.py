@@ -3,10 +3,10 @@
 
 class Solution:
     def repeatedSubstringPattern(self, s: str) -> bool:
-        for i in range(len(s) // 2):
-            chunk = s[: i + 1]
-            for j in range(i + 1, len(s), i + 1):
-                if chunk != s[j : j + i + 1]:
+        for i in range(1, len(s) // 2 + 1):
+            chunk = s[:i]
+            for j in range(i, len(s), i):
+                if chunk != s[j : j + i]:
                     break
             else:
                 return True
