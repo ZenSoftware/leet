@@ -1,57 +1,72 @@
 # https://leetcode.com/problems/lfu-cache/description/
+from collections import defaultdict
 
 
 class Node:
-    def __init__(self, key, value, prev=None, next=None):
-        self.key = key
-        self.value = value
+    def __init__(self, val, prev=None, next=None):
+        self.val = val
         self.prev = prev
         self.next = next
 
 
+class DoubleyLinkedList:
+    def __init__(self):
+        self.left = Node(None)
+        self.right = Node(None)
+        self.left.next = self.right
+        self.right.prev = self.left
+        self.map = {}
+
+    def __len__(self):
+        return len(self.map)
+
+    def push_right(self, val):
+        node = Node(val, self.right.prev, self.right)
+        node.prev.next = node
+        node.next.prev = node
+        self.map[val] = node
+
+    def pop_left(self):
+        res = self.left.next.val
+        self.pop(res)
+        return res
+
+    def pop(self, val):
+        if val in self.map:
+            node = self.map.pop(val)
+            node.prev.next = node.next
+            node.next.prev = node.prev
+
+
 class LFUCache:
-
     def __init__(self, capacity: int):
-        self.size = 0
         self.capacity = capacity
-        self.hashmap = {}
+        self.lfu_count = 1
+        self.val_map = {}
+        self.count_map = defaultdict(int)
+        self.list_map = defaultdict(DoubleyLinkedList)
 
-        self.head = Node("HEAD", None)
-        self.tail = Node("TAIL", None)
-        self.tail.next = self.head
-        self.head.prev = self.tail
+    def counter(self, key):
+        count = self.count_map[key]
+        self.count_map[key] += 1
+        self.list_map[count].pop(key)
+        self.list_map[count + 1].push_right(key)
+
+        if count == self.lfu_count and len(self.list_map[count]) == 0:
+            self.lfu_count += 1
 
     def get(self, key: int) -> int:
-        if key in self.hashmap:
-            self._move_to_front(self.hashmap[key])
-            return self.hashmap[key].value
-        else:
+        if key not in self.val_map:
             return -1
+        self.counter(key)
+        return self.val_map[key]
 
     def put(self, key: int, value: int) -> None:
-        if key in self.hashmap:
-            node = self.hashmap[key]
-            node.value = value
-            self._move_to_front(node)
-        else:
-            if self.capacity == self.size:
-                del self.hashmap[self.tail.next.key]
-                self.tail.next.prev = None
-                self.tail.next.next = None
-                self.tail.next = self.tail.next.next
-                self.size -= 1
+        if key not in self.val_map and len(self.val_map) == self.capacity:
+            lfu_key = self.list_map[self.lfu_count].pop_left()
+            del self.val_map[lfu_key]
+            del self.count_map[lfu_key]
 
-            node = Node(key, value, self.head.prev, self.head)
-            self.hashmap[key] = node
-            node.prev.next = node
-            node.next.prev = node
-            self.size += 1
-
-    def _move_to_front(self, node: Node):
-        if node.next != self.head:
-            node.next.prev = node.prev
-            node.prev.next = node.next
-            node.next = self.head
-            node.prev = self.head.prev
-            self.head.prev.next = node
-            self.head.prev = node
+        self.val_map[key] = value
+        self.counter(key)
+        self.lfu_count = min(self.lfu_count, self.count_map[key])
