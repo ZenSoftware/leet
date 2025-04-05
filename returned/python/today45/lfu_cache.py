@@ -1,72 +1,36 @@
 # https://leetcode.com/problems/lfu-cache/description/
-from collections import defaultdict
-
-
-class Node:
-    def __init__(self, val, prev=None, next=None):
-        self.val = val
-        self.prev = prev
-        self.next = next
-
-
-class DoubleyLinkedList:
-    def __init__(self):
-        self.left = Node(None)
-        self.right = Node(None)
-        self.left.next = self.right
-        self.right.prev = self.left
-        self.map = {}
-
-    def __len__(self):
-        return len(self.map)
-
-    def push_right(self, val):
-        node = Node(val, self.right.prev, self.right)
-        node.prev.next = node
-        node.next.prev = node
-        self.map[val] = node
-
-    def pop_left(self):
-        res = self.left.next.val
-        self.pop(res)
-        return res
-
-    def pop(self, val):
-        if val in self.map:
-            node = self.map.pop(val)
-            node.prev.next = node.next
-            node.next.prev = node.prev
+from collections import OrderedDict, defaultdict
 
 
 class LFUCache:
     def __init__(self, capacity: int):
         self.capacity = capacity
-        self.lfu_count = 1
-        self.val_map = {}
-        self.count_map = defaultdict(int)
-        self.list_map = defaultdict(DoubleyLinkedList)
-
-    def counter(self, key):
-        count = self.count_map[key]
-        self.count_map[key] += 1
-        self.list_map[count].pop(key)
-        self.list_map[count + 1].push_right(key)
-
-        if count == self.lfu_count and len(self.list_map[count]) == 0:
-            self.lfu_count += 1
+        self.min_freq = 1
+        self.freq = defaultdict(OrderedDict)
+        self.cache = {}
 
     def get(self, key: int) -> int:
-        if key not in self.val_map:
+        if key not in self.cache:
             return -1
-        self.counter(key)
-        return self.val_map[key]
+        val, freq = self.cache[key]
+        del self.freq[freq][key]
+        if not self.freq[freq]:
+            del self.freq[freq]
+            if self.min_freq == freq:
+                self.min_freq += 1
+        self.freq[freq + 1][key] = val
+        self.cache[key] = (val, freq + 1)
+        return val
 
     def put(self, key: int, value: int) -> None:
-        if key not in self.val_map and len(self.val_map) == self.capacity:
-            lfu_key = self.list_map[self.lfu_count].pop_left()
-            del self.val_map[lfu_key]
-            del self.count_map[lfu_key]
+        if key in self.cache:
+            self.cache[key] = (value, self.cache[key][1])
+            self.get(key)
+        else:
+            if len(self.cache) >= self.capacity:
+                evict_key, _ = self.freq[self.min_freq].popitem(last=False)
+                del self.cache[evict_key]
 
-        self.val_map[key] = value
-        self.counter(key)
-        self.lfu_count = min(self.lfu_count, self.count_map[key])
+            self.freq[1][key] = value
+            self.cache[key] = (value, 1)
+            self.min_freq = 1
