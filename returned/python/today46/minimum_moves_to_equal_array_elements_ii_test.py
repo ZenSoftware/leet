@@ -7,3 +7,7 @@ def test1():
 
 def test2():
     assert Solution().minMoves2([1, 10, 2, 9]) == 16
+
+
+def test3():
+    assert Solution().minMoves2([1, 1, 2]) == 1

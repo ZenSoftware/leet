@@ -1,5 +1,5 @@
 # https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/description/
-from typing import List
+from typing import Counter, List
 
 
 class Solution:
@@ -10,9 +10,9 @@ class Solution:
 
     def minMoves2(self, nums: List[int]) -> int:
         res = float("inf")
-        for i in range(len(nums)):
+        for n1 in nums:
             count = 0
-            for j in range(len(nums)):
-                count += abs(nums[i] - nums[j])
+            for n2 in nums:
+                count += abs(n1 - n2)
             res = min(res, count)
         return res
