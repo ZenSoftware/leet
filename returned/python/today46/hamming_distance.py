@@ -1,0 +1,7 @@
+# https://leetcode.com/problems/hamming-distance/description/
+from collections import Counter
+
+
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        return Counter(bin(x ^ y))["1"]
