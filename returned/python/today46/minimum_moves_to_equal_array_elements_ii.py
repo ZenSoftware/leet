@@ -14,5 +14,7 @@ class Solution:
             count = 0
             for n2 in nums:
                 count += abs(n1 - n2)
+                if count >= res:
+                    break
             res = min(res, count)
         return res
