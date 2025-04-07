@@ -9,7 +9,7 @@ class Solution:
 
     Multiplying a number by 2 conserves the number of bits in the number
     1 (001) -> 2 (010) -> 4(100)
-    Conversely, the number of bits in a number will be the same as
+    Alternatively, the number of bits in a number will be the same as
     the number of bits in half that number. (right bit shift by 1)
 
     In the case the number is odd, there will be 1 more bit than
