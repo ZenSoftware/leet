@@ -1,23 +1,18 @@
 # https://leetcode.com/problems/unique-substrings-in-wraparound-string/description/
+from collections import defaultdict
 
 
 class Solution:
     def findSubstringInWraproundString(self, s: str) -> int:
-        seen = set()
-        count = 0
-        for start in range(len(s)):
-            for end in range(start + 1, len(s) + 1):
-                substr = s[start:end]
-                if substr not in seen and self.is_substring(substr):
-                    count += 1
-                    seen.add(substr)
-        return count
-
-    def is_substring(self, s: str) -> bool:
-        prev = ord(s[0])
-        for i in range(1, len(s)):
-            cur = ord(s[i])
-            if cur % 26 != (prev + 1) % 26:
-                return False
-            prev = cur
-        return True
+        d = defaultdict(int)
+        i = 0
+        while i < len(s):
+            d[s[i]] = max(d[s[i]], 1)
+            j = i + 1
+            while j < len(s) and (
+                ord(s[j]) - ord(s[j - 1]) == 1 or ord(s[j]) - ord(s[j - 1]) == -25
+            ):
+                d[s[j]] = max(d[s[j]], j - i + 1)
+                j += 1
+            i = j
+        return sum(d.values())
