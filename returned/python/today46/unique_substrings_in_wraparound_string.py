@@ -14,10 +14,10 @@ class Solution:
         return count
 
     def is_substring(self, s: str) -> bool:
-        a_code = ord("a")
+        prev = ord(s[0])
         for i in range(1, len(s)):
-            prev = ord(s[i - 1]) - a_code
-            cur = ord(s[i]) - a_code
+            cur = ord(s[i])
             if cur % 26 != (prev + 1) % 26:
                 return False
+            prev = cur
         return True
