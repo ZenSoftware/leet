@@ -8,11 +8,7 @@ class Solution:
             if len(split_ip) != 4:
                 return "Neither"
             for segment in split_ip:
-                if (
-                    not segment.isnumeric()
-                    or (len(segment) > 1 and segment[0] == "0")
-                    or not (0 <= int(segment) <= 255)
-                ):
+                if not self._is_ipv4_part(segment):
                     return "Neither"
             return "IPv4"
         elif ":" in queryIP:
@@ -20,13 +16,18 @@ class Solution:
             if len(split_ip) != 8:
                 return "Neither"
             for segment in split_ip:
-                if not self._is_hex(segment):
+                if not self._is_ipv6_part(segment):
                     return "Neither"
             return "IPv6"
 
         return "Neither"
 
-    def _is_hex(self, s: str) -> bool:
+    def _is_ipv4_part(self, s: str) -> bool:
+        return (
+            s.isnumeric() and not (len(s) > 1 and s[0] == "0") and (0 <= int(s) <= 255)
+        )
+
+    def _is_ipv6_part(self, s: str) -> bool:
         if not (1 <= len(s) <= 4):
             return False
         for char in s:
