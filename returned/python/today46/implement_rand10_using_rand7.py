@@ -8,7 +8,7 @@ def rand7():
 
 class Solution:
     def rand10(self):
-        total = 0
-        for _ in range(5):
-            total += rand7()
-        return (total % 10) + 1
+        num = 41
+        while num > 40:
+            num = (rand7() - 1) * 7 + rand7()
+        return num % 10 + 1
