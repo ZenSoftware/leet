@@ -28,7 +28,7 @@ class Solution:
         )
 
     def _is_ipv6_part(self, s: str) -> bool:
-        if not (1 <= len(s) <= 4):
+        if not 1 <= len(s) <= 4:
             return False
         for char in s:
             if char not in "0123456789abcdefABCDEF":
