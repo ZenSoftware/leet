@@ -1,46 +1,34 @@
 # https://leetcode.com/problems/concatenated-words/description/
 from typing import List
-from functools import cache
-
-
-class TrieNode:
-    def __init__(self):
-        self.terminal = False
-        self.children = {}
 
 
 class Solution:
-    def __init__(self):
-        self.root = TrieNode()
-
-    def insert(self, word: str):
-        cur = self.root
-        for char in word:
-            if char not in cur.children:
-                cur.children[char] = TrieNode()
-            cur = cur.children[char]
-        cur.terminal = True
-
-    @cache
-    def dfs(self, key: str, index: int, count: int) -> bool:
-        if index >= len(key):
-            return count > 1
-        curr = self.root
-        for i in range(index, len(key)):
-            if key[i] not in curr.children:
-                return False
-            curr = curr.children[key[i]]
-            if curr.terminal:
-                if self.dfs(key, i + 1, count + 1):
-                    return True
-        return False
-
     def findAllConcatenatedWordsInADict(self, words: List[str]) -> List[str]:
-        for word in words:
-            self.insert(word)
+        visited: set[int] = set()
+        words_set: set[str] = set(words)
 
-        ans = []
+        def dfs(word: str, start: int):
+            n = len(word)
+            if start == n:
+                # Got past the end - the word is made of multiple words.
+                return True
+            if start in visited:
+                # We already searched from this index.
+                return False
+
+            visited.add(start)
+            # Go up until the last character in the word if we are starting
+            # from the first index. Otherwise we'll mark single words as results.
+            for i in range(start + 1, (n + 1 if start != 0 else n)):
+                if word[start:i] in words_set and dfs(word, i):
+                    return True
+
+            return False
+
+        result: list[str] = []
         for word in words:
-            if self.dfs(word, 0, 0):
-                ans.append(word)
-        return ans
+            visited.clear()
+            if dfs(word, 0):
+                result.append(word)
+
+        return result
