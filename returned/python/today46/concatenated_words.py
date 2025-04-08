@@ -20,7 +20,7 @@ class Solution:
             cur = cur.children[char]
         cur.terminal = True
 
-    def dfs(self, key, index, count):
+    def dfs(self, key: str, index: int, count: int) -> bool:
         if index >= len(key):
             return count > 1
         curr = self.root
@@ -38,7 +38,7 @@ class Solution:
             self.insert(word)
 
         ans = []
-        for i in range(len(words)):
-            if self.dfs(words[i], 0, 0):
-                ans.append(words[i])
+        for word in words:
+            if self.dfs(word, 0, 0):
+                ans.append(word)
         return ans
