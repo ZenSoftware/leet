@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/concatenated-words/description/
 from typing import List
+from functools import cache
 
 
 class TrieNode:
@@ -20,6 +21,7 @@ class Solution:
             cur = cur.children[char]
         cur.terminal = True
 
+    @cache
     def dfs(self, key: str, index: int, count: int) -> bool:
         if index >= len(key):
             return count > 1
