@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/generate-random-point-in-a-circle/description/
 from typing import List
-from random import uniform
-from math import sqrt
+from random import uniform, random
+from math import sqrt, pi, cos, sin
 
 
 class Solution:
@@ -12,14 +12,10 @@ class Solution:
 
     def __init__(self, radius: float, x_center: float, y_center: float):
         self.radius = radius
-        self.radius_squared = radius**2
         self.x_center = x_center
         self.y_center = y_center
 
     def randPoint(self) -> List[float]:
-        x = uniform(-self.radius, self.radius)
-        max_y = sqrt(self.radius_squared - x**2)
-        y = uniform(-max_y, max_y)
-        x += self.x_center
-        y += self.y_center
-        return [x, y]
+        r = self.radius * sqrt(uniform(0, 1))
+        theta = random() * 2 * pi
+        return [self.x_center + cos(theta) * r, self.y_center + sin(theta) * r]
