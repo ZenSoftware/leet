@@ -6,21 +6,12 @@ class Solution:
     def findRadius(self, houses: List[int], heaters: List[int]) -> int:
         houses.sort()
         heaters.sort()
-
-        def can_cover_all(radius: int) -> bool:
-            i, j = 0, 0
-            while i < len(houses) and j < len(heaters):
-                if abs(houses[i] - heaters[j]) <= radius:
-                    i += 1
-                else:
-                    j += 1
-            return i == len(houses)
-
-        left, right = 0, max(houses[-1], heaters[-1])
-        while left < right:
-            mid = (left + right) // 2
-            if can_cover_all(mid):
-                right = mid
-            else:
-                left = mid + 1
-        return left
+        ans = 0
+        pos = 0
+        heaters = [float("-inf")] + heaters + [float("inf")]
+        for house in houses:
+            while house >= heaters[pos]:
+                pos += 1
+            r = min(house - heaters[pos - 1], heaters[pos] - house)
+            ans = max(ans, r)
+        return ans
