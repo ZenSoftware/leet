@@ -11,3 +11,9 @@ def test2():
     nums = [1, 2, 3, 4, 2, 3, 1, 4, 2]
     result = Solution().medianSlidingWindow(nums, 3)
     assert result == [2.00000, 3.00000, 3.00000, 3.00000, 2.00000, 3.00000, 2.00000]
+
+
+def test3():
+    nums = [1, 4, 2, 3]
+    result = Solution().medianSlidingWindow(nums, 4)
+    assert result == [2.5]

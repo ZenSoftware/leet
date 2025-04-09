@@ -1,5 +1,6 @@
 # https://leetcode.com/problems/sliding-window-median/description/
 from typing import List
+from random import randint
 
 
 class Solution:
@@ -20,13 +21,13 @@ class Solution:
                 i += 1
         return result
 
-    def quick_select_even(
-        self, nums: List[int], mid_right_index: int
-    ) -> tuple[int, int]:
+    def quick_select_even(self, nums: List[int], mid_index: int) -> tuple[int, int]:
         def helper(left: int, right: int, target: int):
             if left == right:
                 return nums[left]
 
+            rand_pivot = randint(left, right)
+            nums[rand_pivot], nums[right] = nums[right], nums[rand_pivot]
             i = left - 1
             for j in range(left, right):
                 if nums[j] < nums[right]:
@@ -43,15 +44,17 @@ class Solution:
             else:
                 return nums[i]
 
-        mid_right = helper(0, len(nums) - 1, mid_right_index)
-        mid_left = helper(0, mid_right_index - 1, mid_right_index - 1)
+        mid_right = helper(0, len(nums) - 1, mid_index)
+        mid_left = helper(0, mid_index - 1, mid_index - 1)
         return (mid_right, mid_left)
 
-    def quick_select_odd(self, nums: List[int], target_index: int) -> int:
+    def quick_select_odd(self, nums: List[int], mid_index: int) -> int:
         def helper(left: int, right: int):
             if left == right:
                 return nums[left]
 
+            rand_pivot = randint(left, right)
+            nums[rand_pivot], nums[right] = nums[right], nums[rand_pivot]
             i = left - 1
             for j in range(left, right):
                 if nums[j] < nums[right]:
@@ -61,9 +64,9 @@ class Solution:
             i += 1
             nums[i], nums[right] = nums[right], nums[i]
 
-            if i < target_index:
+            if i < mid_index:
                 return helper(i + 1, right)
-            elif target_index < i:
+            elif mid_index < i:
                 return helper(left, i - 1)
             else:
                 return nums[i]
