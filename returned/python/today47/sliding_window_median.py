@@ -21,6 +21,31 @@ class Solution:
                 i += 1
         return result
 
+    def quick_select_odd(self, nums: List[int], mid_index: int) -> int:
+        def helper(left: int, right: int):
+            if left == right:
+                return nums[left]
+
+            rand_pivot = randint(left, right)
+            nums[rand_pivot], nums[right] = nums[right], nums[rand_pivot]
+            i = left - 1
+            for j in range(left, right):
+                if nums[j] < nums[right]:
+                    i += 1
+                    nums[i], nums[j] = nums[j], nums[i]
+
+            i += 1
+            nums[i], nums[right] = nums[right], nums[i]
+
+            if i < mid_index:
+                return helper(i + 1, right)
+            elif mid_index < i:
+                return helper(left, i - 1)
+            else:
+                return nums[i]
+
+        return helper(0, len(nums) - 1)
+
     def quick_select_even(self, nums: List[int], mid_index: int) -> tuple[int, int]:
         def helper(left: int, right: int, target: int):
             if left == right:
@@ -47,28 +72,3 @@ class Solution:
         mid_right = helper(0, len(nums) - 1, mid_index)
         mid_left = helper(0, mid_index - 1, mid_index - 1)
         return (mid_right, mid_left)
-
-    def quick_select_odd(self, nums: List[int], mid_index: int) -> int:
-        def helper(left: int, right: int):
-            if left == right:
-                return nums[left]
-
-            rand_pivot = randint(left, right)
-            nums[rand_pivot], nums[right] = nums[right], nums[rand_pivot]
-            i = left - 1
-            for j in range(left, right):
-                if nums[j] < nums[right]:
-                    i += 1
-                    nums[i], nums[j] = nums[j], nums[i]
-
-            i += 1
-            nums[i], nums[right] = nums[right], nums[i]
-
-            if i < mid_index:
-                return helper(i + 1, right)
-            elif mid_index < i:
-                return helper(left, i - 1)
-            else:
-                return nums[i]
-
-        return helper(0, len(nums) - 1)
