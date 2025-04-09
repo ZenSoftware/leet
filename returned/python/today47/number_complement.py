@@ -13,6 +13,11 @@ class Solution:
         assert log 8 == 3
         bit_length = logn + 1
         we add 1 due to the LSB being 0th indexed
+
+        Taking the floor for numbers between 01000 and 01111
+        01000
+        01111
+        3 (log 8) < 3...(log 15) < 4 (log16)
         ---------------------
         10000 - 1
         01111
