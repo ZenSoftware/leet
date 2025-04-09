@@ -3,6 +3,11 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(32*n)
+    Space: O(1)
+    """
+
     def totalHammingDistance(self, nums: List[int]) -> int:
         n = len(nums)
         result = 0
