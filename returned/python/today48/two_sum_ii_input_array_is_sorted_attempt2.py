@@ -4,7 +4,12 @@ from typing import List
 
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        for i in range(len(numbers) - 1):
-            for j in range(len(numbers)):
-                if numbers[i] + numbers[j] == target:
-                    return [i + 1, j + 1]
+        left, right = 0, len(numbers) - 1
+        while left < right:
+            total = numbers[left] + numbers[right]
+            if total < target:
+                left += 1
+            elif total > target:
+                right -= 1
+            else:
+                return [left + 1, right + 1]
