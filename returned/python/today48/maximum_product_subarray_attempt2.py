@@ -4,10 +4,11 @@ from typing import List
 
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        result = float("-inf")
-        for i in range(len(nums)):
-            accum = 1
-            for j in range(i, len(nums)):
-                accum *= nums[j]
-                result = max(result, accum)
+        result = nums[0]
+        curMin, curMax = 1, 1
+        for n in nums:
+            tmp = curMax * n
+            curMax = max(tmp, curMin * n, n)
+            curMin = min(tmp, curMin * n, n)
+            result = max(result, curMax)
         return result
