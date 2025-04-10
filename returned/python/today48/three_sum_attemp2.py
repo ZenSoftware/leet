@@ -7,7 +7,8 @@ class Solution:
         nums.sort()
         result = []
 
-        for i in range(len(nums) - 2):
+        i = 0
+        while i < len(nums) - 2:
             j = i + 1
             k = len(nums) - 1
             while j < k:
@@ -19,6 +20,14 @@ class Solution:
                 else:
                     result.append([nums[i], nums[j], nums[k]])
                     j += 1
+                    while j < len(nums) - 1 and nums[j - 1] == nums[j]:
+                        j += 1
+
                     k -= 1
+                    while j < k and nums[k] == nums[k + 1]:
+                        k -= 1
+            i += 1
+            while i < len(nums) - 2 and nums[i - 1] == nums[i]:
+                i += 1
 
         return result
