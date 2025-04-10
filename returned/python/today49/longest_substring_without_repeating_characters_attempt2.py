@@ -19,6 +19,6 @@ class Solution:
                 l += 1
             else:
                 seen.add(s[r])
-            result = max(result, r - l + 1)
+                result = max(result, r - l + 1)
             r += 1
         return result
