@@ -23,10 +23,7 @@ class Solution:
 
         result = []
         for i in range(len(nums)):
-            f, r = 1, 1
-            if i - 1 in range(len(nums)):
-                f = forward[i - 1]
-            if i + 1 in range(len(nums)):
-                r = reverse[i + 1]
+            f = 1 if i - 1 not in range(len(nums)) else forward[i - 1]
+            r = 1 if i + 1 not in range(len(nums)) else reverse[i + 1]
             result.append(f * r)
         return result
