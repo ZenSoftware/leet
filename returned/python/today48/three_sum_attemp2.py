@@ -19,14 +19,10 @@ class Solution:
                     k -= 1
                 else:
                     result.append([nums[i], nums[j], nums[k]])
-
                     j += 1
-                    while j < len(nums) - 1 and nums[j - 1] == nums[j]:
+                    while j < k and nums[j - 1] == nums[j]:
                         j += 1
 
-                    k -= 1
-                    while j < k and nums[k] == nums[k + 1]:
-                        k -= 1
             i += 1
             while i < len(nums) - 2 and nums[i - 1] == nums[i]:
                 i += 1
