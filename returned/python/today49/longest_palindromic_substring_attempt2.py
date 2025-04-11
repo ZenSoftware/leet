@@ -4,36 +4,26 @@
 class Solution:
     """
     Time: O(n^2)
-    Space: O(n)
+    Space: O(1)
     """
 
     def longestPalindrome(self, s: str) -> str:
-        def get_pal(center: int):
-            start, end = center, center
-            pal = ""
+        res = [0, 0]
+
+        def expand(start, end):
+            nonlocal res
             while start >= 0 and end < len(s):
                 if s[start] == s[end]:
-                    pal = s[start : end + 1]
+                    if end - start > res[1] - res[0]:
+                        res = [start, end]
                 else:
                     break
                 start -= 1
                 end += 1
 
-            start, end = center, center + 1
-            while start >= 0 and end < len(s):
-                if s[start] == s[end]:
-                    if end - start + 1 > len(pal):
-                        pal = s[start : end + 1]
-                else:
-                    break
-                start -= 1
-                end += 1
+        for center in range(len(s)):
+            expand(center, center)
+            expand(center, center + 1)
 
-            return pal
-
-        longest = ""
-        for start in range(len(s)):
-            pal = get_pal(start)
-            if len(pal) > len(longest):
-                longest = pal
-        return longest
+        start, end = res
+        return s[start : end + 1]
