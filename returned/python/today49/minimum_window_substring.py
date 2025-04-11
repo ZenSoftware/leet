@@ -7,29 +7,35 @@ class Solution:
         if len(s) < len(t):
             return ""
 
-        map = defaultdict(int)
+        counts = defaultdict(int)
+        for char in t:
+            counts[char] += 1
+
         remaining = len(t)
+        result_length = float("inf")
+        result_start = 0
         start = 0
         end = 0
-        min_len = float("inf")
-        start_index = 0
-        for char in t:
-            map[char] += 1
 
         while end < len(s):
-            if map[s[end]] > 0:
+            if counts[s[end]] > 0:
                 remaining -= 1
-            map[s[end]] -= 1
+            counts[s[end]] -= 1
+
             end += 1
 
             while remaining == 0:
-                if end - start < min_len:
-                    start_index = start
-                    min_len = end - start
+                if end - start < result_length:
+                    result_length = end - start
+                    result_start = start
 
-                if map[s[start]] == 0:
+                if counts[s[start]] >= 0:
                     remaining += 1
-                map[s[start]] += 1
+                counts[s[start]] += 1
                 start += 1
 
-        return "" if min_len == float("inf") else s[start_index : start_index + min_len]
+        return (
+            ""
+            if result_length == float("inf")
+            else s[result_start : result_start + result_length]
+        )
