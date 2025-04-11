@@ -27,8 +27,7 @@ class Solution:
 
         result = []
         for i in range(len(s) - len(p) + 1):
-            next_char = s[i + len(p) - 1]
-            window_counts[next_char] += 1
+            window_counts[s[i + len(p) - 1]] += 1
             if is_anagram():
                 result.append(i)
             window_counts[s[i]] -= 1
