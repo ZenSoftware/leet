@@ -1,29 +1,28 @@
 # https://leetcode.com/problems/insert-delete-getrandom-o1/description/
-from random import randint
+from random import choice
 
 
 class RandomizedSet:
     def __init__(self):
-        self.arr = []
-        self.index_map = {}
+        self.values = []
+        self.val_to_index = {}
 
     def insert(self, val: int) -> bool:
-        if val in self.index_map:
+        if val in self.val_to_index:
             return False
-        self.arr.append(val)
-        self.index_map[val] = len(self.arr) - 1
+        self.values.append(val)
+        self.val_to_index[val] = len(self.values) - 1
         return True
 
     def remove(self, val: int) -> bool:
-        if val not in self.index_map:
+        if val not in self.val_to_index:
             return False
-        i = self.index_map[val]
-        self.index_map[self.arr[-1]] = i
-        self.arr[i], self.arr[-1] = self.arr[-1], self.arr[i]
-        self.arr.pop()
-        del self.index_map[val]
+        i = self.val_to_index[val]
+        self.val_to_index[self.values[-1]] = i
+        self.values[i], self.values[-1] = self.values[-1], self.values[i]
+        self.values.pop()
+        del self.val_to_index[val]
         return True
 
     def getRandom(self) -> int:
-        r = randint(0, len(self.arr) - 1)
-        return self.arr[r]
+        return choice(self.values)
