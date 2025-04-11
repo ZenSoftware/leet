@@ -3,6 +3,11 @@ from collections import defaultdict
 
 
 class Solution:
+    """
+    Time: O(n) where n is length of s
+    Space: O(T) where T is length of t
+    """
+
     def minWindow(self, s: str, t: str) -> str:
         if len(s) < len(t):
             return ""
