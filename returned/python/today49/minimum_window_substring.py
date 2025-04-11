@@ -28,11 +28,11 @@ class Solution:
             return ""
 
         result = ""
-        for i in range(len(s) - len(t) + 1):
-            if s[i] not in t_counts:
+        for start in range(len(s) - len(t) + 1):
+            if s[start] not in t_counts:
                 continue
 
-            window = get_min_window(i)
+            window = get_min_window(start)
             if window != "" and (result == "" or len(window) < len(result)):
                 result = window
         return result
