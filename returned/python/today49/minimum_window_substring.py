@@ -35,4 +35,6 @@ class Solution:
             window = get_min_window(start)
             if window != "" and (result == "" or len(window) < len(result)):
                 result = window
+                if len(result) == len(t):
+                    return result
         return result
