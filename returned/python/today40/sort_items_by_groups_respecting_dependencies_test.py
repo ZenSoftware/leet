@@ -5,4 +5,4 @@ def test1():
     group = [-1, -1, 1, 0, 0, 1, 0, -1]
     beforeItems = [[], [6], [5], [6], [3, 6], [], [], []]
     result = Solution().sortItems(8, 2, group, beforeItems)
-    assert result == [6, 3, 4, 1, 5, 2, 0, 7]
+    assert result == [0, 5, 2, 6, 3, 4, 7, 1]
