@@ -4,10 +4,10 @@ from typing import Optional
 
 class Node:
     def __init__(
-        self, key: str, prev: Optional["Node"] = None, next: Optional["Node"] = None
+        self, count: int, prev: Optional["Node"] = None, next: Optional["Node"] = None
     ):
-        self.key = key
-        self.count = 1
+        self.count = count
+        self.keys: set[str] = set()
         self.prev = prev
         self.next = next
 
@@ -15,63 +15,57 @@ class Node:
 class AllOne:
     def __init__(self):
         self.nodes: dict[str, Node] = {}
-
-        self.tail = Node("Tail")
-        self.tail.count = float("-inf")
-
-        self.head = Node("HEAD")
-        self.head.count = float("inf")
-
-        self.tail.next = self.head
-        self.head.prev = self.tail
+        self.head = Node(float("-inf"))
+        self.tail = Node(float("inf"))
+        self.head.next = self.tail
+        self.tail.prev = self.head
 
     def inc(self, key: str) -> None:
         if key not in self.nodes:
-            node = Node(key, self.tail, self.tail.next)
-            node.prev.next = node
-            node.next.prev = node
-            self.nodes[key] = node
+            node = self.head.next
+            if node.count != 1:
+                node = Node(1, self.head, self.head.next)
+                node.prev.next = node
+                node.next.prev = node
         else:
-            node = self.nodes[key]
-            node.count += 1
-            if node.count > node.next.count:
-                pointer = node.next
-                while pointer:
-                    if pointer.count >= node.count:
-                        node.prev.next = node.next
-                        node.next.prev = node.prev
-                        node.prev = pointer.prev
-                        node.next = pointer
-                        pointer.prev.next = node
-                        pointer.prev = node
-                    pointer = pointer.next
+            cur = self.nodes[key]
+            if cur.next.count == cur.count + 1:
+                node = cur.next
+            else:
+                node = Node(cur.count + 1, cur, cur.next)
+                node.prev.next = node
+                node.next.prev = node
+            cur.keys.remove(key)
+            if not cur.keys:
+                cur.prev.next = node
+                node.prev = cur.prev
+        node.keys.add(key)
+        self.nodes[key] = node
 
     def dec(self, key: str) -> None:
-        node = self.nodes[key]
-        if node.count == 1:
+        cur = self.nodes[key]
+        if cur.count == 1:
             del self.nodes[key]
-            node.prev.next = node.next
-            node.next.prev = node.prev
         else:
-            node.count -= 1
-            if node.prev.count > node.count:
-                pointer = node
-                while pointer:
-                    if pointer.count <= node.count:
-                        node.prev.next = node.next
-                        node.next.prev = node.prev
-                        node.prev = pointer
-                        node.next = pointer.next
-                        node.prev.next = node
-                        node.next.prev = node
-                    pointer = pointer.prev
+            if cur.prev.count == cur.count - 1:
+                node = cur.prev
+            else:
+                node = Node(cur.count - 1, cur.prev, cur)
+                node.prev.next = node
+                node.next.prev = node
+            node.keys.add(key)
+            self.nodes[key] = node
+        cur.keys.remove(key)
+        if not cur.keys:
+            cur.prev.next = cur.next
+            cur.next.prev = cur.prev
 
     def getMaxKey(self) -> str:
         if not self.nodes:
             return ""
-        return self.head.prev.key
+        return next(iter(self.tail.prev.keys))
 
     def getMinKey(self) -> str:
         if not self.nodes:
             return ""
-        return self.tail.next.key
+        return next(iter(self.head.next.keys))
