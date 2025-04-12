@@ -3,21 +3,23 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(n^2)
+    Space: O(n)
+    """
+
     def combine(self, n: int, k: int) -> List[List[int]]:
-        def combinations(remaining: int) -> List[List[int]]:
-            if remaining == 0:
-                return [[]]
+        result = []
 
-            combs_without_first = combinations(remaining - 1)
-            combs_with_first = []
+        def combinations(start: int, path: List[int]) -> List[List[int]]:
+            if len(path) == k:
+                result.append(path.copy())
+                return
 
-            for comb in combs_without_first:
-                combs_with_first.append(comb + [remaining])
-            combs_with_first.extend(combs_without_first)
-            return combs_with_first
+            for i in range(start, n + 1):
+                path.append(i)
+                combinations(i + 1, path)
+                path.pop()
 
-        result = combinations(n)
-        return [comb for comb in result if len(comb) == k]
-
-
-print(Solution().combine(3, 2))
+        combinations(1, [])
+        return result
