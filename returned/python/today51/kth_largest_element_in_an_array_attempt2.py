@@ -5,7 +5,7 @@ from typing import List
 
 class Solution:
     """
-    Time: O(nlogn)
+    Time: O(klogn)
     Space: O(n)
     """
 
