@@ -10,10 +10,10 @@ class Solution:
                 mid = (top + bottom) // 2
                 if matrix[mid][0] <= target <= matrix[mid][-1]:
                     return mid
-                if target < matrix[mid][-1]:
-                    bottom = mid - 1
-                else:
+                if matrix[mid][-1] < target:
                     top = mid + 1
+                else:
+                    bottom = mid - 1
             return -1
 
         row = get_row()
