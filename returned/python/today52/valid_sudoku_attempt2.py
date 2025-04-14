@@ -9,16 +9,18 @@ class Solution:
         for r in range(9):
             seen.clear()
             for c in range(9):
-                if board[r][c] != "." and board[r][c] in seen:
+                cell = board[r][c]
+                if cell != "." and cell in seen:
                     return False
-                seen.add(board[r][c])
+                seen.add(cell)
 
         for c in range(9):
             seen.clear()
             for r in range(9):
-                if board[r][c] != "." and board[r][c] in seen:
+                cell = board[r][c]
+                if cell != "." and cell in seen:
                     return False
-                seen.add(board[r][c])
+                seen.add(cell)
 
         for i in range(3):
             for j in range(3):
@@ -27,8 +29,9 @@ class Solution:
                     for col in range(3):
                         r = i * 3 + row
                         c = j * 3 + col
-                        if board[r][c] != "." and board[r][c] in seen:
+                        cell = board[r][c]
+                        if cell != "." and cell in seen:
                             return False
-                        seen.add(board[r][c])
+                        seen.add(cell)
 
         return True
