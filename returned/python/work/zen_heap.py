@@ -2,9 +2,12 @@ from typing import List
 
 
 class MinHeap:
-    def __init__(self, elements: List = [], key=lambda x: x):
+    def __init__(self, elements: List = [], key=None):
         self.heap = elements
-        self.key = key
+        if key is None:
+            self.key = lambda x: x
+        else:
+            self.key = key
         self.heapify()
 
     def __len__(self):
@@ -16,27 +19,27 @@ class MinHeap:
 
     def sift_up(self, i: int):
         while i != 0 and self.val(i) < self.val(p := (i - 1) // 2):
-            self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
+            self.swap(p, i)
             i = p
 
     def sift_down(self, i: int):
-        def swap(a, b):
-            self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
-
         size = len(self.heap)
         l = 2 * i + 1
         r = 2 * i + 2
         if l < size and r < size:
             if self.val(l) < self.val(r) and self.val(i) > self.val(l):
-                swap(i, l)
+                self.swap(i, l)
                 self.sift_down(l)
             elif self.val(l) >= self.val(r) and self.val(i) > self.val(r):
-                swap(i, r)
+                self.swap(i, r)
                 self.sift_down(r)
         elif l < size:
             if self.val(i) > self.val(l):
-                swap(i, l)
+                self.swap(i, l)
                 self.sift_down(l)
+
+    def swap(self, a, b):
+        self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
 
     def val(self, i: int):
         return self.key(self.heap[i])
@@ -61,24 +64,21 @@ class MinHeap:
 class MaxHeap(MinHeap):
     def sift_up(self, i: int):
         while i != 0 and self.val(i) > self.val(p := (i - 1) // 2):
-            self.heap[p], self.heap[i] = self.heap[i], self.heap[p]
+            self.swap(p, i)
             i = p
 
     def sift_down(self, i: int):
-        def swap(a, b):
-            self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
-
         size = len(self.heap)
         l = 2 * i + 1
         r = 2 * i + 2
         if l < size and r < size:
             if self.val(l) > self.val(r) and self.val(i) < self.val(l):
-                swap(i, l)
+                self.swap(i, l)
                 self.sift_down(l)
             elif self.val(l) <= self.val(r) and self.val(i) < self.val(r):
-                swap(i, r)
+                self.swap(i, r)
                 self.sift_down(r)
         elif l < size:
             if self.val(i) < self.val(l):
-                swap(i, l)
+                self.swap(i, l)
                 self.sift_down(l)
