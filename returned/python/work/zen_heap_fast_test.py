@@ -21,7 +21,7 @@ def test_max_heap():
         assert sorted[i - 1] >= sorted[i]
 
 
-def test_key():
+def test_key_min_heap():
     class Node:
         def __init__(self, val):
             self.val = val
@@ -34,6 +34,21 @@ def test_key():
         sorted.append(heap.pop().val)
     for i in range(1, len(sorted)):
         assert sorted[i - 1] <= sorted[i]
+
+
+def test_key_max_heap():
+    class Node:
+        def __init__(self, val):
+            self.val = val
+
+    arr = [Node(i) for i in range(100)]
+    shuffle(arr)
+    heap = MaxHeap(arr, key=lambda x: x.val)
+    sorted = []
+    while len(heap):
+        sorted.append(heap.pop().val)
+    for i in range(1, len(sorted)):
+        assert sorted[i - 1] >= sorted[i]
 
 
 def test_min_push():

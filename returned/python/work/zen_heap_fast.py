@@ -4,10 +4,7 @@ from typing import List
 class MinHeap:
     def __init__(self, elements: List = [], key=None):
         self.heap = elements
-        if key is None:
-            self.key = lambda x: x
-        else:
-            self.key = key
+        self.key = key
         self.heapify()
 
     def __len__(self):
@@ -18,28 +15,58 @@ class MinHeap:
             self.sift_down(i)
 
     def sift_up(self, i: int):
-        while i != 0 and self.val(i) < self.val(p := (i - 1) // 2):
-            self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
-            i = p
+        if self.key is None:
+            while i != 0 and self.heap[i] < self.heap[p := (i - 1) // 2]:
+                self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
+                i = p
+        else:
+            while i != 0 and self.key(self.heap[i]) < self.key(
+                self.heap[p := (i - 1) // 2]
+            ):
+                self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
+                i = p
 
     def sift_down(self, i: int):
-        size = len(self.heap)
-        l = 2 * i + 1
-        r = 2 * i + 2
-        if l < size and r < size:
-            if self.val(l) < self.val(r) and self.val(i) > self.val(l):
-                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
-                self.sift_down(l)
-            elif self.val(l) >= self.val(r) and self.val(i) > self.val(r):
-                self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
-                self.sift_down(r)
-        elif l < size:
-            if self.val(i) > self.val(l):
-                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
-                self.sift_down(l)
+        def sift_down_with_key(i: int):
+            size = len(self.heap)
+            l = 2 * i + 1
+            r = 2 * i + 2
+            if l < size and r < size:
+                if self.key(self.heap[l]) < self.key(self.heap[r]) and self.key(
+                    self.heap[i]
+                ) > self.key(self.heap[l]):
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_with_key(l)
+                elif self.key(self.heap[l]) >= self.key(self.heap[r]) and self.key(
+                    self.heap[i]
+                ) > self.key(self.heap[r]):
+                    self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
+                    sift_down_with_key(r)
+            elif l < size:
+                if self.key(self.heap[i]) > self.key(self.heap[l]):
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_with_key(l)
 
-    def val(self, i: int):
-        return self.key(self.heap[i])
+        def sift_down_without_key(i: int):
+            size = len(self.heap)
+            l = 2 * i + 1
+            r = 2 * i + 2
+            if l < size and r < size:
+                if self.heap[l] < self.heap[r] and self.heap[i] > self.heap[l]:
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_without_key(l)
+                elif self.heap[l] >= self.heap[r] and self.heap[i] > self.heap[r]:
+                    self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
+                    sift_down_without_key(r)
+            elif l < size:
+                if self.heap[i] > self.heap[l]:
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_without_key(l)
+
+        if self.key is None:
+            sift_down_without_key(i)
+        else:
+            sift_down_with_key(i)
 
     def push(self, val):
         self.heap.append(val)
@@ -60,22 +87,55 @@ class MinHeap:
 
 class MaxHeap(MinHeap):
     def sift_up(self, i: int):
-        while i != 0 and self.val(i) > self.val(p := (i - 1) // 2):
-            self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
-            i = p
+        if self.key is None:
+            while i != 0 and self.heap[i] > self.heap[p := (i - 1) // 2]:
+                self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
+                i = p
+        else:
+            while i != 0 and self.key(self.heap[i]) > self.key(
+                self.heap[p := (i - 1) // 2]
+            ):
+                self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
+                i = p
 
     def sift_down(self, i: int):
-        size = len(self.heap)
-        l = 2 * i + 1
-        r = 2 * i + 2
-        if l < size and r < size:
-            if self.val(l) > self.val(r) and self.val(i) < self.val(l):
-                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
-                self.sift_down(l)
-            elif self.val(l) <= self.val(r) and self.val(i) < self.val(r):
-                self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
-                self.sift_down(r)
-        elif l < size:
-            if self.val(i) < self.val(l):
-                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
-                self.sift_down(l)
+        def sift_down_with_key(i: int):
+            size = len(self.heap)
+            l = 2 * i + 1
+            r = 2 * i + 2
+            if l < size and r < size:
+                if self.key(self.heap[l]) > self.key(self.heap[r]) and self.key(
+                    self.heap[i]
+                ) < self.key(self.heap[l]):
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_with_key(l)
+                elif self.key(self.heap[l]) <= self.key(self.heap[r]) and self.key(
+                    self.heap[i]
+                ) < self.key(self.heap[r]):
+                    self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
+                    sift_down_with_key(r)
+            elif l < size:
+                if self.key(self.heap[i]) < self.key(self.heap[l]):
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_with_key(l)
+
+        def sift_down_without_key(i: int):
+            size = len(self.heap)
+            l = 2 * i + 1
+            r = 2 * i + 2
+            if l < size and r < size:
+                if self.heap[l] > self.heap[r] and self.heap[i] < self.heap[l]:
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_without_key(l)
+                elif self.heap[l] <= self.heap[r] and self.heap[i] < self.heap[r]:
+                    self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
+                    sift_down_without_key(r)
+            elif l < size:
+                if self.heap[i] < self.heap[l]:
+                    self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
+                    sift_down_without_key(l)
+
+        if self.key is None:
+            sift_down_without_key(i)
+        else:
+            sift_down_with_key(i)
