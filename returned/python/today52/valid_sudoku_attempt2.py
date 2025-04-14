@@ -3,9 +3,15 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(1)
+    Space: O(1)
+    """
+
     def isValidSudoku(self, board: List[List[str]]) -> bool:
         seen = set()
 
+        # validate rows
         for r in range(9):
             seen.clear()
             for c in range(9):
@@ -14,6 +20,7 @@ class Solution:
                     return False
                 seen.add(cell)
 
+        # validate columns
         for c in range(9):
             seen.clear()
             for r in range(9):
@@ -22,6 +29,7 @@ class Solution:
                     return False
                 seen.add(cell)
 
+        # validate subgrids
         for i in range(3):
             for j in range(3):
                 seen.clear()
