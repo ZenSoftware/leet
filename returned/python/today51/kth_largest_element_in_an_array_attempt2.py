@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/kth-largest-element-in-an-array/description/
-from heapq import heapify, heappop
 from typing import List
+from heapq import heapify, heappop
 
 
 class Solution:
