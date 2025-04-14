@@ -5,16 +5,16 @@ from typing import List
 class Solution:
     def setZeroes(self, matrix: List[List[int]]) -> None:
         n, m = len(matrix), len(matrix[0])
-        for r in range(n):
-            for c in range(m):
-                if matrix[r][c] == 0:
-                    for i in range(m):
-                        if matrix[r][i] != 0:
-                            matrix[r][i] = None
-                    for i in range(n):
-                        if matrix[i][c] != 0:
-                            matrix[i][c] = None
-        for r in range(n):
-            for c in range(m):
-                if matrix[r][c] == None:
-                    matrix[r][c] = 0
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j] == 0:
+                    for k in range(m):
+                        if matrix[i][k] != 0:
+                            matrix[i][k] = None
+                    for k in range(n):
+                        if matrix[k][j] != 0:
+                            matrix[k][j] = None
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j] is None:
+                    matrix[i][j] = 0
