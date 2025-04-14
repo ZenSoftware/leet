@@ -1,4 +1,4 @@
-from zen_heap_fast import MinHeap, MaxHeap
+from zen_heap_flat import MinHeap, MaxHeap
 from random import randint, shuffle
 from heapq import heapify, heappush
 
