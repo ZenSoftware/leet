@@ -3,6 +3,11 @@ from typing import List
 
 
 class Solution:
+    """
+    Time: O(n*m)
+    Space: O(1)
+    """
+
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         top, left = 0, 0
         bottom, right = len(matrix) - 1, len(matrix[0]) - 1
