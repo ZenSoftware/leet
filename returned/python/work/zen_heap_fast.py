@@ -19,7 +19,7 @@ class MinHeap:
 
     def sift_up(self, i: int):
         while i != 0 and self.val(i) < self.val(p := (i - 1) // 2):
-            self.swap(p, i)
+            self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
             i = p
 
     def sift_down(self, i: int):
@@ -28,18 +28,15 @@ class MinHeap:
         r = 2 * i + 2
         if l < size and r < size:
             if self.val(l) < self.val(r) and self.val(i) > self.val(l):
-                self.swap(i, l)
+                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
                 self.sift_down(l)
             elif self.val(l) >= self.val(r) and self.val(i) > self.val(r):
-                self.swap(i, r)
+                self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
                 self.sift_down(r)
         elif l < size:
             if self.val(i) > self.val(l):
-                self.swap(i, l)
+                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
                 self.sift_down(l)
-
-    def swap(self, a, b):
-        self.heap[a], self.heap[b] = self.heap[b], self.heap[a]
 
     def val(self, i: int):
         return self.key(self.heap[i])
@@ -64,7 +61,7 @@ class MinHeap:
 class MaxHeap(MinHeap):
     def sift_up(self, i: int):
         while i != 0 and self.val(i) > self.val(p := (i - 1) // 2):
-            self.swap(p, i)
+            self.heap[i], self.heap[p] = self.heap[p], self.heap[i]
             i = p
 
     def sift_down(self, i: int):
@@ -73,12 +70,12 @@ class MaxHeap(MinHeap):
         r = 2 * i + 2
         if l < size and r < size:
             if self.val(l) > self.val(r) and self.val(i) < self.val(l):
-                self.swap(i, l)
+                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
                 self.sift_down(l)
             elif self.val(l) <= self.val(r) and self.val(i) < self.val(r):
-                self.swap(i, r)
+                self.heap[i], self.heap[r] = self.heap[r], self.heap[i]
                 self.sift_down(r)
         elif l < size:
             if self.val(i) < self.val(l):
-                self.swap(i, l)
+                self.heap[i], self.heap[l] = self.heap[l], self.heap[i]
                 self.sift_down(l)
