@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/merge-k-sorted-lists/description/
+# https://leetcode.com/problems/merge-k-sorted-lists/
 from typing import List, Optional
 from heapq import heapify, heappop, heappush
 
@@ -8,12 +8,11 @@ class ListNode:
         self.val = val
         self.next = next
 
-    def __lt__(self, other):
-        return self.val < other.val
-
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        ListNode.__lt__ = lambda self, other: self.val < other.val
+
         heap = []
         for l in lists:
             if l:
