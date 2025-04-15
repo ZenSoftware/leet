@@ -1,6 +1,5 @@
 # https://leetcode.com/problems/reorder-list/description/
 from typing import Optional
-from collections import deque
 
 
 class ListNode:
@@ -11,7 +10,7 @@ class ListNode:
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        nodes = deque()
+        nodes = []
         pointer = head
         while pointer:
             nodes.append(pointer)
@@ -20,12 +19,14 @@ class Solution:
         dummy = ListNode()
         pointer = dummy
         is_left = True
-        while nodes:
+        left, right = 0, len(nodes) - 1
+        while left <= right:
             if is_left:
-                node = nodes.popleft()
+                pointer.next = nodes[left]
+                left += 1
             else:
-                node = nodes.pop()
-            pointer.next = node
+                pointer.next = nodes[right]
+                right -= 1
             pointer = pointer.next
             is_left = not is_left
         pointer.next = None
