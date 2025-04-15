@@ -4,28 +4,24 @@ from heapq import heapify, heappop, heappush
 
 
 class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         ListNode.__lt__ = lambda self, other: self.val < other.val
 
-        heap = []
-        for l in lists:
-            if l:
-                heap.append((l.val, l))
-
+        heap = [n for n in lists if n is not None]
         heapify(heap)
-        dummy = ListNode()
+        dummy = ListNode(None)
         pointer = dummy
 
         while heap:
-            _, cur = heappop(heap)
+            cur = heappop(heap)
             if cur.next:
-                heappush(heap, (cur.next.val, cur.next))
+                heappush(heap, cur.next)
             pointer.next = cur
             pointer = pointer.next
 
