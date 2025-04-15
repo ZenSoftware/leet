@@ -42,3 +42,21 @@ def test2():
     nodes = to_nodes([1, 2, 3, 4, 5])
     Solution().reorderList(nodes)
     assert to_array(nodes) == [1, 5, 2, 4, 3]
+
+
+def test3():
+    nodes = to_nodes([1, 2, 3])
+    Solution().reorderList(nodes)
+    assert to_array(nodes) == [1, 3, 2]
+
+
+def test4():
+    nodes = to_nodes([1])
+    Solution().reorderList(nodes)
+    assert to_array(nodes) == [1]
+
+
+def test5():
+    nodes = to_nodes([])
+    Solution().reorderList(nodes)
+    assert to_array(nodes) == []

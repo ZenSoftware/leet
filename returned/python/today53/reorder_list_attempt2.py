@@ -10,24 +10,27 @@ class ListNode:
 
 class Solution:
     def reorderList(self, head: Optional[ListNode]) -> None:
-        nodes = []
-        pointer = head
-        while pointer:
-            nodes.append(pointer)
-            pointer = pointer.next
+        slow, fast = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
         dummy = ListNode()
-        pointer = dummy
-        is_left = True
-        left, right = 0, len(nodes) - 1
-        while left <= right:
-            if is_left:
-                pointer.next = nodes[left]
-                left += 1
-            else:
-                pointer.next = nodes[right]
-                right -= 1
-            pointer = pointer.next
-            is_left = not is_left
-        pointer.next = None
-        return dummy.next
+        pointer = slow
+        while pointer:
+            next = pointer.next
+            pointer.next = dummy.next
+            dummy.next = pointer
+            pointer = next
+
+        left = head
+        right = dummy.next
+        while left != slow:
+            left_next = left.next
+            right_next = right.next
+            left.next = right
+            if left_next != slow:
+                right.next = left_next
+            left = left_next
+            right = right_next
+        return head
