@@ -23,7 +23,7 @@ def to_array(head: Optional[ListNode]) -> List[int]:
     return result
 
 
-def test_healpers():
+def test_helpers():
     nodes = to_nodes([1, 2, 3, 4, 5])
     assert to_array(nodes) == [1, 2, 3, 4, 5]
 
