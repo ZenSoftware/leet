@@ -9,28 +9,33 @@ class ListNode:
 
 
 class Solution:
+    """
+    Time: O(n)
+    Space: O(1)
+    """
+
     def reorderList(self, head: Optional[ListNode]) -> None:
+        if not head:
+            return
+
         slow, fast = head, head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
 
-        dummy = ListNode()
-        pointer = slow
-        while pointer:
-            next = pointer.next
-            pointer.next = dummy.next
-            dummy.next = pointer
-            pointer = next
+        prev, cur = None, slow
+        while cur:
+            tmp = cur.next
+            cur.next = prev
+            prev = cur
+            cur = tmp
 
-        left = head
-        right = dummy.next
-        while left != slow:
-            left_next = left.next
-            right_next = right.next
+        left, right = head, prev
+        while right.next:
+            tmp = left.next
             left.next = right
-            if left_next != slow:
-                right.next = left_next
-            left = left_next
-            right = right_next
-        return head
+            left = tmp
+
+            tmp = right.next
+            right.next = left
+            right = tmp
