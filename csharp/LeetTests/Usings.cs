@@ -1,2 +1,2 @@
-﻿global using Leet;
-global using Leet.List;
+﻿global using Leet.List;
+global using Leet.Tree;

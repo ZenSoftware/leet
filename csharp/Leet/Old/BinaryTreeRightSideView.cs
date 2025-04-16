@@ -1,4 +1,5 @@
-// 
+// https://leetcode.com/problems/binary-tree-right-side-view/description/
+using Leet.Tree;
 
 namespace Leet.BinaryTreeRightSideView
 {
@@ -27,19 +28,6 @@ namespace Leet.BinaryTreeRightSideView
 
             LevelOrder(root.left, level + 1);
             LevelOrder(root.right, level + 1);
-        }
-    }
-
-    public class TreeNode
-    {
-        public int val;
-        public TreeNode left;
-        public TreeNode right;
-        public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-        {
-            this.val = val;
-            this.left = left;
-            this.right = right;
         }
     }
 }
