@@ -16,7 +16,7 @@ namespace Leet.BinaryTreeLevelOrderTraversal
             while (queue.Count > 0)
             {
                 var size = queue.Count;
-                var level = new List<int>();
+                var level = new List<int>(size);
 
                 for (int i = 0; i < size; i++)
                 {
