@@ -26,6 +26,7 @@ namespace Leet.BinaryTreeLevelOrderTraversal
 
                     if (node.left != null)
                         queue.AddLast(node.left);
+
                     if (node.right != null)
                         queue.AddLast(node.right);
                 }
