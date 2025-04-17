@@ -45,18 +45,18 @@ public class Solution2
     {
         var levels = new List<IList<int>>();
 
-        void DFS(TreeNode root, int level)
+        void DFS(TreeNode root, int i)
         {
             if (root == null)
                 return;
 
-            if (levels.Count - 1 < level)
+            if (levels.Count - 1 < i)
                 levels.Add([]);
 
-            levels[level].Add(root.val);
+            levels[i].Add(root.val);
 
-            DFS(root.left, level + 1);
-            DFS(root.right, level + 1);
+            DFS(root.left, i + 1);
+            DFS(root.right, i + 1);
         }
 
         DFS(root, 0);
