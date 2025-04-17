@@ -44,22 +44,22 @@ public class Solution2
     public IList<IList<int>> LevelOrder(TreeNode root)
     {
         var levels = new List<IList<int>>();
-        DFS(root, levels, 0);
-        return levels;
-    }
 
-    private void DFS(TreeNode root, IList<IList<int>> levels, int level)
-    {
-        if (root == null)
-            return;
-
-        if (levels.Count - 1 < level)
+        void DFS(TreeNode root, int level)
         {
-            levels.Add([]);
-        }
-        levels[level].Add(root.val);
+            if (root == null)
+                return;
 
-        DFS(root.left, levels, level + 1);
-        DFS(root.right, levels, level + 1);
+            if (levels.Count - 1 < level)
+                levels.Add([]);
+
+            levels[level].Add(root.val);
+
+            DFS(root.left, level + 1);
+            DFS(root.right, level + 1);
+        }
+
+        DFS(root, 0);
+        return levels;
     }
 }
