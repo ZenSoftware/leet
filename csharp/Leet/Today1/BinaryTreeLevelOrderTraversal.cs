@@ -39,6 +39,8 @@ public class Solution
 
 public class Solution2
 {
+    /// Time: O(n)
+    /// Space: O(1)
     public IList<IList<int>> LevelOrder(TreeNode root)
     {
         var levels = new List<IList<int>>();
