@@ -10,7 +10,7 @@ public class Solution
             return [];
 
         var result = new List<IList<int>>();
-        var queue = new LinkedList<TreeNode>([root]);
+        var queue = new Queue<TreeNode>([root]);
 
         while (queue.Count > 0)
         {
@@ -19,15 +19,14 @@ public class Solution
 
             for (int i = 0; i < size; i++)
             {
-                var node = queue.First.Value;
-                queue.RemoveFirst();
+                var node = queue.Dequeue();
                 level.Add(node.val);
 
                 if (node.left != null)
-                    queue.AddLast(node.left);
+                    queue.Enqueue(node.left);
 
                 if (node.right != null)
-                    queue.AddLast(node.right);
+                    queue.Enqueue(node.right);
             }
 
             result.Add(level);
