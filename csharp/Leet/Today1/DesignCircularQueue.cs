@@ -29,13 +29,7 @@ public class MyCircularQueue
     {
         if (count == 0)
             return false;
-        else if (count == 1)
-        {
-            start = 0;
-            end = -1;
-        }
-        else
-            start = (start + 1) % capacity;
+        start = (start + 1) % capacity;
         count--;
         return true;
     }
