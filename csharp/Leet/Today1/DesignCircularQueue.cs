@@ -19,9 +19,9 @@ public class MyCircularQueue
     {
         if (count == capacity)
             return false;
-        count++;
         end = (end + 1) % capacity;
         elements[end] = value;
+        count++;
         return true;
     }
 
