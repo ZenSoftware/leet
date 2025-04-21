@@ -1,6 +1,6 @@
 using Leet.BinaryTreeRightSideView;
 
-namespace LeetTests
+namespace LeetTests.Today1
 {
     internal class BinaryTreeRightSideViewTest
     {

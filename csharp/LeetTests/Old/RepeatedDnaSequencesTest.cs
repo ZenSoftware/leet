@@ -1,6 +1,6 @@
 ﻿using Leet.RepeatedDnaSequences;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class RepeatedDnaSequencesTest
     {

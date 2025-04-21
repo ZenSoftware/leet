@@ -1,6 +1,6 @@
 ﻿using Leet.TopKFrequentElements;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class TopKFrequentElementsTest
     {

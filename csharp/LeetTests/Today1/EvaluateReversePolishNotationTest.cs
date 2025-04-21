@@ -1,6 +1,6 @@
 using Leet.EvaluateReversePolishNotation;
 
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class EvaluateReversePolishNotationTest
 {

@@ -1,6 +1,6 @@
 using Leet.MinStack;
 
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class MinStackTest
 {

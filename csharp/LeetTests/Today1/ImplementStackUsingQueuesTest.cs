@@ -1,6 +1,6 @@
 using Leet.ImplementStackUsingQueues;
 
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class MyStackTests
 {

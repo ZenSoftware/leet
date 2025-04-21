@@ -1,6 +1,6 @@
 using Leet.DesignCircularQueue;
 
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class DesignCircularQueueTest
 {

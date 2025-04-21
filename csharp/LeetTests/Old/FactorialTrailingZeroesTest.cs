@@ -1,6 +1,6 @@
 ﻿using Leet.FactorialTrailingZeroes;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class FactorialTrailingZeroesTest
     {

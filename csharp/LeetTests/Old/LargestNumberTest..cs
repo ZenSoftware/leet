@@ -1,6 +1,6 @@
 ﻿using Leet.LargestNumber;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class LargestNumberTest
     {

@@ -1,6 +1,6 @@
 using Leet.ValidParentheses;
 
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class ValidParenthesesTest
 {

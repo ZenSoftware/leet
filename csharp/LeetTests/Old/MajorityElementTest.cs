@@ -1,6 +1,6 @@
 ﻿using Leet.MajorityElement;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class MajorityElementTest
     {

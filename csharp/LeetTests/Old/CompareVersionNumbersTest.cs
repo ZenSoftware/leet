@@ -1,6 +1,6 @@
 ﻿using Leet.CompareVersionNumbers;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class CompareVersionNumbersTest
     {

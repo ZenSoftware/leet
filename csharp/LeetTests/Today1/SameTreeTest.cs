@@ -1,6 +1,6 @@
 using Leet.SameTree;
 
-namespace LeetTests
+namespace LeetTests.Today1
 {
     internal class SameTreeTest
     {

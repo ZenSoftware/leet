@@ -1,6 +1,6 @@
 using Leet.RotateArray;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class RotateArrayTest
     {

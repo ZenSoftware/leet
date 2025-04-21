@@ -1,5 +1,5 @@
 using Leet.ImplementQueueUsingStacks;
-namespace LeetTests;
+namespace LeetTests.Today1;
 
 internal class ImplementQueueUsingStacksTest
 {

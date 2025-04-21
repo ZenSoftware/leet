@@ -1,6 +1,6 @@
 using Leet.NumberOf1Bits;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class NumberOf1BitsTestTest
     {

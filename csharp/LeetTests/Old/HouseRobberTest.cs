@@ -1,6 +1,6 @@
 using Leet.HouseRobber;
 
-namespace LeetTests
+namespace LeetTests.Old
 {
     internal class HouseRobberTest
     {
