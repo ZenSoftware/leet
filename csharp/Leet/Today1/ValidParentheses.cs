@@ -6,17 +6,17 @@ public class Solution
 {
     public bool IsValid(string s)
     {
-        var stack = new List<char>();
+        var stack = new Stack<char>();
         for (int i = 0; i < s.Length; i++)
         {
             if (s[i] == '(' || s[i] == '{' || s[i] == '[')
-                stack.Add(s[i]);
+                stack.Push(s[i]);
             else
             {
                 if (stack.Count == 0)
                     return false;
 
-                var openBraket = stack[stack.Count - 1];
+                var openBraket = stack.Pop();
 
                 if (s[i] == ')')
                 {
@@ -33,8 +33,6 @@ public class Solution
                     if (openBraket != '[')
                         return false;
                 }
-
-                stack.RemoveAt(stack.Count - 1);
             }
         }
         return stack.Count == 0;
