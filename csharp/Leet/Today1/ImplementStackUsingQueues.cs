@@ -20,13 +20,17 @@ public class MyStack
         if (left.Count > 0)
         {
             while (left.Count > 1)
+            {
                 right.Enqueue(left.Dequeue());
+            }
             return left.Dequeue();
         }
         else
         {
             while (right.Count > 1)
+            {
                 left.Enqueue(right.Dequeue());
+            }
             return right.Dequeue();
         }
     }
@@ -36,7 +40,9 @@ public class MyStack
         if (left.Count > 0)
         {
             while (left.Count > 1)
+            {
                 right.Enqueue(left.Dequeue());
+            }
             var top = left.Dequeue();
             right.Enqueue(top);
             return top;
@@ -44,7 +50,9 @@ public class MyStack
         else
         {
             while (right.Count > 1)
+            {
                 left.Enqueue(right.Dequeue());
+            }
             var top = right.Dequeue();
             left.Enqueue(top);
             return top;
