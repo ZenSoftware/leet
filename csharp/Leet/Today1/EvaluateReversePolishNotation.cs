@@ -6,39 +6,35 @@ public class Solution
 {
     public int EvalRPN(string[] tokens)
     {
-        var stack = new List<int>();
+        var stack = new Stack<int>();
 
         foreach (var token in tokens)
         {
             if (token == "+" || token == "-" || token == "*" || token == "/")
             {
-                var y = stack[stack.Count - 1];
-                stack.RemoveAt(stack.Count - 1);
-
-                var x = stack[stack.Count - 1];
-                stack.RemoveAt(stack.Count - 1);
+                var right = stack.Pop();
+                var left = stack.Pop();
 
                 switch (token)
                 {
                     case "+":
-                        stack.Add(x + y);
+                        stack.Push(left + right);
                         break;
                     case "-":
-                        stack.Add(x - y);
+                        stack.Push(left - right);
                         break;
                     case "*":
-                        stack.Add(x * y);
+                        stack.Push(left * right);
                         break;
                     case "/":
-                        stack.Add(x / y);
+                        stack.Push(left / right);
                         break;
                 }
             }
             else
-            {
-                stack.Add(Int32.Parse(token));
-            }
+                stack.Push(Int32.Parse(token));
         }
-        return stack[0];
+
+        return stack.Peek();
     }
 }
