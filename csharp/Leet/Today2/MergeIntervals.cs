@@ -4,7 +4,7 @@ public class Solution
 {
     public int[][] Merge(int[][] intervals)
     {
-        Array.Sort(intervals, (x, y) => x[0].CompareTo(y[0]));
+        Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0]));
         var i = 0;
         var result = new List<int[]>();
         while (i < intervals.Length)
