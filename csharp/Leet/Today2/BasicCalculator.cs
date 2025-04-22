@@ -4,10 +4,8 @@ public class Solution
 {
     public int Calculate(string s)
     {
-        var i = 0;
-        var sign = 1;
         var stack = new Stack<int>();
-        var result = 0;
+        int i = 0, sign = 1, result = 0;
 
         while (i < s.Length)
         {
