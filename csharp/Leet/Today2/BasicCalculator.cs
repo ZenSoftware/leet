@@ -1,4 +1,3 @@
-using System.Text;
 namespace Today2.BasicCalculator;
 
 public class Solution
@@ -35,14 +34,13 @@ public class Solution
                 default:
                     if (char.IsDigit(s[i]))
                     {
-                        var stringBuilder = new StringBuilder();
-                        stringBuilder.Append(s[i]);
+                        var num = 0;
+                        num += s[i] - '0';
                         while (i + 1 < s.Length && char.IsDigit(s[i + 1]))
                         {
                             i++;
-                            stringBuilder.Append(s[i]);
+                            num = (10 * num) + s[i] - '0';
                         }
-                        var num = Int32.Parse(stringBuilder.ToString());
                         num *= sign;
                         result += num;
                     }
