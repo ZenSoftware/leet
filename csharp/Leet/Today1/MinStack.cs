@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/min-stack/description/
 
-namespace Today1.MinStack;
+namespace Today1;
 
 public class MinStack
 {

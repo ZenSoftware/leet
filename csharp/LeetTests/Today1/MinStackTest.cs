@@ -1,5 +1,3 @@
-using Today1.MinStack;
-
 namespace Today1;
 
 internal class MinStackTest
