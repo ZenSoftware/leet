@@ -2,35 +2,32 @@ namespace Today2.TrappingRainWater;
 
 /// <summary>
 /// Time: O(n)
-/// Space: O(n)
+/// Space: O(1)
 /// </summary>
 public class Solution
 {
     public int Trap(int[] height)
     {
-        var max = 0;
-        var maxLeft = new int[height.Length];
-        for (int i = 0; i < height.Length; i++)
+        int l = 0, r = height.Length - 1;
+        int maxL = height[l], maxR = height[r];
+        int result = 0;
+
+        while (l < r)
         {
-            maxLeft[i] = max;
-            max = Math.Max(max, height[i]);
+            if (maxL <= maxR)
+            {
+                l++;
+                maxL = Math.Max(maxL, height[l]);
+                result += maxL - height[l];
+            }
+            else
+            {
+                r--;
+                maxR = Math.Max(maxR, height[r]);
+                result += maxR - height[r];
+            }
         }
 
-        max = 0;
-        var maxRight = new int[height.Length];
-        for (int i = height.Length - 1; i >= 0; i--)
-        {
-            maxRight[i] = max;
-            max = Math.Max(max, height[i]);
-        }
-
-        var result = 0;
-        for (int i = 0; i < height.Length; i++)
-        {
-            var min = Math.Min(maxLeft[i], maxRight[i]);
-            var vol = min - height[i];
-            result += Math.Max(vol, 0);
-        }
         return result;
     }
 }
