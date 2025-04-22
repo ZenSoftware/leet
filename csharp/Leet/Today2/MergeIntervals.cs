@@ -5,8 +5,8 @@ public class Solution
     public int[][] Merge(int[][] intervals)
     {
         Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0]));
-        var i = 0;
         var result = new List<int[]>();
+        var i = 0;
         while (i < intervals.Length)
         {
             var j = i;
