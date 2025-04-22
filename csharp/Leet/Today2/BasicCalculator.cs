@@ -1,5 +1,4 @@
 using System.Text;
-
 namespace Today2.BasicCalculator;
 
 public class Solution
