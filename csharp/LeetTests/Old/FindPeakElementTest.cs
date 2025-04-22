@@ -1,6 +1,6 @@
 using Old.FindPeakElement;
 
-namespace LeetTests.Old
+namespace Old
 {
     internal class FindPeakElementTest
     {

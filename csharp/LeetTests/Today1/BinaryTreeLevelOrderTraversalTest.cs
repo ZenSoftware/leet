@@ -1,6 +1,6 @@
 using Today1.BinaryTreeLevelOrderTraversal;
 
-namespace LeetTests.Old
+namespace Today1
 {
     internal class BinaryTreeLevelOrderTraversalTest
     {

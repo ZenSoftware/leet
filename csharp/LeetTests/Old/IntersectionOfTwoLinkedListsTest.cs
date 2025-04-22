@@ -1,6 +1,6 @@
 ﻿using Old.IntersectionOfTwoLinkedLists;
 
-namespace LeetTests.Old
+namespace Old
 {
     internal class IntersectionOfTwoLinkedListsTest
     {

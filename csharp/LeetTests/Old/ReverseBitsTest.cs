@@ -1,6 +1,6 @@
 using Old.ReverseBits;
 
-namespace LeetTests.Old
+namespace Old
 {
     internal class ReverseBitsTest
     {
