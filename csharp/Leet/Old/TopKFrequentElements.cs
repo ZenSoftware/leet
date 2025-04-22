@@ -1,5 +1,5 @@
 ﻿// https://leetcode.com/problems/top-k-frequent-elements/description/
-namespace Leet.TopKFrequentElements
+namespace Old.TopKFrequentElements
 {
     public class Solution
     {
@@ -15,7 +15,7 @@ namespace Leet.TopKFrequentElements
             }
 
             var buckets = new List<int>[nums.Length + 1];
-            foreach(var (n, count) in dict)
+            foreach (var (n, count) in dict)
             {
                 if (buckets[count] == null) buckets[count] = new List<int>();
                 buckets[count].Add(n);
@@ -28,7 +28,7 @@ namespace Leet.TopKFrequentElements
             {
                 if (buckets[i] != null && buckets[i].Count > 0)
                 {
-                    foreach(var key in buckets[i])
+                    foreach (var key in buckets[i])
                     {
                         result[r] = key;
                         r++;

@@ -1,5 +1,5 @@
 ﻿// https://leetcode.com/problems/factorial-trailing-zeroes/description/
-namespace Leet.FactorialTrailingZeroes
+namespace Old.FactorialTrailingZeroes
 {
     public class Solution
     {

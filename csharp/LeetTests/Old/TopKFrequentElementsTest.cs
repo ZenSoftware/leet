@@ -1,4 +1,4 @@
-﻿using Leet.TopKFrequentElements;
+﻿using Old.TopKFrequentElements;
 
 namespace LeetTests.Old
 {

@@ -1,5 +1,5 @@
 ﻿// https://leetcode.com/problems/largest-number/
-namespace Leet.LargestNumber
+namespace Old.LargestNumber
 {
     public class Solution
     {

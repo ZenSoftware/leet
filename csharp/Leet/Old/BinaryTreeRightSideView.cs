@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/binary-tree-right-side-view/description/
 using Leet.Tree;
 
-namespace Leet.BinaryTreeRightSideView
+namespace Old.BinaryTreeRightSideView
 {
     public class Solution
     {

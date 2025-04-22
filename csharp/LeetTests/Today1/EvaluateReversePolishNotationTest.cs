@@ -1,4 +1,4 @@
-using Leet.EvaluateReversePolishNotation;
+using Today1.EvaluateReversePolishNotation;
 
 namespace LeetTests.Today1;
 

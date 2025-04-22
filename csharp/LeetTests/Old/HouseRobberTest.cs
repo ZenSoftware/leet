@@ -1,4 +1,4 @@
-using Leet.HouseRobber;
+using Old.HouseRobber;
 
 namespace LeetTests.Old
 {

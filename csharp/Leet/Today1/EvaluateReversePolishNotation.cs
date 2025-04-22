@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/evaluate-reverse-polish-notation/description/
 
-namespace Leet.EvaluateReversePolishNotation;
+namespace Today1.EvaluateReversePolishNotation;
 
 public class Solution
 {

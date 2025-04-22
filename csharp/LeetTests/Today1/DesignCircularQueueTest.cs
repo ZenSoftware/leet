@@ -1,4 +1,4 @@
-using Leet.DesignCircularQueue;
+using Today1.DesignCircularQueue;
 
 namespace LeetTests.Today1;
 

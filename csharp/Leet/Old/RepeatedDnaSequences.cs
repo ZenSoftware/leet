@@ -1,5 +1,5 @@
 ﻿// https://leetcode.com/problems/repeated-dna-sequences/description/
-namespace Leet.RepeatedDnaSequences
+namespace Old.RepeatedDnaSequences
 {
     public class Solution
     {

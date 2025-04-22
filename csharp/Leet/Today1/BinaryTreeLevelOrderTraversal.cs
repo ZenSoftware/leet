@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/binary-tree-level-order-traversal/description/
 using Leet.Tree;
-namespace Leet.BinaryTreeLevelOrderTraversal;
+namespace Today1.BinaryTreeLevelOrderTraversal;
 
 public class Solution
 {

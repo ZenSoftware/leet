@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/find-peak-element/description/
-namespace Leet.FindPeakElement
+namespace Old.FindPeakElement
 {
     public class Solution
     {

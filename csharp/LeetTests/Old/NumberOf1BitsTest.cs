@@ -1,4 +1,4 @@
-using Leet.NumberOf1Bits;
+using Old.NumberOf1Bits;
 
 namespace LeetTests.Old
 {

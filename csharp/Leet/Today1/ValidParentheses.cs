@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/valid-parentheses/description/
 
-namespace Leet.ValidParentheses;
+namespace Today1.ValidParentheses;
 
 public class Solution
 {

@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/number-of-1-bits/description/
-namespace Leet.NumberOf1Bits
+namespace Old.NumberOf1Bits
 {
     public class Solution
     {

@@ -1,4 +1,4 @@
-using Leet.ReverseBits;
+using Old.ReverseBits;
 
 namespace LeetTests.Old
 {

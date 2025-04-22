@@ -1,4 +1,4 @@
-using Leet.ImplementStackUsingQueues;
+using Today1.ImplementStackUsingQueues;
 
 namespace LeetTests.Today1;
 

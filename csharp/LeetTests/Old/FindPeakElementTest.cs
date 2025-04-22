@@ -1,4 +1,4 @@
-using Leet.FindPeakElement;
+using Old.FindPeakElement;
 
 namespace LeetTests.Old
 {

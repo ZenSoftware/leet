@@ -1,4 +1,4 @@
-﻿using Leet.FactorialTrailingZeroes;
+﻿using Old.FactorialTrailingZeroes;
 
 namespace LeetTests.Old
 {

@@ -1,5 +1,5 @@
 ﻿// https://leetcode.com/problems/compare-version-numbers/
-namespace Leet.CompareVersionNumbers
+namespace Old.CompareVersionNumbers
 {
     public class Solution
     {
@@ -10,7 +10,7 @@ namespace Leet.CompareVersionNumbers
 
             var i = 0;
             var j = 0;
-            while(i < split1.Length || j < split2.Length)
+            while (i < split1.Length || j < split2.Length)
             {
                 var v1 = 0;
                 if (i < split1.Length)

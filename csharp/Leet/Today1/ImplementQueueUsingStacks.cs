@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/implement-queue-using-stacks/description/
-namespace Leet.ImplementQueueUsingStacks;
+namespace Today1.ImplementQueueUsingStacks;
 
 public class MyQueue
 {

@@ -1,4 +1,4 @@
-﻿using Leet.RepeatedDnaSequences;
+﻿using Old.RepeatedDnaSequences;
 
 namespace LeetTests.Old
 {

@@ -1,4 +1,4 @@
-﻿using Leet.MajorityElement;
+﻿using Old.MajorityElement;
 
 namespace LeetTests.Old
 {

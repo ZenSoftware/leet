@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/design-circular-queue/description/
-namespace Leet.DesignCircularQueue;
+namespace Today1.DesignCircularQueue;
 
 public class MyCircularQueue
 {

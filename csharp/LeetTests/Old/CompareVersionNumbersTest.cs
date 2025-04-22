@@ -1,4 +1,4 @@
-﻿using Leet.CompareVersionNumbers;
+﻿using Old.CompareVersionNumbers;
 
 namespace LeetTests.Old
 {

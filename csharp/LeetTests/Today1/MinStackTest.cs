@@ -1,4 +1,4 @@
-using Leet.MinStack;
+using Today1.MinStack;
 
 namespace LeetTests.Today1;
 

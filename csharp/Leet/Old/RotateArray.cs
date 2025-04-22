@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/rotate-array/description/
-namespace Leet.RotateArray
+namespace Old.RotateArray
 {
     public class Solution
     {

@@ -1,4 +1,4 @@
-﻿using Leet.IntersectionOfTwoLinkedLists;
+﻿using Old.IntersectionOfTwoLinkedLists;
 
 namespace LeetTests.Old
 {

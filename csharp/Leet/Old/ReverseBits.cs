@@ -1,4 +1,4 @@
-namespace Leet.ReverseBits
+namespace Old.ReverseBits
 {
     public class Solution
     {

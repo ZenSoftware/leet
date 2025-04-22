@@ -1,4 +1,4 @@
-using Leet.RotateArray;
+using Old.RotateArray;
 
 namespace LeetTests.Old
 {

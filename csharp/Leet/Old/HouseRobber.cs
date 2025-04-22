@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/house-robber/description/
 // NeetCode solution: https://www.youtube.com/watch?v=73r3KWiEvyk
 
-namespace Leet.HouseRobber
+namespace Old.HouseRobber
 {
     public class Solution
     {

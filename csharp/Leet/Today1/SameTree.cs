@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/same-tree/
 using Leet.Tree;
 
-namespace Leet.SameTree
+namespace Today1.SameTree
 {
     public class Solution
     {
