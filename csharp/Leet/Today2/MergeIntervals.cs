@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/merge-intervals/description/
 namespace Today2.MergeIntervals;
 
 public class Solution
