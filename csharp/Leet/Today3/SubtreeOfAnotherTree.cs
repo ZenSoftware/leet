@@ -8,17 +8,17 @@ public class Solution
     {
         if (root == null)
             return false;
-        if (TreesEqual(root, subRoot))
+        if (IsSameTree(root, subRoot))
             return true;
         return IsSubtree(root.left, subRoot) || IsSubtree(root.right, subRoot);
     }
 
-    private bool TreesEqual(TreeNode a, TreeNode b)
+    private bool IsSameTree(TreeNode a, TreeNode b)
     {
         if (a?.val != b?.val)
             return false;
         if (a == null && b == null)
             return true;
-        return TreesEqual(a.left, b.left) && TreesEqual(a.right, b.right);
+        return IsSameTree(a.left, b.left) && IsSameTree(a.right, b.right);
     }
 }
