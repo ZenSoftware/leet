@@ -13,7 +13,8 @@ internal class BinaryTreeMaximumPathSumTest()
         n1.left = n2;
         n1.right = n3;
         var solution = new Solution();
-        Assert.That(solution.MaxPathSum(n1), Is.EqualTo(6));
+        var result = solution.MaxPathSum(n1);
+        Assert.That(result, Is.EqualTo(6));
     }
 
     [Test]
@@ -29,7 +30,8 @@ internal class BinaryTreeMaximumPathSumTest()
         n20.left = n15;
         n20.right = n7;
         var solution = new Solution();
-        Assert.That(solution.MaxPathSum(n10), Is.EqualTo(42));
+        var result = solution.MaxPathSum(n10);
+        Assert.That(result, Is.EqualTo(42));
     }
 
     [Test]
