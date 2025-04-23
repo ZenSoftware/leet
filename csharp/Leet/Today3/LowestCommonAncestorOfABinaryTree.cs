@@ -6,26 +6,15 @@ public class Solution
 {
     public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
     {
-        TreeNode? result = null;
+        if (root == null || root == p || root == q)
+            return root;
 
-        bool DFS(TreeNode root)
-        {
-            if (root == null || result != null)
-                return false;
+        var left = LowestCommonAncestor(root.left, p, q);
+        var right = LowestCommonAncestor(root.right, p, q);
 
-            var inLeft = DFS(root.left);
-            var inRight = DFS(root.right);
+        if (left != null && right != null)
+            return root;
 
-            if (inLeft && inRight)
-                result = root;
-
-            if ((inLeft || inRight) && (p == root || q == root))
-                result = root;
-
-            return inLeft || inRight || p == root || q == root;
-        }
-
-        DFS(root);
-        return result;
+        return left != null ? left : right;
     }
 }
