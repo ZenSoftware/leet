@@ -15,10 +15,10 @@ public class Solution
 
     private bool TreesEqual(TreeNode a, TreeNode b)
     {
-        if (a == null && b == null)
-            return true;
         if (a?.val != b?.val)
             return false;
+        if (a == null && b == null)
+            return true;
         return TreesEqual(a.left, b.left) && TreesEqual(a.right, b.right);
     }
 }
