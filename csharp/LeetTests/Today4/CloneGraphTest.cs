@@ -44,8 +44,8 @@ internal class CloneGraphTest()
                     var adjB = curB.neighbors.Where(x => x.val == adjA.val).FirstOrDefault();
                     if (adjB == null)
                         return false;
-                    visited.Add(adjA);
                     queue.Enqueue((adjA, adjB));
+                    visited.Add(adjA);
                 }
             }
         }
