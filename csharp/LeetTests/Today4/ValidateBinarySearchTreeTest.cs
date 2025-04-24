@@ -49,4 +49,13 @@ internal class ValidateBinarySearchTreeTest()
         var result = solution.IsValidBST(n5);
         Assert.That(result, Is.EqualTo(false));
     }
+
+    [Test]
+    public void Test4()
+    {
+        var solution = new Solution();
+        var n = new TreeNode(2_147_483_647);
+        var result = solution.IsValidBST(n);
+        Assert.That(result, Is.EqualTo(true));
+    }
 }
