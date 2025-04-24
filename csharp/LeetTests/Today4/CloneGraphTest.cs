@@ -25,22 +25,26 @@ internal class CloneGraphTest()
             return true;
         if (a == null || b == null || a.val != b.val)
             return false;
+
+        var visited = new HashSet<Node> { a };
         var queue = new Queue<(Node, Node)>();
         queue.Enqueue((a, b));
-        var visited = new HashSet<Node> { a };
+
         while (queue.Count > 0)
         {
             var (curA, curB) = queue.Dequeue();
+
             if (curA.neighbors.Count != curB.neighbors.Count)
                 return false;
+
             foreach (var adjA in curA.neighbors)
             {
                 if (!visited.Contains(adjA))
                 {
-                    visited.Add(adjA);
                     var adjB = curB.neighbors.Where(x => x.val == adjA.val).FirstOrDefault();
                     if (adjB == null)
                         return false;
+                    visited.Add(adjA);
                     queue.Enqueue((adjA, adjB));
                 }
             }
