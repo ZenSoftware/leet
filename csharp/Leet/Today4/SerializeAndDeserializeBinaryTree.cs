@@ -1,5 +1,4 @@
 // https://leetcode.com/problems/serialize-and-deserialize-binary-tree/description/
-using System.Text;
 using Leet.Tree;
 namespace Today4.SerializeAndDeserializeBinaryTree;
 
@@ -8,40 +7,49 @@ public class Codec
     // Encodes a tree to a single string.
     public string serialize(TreeNode root)
     {
-        var result = new List<string>();
+        if (root == null)
+            return "";
+
+        var encoded = new List<string>();
+
         void DFS(TreeNode root)
         {
             if (root == null)
             {
-                result.Add("n");
+                encoded.Add("n");
                 return;
             }
 
-            result.Add(root.val.ToString());
+            encoded.Add(root.val.ToString());
             DFS(root.left);
             DFS(root.right);
         }
         DFS(root);
 
-        var end = result.Count - 1;
-        while (result[end] == "n")
+        var end = encoded.Count - 1;
+        while (encoded[end] == "n")
         {
             end--;
         }
-        return String.Join(",", result[..(end + 1)]);
+
+        return String.Join(",", encoded[..(end + 1)]);
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(string data)
     {
-        var split = data.Split(",");
+        if (String.IsNullOrEmpty(data))
+            return null;
+
+        var values = data.Split(",");
         var i = -1;
+
         TreeNode DFS()
         {
             i++;
-            if (i >= split.Length || split[i] == "n")
+            if (i >= values.Length || values[i] == "n")
                 return null;
-            var node = new TreeNode(int.Parse(split[i]));
+            var node = new TreeNode(int.Parse(values[i]));
             node.left = DFS();
             node.right = DFS();
             return node;

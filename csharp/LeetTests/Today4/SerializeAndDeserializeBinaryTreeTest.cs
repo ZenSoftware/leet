@@ -17,9 +17,19 @@ internal class SerializeAndDeserializeBinaryTreeTest()
         n3.left = n4;
         n3.right = n5;
         var serialized = codec.serialize(n1);
-        var deserialized = codec.deserialize(serialized);
         Assert.That(serialized, Is.EqualTo("1,2,n,n,3,4,n,n,5"));
+        var deserialized = codec.deserialize(serialized);
         Assert.That(IsSameTree(n1, deserialized), Is.EqualTo(true));
+    }
+
+    [Test]
+    public void Test2()
+    {
+        var codec = new Codec();
+        var serialized = codec.serialize(null);
+        Assert.That(serialized, Is.EqualTo(""));
+        var deserialized = codec.deserialize(serialized);
+        Assert.That(IsSameTree(null, deserialized), Is.EqualTo(true));
     }
 
     private bool IsSameTree(TreeNode a, TreeNode b)
