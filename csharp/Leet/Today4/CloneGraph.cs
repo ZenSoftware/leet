@@ -33,19 +33,20 @@ public class Solution
             return null;
 
         var nodes = new Dictionary<Node, Node>();
-        var visited = new HashSet<Node> { node };
+        nodes.Add(node, new Node(node.val));
+
         var queue = new Queue<Node>();
         queue.Enqueue(node);
+
         while (queue.Count > 0)
         {
             var cur = queue.Dequeue();
-            nodes.Add(cur, new Node(cur.val));
             foreach (var adj in cur.neighbors)
             {
-                if (!visited.Contains(adj))
+                if (!nodes.Keys.Contains(adj))
                 {
+                    nodes.Add(adj, new Node(adj.val));
                     queue.Enqueue(adj);
-                    visited.Add(adj);
                 }
             }
         }
