@@ -21,6 +21,30 @@ internal class CloneGraphTest()
 
     private bool IsClone(Node a, Node b)
     {
-        return false;
+        if (a == null && b == null)
+            return true;
+        if (a == null || b == null || a.val != b.val)
+            return false;
+        var queue = new Queue<(Node, Node)>();
+        queue.Enqueue((a, b));
+        var visited = new HashSet<Node> { a };
+        while (queue.Count > 0)
+        {
+            var (cur_a, cur_b) = queue.Dequeue();
+            if (cur_a.neighbors.Count != cur_b.neighbors.Count)
+                return false;
+            foreach (var adj_a in cur_a.neighbors)
+            {
+                if (!visited.Contains(adj_a))
+                {
+                    visited.Add(adj_a);
+                    var adj_b = cur_b.neighbors.Where(x => x.val == adj_a.val).FirstOrDefault();
+                    if (adj_b == null)
+                        return false;
+                    queue.Enqueue((adj_a, adj_b));
+                }
+            }
+        }
+        return true;
     }
 }
