@@ -34,7 +34,6 @@ public class Solution
             if (nextRotten.Count == 0)
                 return -1;
 
-
             foreach (var coord in nextRotten)
             {
                 grid[coord.Row][coord.Col] = 2;
