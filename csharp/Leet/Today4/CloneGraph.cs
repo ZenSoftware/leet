@@ -40,8 +40,7 @@ public class Solution
 
         while (queue.Count > 0)
         {
-            var cur = queue.Dequeue();
-            foreach (var adj in cur.neighbors)
+            foreach (var adj in queue.Dequeue().neighbors)
             {
                 if (!nodes.Keys.Contains(adj))
                 {
