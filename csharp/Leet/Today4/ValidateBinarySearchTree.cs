@@ -6,7 +6,7 @@ public class Solution
 {
     public bool IsValidBST(TreeNode root)
     {
-        bool Traverse(TreeNode root, int min, int max)
+        bool Traverse(TreeNode root, long min, long max)
         {
             if (root == null)
                 return true;
@@ -15,7 +15,6 @@ public class Solution
             return Traverse(root.left, min, root.val)
                 && Traverse(root.right, root.val, max);
         }
-
-        return Traverse(root, int.MinValue, int.MaxValue);
+        return Traverse(root, long.MinValue, long.MaxValue);
     }
 }
