@@ -8,6 +8,12 @@ public class Solution
         int ROWS = grid.Length;
         int COLS = grid[0].Length;
 
+        bool BecameRotten((int Row, int Col) coord) =>
+            (coord.Row - 1 >= 0 && grid[coord.Row - 1][coord.Col] == 2)
+            || (coord.Row + 1 < ROWS && grid[coord.Row + 1][coord.Col] == 2)
+            || (coord.Col - 1 >= 0 && grid[coord.Row][coord.Col - 1] == 2)
+            || (coord.Col + 1 < COLS && grid[coord.Row][coord.Col + 1] == 2);
+
         var fresh = new HashSet<(int Row, int Col)>();
         for (int r = 0; r < ROWS; r++)
         {
@@ -27,7 +33,7 @@ public class Solution
 
             foreach (var coord in fresh)
             {
-                if (BecameRotten(grid, coord))
+                if (BecameRotten(coord))
                     nextRotten.Add(coord);
             }
 
@@ -41,21 +47,5 @@ public class Solution
             }
         }
         return minutes;
-    }
-
-    private bool BecameRotten(int[][] grid, (int Row, int Col) coord)
-    {
-        int ROWS = grid.Length;
-        int COLS = grid[0].Length;
-
-        if (coord.Row - 1 >= 0 && grid[coord.Row - 1][coord.Col] == 2)
-            return true;
-        if (coord.Row + 1 < ROWS && grid[coord.Row + 1][coord.Col] == 2)
-            return true;
-        if (coord.Col - 1 >= 0 && grid[coord.Row][coord.Col - 1] == 2)
-            return true;
-        if (coord.Col + 1 < COLS && grid[coord.Row][coord.Col + 1] == 2)
-            return true;
-        return false;
     }
 }
