@@ -18,12 +18,12 @@ public class Solution
             }
         }
 
-        int count = 0;
+        int minutes = 0;
         var nextRotten = new HashSet<(int Row, int Col)>();
         while (fresh.Count > 0)
         {
             nextRotten.Clear();
-            count++;
+            minutes++;
 
             foreach (var coord in fresh)
             {
@@ -40,7 +40,7 @@ public class Solution
                 fresh.Remove(coord);
             }
         }
-        return count;
+        return minutes;
     }
 
     private bool BecameRotten(int[][] grid, (int Row, int Col) coord)
