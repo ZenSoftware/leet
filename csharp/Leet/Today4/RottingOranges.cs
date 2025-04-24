@@ -9,7 +9,7 @@ public class Solution
         int COLS = grid[0].Length;
 
         bool BecameRotten((int Row, int Col) coord) =>
-            (coord.Row - 1 >= 0 && grid[coord.Row - 1][coord.Col] == 2)
+               (coord.Row - 1 >= 0 && grid[coord.Row - 1][coord.Col] == 2)
             || (coord.Row + 1 < ROWS && grid[coord.Row + 1][coord.Col] == 2)
             || (coord.Col - 1 >= 0 && grid[coord.Row][coord.Col - 1] == 2)
             || (coord.Col + 1 < COLS && grid[coord.Row][coord.Col + 1] == 2);
