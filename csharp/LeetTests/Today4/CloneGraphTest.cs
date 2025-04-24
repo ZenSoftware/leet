@@ -30,18 +30,18 @@ internal class CloneGraphTest()
         var visited = new HashSet<Node> { a };
         while (queue.Count > 0)
         {
-            var (cur_a, cur_b) = queue.Dequeue();
-            if (cur_a.neighbors.Count != cur_b.neighbors.Count)
+            var (curA, curB) = queue.Dequeue();
+            if (curA.neighbors.Count != curB.neighbors.Count)
                 return false;
-            foreach (var adj_a in cur_a.neighbors)
+            foreach (var adjA in curA.neighbors)
             {
-                if (!visited.Contains(adj_a))
+                if (!visited.Contains(adjA))
                 {
-                    visited.Add(adj_a);
-                    var adj_b = cur_b.neighbors.Where(x => x.val == adj_a.val).FirstOrDefault();
-                    if (adj_b == null)
+                    visited.Add(adjA);
+                    var adjB = curB.neighbors.Where(x => x.val == adjA.val).FirstOrDefault();
+                    if (adjB == null)
                         return false;
-                    queue.Enqueue((adj_a, adj_b));
+                    queue.Enqueue((adjA, adjB));
                 }
             }
         }
