@@ -45,13 +45,16 @@ public class Solution
 
     private bool BecameRotten(int[][] grid, (int Row, int Col) coord)
     {
+        int ROWS = grid.Length;
+        int COLS = grid[0].Length;
+
         if (coord.Row - 1 >= 0 && grid[coord.Row - 1][coord.Col] == 2)
             return true;
-        if (coord.Row + 1 < grid.Length && grid[coord.Row + 1][coord.Col] == 2)
+        if (coord.Row + 1 < ROWS && grid[coord.Row + 1][coord.Col] == 2)
             return true;
         if (coord.Col - 1 >= 0 && grid[coord.Row][coord.Col - 1] == 2)
             return true;
-        if (coord.Col + 1 < grid[0].Length && grid[coord.Row][coord.Col + 1] == 2)
+        if (coord.Col + 1 < COLS && grid[coord.Row][coord.Col + 1] == 2)
             return true;
         return false;
     }
