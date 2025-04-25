@@ -8,7 +8,7 @@ public class Solution
         var ROWS = heights.Length;
         var COLS = heights[0].Length;
         var result = new List<IList<int>>();
-        var visited = new HashSet<(int Row, int Col)>();
+        var visited = new HashSet<(int, int)>();
 
         bool IsPacificFlow(int row, int col, int prev)
         {
@@ -18,17 +18,17 @@ public class Solution
                 return false;
 
             visited.Add((row, col));
+            var result = false;
             var cur = heights[row][col];
             if (IsPacificFlow(row - 1, col, cur)
                 || IsPacificFlow(row + 1, col, cur)
                 || IsPacificFlow(row, col - 1, cur)
                 || IsPacificFlow(row, col + 1, cur))
             {
-                visited.Remove((row, col));
-                return true;
+                result = true;
             }
             visited.Remove((row, col));
-            return false;
+            return result;
         }
 
         bool IsAtlanticFlow(int row, int col, int prev)
