@@ -9,13 +9,13 @@ public class Solution
         var indegree = new Dictionary<int, int>();
         foreach (var prereq in prerequisites)
         {
-            if (!graph.ContainsKey(prereq[0]))
-                graph[prereq[0]] = new List<int>();
-            graph[prereq[0]].Add(prereq[1]);
+            if (!graph.ContainsKey(prereq[1]))
+                graph[prereq[1]] = new List<int>();
+            graph[prereq[1]].Add(prereq[0]);
 
-            if (!indegree.ContainsKey(prereq[1]))
-                indegree[prereq[1]] = 0;
-            indegree[prereq[1]] += 1;
+            if (!indegree.ContainsKey(prereq[0]))
+                indegree[prereq[0]] = 0;
+            indegree[prereq[0]] += 1;
         }
 
         var queue = new Queue<int>();
