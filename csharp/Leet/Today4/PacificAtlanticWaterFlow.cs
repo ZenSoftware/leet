@@ -9,9 +9,9 @@ public class Solution
         var COLS = heights[0].Length;
         var result = new List<IList<int>>();
         var visited = new bool[ROWS][];
-        for (int r = 0; r < ROWS; r++)
+        for (int row = 0; row < ROWS; row++)
         {
-            visited[r] = new bool[COLS];
+            visited[row] = new bool[COLS];
         }
 
         bool IsPacificFlow(int row, int col, int prev)
@@ -48,12 +48,12 @@ public class Solution
             return result;
         }
 
-        for (int i = 0; i < ROWS; i++)
+        for (int row = 0; row < ROWS; row++)
         {
-            for (int j = 0; j < COLS; j++)
+            for (int col = 0; col < COLS; col++)
             {
-                if (IsPacificFlow(i, j, int.MaxValue) && IsAtlanticFlow(i, j, int.MaxValue))
-                    result.Add([i, j]);
+                if (IsPacificFlow(row, col, int.MaxValue) && IsAtlanticFlow(row, col, int.MaxValue))
+                    result.Add([row, col]);
             }
         }
 
