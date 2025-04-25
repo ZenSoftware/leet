@@ -1,7 +1,7 @@
 using Today4.PacificAtlanticWaterFlow;
 namespace Today4;
 
-internal class PacificAtlanticWaterFlowTest()
+internal class PacificAtlanticWaterFlowTest
 {
     [Test]
     public void Test1()

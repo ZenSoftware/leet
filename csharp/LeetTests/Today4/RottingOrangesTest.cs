@@ -1,7 +1,7 @@
 using Today4.RottingOranges;
 namespace Today4;
 
-internal class RottingOrangesTest()
+internal class RottingOrangesTest
 {
     [Test]
     public void Test1()

@@ -1,7 +1,7 @@
 using Today4.KthSmallestElementInABST;
 namespace Today4;
 
-internal class KthSmallestElementInABSTTest()
+internal class KthSmallestElementInABSTTest
 {
     [Test]
     public void Test1()

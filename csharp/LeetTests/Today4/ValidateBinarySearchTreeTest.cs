@@ -1,7 +1,7 @@
 using Today4.ValidateBinarySearchTree;
 namespace Today4;
 
-internal class ValidateBinarySearchTreeTest()
+internal class ValidateBinarySearchTreeTest
 {
     [Test]
     public void Test1()

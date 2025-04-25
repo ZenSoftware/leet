@@ -1,7 +1,7 @@
 using Today4.CloneGraph;
 namespace Today4;
 
-internal class CloneGraphTest()
+internal class CloneGraphTest
 {
     [Test]
     public void Test1()

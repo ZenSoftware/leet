@@ -1,7 +1,7 @@
 using Today4.SerializeAndDeserializeBinaryTree;
 namespace Today4;
 
-internal class SerializeAndDeserializeBinaryTreeTest()
+internal class SerializeAndDeserializeBinaryTreeTest
 {
     [Test]
     public void Test1()

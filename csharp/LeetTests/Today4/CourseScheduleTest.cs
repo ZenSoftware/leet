@@ -1,7 +1,7 @@
 using Today4.CourseSchedule;
 namespace Today4;
 
-internal class CourseScheduleTest()
+internal class CourseScheduleTest
 {
     [Test]
     public void Test1()
