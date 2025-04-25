@@ -39,17 +39,17 @@ public class Solution
                 return false;
 
             visited.Add((row, col));
+            var result = false;
             var cur = heights[row][col];
             if (IsAtlanticFlow(row - 1, col, cur)
                 || IsAtlanticFlow(row + 1, col, cur)
                 || IsAtlanticFlow(row, col - 1, cur)
                 || IsAtlanticFlow(row, col + 1, cur))
             {
-                visited.Remove((row, col));
-                return true;
+                result = true;
             }
             visited.Remove((row, col));
-            return false;
+            return result;
         }
 
         for (int i = 0; i < ROWS; i++)
