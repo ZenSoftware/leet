@@ -20,8 +20,8 @@ public class Solution
             visited.Add((row, col));
             var cur = heights[row][col];
             var result = IsPacificFlow(row - 1, col, cur)
-                || IsPacificFlow(row + 1, col, cur)
                 || IsPacificFlow(row, col - 1, cur)
+                || IsPacificFlow(row + 1, col, cur)
                 || IsPacificFlow(row, col + 1, cur);
             visited.Remove((row, col));
             return result;
@@ -36,10 +36,10 @@ public class Solution
 
             visited.Add((row, col));
             var cur = heights[row][col];
-            var result = IsAtlanticFlow(row - 1, col, cur)
-                || IsAtlanticFlow(row + 1, col, cur)
-                || IsAtlanticFlow(row, col - 1, cur)
-                || IsAtlanticFlow(row, col + 1, cur);
+            var result = IsAtlanticFlow(row + 1, col, cur)
+                || IsAtlanticFlow(row, col + 1, cur)
+                || IsAtlanticFlow(row - 1, col, cur)
+                || IsAtlanticFlow(row, col - 1, cur);
             visited.Remove((row, col));
             return result;
         }
