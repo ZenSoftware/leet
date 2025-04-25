@@ -14,9 +14,8 @@ public class Solution
             graph[prereq[0]].Add(prereq[1]);
 
             if (!indegree.ContainsKey(prereq[1]))
-                indegree[prereq[1]] = 1;
-            else
-                indegree[prereq[1]] += 1;
+                indegree[prereq[1]] = 0;
+            indegree[prereq[1]] += 1;
         }
 
         var queue = new Queue<int>();
