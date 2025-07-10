@@ -5,6 +5,7 @@ class Solution:
     def licenseKeyFormatting(self, s: str, k: int) -> str:
         chars = s.replace("-", "")
         chars = chars.upper()
+
         first_block_len = len(chars) % k
         if first_block_len == 0:
             first_block_len = k
