@@ -3,16 +3,16 @@
 
 class Solution:
     def licenseKeyFormatting(self, s: str, k: int) -> str:
-        characters = s.replace("-", "")
-        characters = characters.upper()
-        first_block_len = len(characters) % k
+        chars = s.replace("-", "")
+        chars = chars.upper()
+        first_block_len = len(chars) % k
         if first_block_len == 0:
             first_block_len = k
-        first_block = characters[:first_block_len]
+        first_block = chars[:first_block_len]
 
         blocks = [first_block]
-        for i in range(first_block_len, len(characters), k):
-            block = characters[i : i + k]
+        for i in range(first_block_len, len(chars), k):
+            block = chars[i : i + k]
             blocks.append(block)
 
         return "-".join(blocks)
