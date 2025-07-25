@@ -1,3 +1,4 @@
+// https://github.com/type-challenges/type-challenges/blob/main/questions/00011-easy-tuple-to-object/README.md
 {
   const tuple = ['tesla', 'model 3', 'model X', 'model Y'] as const;
 

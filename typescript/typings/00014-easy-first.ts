@@ -1,3 +1,4 @@
+// https://github.com/type-challenges/type-challenges/blob/main/questions/00014-easy-first/README.md
 {
   type arr1 = ['a', 'b', 'c'];
   type arr2 = [3, 2, 1];
