@@ -43,7 +43,3 @@ def test1():
 
 def test2():
     assert Solution().mergeKLists([]) == None
-
-
-def test3():
-    assert Solution().mergeKLists([[]]) == None

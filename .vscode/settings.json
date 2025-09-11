@@ -19,7 +19,7 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#174485",
-  "python.testing.pytestArgs": ["returned"],
+  "python.testing.pytestArgs": [],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true
 }
