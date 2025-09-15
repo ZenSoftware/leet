@@ -7,11 +7,11 @@ class Solution:
         result = []
         for n in nums1:
             i = nums2.index(n) + 1
-            nextGreater = -1
+            next_greater = -1
             while i < len(nums2):
                 if nums2[i] > n:
-                    nextGreater = nums2[i]
+                    next_greater = nums2[i]
                     break
                 i += 1
-            result.append(nextGreater)
+            result.append(next_greater)
         return result
