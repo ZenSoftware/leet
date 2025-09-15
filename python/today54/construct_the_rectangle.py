@@ -1,13 +1,11 @@
 # https://leetcode.com/problems/construct-the-rectangle/description/
 from typing import List
-from math import sqrt, ceil, floor
 
 
 class Solution:
     def constructRectangle(self, area: int) -> List[int]:
-        ideal = ceil(sqrt(area))
-        while ideal < area:
-            if (area % ideal) == 0:
-                return [ideal, floor(area / ideal)]
-            ideal += 1
-        return [area, 1]
+        w = int(area**0.5)
+        while area % w != 0:
+            w -= 1
+        l = area // w
+        return [l, w]
