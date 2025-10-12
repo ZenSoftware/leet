@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "Orta.vscode-jest",
+    "hbenl.vscode-test-explorer",
+    "ms-vscode.test-adapter-converter",
+    "ms-dotnettools.csdevkit",
+    "ms-python.python"
+  ]
+}
