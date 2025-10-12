@@ -3,14 +3,14 @@
 
 class Solution:
     def convertToBase7(self, num: int) -> str:
-        remainder = abs(num)
+        n = abs(num)
         result = ""
 
-        while remainder >= 7:
-            result = str(remainder % 7) + result
-            remainder = remainder // 7
+        while n >= 7:
+            result = str(n % 7) + result
+            n = n // 7
 
-        result = str(remainder) + result
+        result = str(n) + result
 
         if num < 0:
             result = "-" + result
