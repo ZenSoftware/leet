@@ -4,15 +4,16 @@
 class Solution:
     def convertToBase7(self, num: int) -> str:
         n = abs(num)
-        result = ""
+        result = []
 
         while n >= 7:
-            result = str(n % 7) + result
+            result.append(str(n % 7))
             n = n // 7
 
-        result = str(n) + result
+        result.append(str(n))
 
         if num < 0:
-            result = "-" + result
+            result.append("-")
 
-        return result
+        result.reverse()
+        return "".join(result)
