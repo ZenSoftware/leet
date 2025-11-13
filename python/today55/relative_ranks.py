@@ -1,3 +1,6 @@
+# https://leetcode.com/problems/relative-ranks/description/
+
+
 class Solution(object):
     def findRelativeRanks(self, score):
         score_indexes = [(score[i], i) for i in range(len(score))]
