@@ -13,7 +13,7 @@ class Solution(object):
     def findBottomLeftValue(self, root):
         queue = deque([root])
 
-        while len(queue):
+        while queue:
             ans = queue[0]
             for _ in range(len(queue)):
                 node = queue.popleft()
