@@ -25,7 +25,6 @@ class Solution(object):
 
             for _ in range(len(queue)):
                 node = queue.popleft()
-
                 if node.left:
                     queue.append(node.left)
                 if node.right:
