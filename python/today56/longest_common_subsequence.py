@@ -5,7 +5,7 @@ class Solution(object):
     def longestCommonSubsequence(self, text1, text2):
         rows = len(text1) + 1
         cols = len(text2) + 1
-        grid = [[0 for c in range(cols)] for r in range(rows)]
+        grid = [[0 for _ in range(cols)] for _ in range(rows)]
 
         for r in range(rows - 2, -1, -1):
             for c in range(cols - 2, -1, -1):
