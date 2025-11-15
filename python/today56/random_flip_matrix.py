@@ -9,18 +9,12 @@ class Solution(object):
         self.n = n
 
     def flip(self):
-        """
-        :rtype: List[int]
-        """
         row = randint(0, self.m - 1)
         col = randint(0, self.n - 1)
         self.matrix[row][col] = 1
         return [row, col]
 
     def reset(self):
-        """
-        :rtype: None
-        """
         for r in range(self.m):
             for c in range(self.n):
                 self.matrix[r][c] = 0
