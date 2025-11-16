@@ -3,9 +3,9 @@
 
 class Solution(object):
     def detectCapitalUse(self, word):
-        return word.isupper() or word.islower() or self.isPascal(word)
+        return word.isupper() or word.islower() or self.firstCapital(word)
 
-    def isPascal(self, word):
+    def firstCapital(self, word):
         if not word:
             return False
 
