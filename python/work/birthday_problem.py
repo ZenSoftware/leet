@@ -1,5 +1,7 @@
 # https://www.youtube.com/watch?v=m7hI2LulMxE&list=PLMrJAkhIeNNR3sNYvfgiKgcStwuPSts9V&index=5
 
+import argparse
+
 
 def birthday_problem(n):
     p = 1
@@ -12,9 +14,32 @@ def search_half():
     n = 2
     while (p := birthday_problem(n)) >= 0.5:
         n += 1
-    print("n = " + str(n))
-    print("p = " + str(p))
+    return n, p
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Birthday problem utility")
+    parser.add_argument(
+        "n", nargs="?", type=int, help="number of people to compute probability for"
+    )
+    parser.add_argument(
+        "--find-half",
+        "-f",
+        action="store_true",
+        help="find smallest n where probability < 0.5",
+    )
+    args = parser.parse_args()
+
+    if args.find_half:
+        n, p = search_half()
+        print(f"p({n}) = {p}")
+    elif args.n is not None:
+        p = birthday_problem(args.n)
+        print(f"p({args.n}) = {p}")
+    else:
+        n, p = search_half()
+        print(f"p({n}) = {p}")
 
 
 if __name__ == "__main__":
-    search_half()
+    main()
