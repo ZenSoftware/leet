@@ -10,7 +10,7 @@ def birthday_problem(n):
     return p
 
 
-def search_half():
+def find_half():
     n = 2
     while (p := birthday_problem(n)) >= 0.5:
         n += 1
@@ -31,13 +31,13 @@ def main():
     args = parser.parse_args()
 
     if args.find_half:
-        n, p = search_half()
+        n, p = find_half()
         print(f"p({n}) = {p}")
     elif args.n is not None:
         p = birthday_problem(args.n)
         print(f"p({args.n}) = {p}")
     else:
-        n, p = search_half()
+        n, p = find_half()
         print(f"p({n}) = {p}")
 
 
