@@ -3,7 +3,11 @@ from math import factorial
 
 
 def birthday_problem(n):
-    return factorial(365) / (factorial(365 - n) * (365**n))
+    # return factorial(365) / (factorial(365 - n) * (365**n))
+    p = 1
+    for i in range(1, n + 1):
+        p *= (365 - i + 1) / 365
+    return p
 
 
 def search_half():
