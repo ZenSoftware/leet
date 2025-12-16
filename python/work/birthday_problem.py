@@ -16,4 +16,5 @@ def search_half():
     print("p = " + str(p))
 
 
-search_half()
+if __name__ == "__main__":
+    search_half()
